@@ -103,6 +103,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cpu.cs" />
+    <Compile Include="Models\Enum.cs" />
+    <Compile Include="Models\Gpu.cs" />
+    <Compile Include="Models\Mobo.cs" />
+    <Compile Include="Models\Shop.cs" />
+    <Compile Include="Models\Storage.cs" />
+    <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -117,7 +124,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <PropertyGroup>
