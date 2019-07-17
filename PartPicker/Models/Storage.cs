@@ -9,38 +9,38 @@ namespace PartPicker.Models
 {
     public class Storage
     {
-        public int id_storage { get; set; }
+        public int Id_storage { get; set; }
 
         [Required]
         [StringLength(45)]
-        public string name { get; set; }
+        public string Name { get; set; }
 
         [Required]
         [StringLength(150)]
-        public string link { get; set; }
+        public string Link { get; set; }
 
         [Required]
         [StringLength(3)]
-        public string type { get; set; }
+        public string Type { get; set; }
 
         [Required]
-        [Range(100,10000)]
-        public int capacity { get; set; }
+        [Range(1,99999)]
+        public int Capacity { get; set; }
 
         [Required]
         [StringLength(45)]
-        public Interface interfac { get; set; }
+        public Interface Interfac { get; set; }
 
         [Required]
         [StringLength(3)]
-        public string size { get; set; }
+        public string Size { get; set; }
 
         [Required]
         [StringLength(45)]
-        public string image { get; set; }
+        public string Image { get; set; }
 
         [Required]
-        public int shop_id { get; set; }
+        public int Shop_id { get; set; }
 
         public virtual Shop Shop { get; set; }
     }

@@ -6,27 +6,29 @@ using System.Web;
 
 namespace PartPicker.Models
 {
-    public class Users
+    public class User
     {
-        public int id_user { get; set; }
+        public int Id_user { get; set; }
 
         [Required]
         [StringLength(45)]
-        public string login { get; set; }
+        public string Login { get; set; }
 
         [Required]
         [StringLength(200)]
-        public string password { get; set; }
+        public string Password { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string email { get; set; }
+        public string Email { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string nickname { get; set; }
+        public string Nickname { get; set; }
 
         [Required]
-        public bool permission { get; set; }
+        public bool Permission { get; set; }
+
+        public virtual ICollection<Rate> rates { get; set; }
     }
 }

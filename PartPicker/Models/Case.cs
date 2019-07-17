@@ -7,9 +7,9 @@ using static PartPicker.Models.Enum;
 
 namespace PartPicker.Models
 {
-    public class Gpu
+    public class Case
     {
-        public int Id_gpu { get; set; }
+        public int Id_psu { get; set; }
 
         [Required]
         [StringLength(45)]
@@ -20,27 +20,15 @@ namespace PartPicker.Models
         public string Link { get; set; }
 
         [Required]
-        [Range(1,99)]
-        public int Ram { get; set; }
+        public FormFactor FormFactor { get; set; }
 
         [Required]
-        public RamType Ram_type { get; set; }
-
-        [Required]
-        [StringLength(5)]
-        public string Frequency { get; set; }
-
-        [Required]
-        [StringLength(5)]
-        public string Frequency_boost { get; set; }
+        [StringLength(45)]
+        public int MoboType { get; set; }
 
         [Required]
         [Range(1,999)]
-        public int Length { get; set; }
-
-        [Required]
-        [Range(1,99999)]
-        public int Benchmark { get; set; }
+        public string GpuLenght { get; set; }
 
         [Required]
         [StringLength(45)]

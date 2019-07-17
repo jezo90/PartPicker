@@ -9,46 +9,46 @@ namespace PartPicker.Models
 {
     public class Mobo
     {
-        public int id_mobo { get; set; }
+        public int Id_mobo { get; set; }
 
         [Required]
         [StringLength(45)]
-        public string name { get; set; }
+        public string Name { get; set; }
 
         [Required]
         [StringLength(150)]
-        public string link { get; set; }
+        public string Link { get; set; }
 
         [Required]
-        [Range(1, 32)]
-        public FormFactor form_factor { get; set; }
+        [Range(1, 99)]
+        public FormFactor Form_factor { get; set; }
 
         [Required]
         [StringLength(10)]
-        public Socket socket { get; set; }
+        public Socket Socket { get; set; }
 
         [Required]
-        [Range(1, 8)]
-        public string ram_slots { get; set; }
+        [Range(1, 9)]
+        public string Ram_slots { get; set; }
 
         [Required]
         [StringLength(4)]
-        public RamType ram_type { get; set; }
+        public RamType Ram_type { get; set; }
 
         [Required]
-        [Range(1, 256)]
-        public string max_ram { get; set; }
+        [Range(1, 999)]
+        public string Max_ram { get; set; }
 
         [Required]
-        [Range(1, 8)]
-        public string sata_slots { get; set; }
+        [Range(1, 9)]
+        public string Sata_slots { get; set; }
 
         [Required]
         [StringLength(45)]
-        public string image { get; set; }
+        public string Image { get; set; }
 
         [Required]
-        public int shop_id { get; set; }
+        public int Shop_id { get; set; }
 
         public virtual Shop Shop { get; set; }
     }

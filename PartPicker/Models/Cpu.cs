@@ -9,46 +9,46 @@ namespace PartPicker.Models
 {
     public class Cpu
     {
-        public int id_cpu { get; set; }
+        public int Id_cpu { get; set; }
 
         [Required]
         [StringLength(45)]
-        public string name { get; set; }
+        public string Name { get; set; }
 
         [Required]
         [StringLength(150)]
-        public string link { get; set; }
+        public string Link { get; set; }
 
         [Required]
         [StringLength(10)]
-        public Socket socket { get; set; }
+        public Socket Socket { get; set; }
 
         [Required]
-        [Range(1,32)]
-        public int cores { get; set; }
-
-        [Required]
-        [StringLength(10)]
-        public string frequency { get; set; }
+        [Range(1,99)]
+        public int Cores { get; set; }
 
         [Required]
         [StringLength(10)]
-        public string turbo { get; set; }
+        public string Frequency { get; set; }
+
+        [Required]
+        [StringLength(10)]
+        public string Turbo { get; set; }
 
         [Required]
         [StringLength(45)]
-        public string gpu { get; set; }
+        public string Gpu { get; set; }
 
         [Required]
-        [Range(1,10000)]
-        public int benchmark { get; set; }
+        [Range(1,99999)]
+        public int Benchmark { get; set; }
 
         [Required]
         [StringLength(45)]
-        public string image { get; set; }
+        public string Image { get; set; }
 
         [Required]
-        public int shop_id { get; set; }
+        public int Shop_id { get; set; }
 
         public virtual Shop Shop { get; set; }
     }
