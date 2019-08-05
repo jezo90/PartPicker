@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using static PartPicker.Models.Enum;
 
 namespace PartPicker.Models
 {
     public class Cpu
     {
-        public int Id_cpu { get; set; }
+        public int CpuId { get; set; }
 
         [Required]
         [StringLength(45)]
@@ -20,8 +19,7 @@ namespace PartPicker.Models
         public string Link { get; set; }
 
         [Required]
-        [StringLength(10)]
-        public Socket Socket { get; set; }
+        public int SocketId { get; set; }
 
         [Required]
         [Range(1,99)]
@@ -48,8 +46,9 @@ namespace PartPicker.Models
         public string Image { get; set; }
 
         [Required]
-        public int Shop_id { get; set; }
+        public int ShopId { get; set; }
 
         public virtual Shop Shop { get; set; }
+        public virtual Socket Socket { get; set; }
     }
 }

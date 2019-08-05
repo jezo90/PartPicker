@@ -6,20 +6,16 @@ using System.Web;
 
 namespace PartPicker.Models
 {
-    public class Shop
+    public class Interface
     {
-        public int ShopId { get; set; }
+        public int InterfaceId { get; set; }
 
         [Required]
         [StringLength(45)]
         public string Name { get; set; }
 
         [Required]
-        [StringLength(45)]
-        public string Logo { get; set; }
-
-        [Required]
-        [StringLength(45)]
-        public string Class { get; set; }
+        [StringLength(150)]
+        public string Description { get; set; }
     }
 }

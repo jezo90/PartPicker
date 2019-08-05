@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using static PartPicker.Models.Enum;
 
 namespace PartPicker.Models
 {
     public class Psu
     {
-        public int Id_psu { get; set; }
+        public int PsuId { get; set; }
 
         [Required]
         [StringLength(45)]
@@ -20,7 +19,7 @@ namespace PartPicker.Models
         public string Link { get; set; }
 
         [Required]
-        public FormFactor FormFactor { get; set; }
+        public int FormFactorId { get; set; }
 
         [Required]
         [Range(1,9999)]
@@ -35,8 +34,9 @@ namespace PartPicker.Models
         public string Image { get; set; }
 
         [Required]
-        public int Shop_id { get; set; }
+        public int ShopId { get; set; }
 
         public virtual Shop Shop { get; set; }
+        public virtual FormFactor FormFactor { get; set; }
     }
 }

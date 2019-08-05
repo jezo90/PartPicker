@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using static PartPicker.Models.Enum;
 
 namespace PartPicker.Models
 {
     public class Gpu
     {
-        public int Id_gpu { get; set; }
+        public int GpuId { get; set; }
 
         [Required]
         [StringLength(45)]
@@ -24,7 +23,7 @@ namespace PartPicker.Models
         public int Ram { get; set; }
 
         [Required]
-        public RamType Ram_type { get; set; }
+        public int RamTypeId { get; set; }
 
         [Required]
         [StringLength(5)]
@@ -32,7 +31,7 @@ namespace PartPicker.Models
 
         [Required]
         [StringLength(5)]
-        public string Frequency_boost { get; set; }
+        public string FrequencyBoost { get; set; }
 
         [Required]
         [Range(1,999)]
@@ -47,8 +46,9 @@ namespace PartPicker.Models
         public string Image { get; set; }
 
         [Required]
-        public int Shop_id { get; set; }
+        public int ShopId { get; set; }
 
         public virtual Shop Shop { get; set; }
+        public virtual RamType RamType { get; set; }
     }
 }

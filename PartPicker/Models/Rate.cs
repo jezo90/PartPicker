@@ -8,13 +8,13 @@ namespace PartPicker.Models
 {
     public class Rate
     {
-        public int Id_rate { get; set; }
+        public int RateId { get; set; }
 
         [Required]
-        public int Id_user { get; set; }
+        public int UserId { get; set; }
 
         [Required]
-        public int Id_build { get; set; }
+        public int BuildId { get; set; }
 
         [Required]
         [Range(1,9)]

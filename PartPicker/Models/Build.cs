@@ -8,34 +8,35 @@ namespace PartPicker.Models
 {
     public class Build
     {
-        public int Id_build { get; set; }
+        public int BuildId { get; set; }
 
         [Required]
         [StringLength(45)]
         public string Name { get; set; }
 
         [Required]
-        public int Id_user { get; set; }
+        public int UserId { get; set; }
 
         [Required]
         public DateTime Date { get; set; }
 
         [Required]
-        public int Id_cpu { get; set; }
+        public int CpuId { get; set; }
 
         [Required]
-        public int Id_mobo { get; set; }
+        public int MoboId { get; set; }
 
         [Required]
-        public int Id_storage { get; set; }
+        public int StorageId { get; set; }
 
         [Required]
-        public int Id_psu { get; set; }
+        public int PsuId { get; set; }
 
         [Required]
-        public int Id_case { get; set; }
+        public int CaseId { get; set; }
 
         [Required]
+        [Range(1,99999)]
         public int Price { get; set; }
 
 

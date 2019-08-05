@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using static PartPicker.Models.Enum;
 
 namespace PartPicker.Models
 {
     public class Storage
     {
-        public int Id_storage { get; set; }
+        public int StorageId { get; set; }
 
         [Required]
         [StringLength(45)]
@@ -28,8 +27,7 @@ namespace PartPicker.Models
         public int Capacity { get; set; }
 
         [Required]
-        [StringLength(45)]
-        public Interface Interfac { get; set; }
+        public int InterfaceId { get; set; }
 
         [Required]
         [StringLength(3)]
@@ -40,8 +38,9 @@ namespace PartPicker.Models
         public string Image { get; set; }
 
         [Required]
-        public int Shop_id { get; set; }
+        public int ShopId { get; set; }
 
         public virtual Shop Shop { get; set; }
+        public virtual Interface Interface { get; set; }
     }
 }

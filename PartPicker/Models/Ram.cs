@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using static PartPicker.Models.Enum;
 
 namespace PartPicker.Models
 {
     public class Ram
     {
-        public int Id_ram { get; set; }
+        public int RamId { get; set; }
 
         [Required]
         [StringLength(45)]
@@ -20,8 +19,7 @@ namespace PartPicker.Models
         public string Link { get; set; }
 
         [Required]
-        [StringLength(10)]
-        public RamType RamType { get; set; }
+        public int RamTypeId { get; set; }
 
         [Required]
         [Range(1, 9)]
@@ -44,8 +42,9 @@ namespace PartPicker.Models
         public string Image { get; set; }
 
         [Required]
-        public int Shop_id { get; set; }
+        public int ShopId { get; set; }
 
         public virtual Shop Shop { get; set; }
+        public virtual RamType RamType { get; set; }
     }
 }

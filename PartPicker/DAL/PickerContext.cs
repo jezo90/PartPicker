@@ -15,6 +15,11 @@ namespace PartPicker.DAL
 
         }
 
+        public DbSet<FormFactor> FormFactor { get; set; }
+        public DbSet<Interface> Interface { get; set; }
+        public DbSet<RamType> RamType { get; set; }
+        public DbSet<Socket> Socket { get; set; }
+
         public DbSet<Shop> Shop { get; set; }
         public DbSet<Case> Case { get; set; }
         public DbSet<Cpu> Cpu { get; set; }
@@ -34,6 +39,7 @@ namespace PartPicker.DAL
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
 
     }
