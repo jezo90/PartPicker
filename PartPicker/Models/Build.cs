@@ -27,6 +27,12 @@ namespace PartPicker.Models
         public int MoboId { get; set; }
 
         [Required]
+        public int GpuId { get; set; }
+
+        [Required]
+        public int RamId { get; set; }
+
+        [Required]
         public int StorageId { get; set; }
 
         [Required]
@@ -45,6 +51,10 @@ namespace PartPicker.Models
         public virtual Mobo Mobo { get; set; }
         public virtual Storage Storage { get; set; }
         public virtual Psu Psu { get; set; }
+        public virtual Gpu Gpu { get; set; }
+        public virtual Ram Ram { get; set; }
         public virtual Case Case { get; set; }
+
+        public virtual ICollection<Rate> Rates { get; set; }
     }
 }

@@ -14,9 +14,8 @@ namespace PartPicker.Controllers
 
         public ActionResult Index()
         {
-            Shop sklep = new Shop { Class = "abc", ShopId = 1, Logo = "www.wp.pl", Name = "WP" };
-            db.Shop.Add(sklep);
-            db.SaveChanges();
+            var admin = db.User.ToList();
+
             return View();
         }
     }

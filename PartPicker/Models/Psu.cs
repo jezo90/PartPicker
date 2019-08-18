@@ -38,5 +38,7 @@ namespace PartPicker.Models
 
         public virtual Shop Shop { get; set; }
         public virtual FormFactor FormFactor { get; set; }
+
+        public virtual ICollection<Build> Builds { get; set; }
     }
 }

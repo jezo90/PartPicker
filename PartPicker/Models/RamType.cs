@@ -17,5 +17,8 @@ namespace PartPicker.Models
         [Required]
         [StringLength(150)]
         public string Description { get; set; }
+
+        public virtual ICollection<Ram> Rams { get; set; }
+        public virtual ICollection<Mobo> Mobos { get; set; }
     }
 }

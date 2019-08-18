@@ -6,9 +6,9 @@ using System.Web;
 
 namespace PartPicker.Models
 {
-    public class Interface
+    public class GpuRam
     {
-        public int InterfaceId { get; set; }
+        public int GpuRamId { get; set; }
 
         [Required]
         [StringLength(45)]
@@ -18,6 +18,6 @@ namespace PartPicker.Models
         [StringLength(150)]
         public string Description { get; set; }
 
-        public virtual ICollection<Storage> Storages { get; set; }
+        public virtual ICollection<Gpu> Gpus { get; set; }
     }
 }

@@ -12,10 +12,14 @@ namespace PartPicker.Models
 
         [Required]
         [StringLength(45)]
-        public string Name  { get; set; }
+        public string Name { get; set; }
 
         [Required]
         [StringLength(150)]
         public string Description { get; set; }
+
+        public virtual ICollection<Case> Cases { get; set; }
+        public virtual ICollection<Mobo> Mobos { get; set; }
+        public virtual ICollection<Psu> Psus { get; set; }
     }
 }

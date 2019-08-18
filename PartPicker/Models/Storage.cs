@@ -30,8 +30,8 @@ namespace PartPicker.Models
         public int InterfaceId { get; set; }
 
         [Required]
-        [StringLength(3)]
-        public string Size { get; set; }
+        [Range(1, 5)]
+        public double Size { get; set; }
 
         [Required]
         [StringLength(45)]
@@ -42,5 +42,8 @@ namespace PartPicker.Models
 
         public virtual Shop Shop { get; set; }
         public virtual Interface Interface { get; set; }
+
+        public virtual ICollection<Build> Builds { get; set; }
+
     }
 }

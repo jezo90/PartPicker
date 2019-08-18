@@ -21,7 +21,6 @@ namespace PartPicker.Models
         public int Grade { get; set; }
 
         public virtual User User { get; set; }
-
         public virtual Build Build { get; set; }
 
     }

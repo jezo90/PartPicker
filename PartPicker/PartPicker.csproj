@@ -115,6 +115,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\PickerContext.cs" />
+    <Compile Include="DAL\PickerInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -123,6 +124,7 @@
     <Compile Include="Models\Cpu.cs" />
     <Compile Include="Models\FormFactor.cs" />
     <Compile Include="Models\Gpu.cs" />
+    <Compile Include="Models\GpuRam.cs" />
     <Compile Include="Models\Interface.cs" />
     <Compile Include="Models\Mobo.cs" />
     <Compile Include="Models\Psu.cs" />

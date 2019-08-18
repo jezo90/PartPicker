@@ -23,15 +23,15 @@ namespace PartPicker.Models
         public int Ram { get; set; }
 
         [Required]
-        public int RamTypeId { get; set; }
+        public int GpuRamId { get; set; }
 
         [Required]
-        [StringLength(5)]
-        public string Frequency { get; set; }
+        [Range(1, 5)]
+        public double Frequency { get; set; }
 
         [Required]
-        [StringLength(5)]
-        public string FrequencyBoost { get; set; }
+        [Range(1, 5)]
+        public double FrequencyBoost { get; set; }
 
         [Required]
         [Range(1,999)]
@@ -49,6 +49,9 @@ namespace PartPicker.Models
         public int ShopId { get; set; }
 
         public virtual Shop Shop { get; set; }
-        public virtual RamType RamType { get; set; }
+        public virtual GpuRam GpuRam { get; set; }
+
+        public virtual ICollection<Build> Builds { get; set; }
+
     }
 }

@@ -26,18 +26,18 @@ namespace PartPicker.Models
 
         [Required]
         [Range(1, 9)]
-        public string RamSlots { get; set; }
+        public int RamSlots { get; set; }
 
         [Required]
         public int RamTypeId { get; set; }
 
         [Required]
         [Range(1, 999)]
-        public string MaxRam { get; set; }
+        public int MaxRam { get; set; }
 
         [Required]
         [Range(1, 9)]
-        public string SataSlots { get; set; }
+        public int SataSlots { get; set; }
 
         [Required]
         [StringLength(45)]
@@ -50,6 +50,8 @@ namespace PartPicker.Models
         public virtual FormFactor FormFactor { get; set; }
         public virtual RamType RamType { get; set; }
         public virtual Socket Socket { get; set; }
+
+        public virtual ICollection<Build> Builds { get; set; }
     }
 
     

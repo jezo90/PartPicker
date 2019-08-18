@@ -26,12 +26,10 @@ namespace PartPicker.Models
         public int Cores { get; set; }
 
         [Required]
-        [StringLength(10)]
-        public string Frequency { get; set; }
+        public double Frequency { get; set; }
 
         [Required]
-        [StringLength(10)]
-        public string Turbo { get; set; }
+        public double Turbo { get; set; }
 
         [Required]
         [StringLength(45)]
@@ -50,5 +48,7 @@ namespace PartPicker.Models
 
         public virtual Shop Shop { get; set; }
         public virtual Socket Socket { get; set; }
+
+        public virtual ICollection<Build> Builds { get; set; }
     }
 }

@@ -31,7 +31,7 @@ namespace PartPicker.Models
 
         [Required]
         [Range(1, 9999)]
-        public string Frequency { get; set; }
+        public int Frequency { get; set; }
 
         [Required]
         [Range(1, 99)]
@@ -46,5 +46,7 @@ namespace PartPicker.Models
 
         public virtual Shop Shop { get; set; }
         public virtual RamType RamType { get; set; }
+
+        public virtual ICollection<Build> Builds { get; set; }
     }
 }

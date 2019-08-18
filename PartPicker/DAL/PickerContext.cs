@@ -15,9 +15,15 @@ namespace PartPicker.DAL
 
         }
 
+        static PickerContext()
+        {
+            Database.SetInitializer<PickerContext>(new PickerInitializer());
+        }
+
         public DbSet<FormFactor> FormFactor { get; set; }
         public DbSet<Interface> Interface { get; set; }
         public DbSet<RamType> RamType { get; set; }
+        public DbSet<GpuRam> GpuRam { get; set; }
         public DbSet<Socket> Socket { get; set; }
 
         public DbSet<Shop> Shop { get; set; }

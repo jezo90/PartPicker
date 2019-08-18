@@ -29,6 +29,6 @@ namespace PartPicker.Models
         [Required]
         public bool Permission { get; set; }
 
-        public virtual ICollection<Rate> rates { get; set; }
+        public virtual ICollection<Rate> Rates { get; set; }
     }
 }
