@@ -15,6 +15,14 @@ namespace PartPicker.Models
         public string Name { get; set; }
 
         [Required]
+        [StringLength(45)]
+        public string Manufacturer { get; set; }
+
+        [Required]
+        [StringLength(45)]
+        public string Model { get; set; }
+
+        [Required]
         [StringLength(150)]
         public string Link { get; set; }
 

@@ -45,6 +45,9 @@ namespace PartPicker.Models
         [Range(1,99999)]
         public int Price { get; set; }
 
+        [Required]
+        public bool Hidden { get; set; }
+
 
         public virtual User User { get; set; }
         public virtual Cpu Cpu { get; set; }
