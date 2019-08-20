@@ -18,5 +18,10 @@ namespace PartPicker.Controllers
 
             return View();
         }
+
+        public ActionResult Static(string name)
+        {
+            return View(name);
+        }
     }
 }
