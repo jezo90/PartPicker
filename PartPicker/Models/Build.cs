@@ -42,6 +42,10 @@ namespace PartPicker.Models
         public int CaseId { get; set; }
 
         [Required]
+        [StringLength(45)]
+        public string Image { get; set; }
+
+        [Required]
         [Range(1,99999)]
         public int Price { get; set; }
 

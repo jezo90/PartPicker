@@ -7,7 +7,7 @@ using PartPicker.Models;
 
 namespace PartPicker.DAL
 {
-    public class PickerInitializer : CreateDatabaseIfNotExists<PickerContext>
+    public class PickerInitializer : DropCreateDatabaseAlways<PickerContext>
     {
         protected override void Seed(PickerContext context)
         {
@@ -318,13 +318,16 @@ namespace PartPicker.DAL
             var builds = new List<Build>
             {
                 new Build () { BuildId = 1, Name = "Pierwsza", UserId = 1, Date = DateTime.Now, Hidden = false,
-                             CpuId = 1, MoboId = 1, GpuId = 1, PsuId = 1, CaseId = 1, RamId = 1, StorageId = 1, Price = 3000 },
+                             CpuId = 1, MoboId = 1, GpuId = 1, PsuId = 1, CaseId = 1, RamId = 1, StorageId = 1, Price = 3000,
+                             Image = "basic.png"},
 
                 new Build () { BuildId = 2, Name = "Druga", UserId = 1, Date = DateTime.Now, Hidden = false,
-                             CpuId = 2, MoboId = 2, GpuId = 2, PsuId = 2, CaseId = 2, RamId = 2, StorageId = 2, Price = 3500 },
+                             CpuId = 2, MoboId = 2, GpuId = 2, PsuId = 2, CaseId = 2, RamId = 2, StorageId = 2, Price = 3500,
+                             Image = "basic.png" },
 
                 new Build () { BuildId = 3, Name = "Ostatnia", UserId = 1, Date = DateTime.Now, Hidden = false,
-                             CpuId = 3, MoboId = 3, GpuId = 3, PsuId = 3, CaseId = 3, RamId = 3, StorageId = 3, Price = 2000 }
+                             CpuId = 3, MoboId = 3, GpuId = 3, PsuId = 3, CaseId = 3, RamId = 3, StorageId = 3, Price = 2000,
+                             Image = "basic.png" }
             };
 
             builds.ForEach(s => context.Build.Add(s));
