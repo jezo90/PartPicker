@@ -1,5 +1,6 @@
 ﻿using PartPicker.DAL;
 using PartPicker.Models;
+using PartPicker.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,27 +11,31 @@ namespace PartPicker.Controllers
 {
     public class HomeController : Controller
     {
-        private PickerContext db = new PickerContext();
+        private PickerContext context = new PickerContext();
 
         public ActionResult Index()
         {
-            var news = db.Build.Where(a => !a.Hidden).OrderByDescending(a => a.Date).Take(3).ToList();
+            var builds = context.Build.Where(a => !a.Hidden)
+                        .ToList();
 
-            var builds = db.Build.ToList();
-            int amountOfBuilds = db.Build.Count() + 1;
-            int[] sum = new int[ amountOfBuilds ];
-            double[] average = new double[ amountOfBuilds ];
-            int[] count = new int[ amountOfBuilds ];
+            var news = builds
+                        .OrderByDescending(a => a.Date).Take(3)
+                        .ToList();
 
-            for(int i=0; i<amountOfBuilds; i++)
+            int amountOfBuilds = context.Build.Count() + 1;
+            int[] sum = new int[amountOfBuilds];
+            double[] average = new double[amountOfBuilds];
+            int[] count = new int[amountOfBuilds];
+
+            for (int i = 0; i < amountOfBuilds; i++)
             {
                 sum[i] = 0;
                 count[i] = 0;
             }
 
-            foreach(Build b in builds)
+            foreach (Build b in builds)
             {
-                foreach(Rate r in b.Rates)
+                foreach (Rate r in b.Rates)
                 {
                     sum[r.BuildId] += r.Grade;
                     count[r.BuildId]++;
@@ -39,15 +44,42 @@ namespace PartPicker.Controllers
 
             for (int i = 0; i < amountOfBuilds; i++)
             {
-                if(count[i]!=0) average[i] = sum[i] / count[i] * 1.0d;
+                if (count[i] != 0) average[i] = sum[i] / count[i] * 1.0d;
             }
 
             double maxValue = average.Max();
-            int maxIndex = average.ToList().IndexOf(maxValue);
+            int maxIndex = average.ToList()
+                            .IndexOf(maxValue);
 
-            var hot = db.Build.Where(a => !a.Hidden && a.BuildId == maxIndex).ToList();
+            var hotBuild = builds
+                            .Where(a => a.BuildId == maxIndex)
+                            .ToList();
 
-            return View();
+            var hotCpuId = builds
+                        .GroupBy(a => a.CpuId)
+                        .Select(a => new { CpuId = a.Key, count = a.Count() })
+                        .OrderByDescending(o => o.count)
+                        .Take(1)
+                        .ToList();
+            var hotCpu = context.Cpu.Where(a => a.CpuId == hotCpuId[0].CpuId);
+
+            var hotGpuId = builds
+                        .GroupBy(a => a.GpuId)
+                        .Select(a => new { GpuId = a.Key, count = a.Count() })
+                        .OrderByDescending(o => o.count)
+                        .Take(1)
+                        .ToList();
+            var hotGpu = context.Gpu.Where(a => a.GpuId == hotGpuId[0].GpuId);
+
+            var homeViewModel = new HomeViewModel()
+            {
+                New = news,
+                HotBuild = hotBuild,
+                HotCpu = hotCpu,
+                HotGpu = hotGpu
+            };
+            
+            return View(homeViewModel);
         }
 
         public ActionResult Static(string name)

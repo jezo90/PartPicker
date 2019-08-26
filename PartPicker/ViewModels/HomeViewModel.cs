@@ -8,10 +8,12 @@ namespace PartPicker.ViewModels
 {
     public class HomeViewModel
     {
-        public IEnumerable<string> Parts { get; set; }
-
         public IEnumerable<Build> New { get; set; }
 
-        public IEnumerable<Build> Hot { get; set; }
+        public IEnumerable<Build> HotBuild { get; set; }
+
+        public IEnumerable<Cpu> HotCpu { get; set; }
+
+        public IEnumerable<Gpu> HotGpu { get; set; }
     }
 }

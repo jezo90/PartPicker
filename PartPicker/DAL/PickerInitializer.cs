@@ -7,7 +7,7 @@ using PartPicker.Models;
 
 namespace PartPicker.DAL
 {
-    public class PickerInitializer : DropCreateDatabaseAlways<PickerContext>
+    public class PickerInitializer : DropCreateDatabaseIfModelChanges<PickerContext>
     {
         protected override void Seed(PickerContext context)
         {
@@ -137,17 +137,17 @@ namespace PartPicker.DAL
                 new Case () { CaseId = 1, Name = "NZXT H500 (Black)", Manufacturer = "NZXT",
                             Model = "H500", Link = "https://www.morele.net/obudowa-nzxt-h500-okno-bialy-ca-h500b-w1-4596293/",
                             FormFactorId = 2, MoboType = "ATX", GpuLenght = 381,
-                            Image = "../Content/Images/Case/nzxt.jpg", ShopId = 3 },
+                            Image = "nzxt.png", ShopId = 3 },
 
                 new Case () { CaseId = 2, Name = "Phanteks Eclipse P300 Tempered Glass (Black)", Manufacturer = "Phanteks",
                             Model = "Eclipse P300",  Link = "https://www.morele.net/obudowa-phanteks-eclipse-p300-ph-ec300ptg-bk-1603218/",
                             FormFactorId = 2, MoboType = "ATX", GpuLenght = 330,
-                            Image = "../Content/Images/Case/phanteks.jpg", ShopId = 3 },
+                            Image = "phanteks.png", ShopId = 3 },
 
                 new Case () { CaseId = 3, Name = "Cooler Master MasterBox Q300L", Manufacturer = "Cooler Master",
                             Model = "MasterBox Q300L", Link = "https://www.morele.net/obudowa-cooler-master-masterbox-q300l-mcb-q300l-kann-s00-1804692/",
                             FormFactorId = 3, MoboType = "microATX", GpuLenght = 360,
-                            Image = "../Content/Images/Case/masterbox.jpg", ShopId = 3 }
+                            Image = "masterbox.png", ShopId = 3 }
             };
 
             cases.ForEach(s => context.Case.Add(s));
@@ -159,22 +159,22 @@ namespace PartPicker.DAL
                 new Cpu () { CpuId = 1, Name = "AMD Ryzen 5 2600", Manufacturer = "AMD",
                             Model = "Ryzen 5", Link = "https://www.morele.net/procesor-amd-ryzen-5-2600-3-9ghz-16mb-box-yd2600bbafbox-980255/",
                             SocketId = 4, Cores = 6, Frequency = 3.4, Turbo = 3.9, Gpu = "Brak", Benchmark = 2000,
-                            Image = "../Content/Images/Cpu/ryzen52600.jpg", ShopId = 3},
+                            Image = "ryzen52600.png", ShopId = 3},
 
                 new Cpu () { CpuId = 2, Name = "AMD Ryzen 7 2700X", Manufacturer = "AMD",
                             Model = "Ryzen 7", Link = "https://www.morele.net/procesor-amd-ryzen-7-2700x-3-7ghz-20mb-box-yd270xbgafbox-980258/",
                             SocketId = 4, Cores = 8, Frequency = 3.7, Turbo = 4.2, Gpu = "Brak", Benchmark = 3000,
-                            Image = "../Content/Images/Cpu/ryzen72700x.jpg", ShopId = 3},
+                            Image = "ryzen72700x.png", ShopId = 3},
 
                 new Cpu () { CpuId = 3, Name = "AMD Ryzen 5 2600X", Manufacturer = "AMD",
                             Model = "Ryzen 5", Link = "https://www.morele.net/procesor-amd-ryzen-5-2600x-3-6ghz-16mb-box-wraith-spire-yd260xbcafbox-980256/",
                             SocketId = 4, Cores = 6, Frequency = 3.6, Turbo = 4.2, Gpu = "Brak", Benchmark = 2500,
-                            Image = "../Content/Images/Cpu/ryzen52600x", ShopId = 3},
+                            Image = "ryzen52600x.png", ShopId = 3},
 
                 new Cpu () { CpuId = 4, Name = "AMD Ryzen 5 2600X", Manufacturer = "AMD",
                             Model = "Ryzen 5", Link = "https://www.sferis.pl/procesor-amd-ryzen-5-2600x-ryzen-5-yd260xbcafbox-3600-mhz-min-4200-mhz-max-am4-p599440?nobid",
                             SocketId = 4, Cores = 6, Frequency = 3.6, Turbo = 4.2, Gpu = "Brak", Benchmark = 2500,
-                            Image = "../Content/Images/Cpu/ryzen52600x", ShopId = 4}
+                            Image = "ryzen52600x.png", ShopId = 4}
             };
 
             cpus.ForEach(s => context.Cpu.Add(s));
@@ -185,17 +185,17 @@ namespace PartPicker.DAL
                 new Gpu ()  { GpuId = 1, Name = "MSI RX 580 ARMOR 8G OC", Manufacturer = "MSI",
                             Model = "RX 580", Link = "https://www.morele.net/karta-graficzna-msi-radeon-rx-580-armor-8g-oc-8gb-dl-dvi-d-hdmi-2-dp-2-atx-rx-580-armor-8g-oc-1220555/",
                             Ram = 8, GpuRamId = 1, Frequency = 1.257, FrequencyBoost = 1.366, Length = 269, Benchmark = 1000,
-                            Image = "../Content/Images/Gpu/msirx580.jpg", ShopId = 3},
+                            Image = "msirx580.png", ShopId = 3},
 
                 new Gpu ()  { GpuId = 2, Name = "Gigabyte GeForce RTX 2070 WINDFORCE 8G", Manufacturer = "Gigabyte",
                             Model = "GeForce RTX 2070", Link = "https://www.morele.net/karta-graficzna-gigabyte-geforce-rtx-2070-windforce-8g-8gb-gddr6-256-bit-3xhdmi-3xdp-usb-c-box-gv-n2070wf3-8gc-4142730/",
                             Ram = 8, GpuRamId = 3, Frequency = 1.620, FrequencyBoost = 1.740, Length = 280, Benchmark = 2000,
-                            Image = "../Content/Images/Gpu/gigabytertx2070.jpg", ShopId = 3},
+                            Image = "gigabytertx2070.png", ShopId = 3},
 
                 new Gpu ()  { GpuId = 3, Name = "MSI GTX 1660 Ti VENTUS XS 6G OC", Manufacturer = "MSI",
                             Model = "GeForce GTX 1660 Ti", Link = "https://www.morele.net/karta-graficzna-msi-gtx-1660-ti-ventus-xs-6g-oc-6gb-gddr6-gtx-1660-ti-ventus-xs-6g-oc-4144268/",
                             Ram = 6, GpuRamId = 3, Frequency = 1.500, FrequencyBoost = 1.830, Length = 204, Benchmark = 1500,
-                            Image = "../Content/Images/Gpu/msigtx1660ti.jpg", ShopId = 3}
+                            Image = "msigtx1660ti.png", ShopId = 3}
             };
 
             gpus.ForEach(s => context.Gpu.Add(s));
@@ -327,7 +327,11 @@ namespace PartPicker.DAL
 
                 new Build () { BuildId = 3, Name = "Ostatnia", UserId = 1, Date = DateTime.Now, Hidden = false,
                              CpuId = 3, MoboId = 3, GpuId = 3, PsuId = 3, CaseId = 3, RamId = 3, StorageId = 3, Price = 2000,
-                             Image = "basic.png" }
+                             Image = "basic.png" },
+
+                new Build () { BuildId = 2, Name = "Najlepsza", UserId = 2, Date = DateTime.Now, Hidden = false,
+                             CpuId = 1, MoboId = 1, GpuId = 3, PsuId = 1, CaseId = 1, RamId = 1, StorageId = 1, Price = 4000,
+                             Image = "basic.png"}
             };
 
             builds.ForEach(s => context.Build.Add(s));

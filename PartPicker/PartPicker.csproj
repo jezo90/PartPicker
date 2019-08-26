@@ -49,11 +49,17 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Glimpse.Ado, Version=1.7.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Glimpse.Ado.1.7.3\lib\net45\Glimpse.Ado.dll</HintPath>
+    </Reference>
     <Reference Include="Glimpse.AspNet, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Glimpse.AspNet.1.8.0\lib\net45\Glimpse.AspNet.dll</HintPath>
     </Reference>
-    <Reference Include="Glimpse.Core, Version=1.8.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Glimpse.1.8.2\lib\net45\Glimpse.Core.dll</HintPath>
+    <Reference Include="Glimpse.Core, Version=1.8.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Glimpse.1.8.6\lib\net45\Glimpse.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.EF6, Version=1.6.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Glimpse.EF6.1.6.5\lib\net45\Glimpse.EF6.dll</HintPath>
     </Reference>
     <Reference Include="Glimpse.Mvc5, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Glimpse.Mvc5.1.5.3\lib\net45\Glimpse.Mvc5.dll</HintPath>
@@ -107,17 +113,36 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\Baner\baner1.jpg" />
+    <Content Include="Content\Images\Baner\baner2.jpg" />
+    <Content Include="Content\Images\Baner\baner3.jpg" />
+    <Content Include="Content\Images\Build\basic.png" />
+    <Content Include="Content\Images\Case\masterbox.png" />
+    <Content Include="Content\Images\Case\nzxt.png" />
+    <Content Include="Content\Images\Case\phanteks.png" />
+    <Content Include="Content\Images\Cpu\ryzen52600.png" />
+    <Content Include="Content\Images\Cpu\ryzen52600x.png" />
+    <Content Include="Content\Images\Cpu\ryzen72700x.png" />
+    <Content Include="Content\Images\Gpu\gigabytertx2070.png" />
+    <Content Include="Content\Images\Gpu\msigtx1660ti.png" />
+    <Content Include="Content\Images\Gpu\msirx580.png" />
+    <Content Include="Content\Images\hot.png" />
+    <Content Include="Content\Images\new.png" />
     <Content Include="Content\Images\Shop\mediaexpert.png" />
     <Content Include="Content\Images\Shop\morele.png" />
     <Content Include="Content\Images\Shop\sferis.png" />
     <Content Include="Content\Images\Shop\vobis.png" />
     <Content Include="Content\Site.css" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Prototype\index.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="fonts\Montserrat-Bold.otf" />
+    <Content Include="fonts\Montserrat-ExtraBold.otf" />
+    <Content Include="fonts\Montserrat-SemiBold.otf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\JavaScript2.js" />
+    <Content Include="Scripts\JavaScriptDropDown.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -127,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BuildsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\PickerContext.cs" />
     <Compile Include="DAL\PickerInitializer.cs" />
@@ -134,6 +160,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\AppConfig.cs" />
+    <Compile Include="Infrastructure\UrlHelpers.cs" />
     <Compile Include="Models\Build.cs" />
     <Compile Include="Models\Case.cs" />
     <Compile Include="Models\Cpu.cs" />
@@ -155,9 +183,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -165,6 +190,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Builds\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
