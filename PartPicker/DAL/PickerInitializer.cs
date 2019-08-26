@@ -206,17 +206,17 @@ namespace PartPicker.DAL
                 new Mobo () { MoboId = 1, Name = "MSI B450 TOMAHAWK", Manufacturer = "MSI",
                             Model = "B450 TOMAHAWK", Link = "https://www.morele.net/plyta-glowna-msi-b450-tomahawk-4141464/",
                             FormFactorId = 2, SocketId = 4, RamSlots = 4, RamTypeId = 2, MaxRam = 64, SataSlots = 6,
-                            Image = "../Content/Images/Mobo/tomahawk.jpg", ShopId = 3},
+                            Image = "tomahawk.png", ShopId = 3},
 
                 new Mobo () { MoboId = 2, Name = "Asus ROG STRIX B450-F GAMING", Manufacturer = "MSI",
                             Model = "ROG STRIX B450-F", Link = "https://www.morele.net/plyta-glowna-asus-rog-strix-b450-f-gaming-4780976/",
                             FormFactorId = 2, SocketId = 4, RamSlots = 4, RamTypeId = 2, MaxRam = 64, SataSlots = 6,
-                            Image = "../Content/Images/Mobo/asusrogstrix.jpg", ShopId = 3},
+                            Image = "asusrogstrix.png", ShopId = 3},
 
                 new Mobo () { MoboId = 3, Name = "Gigabyte B450M DS3H", Manufacturer = "Gigabyte",
                             Model = "B450M DS3H", Link = "https://www.morele.net/plyta-glowna-gigabyte-b450m-ds3h-4141320/",
                             FormFactorId = 3, SocketId = 4, RamSlots = 4, RamTypeId = 2, MaxRam = 64, SataSlots = 4,
-                            Image = "../Content/Images/Mobo/gigabyteb450m.jpg", ShopId = 3}
+                            Image = "gigabyteb450m.png", ShopId = 3}
             };
 
             mobos.ForEach(s => context.Mobo.Add(s));

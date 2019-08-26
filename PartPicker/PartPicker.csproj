@@ -127,6 +127,9 @@
     <Content Include="Content\Images\Gpu\msigtx1660ti.png" />
     <Content Include="Content\Images\Gpu\msirx580.png" />
     <Content Include="Content\Images\hot.png" />
+    <Content Include="Content\Images\Mobo\asusrogstrix.png" />
+    <Content Include="Content\Images\Mobo\gigabyteb450m.png" />
+    <Content Include="Content\Images\Mobo\tomahawk.png" />
     <Content Include="Content\Images\new.png" />
     <Content Include="Content\Images\Shop\mediaexpert.png" />
     <Content Include="Content\Images\Shop\morele.png" />
