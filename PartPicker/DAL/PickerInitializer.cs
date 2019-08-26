@@ -227,7 +227,7 @@ namespace PartPicker.DAL
                 new Psu ()  { PsuId = 1, Name = "EVGA SuperNOVA 750", Manufacturer = "EVGA",
                             Model = "SuperNOVA 750", Link = "https://www.morele.net/zasilacz-evga-supernova-g2-750w-220-g2-0750-x2-867278/",
                             FormFactorId = 2, Power = 750, Efficiency = "80+ Gold",
-                            Image = "../Content/Images/Psu/supernova750.jpg", ShopId = 3},
+                            Image = "supernova750.png", ShopId = 3},
 
                 new Psu ()  { PsuId = 2, Name = "Corsair CX550M", Manufacturer = "Corsair",
                             Model = "CX550M", Link = "https://www.morele.net/zasilacz-corsair-cx-550w-cp-9020102-eu-855753/",
