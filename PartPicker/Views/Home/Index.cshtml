@@ -6,41 +6,76 @@
 }
 
 <div class="slideshow-container">
-    <div id="slideshow">
-        <div class="slide-wrapper">
-            @foreach (var news in Model.New)
-            {
-                <div class="slide">
-                    <img src="@Url.BuildsImagesPath(news.Image)" class="slide-background" />
-                    <img src="@Url.ImagesPath("new.png")" class="slide-icon" />
-                    <div class="slide-text">
-                        <ul>
-                            <li>@news.Cpu.Name</li>
-                            <li>@news.Mobo.Name</li>
-                            <li>@news.Gpu.Name</li>
-                        </ul>
-                    </div>
+    <div class="slideshow-1">
+        <div class="slideshow-1-margin">
+            <div id="slideshow">
+                <div class="slide-wrapper">
+                    @foreach (var news in Model.New)
+                    {
+                        <div class="slide">
+                            <img src="@Url.BuildsImagesPath(news.Image)" class="slide-background" />
+                            <img src="@Url.ImagesPath("new.png")" class="slide-icon" />
+                            <div class="slide-text">
+                                <ul>
+                                    <li>@news.Cpu.Name</li>
+                                    <li>@news.Mobo.Name</li>
+                                    <li>@news.Gpu.Name</li>
+                                </ul>
+                            </div>
+                        </div>
+                    }
                 </div>
-            }
-
+            </div>
         </div>
     </div>
-    <div id="slideshow">
-        <div class="slide-wrapper">
-            @foreach (var news in Model.New)
-            {
-                <div class="slide">
-                    <img src="@Url.BuildsImagesPath(news.Image)" class="slide-background" />
-                    <img src="@Url.ImagesPath("hot.png")" class="slide-icon" />
-                    <div class="slide-text">
-                        <ul>
-                            <li>@news.Cpu.Name</li>
-                            <li>@news.Mobo.Name</li>
-                            <li>@news.Gpu.Name</li>
-                        </ul>
-                    </div>
+    <div class="slideshow-2">
+        <div class="slideshow-2-margin">
+            <div id="slideshow">
+                <div class="slide-wrapper">
+                    @foreach (var hotBuild in Model.HotBuild)
+                    {
+                        <div class="slide">
+                            <img src="@Url.BuildsImagesPath(hotBuild.Image)" class="slide-background" />
+                            <img src="@Url.ImagesPath("hot.png")" class="slide-icon" />
+                            <div class="slide-text">
+                                <ul>
+                                    <li>@hotBuild.Cpu.Name</li>
+                                    <li>@hotBuild.Mobo.Name</li>
+                                    <li>@hotBuild.Gpu.Name</li>
+                                </ul>
+                            </div>
+                        </div>
+                    }
+                    @foreach (var hotCpu in Model.HotCpu)
+                    {
+                        <div class="slide">
+                            <img src="@Url.CpusImagesPath(hotCpu.Image)" class="slide-background" />
+                            <img src="@Url.ImagesPath("hot.png")" class="slide-icon" />
+                            <div class="slide-text">
+                                <ul>
+                                    <li>@hotCpu.Manufacturer</li>
+                                    <li>@hotCpu.Model</li>
+                                </ul>
+                            </div>
+                        </div>
+                    }
+                    @foreach (var hotGpu in Model.HotGpu)
+                    {
+                        <div class="slide">
+                            <img src="@Url.GpusImagesPath(hotGpu.Image)" class="slide-background" />
+                            <img src="@Url.ImagesPath("hot.png")" class="slide-icon" />
+                            <div class="slide-text">
+                                <ul>
+                                    <li>@hotGpu.Manufacturer</li>
+                                    <li>@hotGpu.Model</li>
+                                </ul>
+                            </div>
+                        </div>
+                    }
                 </div>
-            }
+            </div>
         </div>
     </div>
 </div>
+
+

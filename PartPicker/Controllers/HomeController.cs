@@ -61,7 +61,9 @@ namespace PartPicker.Controllers
                         .OrderByDescending(o => o.count)
                         .Take(1)
                         .ToList();
-            var hotCpu = context.Cpu.Where(a => a.CpuId == hotCpuId[0].CpuId);
+            int hotCpuValue = hotCpuId[0].CpuId;
+            var hotCpu = context.Cpu.Where(a => a.CpuId == hotCpuValue)
+                        .ToList();
 
             var hotGpuId = builds
                         .GroupBy(a => a.GpuId)
@@ -69,7 +71,9 @@ namespace PartPicker.Controllers
                         .OrderByDescending(o => o.count)
                         .Take(1)
                         .ToList();
-            var hotGpu = context.Gpu.Where(a => a.GpuId == hotGpuId[0].GpuId);
+            int hotGpuValue = hotGpuId[0].GpuId;
+            var hotGpu = context.Gpu.Where(a => a.GpuId == hotGpuValue)
+                        .ToList();
 
             var homeViewModel = new HomeViewModel()
             {

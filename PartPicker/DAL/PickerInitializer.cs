@@ -7,7 +7,7 @@ using PartPicker.Models;
 
 namespace PartPicker.DAL
 {
-    public class PickerInitializer : DropCreateDatabaseIfModelChanges<PickerContext>
+    public class PickerInitializer : DropCreateDatabaseAlways<PickerContext>
     {
         protected override void Seed(PickerContext context)
         {

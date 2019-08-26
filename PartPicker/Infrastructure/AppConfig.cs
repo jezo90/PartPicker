@@ -18,8 +18,19 @@ namespace PartPicker.Infrastructure
             }
         }
 
+        private static string _banersImagesFolder = ConfigurationManager.AppSettings["BanersImages"];
+
+        public static string BanersImagesFolder
+        {
+            get
+            {
+                return _banersImagesFolder;
+            }
+        }
+
+
         private static string _buildsImagesFolder = ConfigurationManager.AppSettings["BuildsImages"];
-        
+
         public static string BuildsImagesFolder
         {
             get
@@ -28,13 +39,25 @@ namespace PartPicker.Infrastructure
             }
         }
 
-        private static string _banersImagesFolder = ConfigurationManager.AppSettings["BanersImages"];
 
-        public static string BanersImagesFolder
+        private static string _cpusImagesFolder = ConfigurationManager.AppSettings["CpusImages"];
+
+        public static string CpusImagesFolder
         {
             get
             {
-                return _banersImagesFolder;
+                return _cpusImagesFolder;
+            }
+        }
+
+
+        private static string _gpusImagesFolder = ConfigurationManager.AppSettings["GpusImages"];
+
+        public static string GpusImagesFolder
+        {
+            get
+            {
+                return _gpusImagesFolder;
             }
         }
     }

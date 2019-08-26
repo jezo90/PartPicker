@@ -38,5 +38,23 @@ namespace PartPicker.Infrastructure
             return directPath;
         }
 
+        public static string CpusImagesPath(this UrlHelper helper, string name)
+        {
+            var CpusImagesPath = AppConfig.CpusImagesFolder;
+            var path = Path.Combine(CpusImagesPath, name);
+            var directPath = helper.Content(path);
+
+            return directPath;
+        }
+
+        public static string GpusImagesPath(this UrlHelper helper, string name)
+        {
+            var GpusImagesPath = AppConfig.GpusImagesFolder;
+            var path = Path.Combine(GpusImagesPath, name);
+            var directPath = helper.Content(path);
+
+            return directPath;
+        }
+
     }
 }
