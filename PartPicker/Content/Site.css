@@ -405,6 +405,7 @@ footer {
     text-align: center;
     color: #FFFFFF;
     font-size: 25px;
+    text-shadow:2px 2px 2px #000000;
 }
 
     .slide-text ul {
