@@ -17,9 +17,9 @@
                             <img src="@Url.ImagesPath("new.png")" class="slide-icon" />
                             <div class="slide-text">
                                 <ul>
-                                    <li>@news.Cpu.Name</li>
-                                    <li>@news.Mobo.Name</li>
-                                    <li>@news.Gpu.Name</li>
+                                    <li>@news.Cpu.Manufacturer @news.Cpu.Model</li>
+                                    <li>@news.Mobo.Manufacturer @news.Mobo.Model</li>
+                                    <li>@news.Gpu.Manufacturer @news.Gpu.Model</li>
                                 </ul>
                             </div>
                         </div>
@@ -39,9 +39,9 @@
                             <img src="@Url.ImagesPath("hot.png")" class="slide-icon" />
                             <div class="slide-text">
                                 <ul>
-                                    <li>@hotBuild.Cpu.Name</li>
-                                    <li>@hotBuild.Mobo.Name</li>
-                                    <li>@hotBuild.Gpu.Name</li>
+                                    <li>@hotBuild.Cpu.Manufacturer @hotBuild.Cpu.Model</li>
+                                    <li>@hotBuild.Mobo.Manufacturer @hotBuild.Mobo.Model</li>
+                                    <li>@hotBuild.Gpu.Manufacturer @hotBuild.Gpu.Model</li>
                                 </ul>
                             </div>
                         </div>
