@@ -13,15 +13,17 @@
                     @foreach (var news in Model.New)
                     {
                         <div class="slide">
-                            <img src="@Url.BuildsImagesPath(news.Image)" class="slide-background" />
-                            <img src="@Url.ImagesPath("new.png")" class="slide-icon" />
-                            <div class="slide-text">
-                                <ul>
-                                    <li>@news.Cpu.Manufacturer @news.Cpu.Model</li>
-                                    <li>@news.Mobo.Manufacturer @news.Mobo.Model</li>
-                                    <li>@news.Gpu.Manufacturer @news.Gpu.Model</li>
-                                </ul>
-                            </div>
+                            <a href="@Url.Action("Details", "Builds", new { id = news.BuildId })">
+                                <img src="@Url.BuildsImagesPath(news.Image)" class="slide-background" />
+                                <img src="@Url.ImagesPath("new.png")" class="slide-icon" />
+                                <div class="slide-text">
+                                    <ul>
+                                        <li>@news.Cpu.Manufacturer @news.Cpu.Model</li>
+                                        <li>@news.Mobo.Manufacturer @news.Mobo.Model</li>
+                                        <li>@news.Gpu.Manufacturer @news.Gpu.Model</li>
+                                    </ul>
+                                </div>
+                            </a>
                         </div>
                     }
                 </div>

@@ -345,13 +345,13 @@ namespace PartPicker.DAL
 
                 new Rate () { RateId = 3, BuildId = 3, UserId = 1, Grade = 2},
 
-                new Rate () { RateId = 4, BuildId = 1, UserId = 2, Grade = 3},
+                new Rate () { RateId = 4, BuildId = 1, UserId = 2, Grade = 5},
 
                 new Rate () { RateId = 5, BuildId = 2, UserId = 2, Grade = 5},
 
                 new Rate () { RateId = 6, BuildId = 3, UserId = 2, Grade = 3},
 
-                new Rate () { RateId = 7, BuildId = 1, UserId = 3, Grade = 2},
+                new Rate () { RateId = 7, BuildId = 1, UserId = 3, Grade = 4},
 
                 new Rate () { RateId = 8, BuildId = 2, UserId = 3, Grade = 5},
 

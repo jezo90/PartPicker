@@ -23,14 +23,14 @@ namespace PartPicker.Controllers
                         .ToList();
 
             int amountOfBuilds = context.Build.Count() + 1;
-            int[] sum = new int[amountOfBuilds];
+            double[] sum = new double[amountOfBuilds];
             double[] average = new double[amountOfBuilds];
-            int[] count = new int[amountOfBuilds];
+            double[] count = new double[amountOfBuilds];
 
             for (int i = 0; i < amountOfBuilds; i++)
             {
-                sum[i] = 0;
-                count[i] = 0;
+                sum[i] = 0.0d;
+                count[i] = 0.0d;
             }
 
             foreach (Build b in builds)
@@ -44,7 +44,7 @@ namespace PartPicker.Controllers
 
             for (int i = 0; i < amountOfBuilds; i++)
             {
-                if (count[i] != 0) average[i] = sum[i] / count[i] * 1.0d;
+                if (count[i] != 0d) average[i] = sum[i] / count[i] * 1.0d;
             }
 
             double maxValue = average.Max();

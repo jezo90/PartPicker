@@ -1,8 +1,113 @@
-﻿
+﻿@model PartPicker.ViewModels.BuildsListViewModel
+@using PartPicker.Infrastructure
+
 @{
-    ViewBag.Title = "List";
+    ViewBag.Title = "Buildy";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>List</h2>
+<div class="main">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <button class="dropdown-btn">
+            Filtry<i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <button class="dropdown-btn">
+                <i class="fa fa-caret-down">Procesor</i>
+            </button>
+            <div class="dropdown-container">
+                <button class="dropdown-btn">
+                    <i class="fa fa-caret-down">Producent</i>
+                </button>
+                <div class="dropdown-container">
+                    <a href="#">Intel</a>
+                    <a href="#">AMD</a>
+                </div>
+                <button class="dropdown-btn">
+                    <i class="fa fa-caret-down">Socket</i>
+                </button>
+                <div class="dropdown-container">
+                    <a href="#">1155</a>
+                    <a href="#">1110</a>
+                </div>
+            </div>
+            <button class="dropdown-btn">
+                Seria<i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>
+            <button class="dropdown-btn">
+                Gniazdo<i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>
+        </div>
+        <script src="@Url.Content("~/Scripts/JavaScriptDropDown.js")"></script>
+    </div>
+
+    <div class="content">
+        <div class="container">
+            <div class="item-list">
+                <div class="item-part">
+                    Zdjęcie
+                </div>
+                <div class="item-part">
+                    Procesor
+                </div>
+                <div class="item-part">
+                    Karta Graficzna
+                </div>
+                <div class="item-part">
+                    Ilość RAM [GB]
+                </div>
+                <div class="item-part">
+                    Ocena
+                </div>
+                <div class="item-part">
+                    Cena
+                </div>
+            </div>
+        </div>
+        @foreach (var build in Model.Builds)
+        {
+            <div class="container">
+                <a href="@Url.Action("Details", "Builds", new { id = build.BuildId })">
+                    <div class="item-list">
+                        <div class="item-part">
+                            <img src="@Url.BuildsImagesPath(build.Image)" />
+                        </div>
+                        <div class="item-part">
+                            @build.Cpu.Name
+                        </div>
+                        <div class="item-part">
+                            @build.Gpu.Name
+                        </div>
+                        <div class="item-part">
+                            @build.Ram.Size
+                        </div>
+                        <div class="item-part">
+                            @Model.Average[build.BuildId]
+                        </div>
+                        <div class="item-part">
+                            @build.Price zł
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>
 

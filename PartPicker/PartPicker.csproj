@@ -129,6 +129,7 @@
     <Content Include="Content\Images\Gpu\gigabytertx2070.png" />
     <Content Include="Content\Images\Gpu\msigtx1660ti.png" />
     <Content Include="Content\Images\Gpu\msirx580.png" />
+    <Content Include="Content\Images\half.png" />
     <Content Include="Content\Images\hot.png" />
     <Content Include="Content\Images\Mobo\asusrogstrix.png" />
     <Content Include="Content\Images\Mobo\gigabyteb450m.png" />
@@ -138,6 +139,8 @@
     <Content Include="Content\Images\Shop\morele.png" />
     <Content Include="Content\Images\Shop\sferis.png" />
     <Content Include="Content\Images\Shop\vobis.png" />
+    <Content Include="Content\Images\star.png" />
+    <Content Include="Content\Images\zero.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Prototype\index.html" />
@@ -147,7 +150,7 @@
     <Content Include="fonts\Montserrat-ExtraBold.otf" />
     <Content Include="fonts\Montserrat-SemiBold.otf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\JavaScript2.js" />
+    <Content Include="Scripts\DropDown.js" />
     <Content Include="Scripts\JavaScriptDropDown.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -160,6 +163,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BuildsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NewBuildController.cs" />
     <Compile Include="DAL\PickerContext.cs" />
     <Compile Include="DAL\PickerInitializer.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
@@ -167,6 +171,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\AppConfig.cs" />
+    <Compile Include="Infrastructure\CacheNames.cs" />
+    <Compile Include="Infrastructure\DefaultCacheProvider.cs" />
+    <Compile Include="Infrastructure\ICacheProvider.cs" />
     <Compile Include="Infrastructure\UrlHelpers.cs" />
     <Compile Include="Models\Build.cs" />
     <Compile Include="Models\Case.cs" />
@@ -185,6 +192,8 @@
     <Compile Include="Models\Storage.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\BuildFiltersViewModel.cs" />
+    <Compile Include="ViewModels\BuildsListViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +206,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Builds\List.cshtml" />
+    <Content Include="Views\Builds\_Filters.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -206,6 +216,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\NewBuild\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -11,4 +11,4 @@
                 dropdownContent.style.display = "block";
             }
         });
-    }
+}

@@ -5,27 +5,21 @@
     <title>@ViewBag.Title</title>
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="@Url.Content("~/Scripts/JavaScript2.js")"></script>
+    <script src="@Url.Content("~/Scripts/DropDown.js")"></script>
 </head>
 <body>
 
     <div class="top-nav" id="top-nav">
-        <a href="#home">Hello Guest!</a>
+        <a>Hello Guest!</a>
 
-        <a href="#news">Obudowy</a>
-        <a href="#news">Dyski Twarde</a>
-        <a href="#news">Zasilacze</a>
-        <a href="#news">Pamięć RAM</a>
-        <a href="#news">Płyty główne</a>
-        <a href="#news">Karty graficzne</a>
-        <a href="#news">Procesory</a>
-        <a href="#contact">Buildy</a>
+        <a href="@Url.Action("List", "Builds")">Przeglądaj V</a>
+        <a href="#news">Utwórz build</a>
         <a href="#register">Zarejestruj</a>
         <a href="#contact">Zaloguj</a>
         <a><input type="text" name="password" placeholder="Password"></a>
         <a><input type="text" name="login" placeholder="Login"></a>
 
-        <a class="icon" onclick="myFunction()">+</a>
+        <a class="icon" onclick="dropdown()">+</a>
     </div>
 
     <div class="bar">    </div>
@@ -37,7 +31,9 @@
         <!-- Banner -->
 
         <div class="banner">
-            <img src="@Url.BanersImagesPath()" class="banner-img" />
+            <a href="@Url.Action("Index", "Home")"> 
+                <img src="@Url.BanersImagesPath()" class="banner-img" />
+            </a>
         </div>
 
 

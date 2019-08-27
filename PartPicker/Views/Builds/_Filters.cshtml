@@ -1,0 +1,80 @@
+﻿@model PartPicker.ViewModels.BuildFiltersViewModel
+@using PartPicker.Infrastructure
+
+<div class="sidebar">
+    <button class="dropdown-btn">
+        Filtry<i class="caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+        <button class="dropdown-btn">
+            Procesor<i class="caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <button class="dropdown-btn">
+                Producent<i class="caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                @foreach (var manufacturer in Model.CpuManufacturers)
+                {
+                    <a href="#">@manufacturer</a>
+                }
+            </div>
+            <button class="dropdown-btn">
+                Socket<i class="caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                @foreach (var socket in Model.CpuSockets)
+                {
+                    <a href="#">@socket</a>
+                }
+            </div>
+        </div>
+
+        <button class="dropdown-btn">
+            Karta graficzna<i class="caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <button class="dropdown-btn">
+                Producent<i class="caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                @foreach (var manufacturer in Model.GpuManufacturers)
+                {
+                    <a href="#">@manufacturer</a>
+                }
+            </div>
+        </div>
+
+        <button class="dropdown-btn">
+            Pamięć RAM<i class="caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <button class="dropdown-btn">
+                RAM<i class="caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                @foreach (var ramType in Model.RamTypes)
+                {
+                    <a href="#">@ramType</a>
+                }
+            </div>
+        </div>
+
+        <button class="dropdown-btn">
+            Pamięć RAM<i class="caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            <button class="dropdown-btn">
+                RAM<i class="caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                @foreach (var storageType in Model.StorageTypes)
+                {
+                    <a @if(Cache[CacheNames.cpuManBuildFilters]==null ||
+                        Cache[CacheNames.cpuManBuildFilters] = storageType)   >@storageType</a>
+                }
+            </div>
+        </div>
+    </div>
+    <script src="@Url.Content("~/Scripts/JavaScriptDropDown.js")"></script>
+</div>
