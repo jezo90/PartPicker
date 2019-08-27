@@ -404,7 +404,7 @@ footer {
     margin-right: auto;
     text-align: center;
     color: #FFFFFF;
-    font-size: 25px;
+    font-size: 30px;
     text-shadow: 2px 2px #000000, -2px 2px #000000, 2px -2px #000000, -2px -2px #000000, 2px 2px 5px #000000;
 }
 
@@ -516,7 +516,7 @@ footer {
 
 
     .slide-text {
-        font-size: 22px;
+        font-size: 27px;
     }
 }
 
@@ -526,14 +526,14 @@ footer {
 
     .slideshow-1 {
         float: NONE;
-        height: 600PX;
-        width: 600px;
+        height: 550px;
+        width: 540px;
     }
 
     .slideshow-2 {
         float: NONE;
-        height: 600PX;
-        width: 600px;
+        height: 495px;
+        width: 540px;
     }
 
     .slideshow-1-margin {
@@ -545,45 +545,43 @@ footer {
     .slideshow-2-margin {
         float: NONE;
         margin-right: 0%;
-        margin-top: 45px;
-        margin-bottom: 55px;
+        margin-top: 0px;
+        margin-bottom: 0px;
     }
 
     .slideshow-container {
-        width: 600px;
+        width: 540px;
     }
 
     #slideshow {
         float: none;
-        width: 600px;
-        height: 500px;
+        height: 450px;
+        width: 540px;
     }
 
 
     .slide-wrapper {
-        width: 1800px;
-        height: 500px;
+        height: 450px;
+        width: 1620px;
     }
 
     .slide {
-        height: 500px;
-        width: 600px;
+        height: 450px;
+        width: 540px;
     }
 
     .slide-background {
-        height: 500px;
-        width: 600px;
+        height: 450px;
+        width: 540px;
     }
 
     .slide-icon {
-        height: 500px;
-        width: 600px;
+        height: 450px;
+        width: 540px;
     }
 
 
-    .slide-text {
-        font-size: 25px;
-    }
+
 
     @-webkit-keyframes slide {
         25% {
@@ -591,20 +589,24 @@ footer {
         }
 
         45% {
-            margin-left: -600px;
+            margin-left: -540px;
         }
 
         60% {
-            margin-left: -600px;
+            margin-left: -540px;
         }
 
         75% {
-            margin-left: -1200px;
+            margin-left: -1080px;
         }
 
         90% {
-            margin-left: -1200px;
+            margin-left: -1080px;
         }
+    }
+
+    .slide-text {
+        font-size: 27px;
     }
 }
 
@@ -694,6 +696,6 @@ footer {
     }
 
     .slide-text {
-        font-size: 15px;
+        font-size: 18px;
     }
 }
