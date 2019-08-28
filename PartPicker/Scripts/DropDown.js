@@ -1,4 +1,4 @@
-﻿function dropdown() {
+﻿function dropdownNav() {
     var x = document.getElementById("top-nav");
     if (x.className === "top-nav") {
         x.className += " responsive";
