@@ -399,6 +399,9 @@ footer {
     z-index: 1;
     position: relative;
 }
+.slide:hover .slide-background {
+    opacity: 0.2;
+}
 
 .slide-icon {
     top: 0;
@@ -542,14 +545,14 @@ footer {
 
     .slideshow-1 {
         float: NONE;
-        height: 550px;
-        width: 540px;
+        height: 495px;
+        width: 100%;
     }
 
     .slideshow-2 {
         float: NONE;
         height: 495px;
-        width: 540px;
+        width: 100%;
     }
 
     .slideshow-1-margin {
@@ -566,7 +569,7 @@ footer {
     }
 
     .slideshow-container {
-        width: 400px;
+        width: 480px;
     }
 
     #slideshow {
@@ -688,7 +691,7 @@ footer {
         background-color: inherit;
         font-family: inherit;
         margin: 0;
-        width: 160PX;
+        width: 180PX;
     }
 
     .navbar a:hover, .drop:hover .dropbtn, .dropbtn:focus {
@@ -706,7 +709,7 @@ footer {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    width:160PX;
+    width:180PX;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 4;
 }
@@ -724,11 +727,22 @@ footer {
         .drop-content a:hover {
             background-color: #ddd;
         }
-
-.show {
+.image_up{
+    margin-top:3px;
+    display:none;
+    float:right;
+}
+.image_down {
+    margin-top: 3px;
+    float: right;
     display: block;
 }
-
+.show {
+    display: block !important;
+}
+.hide {
+    display:none;
+}
 
 @media screen and (max-width: 1310px) {
     .drop-content {
@@ -737,6 +751,7 @@ footer {
 
     .drop .dropbtn {
         width: 100%;
+        margin-left:0.6%
     }
 
     .drop-content {
@@ -748,4 +763,13 @@ footer {
         .drop-content a {
             width: 100%;
         }
+
+    .image_up {
+        margin-right: 0.6%
+    }
+
+    .image_down {
+        margin-right: 0.6%
+    }
+
 } 

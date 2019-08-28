@@ -13,9 +13,9 @@
         <a>Hello Guest!</a>
 
         <div class="drop">
-            <button class="dropbtn" onclick="drop()">
-                Przeglądaj <img src="@Url.ImagesPath("down.png")" width="15px" height="15px"/>
-                <i class="fa fa-caret-down"></i> 
+            <button id="dropbtn" class="dropbtn" onclick="drop()">
+                Przeglądaj <img id="image_down" class="image_down" src="@Url.ImagesPath("down.png")" width="15px" height="15px" />
+                <img id="image_up" class="image_up" src="@Url.ImagesPath("up.png")" width="15px" height="15px" />
             </button>
             <div class="drop-content" id="myDropdown">
                 <a href="@Url.Action("List", "Builds")">Buildy</a>
