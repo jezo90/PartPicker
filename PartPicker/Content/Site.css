@@ -727,12 +727,14 @@ footer {
         .drop-content a:hover {
             background-color: #ddd;
         }
-.image_up{
-    margin-top:3px;
-    display:none;
-    float:right;
+.image_up {
+    pointer-events: none;
+    margin-top: 3px;
+    display: none;
+    float: right;
 }
 .image_down {
+    pointer-events: none;
     margin-top: 3px;
     float: right;
     display: block;
