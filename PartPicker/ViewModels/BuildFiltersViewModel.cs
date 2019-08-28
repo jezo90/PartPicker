@@ -14,6 +14,5 @@ namespace PartPicker.ViewModels
         public IEnumerable<string> GpuManufacturers { get; set; }
         public IEnumerable<string> StorageTypes { get; set; }
         public IEnumerable<string> RamTypes { get; set; }
-        ICacheProvider Cache = new DefaultCacheProvider();
     }
 }

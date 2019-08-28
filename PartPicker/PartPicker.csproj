@@ -126,6 +126,7 @@
     <Content Include="Content\Images\Cpu\ryzen52600.png" />
     <Content Include="Content\Images\Cpu\ryzen52600x.png" />
     <Content Include="Content\Images\Cpu\ryzen72700x.png" />
+    <Content Include="Content\Images\down.png" />
     <Content Include="Content\Images\Gpu\gigabytertx2070.png" />
     <Content Include="Content\Images\Gpu\msigtx1660ti.png" />
     <Content Include="Content\Images\Gpu\msirx580.png" />
@@ -140,6 +141,7 @@
     <Content Include="Content\Images\Shop\sferis.png" />
     <Content Include="Content\Images\Shop\vobis.png" />
     <Content Include="Content\Images\star.png" />
+    <Content Include="Content\Images\up.png" />
     <Content Include="Content\Images\zero.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />

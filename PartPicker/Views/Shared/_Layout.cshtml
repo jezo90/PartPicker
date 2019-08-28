@@ -12,14 +12,13 @@
     <div class="top-nav" id="top-nav">
         <a>Hello Guest!</a>
 
-
         <div class="drop">
             <button class="dropbtn" onclick="drop()">
-                Dropdown
-                <i class="fa fa-caret-down"></i>
+                Przeglądaj <img src="@Url.ImagesPath("down.png")" width="15px" height="15px"/>
+                <i class="fa fa-caret-down"></i> 
             </button>
             <div class="drop-content" id="myDropdown">
-                <a href="#">Link 1</a>
+                <a href="@Url.Action("List", "Builds")">Buildy</a>
                 <a href="#">Link 2</a>
                 <a href="#">Link 3</a>
                 <a href="#">Link 1</a>
@@ -27,9 +26,6 @@
                 <a href="#">Link 3</a>
             </div>
         </div>
-
-        <a href="@Url.Action("List", "Builds")">Przeglądaj V</a>
-
         <a href="#news">Utwórz build</a>
         <a href="#register">Zarejestruj</a>
         <a href="#contact">Zaloguj</a>

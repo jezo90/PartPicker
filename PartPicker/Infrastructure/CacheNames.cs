@@ -7,6 +7,5 @@ namespace PartPicker.Infrastructure
 {
     public class CacheNames
     {
-        public const string cpuManBuildFilters = "cpuManufacurerBuildFilters";
     }
 }

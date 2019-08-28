@@ -70,8 +70,7 @@
             <div class="dropdown-container">
                 @foreach (var storageType in Model.StorageTypes)
                 {
-                    <a @if(Cache[CacheNames.cpuManBuildFilters]==null ||
-                        Cache[CacheNames.cpuManBuildFilters] = storageType)   >@storageType</a>
+                    <a>@storageType</a>
                 }
             </div>
         </div>
