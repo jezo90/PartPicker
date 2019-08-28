@@ -62,7 +62,7 @@ body {
 .top-nav {
     background-color: #0D0D0D;
     overflow: hidden;
-    height: 54px;
+    height: 52px;
 }
 
     .top-nav a:first-child {
@@ -76,7 +76,7 @@ body {
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
-        font-size: 20px;
+        font-size: 18px;
     }
 
         .top-nav a:hover {
@@ -88,16 +88,20 @@ body {
         display: none;
     }
 
-@media screen and (min-width: 1051px) {
+@media screen and (min-width: 1311px) {
     .top-nav a:hover {
-        font-size: 22px;
+        font-size: 20px;
     }
 }
 
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 1310px) {
     .top-nav {
         height: AUTO;
     }
+
+        .top-nav .drop {
+            display: none;
+        }
 
         .top-nav a:not(:first-child) {
             display: none;
@@ -119,6 +123,12 @@ body {
             }
 
             .top-nav.responsive a {
+                float: none;
+                display: block;
+                text-align: center;
+            }
+
+            .top-nav.responsive .drop {
                 float: none;
                 display: block;
                 text-align: center;
@@ -401,7 +411,7 @@ footer {
 
 
 .slide-text {
-    width: inherit;
+    width: 540px;
     position: absolute;
     z-index: 3;
     bottom: 0;
@@ -521,6 +531,7 @@ footer {
 
 
     .slide-text {
+        width: 480px;
         font-size: 27px;
     }
 }
@@ -555,63 +566,11 @@ footer {
     }
 
     .slideshow-container {
-        width: 540px;
+        width: 400px;
     }
 
     #slideshow {
         float: none;
-        height: 450px;
-        width: 540px;
-    }
-
-
-    .slide-wrapper {
-        height: 450px;
-        width: 1620px;
-    }
-
-    .slide {
-        height: 450px;
-        width: 540px;
-    }
-
-    .slide-background {
-        height: 450px;
-        width: 540px;
-    }
-
-    .slide-icon {
-        height: 450px;
-        width: 540px;
-    }
-
-
-
-
-    @-webkit-keyframes slide {
-        25% {
-            margin-left: 0px;
-        }
-
-        45% {
-            margin-left: -540px;
-        }
-
-        60% {
-            margin-left: -540px;
-        }
-
-        75% {
-            margin-left: -1080px;
-        }
-
-        90% {
-            margin-left: -1080px;
-        }
-    }
-
-    .slide-text {
-        font-size: 27px;
     }
 }
 
@@ -701,6 +660,92 @@ footer {
     }
 
     .slide-text {
+        width: 300px;
         font-size: 18px;
     }
 }
+
+
+
+
+
+
+
+
+
+.drop {
+    float: right;
+    overflow: hidden;
+}
+
+    .drop .dropbtn {
+        cursor: pointer;
+        font-size: 18px;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 16px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+        width: 160PX;
+    }
+
+    .navbar a:hover, .drop:hover .dropbtn, .dropbtn:focus {
+        background-color: #EF7F29;
+    }
+
+@media screen and (min-width: 1311px) {
+    .navbar a:hover, .drop:hover .dropbtn, .dropbtn:focus {
+        font-size: 20px;
+    }
+}
+
+.drop-content {
+    float:left;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width:160PX;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 4;
+}
+
+    .drop-content a {
+        float: left;
+        color: black;
+        padding: 10px 0px;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+        width:160PX;
+    }
+
+        .drop-content a:hover {
+            background-color: #ddd;
+        }
+
+.show {
+    display: block;
+}
+
+
+@media screen and (max-width: 1310px) {
+    .drop-content {
+        width: 100%;
+    }
+
+    .drop .dropbtn {
+        width: 100%;
+    }
+
+    .drop-content {
+        width:100%;
+        height: auto;
+        position: relative;
+    }
+
+        .drop-content a {
+            width: 100%;
+        }
+} 
