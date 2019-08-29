@@ -15,7 +15,7 @@ namespace PartPicker.Models
         public string Name { get; set; }
 
         [Required]
-        public int SeriesCpuId { get; set; }
+        public int ProductId { get; set; }
 
         [Required]
         [StringLength(45)]
@@ -53,7 +53,7 @@ namespace PartPicker.Models
         [Required]
         public int ShopId { get; set; }
 
-        public virtual SeriesCpu SeriesCpu { get; set; }
+        public virtual Product Product { get; set; }
         public virtual Shop Shop { get; set; }
         public virtual Socket Socket { get; set; }
 

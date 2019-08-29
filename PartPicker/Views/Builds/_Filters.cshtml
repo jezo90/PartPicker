@@ -14,17 +14,17 @@
                 Producent<i class="caret-down"></i>
             </button>
             <div class="dropdown-container">
-                @foreach (var manufacturer in Model.CpuManufacturers)
+                @foreach (var cpu in Model.CpuManufacturers)
                 {
                     <button class="dropdown-btn">
-                        @manufacturer<i class="caret-down"></i>
+                        @cpu<i class="caret-down"></i>
                     </button>
                     <div class="dropdown-container">
-                        @foreach (var series in Model.CpuSeries)
+                        @foreach (var product in Model.Cpus)
                         {
-                            if (series.Manufacturer == manufacturer)
+                            if (product.Product.Manufacturer.Name == cpu)
                             {
-                                <a href="#">@series.Name</a>
+                                <a href="#">@product.Product.Series.Name</a>
                             }
                         }
                     </div>
@@ -75,4 +75,3 @@
     </div>
 </div>
 <script src="@Url.Content("~/Scripts/JavaScriptDropDown.js")"></script>
-</div>

@@ -15,8 +15,7 @@ namespace PartPicker.Models
         public string Name { get; set; }
 
         [Required]
-        [StringLength(45)]
-        public string Manufacturer { get; set; }
+        public int ProductId { get; set; }
 
         [Required]
         [StringLength(45)]
@@ -58,6 +57,7 @@ namespace PartPicker.Models
 
         public virtual Shop Shop { get; set; }
         public virtual GpuRam GpuRam { get; set; }
+        public virtual Product Product { get; set; }
 
         public virtual ICollection<Build> Builds { get; set; }
 

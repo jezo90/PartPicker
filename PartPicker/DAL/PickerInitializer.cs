@@ -132,19 +132,101 @@ namespace PartPicker.DAL
             users.ForEach(s => context.User.Add(s));
             context.SaveChanges();
 
+            var manufacturers = new List<Manufacturer>
+            {
+                new Manufacturer() { ManufacturerId = 1, Name = "AMD" },
+
+                new Manufacturer() { ManufacturerId = 2, Name = "Intel" },
+
+                new Manufacturer() { ManufacturerId = 3, Name = "MSI" },
+
+                new Manufacturer() { ManufacturerId = 4, Name = "Gigabyte" },
+
+                new Manufacturer() { ManufacturerId = 5, Name = "ASUS" },
+
+                new Manufacturer() { ManufacturerId = 6, Name = "EVGA" },
+
+                new Manufacturer() { ManufacturerId = 7, Name = "Corsair" },
+
+                new Manufacturer() { ManufacturerId = 8, Name = "G.Skill" },
+
+                new Manufacturer() { ManufacturerId = 9, Name = "Kingston" },
+
+                new Manufacturer() { ManufacturerId = 10, Name = "Seagate" },
+
+                new Manufacturer() { ManufacturerId = 11, Name = "Western Digital" },
+
+                new Manufacturer() { ManufacturerId = 12, Name = "ADATA" },
+
+                new Manufacturer() { ManufacturerId = 13, Name = "Samsung" },
+
+                new Manufacturer() { ManufacturerId = 14, Name = "NXZT" },
+
+                new Manufacturer() { ManufacturerId = 15, Name = "Phanteks" },
+
+                new Manufacturer() { ManufacturerId = 16, Name = "Cooler Master" }
+            };
+
+            manufacturers.ForEach(s => context.Manufacturer.Add(s));
+            context.SaveChanges();
+
+            var series = new List<Series>
+            {
+                new Series() { SeriesId = 1, Name = "Ryzen 5" },
+
+                new Series() { SeriesId = 2, Name = "Ryzen 7" },
+
+                new Series() { SeriesId = 3, Name = "i3" },
+
+                new Series() { SeriesId = 4, Name = "i5" },
+
+                new Series() { SeriesId = 5, Name = "i7" },
+
+                new Series() { SeriesId = 6, Name = "Radeon" },
+
+                new Series() { SeriesId = 7, Name = "NVIDIA GeForce" }
+            };
+
+            series.ForEach(s => context.Series.Add(s));
+            context.SaveChanges();
+
+            var products = new List<Product>
+            {
+                new Product() { ProductId = 1, ManufacturerId = 1, SeriesId = 1, Description = "Opis Ryzen 5"},
+
+                new Product() { ProductId = 2, ManufacturerId = 1, SeriesId = 2, Description = "Opis Ryzen 7"},
+
+                new Product() { ProductId = 3, ManufacturerId = 2, SeriesId = 4, Description = "Opis Intel i5"},
+
+                new Product() { ProductId = 4, ManufacturerId = 2, SeriesId = 3, Description = "Opis Intel i3"},
+
+                new Product() { ProductId = 5, ManufacturerId = 2, SeriesId = 5, Description = "Opis Intel i7"},
+
+                new Product() { ProductId = 6, ManufacturerId = 3, SeriesId = 6, Description = "Opis Radeona"},
+
+                new Product() { ProductId = 7, ManufacturerId = 4, SeriesId = 7, Description = "Opis NVIDIA GeForce"},
+
+                new Product() { ProductId = 8, ManufacturerId = 3, SeriesId = 7, Description = "Opis NVIDIA GeForce"}
+
+            };
+
+            products.ForEach(s => context.Product.Add(s));
+            context.SaveChanges();
+
+
             var cases = new List<Case>
             {
-                new Case () { CaseId = 1, Name = "NZXT H500 (Black)", Manufacturer = "NZXT",
+                new Case () { CaseId = 1, Name = "NZXT H500 (Black)", ManufacturerId = 14,
                             Model = "H500", Link = "https://www.morele.net/obudowa-nzxt-h500-okno-bialy-ca-h500b-w1-4596293/",
                             FormFactorId = 2, MoboType = "ATX", GpuLenght = 381,
                             Image = "nzxt.png", ShopId = 3 },
 
-                new Case () { CaseId = 2, Name = "Phanteks Eclipse P300 Tempered Glass (Black)", Manufacturer = "Phanteks",
+                new Case () { CaseId = 2, Name = "Phanteks Eclipse P300 Tempered Glass (Black)", ManufacturerId = 15,
                             Model = "Eclipse P300",  Link = "https://www.morele.net/obudowa-phanteks-eclipse-p300-ph-ec300ptg-bk-1603218/",
                             FormFactorId = 2, MoboType = "ATX", GpuLenght = 330,
                             Image = "phanteks.png", ShopId = 3 },
 
-                new Case () { CaseId = 3, Name = "Cooler Master MasterBox Q300L", Manufacturer = "Cooler Master",
+                new Case () { CaseId = 3, Name = "Cooler Master MasterBox Q300L", ManufacturerId = 16,
                             Model = "MasterBox Q300L", Link = "https://www.morele.net/obudowa-cooler-master-masterbox-q300l-mcb-q300l-kann-s00-1804692/",
                             FormFactorId = 3, MoboType = "microATX", GpuLenght = 360,
                             Image = "masterbox.png", ShopId = 3 }
@@ -153,71 +235,55 @@ namespace PartPicker.DAL
             cases.ForEach(s => context.Case.Add(s));
             context.SaveChanges();
 
-            var seriesCpus = new List<SeriesCpu>
-            {
-                new SeriesCpu() { SeriesCpuId = 1, Manufacturer = "AMD", Name = "Ryzen 5", Description = "Opis Ryzen 5"},
-
-                new SeriesCpu() { SeriesCpuId = 2, Manufacturer = "AMD", Name = "Ryzen 7", Description = "Opis Ryzen 5"},
-
-                new SeriesCpu() { SeriesCpuId = 3, Manufacturer = "Intel", Name = "i5", Description = "Opis Intel i5"},
-
-                new SeriesCpu() { SeriesCpuId = 4, Manufacturer = "Intel", Name = "i3", Description = "Opis Intel i3"},
-
-                new SeriesCpu() { SeriesCpuId = 5, Manufacturer = "Intel", Name = "i7", Description = "Opis Intel i7"}
-            };
-
-            seriesCpus.ForEach(s => context.SeriesCpu.Add(s));
-            context.SaveChanges();
-
             var cpus = new List<Cpu>
             {
 
-                new Cpu () { CpuId = 1, Name = "AMD Ryzen 5 2600", SeriesCpuId = 1,
+                new Cpu () { CpuId = 1, Name = "AMD Ryzen 5 2600", ProductId = 1,
                             Model = "2600", Link = "https://www.morele.net/procesor-amd-ryzen-5-2600-3-9ghz-16mb-box-yd2600bbafbox-980255/",
                             SocketId = 4, Cores = 6, Frequency = 3.4, Turbo = 3.9, Gpu = "Brak", Benchmark = 2000,
                             Image = "ryzen52600.png", ShopId = 3},
 
-                new Cpu () { CpuId = 2, Name = "AMD Ryzen 7 2700X", SeriesCpuId = 2,
+                new Cpu () { CpuId = 2, Name = "AMD Ryzen 7 2700X", ProductId = 2,
                             Model = "2700X", Link = "https://www.morele.net/procesor-amd-ryzen-7-2700x-3-7ghz-20mb-box-yd270xbgafbox-980258/",
                             SocketId = 4, Cores = 8, Frequency = 3.7, Turbo = 4.2, Gpu = "Brak", Benchmark = 3000,
                             Image = "ryzen72700x.png", ShopId = 3},
 
-                new Cpu () { CpuId = 3, Name = "AMD Ryzen 5 2600X", SeriesCpuId = 1,
+                new Cpu () { CpuId = 3, Name = "AMD Ryzen 5 2600X", ProductId = 1,
                             Model = "2600X", Link = "https://www.morele.net/procesor-amd-ryzen-5-2600x-3-6ghz-16mb-box-wraith-spire-yd260xbcafbox-980256/",
                             SocketId = 4, Cores = 6, Frequency = 3.6, Turbo = 4.2, Gpu = "Brak", Benchmark = 2500,
                             Image = "ryzen52600x.png", ShopId = 3},
 
-                new Cpu () { CpuId = 4, Name = "AMD Ryzen 5 2600X", SeriesCpuId = 1,
+                new Cpu () { CpuId = 4, Name = "AMD Ryzen 5 2600X", ProductId = 1,
                             Model = "2600X", Link = "https://www.sferis.pl/procesor-amd-ryzen-5-2600x-ryzen-5-yd260xbcafbox-3600-mhz-min-4200-mhz-max-am4-p599440?nobid",
                             SocketId = 4, Cores = 6, Frequency = 3.6, Turbo = 4.2, Gpu = "Brak", Benchmark = 2500,
                             Image = "ryzen52600x.png", ShopId = 4},
 
-                new Cpu () { CpuId = 5, Name = "Intel Core i5-9400F", SeriesCpuId = 3,
+                new Cpu () { CpuId = 5, Name = "Intel Core i5-9400F", ProductId = 3,
                             Model = "9400F", Link = "https://www.morele.net/procesor-intel-core-i5-9400f-2-9ghz-9mb-box-bx80684i59400f-5668892/",
                             SocketId = 1, Cores = 6, Frequency = 2.9, Turbo = 4.1, Gpu = "Brak", Benchmark = 2500,
                             Image = "i59400f.png", ShopId = 3},
 
-                new Cpu () { CpuId = 6, Name = "Intel Core i5-9600K", SeriesCpuId = 3,
+                new Cpu () { CpuId = 6, Name = "Intel Core i5-9600K", ProductId = 3,
                             Model = "9600K", Link = "https://www.morele.net/procesor-intel-core-i5-9600k-3-7ghz-9mb-box-bx80684i59600k-4142643/",
                             SocketId = 1, Cores = 6, Frequency = 3.7, Turbo = 4.6, Gpu = "Intel UHD Graphics 630", Benchmark = 3500,
                             Image = "i59600k.png", ShopId = 3},
 
-                new Cpu () { CpuId = 7, Name = "Intel Core i3-9100F", SeriesCpuId = 4,
+                new Cpu () { CpuId = 7, Name = "Intel Core i3-9100F", ProductId = 4,
                             Model = "9100F", Link = "https://www.morele.net/procesor-intel-core-i3-9100f-3-6ghz-6mb-box-bx80684i39100f-5954267/",
                             SocketId = 1, Cores = 4, Frequency = 3.6, Turbo = 4.2, Gpu = "Brak", Benchmark = 2000,
                             Image = "i39100f.png", ShopId = 3},
 
-                new Cpu () { CpuId = 8, Name = "Intel Core i7-8700K", SeriesCpuId = 5,
+                new Cpu () { CpuId = 8, Name = "Intel Core i7-8700K", ProductId = 5,
                             Model = "8700K", Link = "https://www.morele.net/procesor-intel-core-i3-9100f-3-6ghz-6mb-box-bx80684i39100f-5954267/",
                             SocketId = 1, Cores = 6, Frequency = 3.7, Turbo = 4.7, Gpu = "Intel UHD Graphics 630", Benchmark = 4000,
                             Image = "i78700k.png", ShopId = 3},
 
-                new Cpu () { CpuId = 9, Name = "Intel Core i7-9700K", SeriesCpuId = 5,
+                new Cpu () { CpuId = 9, Name = "Intel Core i7-9700K", ProductId = 5,
                             Model = "9700K", Link = "https://www.morele.net/procesor-intel-core-i3-9100f-3-6ghz-6mb-box-bx80684i39100f-5954267/",
                             SocketId = 1, Cores = 8, Frequency = 3.6, Turbo = 4.9, Gpu = "Intel UHD Graphics 630", Benchmark = 4500,
                             Image = "i79700k.png", ShopId = 3},
 
-                new Cpu () { CpuId = 10, Name = "Intel Core i7-8700K", SeriesCpuId = 5,
+                new Cpu () { CpuId = 10, Name = "Intel Core i7-8700K", ProductId = 5,
                             Model = "8700K", Link = "https://www.sferis.pl/procesor-intel-core-i7-8700k-core-i7-8700k-bx80684i78700k-961566-3700-mhz-min-4700-mhz-max-lga-1151-p591227",
                             SocketId = 1, Cores = 6, Frequency = 3.7, Turbo = 4.7, Gpu = "Intel UHD Graphics 630", Benchmark = 4000,
                             Image = "i78700k.png", ShopId = 4}
@@ -228,18 +294,18 @@ namespace PartPicker.DAL
 
             var gpus = new List<Gpu>
             {
-                new Gpu ()  { GpuId = 1, Name = "MSI RX 580 ARMOR 8G OC", Manufacturer = "MSI",
+                new Gpu ()  { GpuId = 1, Name = "MSI RX 580 ARMOR 8G OC", ProductId = 6,
                             Model = "RX 580", Link = "https://www.morele.net/karta-graficzna-msi-radeon-rx-580-armor-8g-oc-8gb-dl-dvi-d-hdmi-2-dp-2-atx-rx-580-armor-8g-oc-1220555/",
                             Ram = 8, GpuRamId = 1, Frequency = 1.257, FrequencyBoost = 1.366, Length = 269, Benchmark = 1000,
                             Image = "msirx580.png", ShopId = 3},
 
-                new Gpu ()  { GpuId = 2, Name = "Gigabyte GeForce RTX 2070 WINDFORCE 8G", Manufacturer = "Gigabyte",
-                            Model = "GeForce RTX 2070", Link = "https://www.morele.net/karta-graficzna-gigabyte-geforce-rtx-2070-windforce-8g-8gb-gddr6-256-bit-3xhdmi-3xdp-usb-c-box-gv-n2070wf3-8gc-4142730/",
+                new Gpu ()  { GpuId = 2, Name = "Gigabyte GeForce RTX 2070 WINDFORCE 8G", ProductId = 7,
+                            Model = "RTX 2070", Link = "https://www.morele.net/karta-graficzna-gigabyte-geforce-rtx-2070-windforce-8g-8gb-gddr6-256-bit-3xhdmi-3xdp-usb-c-box-gv-n2070wf3-8gc-4142730/",
                             Ram = 8, GpuRamId = 3, Frequency = 1.620, FrequencyBoost = 1.740, Length = 280, Benchmark = 2000,
                             Image = "gigabytertx2070.png", ShopId = 3},
 
-                new Gpu ()  { GpuId = 3, Name = "MSI GTX 1660 Ti VENTUS XS 6G OC", Manufacturer = "MSI",
-                            Model = "GeForce GTX 1660 Ti", Link = "https://www.morele.net/karta-graficzna-msi-gtx-1660-ti-ventus-xs-6g-oc-6gb-gddr6-gtx-1660-ti-ventus-xs-6g-oc-4144268/",
+                new Gpu ()  { GpuId = 3, Name = "MSI GTX 1660 Ti VENTUS XS 6G OC", ProductId = 8,
+                            Model = "GTX 1660 Ti", Link = "https://www.morele.net/karta-graficzna-msi-gtx-1660-ti-ventus-xs-6g-oc-6gb-gddr6-gtx-1660-ti-ventus-xs-6g-oc-4144268/",
                             Ram = 6, GpuRamId = 3, Frequency = 1.500, FrequencyBoost = 1.830, Length = 204, Benchmark = 1500,
                             Image = "msigtx1660ti.png", ShopId = 3}
             };
@@ -249,17 +315,17 @@ namespace PartPicker.DAL
 
             var mobos = new List<Mobo>
             {
-                new Mobo () { MoboId = 1, Name = "MSI B450 TOMAHAWK", Manufacturer = "MSI",
+                new Mobo () { MoboId = 1, Name = "MSI B450 TOMAHAWK", ManufacturerId = 3,
                             Model = "B450 TOMAHAWK", Link = "https://www.morele.net/plyta-glowna-msi-b450-tomahawk-4141464/",
                             FormFactorId = 2, SocketId = 4, RamSlots = 4, RamTypeId = 2, MaxRam = 64, SataSlots = 6,
                             Image = "tomahawk.png", ShopId = 3},
 
-                new Mobo () { MoboId = 2, Name = "Asus ROG STRIX B450-F GAMING", Manufacturer = "MSI",
+                new Mobo () { MoboId = 2, Name = "Asus ROG STRIX B450-F GAMING", ManufacturerId = 5,
                             Model = "ROG STRIX B450-F", Link = "https://www.morele.net/plyta-glowna-asus-rog-strix-b450-f-gaming-4780976/",
                             FormFactorId = 2, SocketId = 4, RamSlots = 4, RamTypeId = 2, MaxRam = 64, SataSlots = 6,
                             Image = "asusrogstrix.png", ShopId = 3},
 
-                new Mobo () { MoboId = 3, Name = "Gigabyte B450M DS3H", Manufacturer = "Gigabyte",
+                new Mobo () { MoboId = 3, Name = "Gigabyte B450M DS3H", ManufacturerId = 4,
                             Model = "B450M DS3H", Link = "https://www.morele.net/plyta-glowna-gigabyte-b450m-ds3h-4141320/",
                             FormFactorId = 3, SocketId = 4, RamSlots = 4, RamTypeId = 2, MaxRam = 64, SataSlots = 4,
                             Image = "gigabyteb450m.png", ShopId = 3}
@@ -270,17 +336,17 @@ namespace PartPicker.DAL
 
             var psus = new List<Psu>
             {
-                new Psu ()  { PsuId = 1, Name = "EVGA SuperNOVA 750", Manufacturer = "EVGA",
+                new Psu ()  { PsuId = 1, Name = "EVGA SuperNOVA 750", ManufacturerId = 6,
                             Model = "SuperNOVA 750", Link = "https://www.morele.net/zasilacz-evga-supernova-g2-750w-220-g2-0750-x2-867278/",
                             FormFactorId = 2, Power = 750, Efficiency = "80+ Gold",
                             Image = "supernova750.png", ShopId = 3},
 
-                new Psu ()  { PsuId = 2, Name = "Corsair CX550M", Manufacturer = "Corsair",
+                new Psu ()  { PsuId = 2, Name = "Corsair CX550M", ManufacturerId = 7,
                             Model = "CX550M", Link = "https://www.morele.net/zasilacz-corsair-cx-550w-cp-9020102-eu-855753/",
                             FormFactorId = 2, Power = 550, Efficiency = "80+ Bronze",
                             Image = "../Content/Images/Psu/cx550m.jpg", ShopId = 3},
 
-                new Psu ()  { PsuId = 3, Name = "EVGA SuperNOVA 650", Manufacturer = "EVGA",
+                new Psu ()  { PsuId = 3, Name = "EVGA SuperNOVA 650", ManufacturerId = 6,
                             Model = "SuperNOVA 650", Link = "https://www.morele.net/zasilacz-evga-supernova-650-g2-650w-220-g2-0650-y2-798167/",
                             FormFactorId = 2, Power = 650, Efficiency = "80+ Gold",
                             Image = "../Content/Images/Psu/supernova650.jpg", ShopId = 3}
@@ -291,17 +357,17 @@ namespace PartPicker.DAL
 
             var rams = new List<Ram>
             {
-                new Ram ()  { RamId = 1, Name = "Corsair Vengeance LPX 2x8", Manufacturer = "Corsair",
+                new Ram ()  { RamId = 1, Name = "Corsair Vengeance LPX 2x8", ManufacturerId = 7,
                             Model = "Vengeance LPX", Link = "https://www.morele.net/pamiec-corsair-vengeance-lpx-ddr4-16-gb-3000mhz-cl15-cmk16gx4m2b3000c15r-776918/",
                             RamTypeId = 2, Amount = 2, Size = 8, Frequency = 3000, Cl = 15,
                             Image = "../Content/Images/Ram/corsairvengeance2.jpg", ShopId = 3},
 
-                new Ram ()  { RamId = 2, Name = "G.Skill Trident Z RGB 2x8",  Manufacturer = "G.Skill",
+                new Ram ()  { RamId = 2, Name = "G.Skill Trident Z RGB 2x8",  ManufacturerId = 8,
                             Model = "Trident Z RGB", Link = "https://www.morele.net/pamiec-g-skill-trident-z-rgb-ddr4-16-gb-3000mhz-cl16-f4-3000c16d-16gtzr-1118470/",
                             RamTypeId = 2, Amount = 2, Size = 8, Frequency = 3200, Cl = 16,
                             Image = "../Content/Images/Ram/gskilltrident.jpg", ShopId = 3},
 
-                new Ram ()  { RamId = 3, Name = "Corsair Vengeance LPX 1x16", Manufacturer = "Corsair",
+                new Ram ()  { RamId = 3, Name = "Corsair Vengeance LPX 1x16", ManufacturerId = 7,
                             Model = "Vengeance LPX", Link = "https://www.morele.net/pamiec-corsair-vengeance-lpx-ddr4-16-gb-3000mhz-cl15-cmk16gx4m1b3000c15-839294/",
                             RamTypeId = 2, Amount = 1, Size = 16, Frequency = 3000, Cl = 15,
                             Image = "../Content/Images/Ram/corsairvengeance.jpg", ShopId = 3}
@@ -312,47 +378,47 @@ namespace PartPicker.DAL
 
             var storages = new List<Storage>
             {
-                new Storage ()  { StorageId = 1, Name = "KINGSTON A400 SSD 240GB",  Manufacturer = "Kingston",
+                new Storage ()  { StorageId = 1, Name = "KINGSTON A400 SSD 240GB",  ManufacturerId = 9,
                                 Model = "A400", Link = "https://www.mediaexpert.pl/?ds_rl=1259140&ds_rl=1259140&gclid=EAIaIQobChMIuJbux6XP4QIVnsmyCh3p8gBBEAAYASAAEgK4HvD_BwE&gclsrc=aw.ds",
                                 Type = "SSD", Capacity = 240, InterfaceId = 2, Size = 2.5,
                                 Image = "../Content/Images/Disks/kingstona400.jpg", ShopId = 1},
 
-                new Storage ()  { StorageId = 2, Name = "KINGSTON A400 SSD 240GB", Manufacturer = "Kingston",
+                new Storage ()  { StorageId = 2, Name = "KINGSTON A400 SSD 240GB", ManufacturerId = 9,
                                 Model = "A400", Link = "https://www.morele.net/dysk-ssd-kingston-a400-240gb-sata3-sa400s37-240g-1235881/",
                                 Type = "SSD", Capacity = 240, InterfaceId = 2, Size = 2.5,
                                 Image = "../Content/Images/Disks/kingstona400.jpg", ShopId = 3},
 
-                new Storage ()  { StorageId = 3, Name = "Seagate Enterprise Capacity HDD 6TB", Manufacturer = "Seagate",
+                new Storage ()  { StorageId = 3, Name = "Seagate Enterprise Capacity HDD 6TB", ManufacturerId = 10,
                                 Model = "Enterprise Capacity", Link = "https://vobis.pl/komputery/komponenty-serwerowe/dyski-twarde/dysk-seagate-enterprise-capacity-hdd-3-5-6tb-sas-7200rpm-256mb-1",
                                 Type = "HDD", Capacity = 6000, InterfaceId = 6, Size = 3.5,
                                 Image = "../Content/Images/Disks/seagate6tb.jpg", ShopId = 2},
 
-                new Storage ()  { StorageId = 4, Name = "WD Blue 500GB SSD WDS500G2B0A", Manufacturer = "Western Digital",
+                new Storage ()  { StorageId = 4, Name = "WD Blue 500GB SSD WDS500G2B0A", ManufacturerId = 11,
                                 Model = "Blue", Link = "https://www.sferis.pl/dysk-500-gb-wd-blue-wds500g2b0a-25-sata-iii-p517640",
                                 Type = "SSD", Capacity = 500, InterfaceId = 2, Size = 2.5,
                                 Image = "../Content/Images/Disks/wdblue.jpg", ShopId = 4},
 
-                new Storage ()  { StorageId = 5, Name = "ADATA 256GB SU800", Manufacturer = "ADATA",
+                new Storage ()  { StorageId = 5, Name = "ADATA 256GB SU800", ManufacturerId = 12,
                                 Model = "SU800", Link = "https://www.sferis.pl/dysk-256-gb-adata-su800-asu800ss-256gt-c-25-sata-iii-p455459",
                                 Type = "SSD", Capacity = 256, InterfaceId = 2, Size = 2.5,
                                 Image = "../Content/Images/Disks/adatasu800.jpg", ShopId = 4},
 
-                new Storage ()  { StorageId = 6, Name = "HDD Seagate Barracuda 1 TB", Manufacturer = "Seagate",
+                new Storage ()  { StorageId = 6, Name = "HDD Seagate Barracuda 1 TB", ManufacturerId = 10,
                                 Model = "Barracuda", Link = "https://www.sferis.pl/dysk-hdd-seagate-st1000dm010-barracuda-1-tb-35-sata-iii-7200-obr-min-64-mb-p455378",
                                 Type = "HDD", Capacity = 1000, InterfaceId = 2, Size = 3.5,
                                 Image = "../Content/Images/Disks/barracuda.jpg", ShopId = 4},
 
-                new Storage ()  { StorageId = 7, Name = "Western Digital HDD 1TB WD10EZEX", Manufacturer = "Western Digital",
+                new Storage ()  { StorageId = 7, Name = "Western Digital HDD 1TB WD10EZEX", ManufacturerId = 11,
                                 Model = "Blue", Link = "https://www.morele.net/dysk-western-digital-caviar-blue-3-5-1tb-sata-600-7200rpm-64mb-cache-wd10ezex-479659/",
                                 Type = "HDD", Capacity = 1000, InterfaceId = 2, Size = 3.5,
                                 Image = "../Content/Images/Disks/wdhdd1tb.jpg", ShopId = 3},
 
-                new Storage ()  { StorageId = 8, Name = "Seagate HDD 2TB ST2000DM006", Manufacturer = "Seagate",
+                new Storage ()  { StorageId = 8, Name = "Seagate HDD 2TB ST2000DM006", ManufacturerId = 10,
                                 Model = "Barracuda", Link = "https://www.morele.net/dysk-seagate-barracuda-2tb-sata-600-st2000dm006-958505/",
                                 Type = "HDD", Capacity = 2000, InterfaceId = 2, Size = 3.5,
                                 Image = "../Content/Images/Disks/seagatehdd2tb.jpg", ShopId = 3},
 
-                new Storage ()  { StorageId = 9, Name = "Samsung SSD 500GB MZ-76E500B/AM", Manufacturer = "Samsung",
+                new Storage ()  { StorageId = 9, Name = "Samsung SSD 500GB MZ-76E500B/AM", ManufacturerId = 13,
                                 Model = "860 Evo", Link = "https://www.morele.net/dysk-ssd-samsung-860-evo-500gb-sata3-mz-76e500b-eu-1773653/",
                                 Type = "SSD", Capacity = 500, InterfaceId = 2, Size = 2.5,
                                 Image = "../Content/Images/Disks/samsungssd500gb.jpg", ShopId = 3}

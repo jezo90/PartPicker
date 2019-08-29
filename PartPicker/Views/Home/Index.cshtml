@@ -19,12 +19,19 @@
                                 <div class="slide-text">
                                     <ul>
                                         <li>
-                                            @news.Cpu.SeriesCpu.Manufacturer
-                                            @news.Cpu.SeriesCpu.Name
+                                            @news.Cpu.Product.Manufacturer.Name
+                                            @news.Cpu.Product.Series.Name
                                             @news.Cpu.Model
                                         </li>
-                                        <li>@news.Mobo.Manufacturer @news.Mobo.Model</li>
-                                        <li>@news.Gpu.Manufacturer @news.Gpu.Model</li>
+                                        <li>
+                                            @news.Mobo.Manufacturer.Name
+                                            @news.Mobo.Model
+                                        </li>
+                                        <li>
+                                            @news.Gpu.Product.Manufacturer.Name
+                                            @news.Gpu.Product.Series.Name
+                                            @news.Gpu.Model
+                                        </li>
                                     </ul>
                                 </div>
                             </a>
@@ -46,12 +53,19 @@
                             <div class="slide-text">
                                 <ul>
                                     <li>
-                                        @hotBuild.Cpu.SeriesCpu.Manufacturer
-                                        @hotBuild.Cpu.SeriesCpu.Name
+                                        @hotBuild.Cpu.Product.Manufacturer.Name
+                                        @hotBuild.Cpu.Product.Series.Name
                                         @hotBuild.Cpu.Model
                                     </li>
-                                    <li>@hotBuild.Mobo.Manufacturer @hotBuild.Mobo.Model</li>
-                                    <li>@hotBuild.Gpu.Manufacturer @hotBuild.Gpu.Model</li>
+                                    <li>
+                                        @hotBuild.Mobo.Manufacturer.Name
+                                        @hotBuild.Mobo.Model
+                                    </li>
+                                    <li>
+                                        @hotBuild.Gpu.Product.Manufacturer.Name
+                                        @hotBuild.Gpu.Product.Series.Name
+                                        @hotBuild.Gpu.Model
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -64,10 +78,12 @@
                             <div class="slide-text">
                                 <ul>
                                     <li>
-                                        @hotCpu.SeriesCpu.Manufacturer
-                                        @hotCpu.SeriesCpu.Name
+                                        @hotCpu.Product.Manufacturer.Name
                                     </li>
-                                    <li>@hotCpu.Model</li>
+                                    <li>
+                                        @hotCpu.Product.Series.Name
+                                        @hotCpu.Model
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -79,8 +95,13 @@
                             <img src="@Url.ImagesPath("hot.png")" class="slide-icon" />
                             <div class="slide-text">
                                 <ul>
-                                    <li>@hotGpu.Manufacturer</li>
-                                    <li>@hotGpu.Model</li>
+                                    <li>
+                                        @hotGpu.Product.Manufacturer.Name
+                                    </li>
+                                    <li>
+                                        @hotGpu.Product.Series.Name
+                                        @hotGpu.Model
+                                    </li>
                                 </ul>
                             </div>
                         </div>
