@@ -6,57 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="main">
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <button class="dropdown-btn">
-            Filtry<i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <button class="dropdown-btn">
-                <i class="fa fa-caret-down">Procesor</i>
-            </button>
-            <div class="dropdown-container">
-                <button class="dropdown-btn">
-                    <i class="fa fa-caret-down">Producent</i>
-                </button>
-                <div class="dropdown-container">
-                    <a href="#">Intel</a>
-                    <a href="#">AMD</a>
-                </div>
-                <button class="dropdown-btn">
-                    <i class="fa fa-caret-down">Socket</i>
-                </button>
-                <div class="dropdown-container">
-                    <a href="#">1155</a>
-                    <a href="#">1110</a>
-                </div>
-            </div>
-            <button class="dropdown-btn">
-                Seria<i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-container">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-            </div>
-            <button class="dropdown-btn">
-                Gniazdo<i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-container">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-            </div>
-        </div>
-        <script src="@Url.Content("~/Scripts/JavaScriptDropDown.js")"></script>
-    </div>
+@Html.Action("Filters")
 
     <div class="content">
         <div class="container">
@@ -99,7 +49,30 @@
                             @build.Ram.Size
                         </div>
                         <div class="item-part">
-                            @Model.Average[build.BuildId]
+                            @{ double grade = Model.Average[build.BuildId]; }
+                            @for (var i = 0; i < 5; i++)
+                            {
+                                if (grade >= 0.75d)
+                                {
+                                    <img src="@Url.ImagesPath("star.png")" width="15px" height="15px" />
+                                    grade=grade-1.0d;
+                                }
+                                else if (grade < 0.75d && grade > 0.25d)
+                                {
+                                    <img src="@Url.ImagesPath("half.png")" width="15px" height="15px" />
+                                    grade = grade - 1.0d;
+                                }
+                                else
+                                {
+                                    <img src="@Url.ImagesPath("zero.png")" width="15px" height="15px" />
+                                    grade = grade - 1.0d;
+                                }
+                            }
+                            <br />
+                            @string.Format("{0:N2}", Model.Average[build.BuildId])
+                            (@String.Format("{0:0.##}", Model.Count[build.BuildId]))
+
+
                         </div>
                         <div class="item-part">
                             @build.Price zł

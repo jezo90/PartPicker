@@ -57,7 +57,8 @@ namespace PartPicker.Controllers
             var buildsListViewModel = new BuildsListViewModel()
             {
                 Builds = builds,
-                Average = average
+                Average = average,
+                Count = count
             };
 
             return View(buildsListViewModel);

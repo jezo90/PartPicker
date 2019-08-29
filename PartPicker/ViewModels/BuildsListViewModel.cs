@@ -10,5 +10,6 @@ namespace PartPicker.ViewModels
     {
         public IEnumerable<Build> Builds { get; set; }
         public double[] Average { get; set; }
+        public double[] Count { get; set; }
     }
 }
