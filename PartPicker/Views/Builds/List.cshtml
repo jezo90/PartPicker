@@ -9,9 +9,9 @@
 @Html.Action("Filters")
 
     <div class="content">
-        <div class="container">
-            <div class="item-list">
-                <div class="item-part">
+        <div class="container ">
+            <div class="item-list nazwy" >
+                <div class="item-part item-part-photo">
                     Zdjęcie
                 </div>
                 <div class="item-part">
@@ -34,45 +34,54 @@
         @foreach (var build in Model.Builds)
         {
             <div class="container">
-                <a href="@Url.Action("Details", "Builds", new { id = build.BuildId })">
+                <a class="item-list-a" href="@Url.Action("Details", "Builds", new { id = build.BuildId })">
                     <div class="item-list">
-                        <div class="item-part">
-                            <img src="@Url.BuildsImagesPath(build.Image)" />
+                        <div class="item-part item-part-photo">
+                            <img class="item-part-image" src="@Url.BuildsImagesPath(build.Image)" />
                         </div>
                         <div class="item-part">
-                            @build.Cpu.Name
+                            
+                                @build.Cpu.Name
+                            
+                            
                         </div>
                         <div class="item-part">
-                            @build.Gpu.Name
+                            
+                                @build.Gpu.Name
+                                   
                         </div>
                         <div class="item-part">
-                            @build.Ram.Size
+                            
+                                @build.Ram.Size
+                                                        
                         </div>
                         <div class="item-part">
-                            @{ double grade = Model.Average[build.BuildId]; }
-                            @for (var i = 0; i < 5; i++)
-                            {
-                                if (grade >= 0.75d)
-                                {
-                                    <img src="@Url.ImagesPath("star.png")" width="15px" height="15px" />
-                                    grade=grade-1.0d;
-                                }
-                                else if (grade < 0.75d && grade > 0.25d)
-                                {
-                                    <img src="@Url.ImagesPath("half.png")" width="15px" height="15px" />
-                                    grade = grade - 1.0d;
-                                }
-                                else
-                                {
-                                    <img src="@Url.ImagesPath("zero.png")" width="15px" height="15px" />
-                                    grade = grade - 1.0d;
-                                }
-                            }
-                            <br />
-                            @string.Format("{0:N2}", Model.Average[build.BuildId])
-                            (@String.Format("{0:0.##}", Model.Count[build.BuildId]))
+                            
 
+                                @{ double grade = Model.Average[build.BuildId]; }
+                                @for (var i = 0; i < 5; i++)
+                                {
+                                    if (grade >= 0.75d)
+                                    {
+                                        <img class="star" src="@Url.ImagesPath("star.png")" />
+                                        grade = grade - 1.0d;
+                                    }
+                                    else if (grade < 0.75d && grade > 0.25d)
+                                    {
+                                        <img class="star" src="@Url.ImagesPath("half.png")" />
+                                        grade = grade - 1.0d;
+                                    }
+                                    else
+                                    {
+                                        <img class="star" src="@Url.ImagesPath("zero.png")" />
+                                        grade = grade - 1.0d;
+                                    }
+                                }
+                                <br />
+                                @string.Format("{0:N2}", Model.Average[build.BuildId])
+                                (@String.Format("{0:0.##}", Model.Count[build.BuildId]))
 
+                            
                         </div>
                         <div class="item-part">
                             @build.Price zł

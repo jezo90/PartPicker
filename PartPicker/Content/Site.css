@@ -171,7 +171,7 @@ body {
 
 
 /* On screens that are less than 800px wide, make the sidebar into a topbar */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 890px) {
     .sidebar {
         width: 100%;
         height: auto;
@@ -191,7 +191,7 @@ body {
 }
 
 /* On screens that are less than 800px, display the bar vertically, instead of horizontally */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 890px) {
     .sidebar a {
         text-align: left;
         float: none;
@@ -238,47 +238,84 @@ body {
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Item list !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
 .item-list {
+    font-size: 14px;
     display: flex;
     width: 100%;
+    font-family: montserrat-semibold;
 }
+.nazwy {
+    font-size: 16px !important;
+    font-family: montserrat-bold !important;
+}
+    .item-list :first-child {
+        width: 10% !important;
+    }
+    .item-list :not(:first-child) {
+        width: 18% !important;
+    }
 
 .item-part {
     float: left;
-    width: 18%;
+
     padding: 1%;
     text-align: center;
 }
+.item-part-image {
+    min-width: -webkit-fill-available;
+}
+.item-list-a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
 
-    .item-part img {
-        width: 120px;
-        height: 100px;
-    }
+.item-part .star {
+    width: 15% !important;
+}
 
 @media screen and (min-width:401px) {
     .item-part {
-        border: 2px solid #555;
+        border: 1px solid #303030;
     }
 }
-
-@media screen and (max-width: 400px) {
-    .item-list {
-        float: left;
-        display: block;
-        width: inherit;
-    }
-
+@media screen and (max-width:400px) {
     .item-part {
-        width: 97%;
-        border: 2px solid #555;
-    }
-
-    .container {
-        float: left;
-        width: 100%;
-        height: auto;
+        border: 0.5px solid #303030;
     }
 }
 
+@media screen and (max-width: 720px) {
+    .item-list {
+        font-size: 11px;
+    }
+
+    .nazwy {
+        font-size: 13px !important;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .item-list {
+        font-size: 9px;
+    }
+
+    .nazwy {
+        font-size: 11px !important;
+    }
+}
+
+@media screen and (max-width: 493px) {
+    .item-list {
+        font-size: 8px;
+    }
+
+    .nazwy {
+        font-size: 10px !important;
+    }
+
+    .item-part-photo{
+        display:none !important;
+    }
+}
 
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Footer !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 footer {
@@ -694,9 +731,12 @@ footer {
         width: 180PX;
     }
 
-    .navbar a:hover, .drop:hover .dropbtn, .dropbtn:focus {
+.navbar a:hover, .drop:hover .dropbtn {
         background-color: #EF7F29;
-    }
+}
+.orange {
+    background-color: #EF7F29 !important;
+}
 
 @media screen and (min-width: 1311px) {
     .navbar a:hover, .drop:hover .dropbtn, .dropbtn:focus {
@@ -716,28 +756,32 @@ footer {
 
     .drop-content a {
         float: left;
-        color: black;
+        color: #0D0D0D;
         padding: 10px 0px;
         text-decoration: none;
         display: block;
         text-align: center;
-        width:160PX;
+        width: 160PX;
     }
 
         .drop-content a:hover {
-            background-color: #ddd;
+            background-color: #303030;
         }
 .image_up {
     pointer-events: none;
     margin-top: 3px;
     display: none;
     float: right;
+    width :15px;
+    height :15px;
 }
 .image_down {
     pointer-events: none;
     margin-top: 3px;
     float: right;
     display: block;
+    width: 15px;
+    height: 15px;
 }
 .show {
     display: block !important;

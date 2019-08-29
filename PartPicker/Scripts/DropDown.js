@@ -12,9 +12,6 @@ function drop() {
     document.getElementById("myDropdown").classList.toggle("show");
 
 
-
-
-
     var x = document.getElementById("image_down");
     if (x.className === "image_down") {
         x.className += " hide";
@@ -29,7 +26,12 @@ function drop() {
         x.className = "image_up";
     }
 
-
+    var x = document.getElementById("dropbtn");
+    if (x.className === "dropbtn") {
+        x.className += " orange";
+    } else {
+        x.className = "dropbtn";
+    }
 
 }
 
