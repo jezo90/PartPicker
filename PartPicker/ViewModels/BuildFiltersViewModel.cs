@@ -9,7 +9,7 @@ namespace PartPicker.ViewModels
 {
     public class BuildFiltersViewModel
     {
-        public IEnumerable<string> CpuSockets { get; set; }
+        public IEnumerable<SeriesCpu> CpuSeries { get; set; }
         public IEnumerable<string> CpuManufacturers { get; set; }
         public IEnumerable<string> GpuManufacturers { get; set; }
         public IEnumerable<string> StorageTypes { get; set; }

@@ -256,7 +256,6 @@ body {
 
 .item-part {
     float: left;
-
     padding: 1%;
     text-align: center;
 }
@@ -270,6 +269,10 @@ body {
 
 .item-part .star {
     width: 15% !important;
+}
+
+.item-part .part-image {
+    width: 30% !important;
 }
 
 @media screen and (min-width:401px) {

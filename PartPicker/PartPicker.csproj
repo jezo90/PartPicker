@@ -123,6 +123,11 @@
     <Content Include="Content\Images\Case\masterbox.png" />
     <Content Include="Content\Images\Case\nzxt.png" />
     <Content Include="Content\Images\Case\phanteks.png" />
+    <Content Include="Content\Images\Cpu\i39100f.png" />
+    <Content Include="Content\Images\Cpu\i59400f.png" />
+    <Content Include="Content\Images\Cpu\i59600k.png" />
+    <Content Include="Content\Images\Cpu\i78700k.png" />
+    <Content Include="Content\Images\Cpu\i79700k.png" />
     <Content Include="Content\Images\Cpu\ryzen52600.png" />
     <Content Include="Content\Images\Cpu\ryzen52600x.png" />
     <Content Include="Content\Images\Cpu\ryzen72700x.png" />
@@ -189,6 +194,7 @@
     <Compile Include="Models\Ram.cs" />
     <Compile Include="Models\RamType.cs" />
     <Compile Include="Models\Rate.cs" />
+    <Compile Include="Models\SeriesCpu.cs" />
     <Compile Include="Models\Shop.cs" />
     <Compile Include="Models\Socket.cs" />
     <Compile Include="Models\Storage.cs" />

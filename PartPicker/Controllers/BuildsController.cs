@@ -67,13 +67,12 @@ namespace PartPicker.Controllers
         [ChildActionOnly]
         public ActionResult Filters()
         {
-            var cpuSocket = context.Cpu.Select(a => a.Socket.Name)
-                        .Distinct()
-                        .ToList();
-
-            var cpuManufacturer = context.Cpu.Select(a => a.Manufacturer)
+            var cpuManufacturer = context.Cpu.Select(a => a.SeriesCpu.Manufacturer)
                                 .Distinct()
                                 .ToList();
+
+            var cpuSeries = context.SeriesCpu.OrderBy(a => a.Name)
+                            .ToList();
 
             var gpuManufacturer = context.Gpu.Select(a => a.Manufacturer)
                                 .Distinct()
@@ -89,7 +88,7 @@ namespace PartPicker.Controllers
 
             var buildFiltersViewModel = new BuildFiltersViewModel()
             {
-                CpuSockets = cpuSocket,
+                CpuSeries = cpuSeries,
                 CpuManufacturers = cpuManufacturer,
                 GpuManufacturers = gpuManufacturer,
                 StorageTypes = storageType,

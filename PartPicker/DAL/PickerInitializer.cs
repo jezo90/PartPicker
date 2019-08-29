@@ -153,28 +153,74 @@ namespace PartPicker.DAL
             cases.ForEach(s => context.Case.Add(s));
             context.SaveChanges();
 
+            var seriesCpus = new List<SeriesCpu>
+            {
+                new SeriesCpu() { SeriesCpuId = 1, Manufacturer = "AMD", Name = "Ryzen 5", Description = "Opis Ryzen 5"},
+
+                new SeriesCpu() { SeriesCpuId = 2, Manufacturer = "AMD", Name = "Ryzen 7", Description = "Opis Ryzen 5"},
+
+                new SeriesCpu() { SeriesCpuId = 3, Manufacturer = "Intel", Name = "i5", Description = "Opis Intel i5"},
+
+                new SeriesCpu() { SeriesCpuId = 4, Manufacturer = "Intel", Name = "i3", Description = "Opis Intel i3"},
+
+                new SeriesCpu() { SeriesCpuId = 5, Manufacturer = "Intel", Name = "i7", Description = "Opis Intel i7"}
+            };
+
+            seriesCpus.ForEach(s => context.SeriesCpu.Add(s));
+            context.SaveChanges();
+
             var cpus = new List<Cpu>
             {
 
-                new Cpu () { CpuId = 1, Name = "AMD Ryzen 5 2600", Manufacturer = "AMD",
-                            Model = "Ryzen 5", Link = "https://www.morele.net/procesor-amd-ryzen-5-2600-3-9ghz-16mb-box-yd2600bbafbox-980255/",
+                new Cpu () { CpuId = 1, Name = "AMD Ryzen 5 2600", SeriesCpuId = 1,
+                            Model = "2600", Link = "https://www.morele.net/procesor-amd-ryzen-5-2600-3-9ghz-16mb-box-yd2600bbafbox-980255/",
                             SocketId = 4, Cores = 6, Frequency = 3.4, Turbo = 3.9, Gpu = "Brak", Benchmark = 2000,
                             Image = "ryzen52600.png", ShopId = 3},
 
-                new Cpu () { CpuId = 2, Name = "AMD Ryzen 7 2700X", Manufacturer = "AMD",
-                            Model = "Ryzen 7", Link = "https://www.morele.net/procesor-amd-ryzen-7-2700x-3-7ghz-20mb-box-yd270xbgafbox-980258/",
+                new Cpu () { CpuId = 2, Name = "AMD Ryzen 7 2700X", SeriesCpuId = 2,
+                            Model = "2700X", Link = "https://www.morele.net/procesor-amd-ryzen-7-2700x-3-7ghz-20mb-box-yd270xbgafbox-980258/",
                             SocketId = 4, Cores = 8, Frequency = 3.7, Turbo = 4.2, Gpu = "Brak", Benchmark = 3000,
                             Image = "ryzen72700x.png", ShopId = 3},
 
-                new Cpu () { CpuId = 3, Name = "AMD Ryzen 5 2600X", Manufacturer = "AMD",
-                            Model = "Ryzen 5", Link = "https://www.morele.net/procesor-amd-ryzen-5-2600x-3-6ghz-16mb-box-wraith-spire-yd260xbcafbox-980256/",
+                new Cpu () { CpuId = 3, Name = "AMD Ryzen 5 2600X", SeriesCpuId = 1,
+                            Model = "2600X", Link = "https://www.morele.net/procesor-amd-ryzen-5-2600x-3-6ghz-16mb-box-wraith-spire-yd260xbcafbox-980256/",
                             SocketId = 4, Cores = 6, Frequency = 3.6, Turbo = 4.2, Gpu = "Brak", Benchmark = 2500,
                             Image = "ryzen52600x.png", ShopId = 3},
 
-                new Cpu () { CpuId = 4, Name = "AMD Ryzen 5 2600X", Manufacturer = "AMD",
-                            Model = "Ryzen 5", Link = "https://www.sferis.pl/procesor-amd-ryzen-5-2600x-ryzen-5-yd260xbcafbox-3600-mhz-min-4200-mhz-max-am4-p599440?nobid",
+                new Cpu () { CpuId = 4, Name = "AMD Ryzen 5 2600X", SeriesCpuId = 1,
+                            Model = "2600X", Link = "https://www.sferis.pl/procesor-amd-ryzen-5-2600x-ryzen-5-yd260xbcafbox-3600-mhz-min-4200-mhz-max-am4-p599440?nobid",
                             SocketId = 4, Cores = 6, Frequency = 3.6, Turbo = 4.2, Gpu = "Brak", Benchmark = 2500,
-                            Image = "ryzen52600x.png", ShopId = 4}
+                            Image = "ryzen52600x.png", ShopId = 4},
+
+                new Cpu () { CpuId = 5, Name = "Intel Core i5-9400F", SeriesCpuId = 3,
+                            Model = "9400F", Link = "https://www.morele.net/procesor-intel-core-i5-9400f-2-9ghz-9mb-box-bx80684i59400f-5668892/",
+                            SocketId = 1, Cores = 6, Frequency = 2.9, Turbo = 4.1, Gpu = "Brak", Benchmark = 2500,
+                            Image = "i59400f.png", ShopId = 3},
+
+                new Cpu () { CpuId = 6, Name = "Intel Core i5-9600K", SeriesCpuId = 3,
+                            Model = "9600K", Link = "https://www.morele.net/procesor-intel-core-i5-9600k-3-7ghz-9mb-box-bx80684i59600k-4142643/",
+                            SocketId = 1, Cores = 6, Frequency = 3.7, Turbo = 4.6, Gpu = "Intel UHD Graphics 630", Benchmark = 3500,
+                            Image = "i59600k.png", ShopId = 3},
+
+                new Cpu () { CpuId = 7, Name = "Intel Core i3-9100F", SeriesCpuId = 4,
+                            Model = "9100F", Link = "https://www.morele.net/procesor-intel-core-i3-9100f-3-6ghz-6mb-box-bx80684i39100f-5954267/",
+                            SocketId = 1, Cores = 4, Frequency = 3.6, Turbo = 4.2, Gpu = "Brak", Benchmark = 2000,
+                            Image = "i39100f.png", ShopId = 3},
+
+                new Cpu () { CpuId = 8, Name = "Intel Core i7-8700K", SeriesCpuId = 5,
+                            Model = "8700K", Link = "https://www.morele.net/procesor-intel-core-i3-9100f-3-6ghz-6mb-box-bx80684i39100f-5954267/",
+                            SocketId = 1, Cores = 6, Frequency = 3.7, Turbo = 4.7, Gpu = "Intel UHD Graphics 630", Benchmark = 4000,
+                            Image = "i78700k.png", ShopId = 3},
+
+                new Cpu () { CpuId = 9, Name = "Intel Core i7-9700K", SeriesCpuId = 5,
+                            Model = "9700K", Link = "https://www.morele.net/procesor-intel-core-i3-9100f-3-6ghz-6mb-box-bx80684i39100f-5954267/",
+                            SocketId = 1, Cores = 8, Frequency = 3.6, Turbo = 4.9, Gpu = "Intel UHD Graphics 630", Benchmark = 4500,
+                            Image = "i79700k.png", ShopId = 3},
+
+                new Cpu () { CpuId = 10, Name = "Intel Core i7-8700K", SeriesCpuId = 5,
+                            Model = "8700K", Link = "https://www.sferis.pl/procesor-intel-core-i7-8700k-core-i7-8700k-bx80684i78700k-961566-3700-mhz-min-4700-mhz-max-lga-1151-p591227",
+                            SocketId = 1, Cores = 6, Frequency = 3.7, Turbo = 4.7, Gpu = "Intel UHD Graphics 630", Benchmark = 4000,
+                            Image = "i78700k.png", ShopId = 4}
             };
 
             cpus.ForEach(s => context.Cpu.Add(s));

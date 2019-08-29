@@ -25,6 +25,7 @@ namespace PartPicker.DAL
         public DbSet<RamType> RamType { get; set; }
         public DbSet<GpuRam> GpuRam { get; set; }
         public DbSet<Socket> Socket { get; set; }
+        public DbSet<SeriesCpu> SeriesCpu { get; set; }
 
         public DbSet<Shop> Shop { get; set; }
         public DbSet<Case> Case { get; set; }

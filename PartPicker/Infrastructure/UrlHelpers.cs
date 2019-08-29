@@ -56,5 +56,14 @@ namespace PartPicker.Infrastructure
             return directPath;
         }
 
+        public static string RamsImagesPath(this UrlHelper helper, string name)
+        {
+            var RamsImagesPath = AppConfig.RamsImagesFolder;
+            var path = Path.Combine(RamsImagesPath, name);
+            var directPath = helper.Content(path);
+
+            return directPath;
+        }
+
     }
 }

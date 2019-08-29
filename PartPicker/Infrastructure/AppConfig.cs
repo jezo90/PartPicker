@@ -60,5 +60,15 @@ namespace PartPicker.Infrastructure
                 return _gpusImagesFolder;
             }
         }
+
+        private static string _ramsImagesFolder = ConfigurationManager.AppSettings["RamsImages"];
+
+        public static string RamsImagesFolder
+        {
+            get
+            {
+                return _ramsImagesFolder;
+            }
+        }
     }
 }

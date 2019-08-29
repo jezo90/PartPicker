@@ -8,88 +8,93 @@
 
 @Html.Action("Filters")
 
-    <div class="content">
-        <div class="container ">
-            <div class="item-list nazwy" >
-                <div class="item-part item-part-photo">
-                    Zdjęcie
-                </div>
-                <div class="item-part">
-                    Procesor
-                </div>
-                <div class="item-part">
-                    Karta Graficzna
-                </div>
-                <div class="item-part">
-                    Ilość RAM [GB]
-                </div>
-                <div class="item-part">
-                    Ocena
-                </div>
-                <div class="item-part">
-                    Cena
-                </div>
+<div class="content">
+    <div class="container ">
+        <div class="item-list nazwy">
+            <div class="item-part item-part-photo">
+                Zdjęcie
+            </div>
+            <div class="item-part">
+                Procesor
+            </div>
+            <div class="item-part">
+                Karta Graficzna
+            </div>
+            <div class="item-part">
+                Ilość RAM 
+                <br />
+                [GB]
+            </div>
+            <div class="item-part">
+                Ocena
+            </div>
+            <div class="item-part">
+                Cena
             </div>
         </div>
-        @foreach (var build in Model.Builds)
-        {
-            <div class="container">
-                <a class="item-list-a" href="@Url.Action("Details", "Builds", new { id = build.BuildId })">
-                    <div class="item-list">
-                        <div class="item-part item-part-photo">
-                            <img class="item-part-image" src="@Url.BuildsImagesPath(build.Image)" />
-                        </div>
-                        <div class="item-part">
-                            
-                                @build.Cpu.Name
-                            
-                            
-                        </div>
-                        <div class="item-part">
-                            
-                                @build.Gpu.Name
-                                   
-                        </div>
-                        <div class="item-part">
-                            
-                                @build.Ram.Size
-                                                        
-                        </div>
-                        <div class="item-part">
-                            
-
-                                @{ double grade = Model.Average[build.BuildId]; }
-                                @for (var i = 0; i < 5; i++)
-                                {
-                                    if (grade >= 0.75d)
-                                    {
-                                        <img class="star" src="@Url.ImagesPath("star.png")" />
-                                        grade = grade - 1.0d;
-                                    }
-                                    else if (grade < 0.75d && grade > 0.25d)
-                                    {
-                                        <img class="star" src="@Url.ImagesPath("half.png")" />
-                                        grade = grade - 1.0d;
-                                    }
-                                    else
-                                    {
-                                        <img class="star" src="@Url.ImagesPath("zero.png")" />
-                                        grade = grade - 1.0d;
-                                    }
-                                }
-                                <br />
-                                @string.Format("{0:N2}", Model.Average[build.BuildId])
-                                (@String.Format("{0:0.##}", Model.Count[build.BuildId]))
-
-                            
-                        </div>
-                        <div class="item-part">
-                            @build.Price zł
-                        </div>
-                    </div>
-                </a>
-            </div>
-        }
     </div>
+    @foreach (var build in Model.Builds)
+    {
+        <div class="container">
+            <a class="item-list-a" href="@Url.Action("Details", "Builds", new { id = build.BuildId })">
+                <div class="item-list">
+                    <div class="item-part item-part-photo">
+                        <img class="item-part-image" src="@Url.BuildsImagesPath(build.Image)" />
+                    </div>
+                    <div class="item-part">
+
+                        <img class="part-image" src="@Url.CpusImagesPath(build.Cpu.Image)" />
+                        <br />
+                        @build.Cpu.Name
+
+                    </div>
+                    <div class="item-part">
+
+                        <img class="part-image" src="@Url.GpusImagesPath(build.Gpu.Image)" />
+                        <br />
+                        @build.Gpu.Name
+
+                    </div>
+                    <div class="item-part">
+
+                        @build.Ram.Size
+
+                    </div>
+                    <div class="item-part">
+
+
+                        @{ double grade = Model.Average[build.BuildId]; }
+                        @for (var i = 0; i < 5; i++)
+                        {
+                            if (grade >= 0.75d)
+                            {
+                                <img class="star" src="@Url.ImagesPath("star.png")" />
+                                grade = grade - 1.0d;
+                            }
+                            else if (grade < 0.75d && grade > 0.25d)
+                            {
+                                <img class="star" src="@Url.ImagesPath("half.png")" />
+                                grade = grade - 1.0d;
+                            }
+                            else
+                            {
+                                <img class="star" src="@Url.ImagesPath("zero.png")" />
+                                grade = grade - 1.0d;
+                            }
+                        }
+                        <br />
+                        @string.Format("{0:N2}", Model.Average[build.BuildId])
+                        (@String.Format("{0:0.##}", Model.Count[build.BuildId]))
+
+
+                    </div>
+                    <div class="item-part">
+                        @build.Price zł
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
 </div>
+
 

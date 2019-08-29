@@ -16,16 +16,18 @@
             <div class="dropdown-container">
                 @foreach (var manufacturer in Model.CpuManufacturers)
                 {
-                    <a href="#">@manufacturer</a>
-                }
-            </div>
-            <button class="dropdown-btn">
-                Socket<i class="caret-down"></i>
-            </button>
-            <div class="dropdown-container">
-                @foreach (var socket in Model.CpuSockets)
-                {
-                    <a href="#">@socket</a>
+                    <button class="dropdown-btn">
+                        @manufacturer<i class="caret-down"></i>
+                    </button>
+                    <div class="dropdown-container">
+                        @foreach (var series in Model.CpuSeries)
+                        {
+                            if (series.Manufacturer == manufacturer)
+                            {
+                                <a href="#">@series.Name</a>
+                            }
+                        }
+                    </div>
                 }
             </div>
         </div>
@@ -63,14 +65,14 @@
         <button class="dropdown-btn">
             Dysk Twardy<i class="caret-down"></i>
         </button>
-        
-            <div class="dropdown-container">
-                @foreach (var storageType in Model.StorageTypes)
-                {
-                    <a>@storageType</a>
-                }
-            </div>
+
+        <div class="dropdown-container">
+            @foreach (var storageType in Model.StorageTypes)
+            {
+                <a>@storageType</a>
+            }
         </div>
     </div>
-    <script src="@Url.Content("~/Scripts/JavaScriptDropDown.js")"></script>
+</div>
+<script src="@Url.Content("~/Scripts/JavaScriptDropDown.js")"></script>
 </div>
