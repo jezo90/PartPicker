@@ -736,13 +736,17 @@ footer {
         width: 180px
     }
 
-.navbar a:hover, .drop:hover .dropbtn {
+.drop:hover .dropbtn {
         background-color: #EF7F29;
         transform:scale(1.1)
 }
-.orange {
-    background-color: #EF7F29 !important;
-}
+    .drop:hover .drop-content a {
+        transform: none !important;
+    }
+
+    .orange {
+        background-color: #EF7F29 !important;
+    }
 
 @media screen and (min-width: 1311px) {
     .navbar a:hover, .drop:hover .dropbtn {
@@ -774,14 +778,16 @@ footer {
             background-color: #303030;
         }
 .image_up {
+    position: relative;
     pointer-events: none;
     margin-top: 3px;
     display: none;
     float: right;
-    width :15px;
-    height :15px;
+    width: 15px;
+    height: 15px;
 }
 .image_down {
+    position: relative;
     pointer-events: none;
     margin-top: 3px;
     float: right;
@@ -803,7 +809,7 @@ footer {
 
     .drop .dropbtn {
         width: 100%;
-        PADDING:7px 8px 7PX 24PX;
+        PADDING: 14px 8px 14PX 30PX;
     }
 
     .drop-content {
@@ -824,8 +830,6 @@ footer {
         margin-right: 0.6%
     }
 
-    .navbar a:hover, .drop:hover .dropbtn {
-        transform: scale(1.0)
-    }
+
 
 } 
