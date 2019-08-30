@@ -20,11 +20,15 @@
                         @cpu<i class="caret-down"></i>
                     </button>
                     <div class="dropdown-container">
-                        @foreach (var product in Model.Cpus)
+                        @foreach (var series in Model.CpuSeries)
                         {
-                            if (product.Product.Manufacturer.Name == cpu)
+                            foreach (var product in Model.Cpus)
                             {
-                                <a href="#">@product.Product.Series.Name</a>
+                                if (product.Product.Manufacturer.Name == cpu && product.Product.Series.Name == series)
+                                {
+                                    <a href="#">@series</a>
+                                    break;
+                                }
                             }
                         }
                     </div>
