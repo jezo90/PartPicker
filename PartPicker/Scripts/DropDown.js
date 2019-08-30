@@ -44,6 +44,15 @@ window.onclick = function (e) {
             myDropdown.classList.remove('show');
             
         }
-        
+
+        var x = document.getElementById("dropbtn");
+        if (x.className === "dropbtn") {
+            x.className += " orange";
+        } else {
+            x.className = "dropbtn";
+        }
+
+
     }
+
 }

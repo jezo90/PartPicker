@@ -273,6 +273,7 @@ body {
 
 .item-part .part-image {
     width: 30% !important;
+    height:auto;
 }
 
 @media screen and (min-width:401px) {
@@ -742,7 +743,7 @@ footer {
 }
 
 @media screen and (min-width: 1311px) {
-    .navbar a:hover, .drop:hover .dropbtn, .dropbtn:focus {
+    .navbar a:hover, .drop:hover .dropbtn {
         font-size: 20px;
     }
 }
@@ -764,7 +765,7 @@ footer {
         text-decoration: none;
         display: block;
         text-align: center;
-        width: 160PX;
+        width: 100%;
     }
 
         .drop-content a:hover {
