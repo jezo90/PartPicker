@@ -155,7 +155,7 @@ body {
     .sidebar a {
         display: block;
         color: #FFFFFF;
-        padding: 16px;
+        padding: 16px;  
         text-decoration: none;
     }
 
@@ -278,7 +278,7 @@ body {
 
 @media screen and (min-width:401px) {
     .item-part {
-        border: 1px solid #303030;
+        border: 1.5px solid #303030;
     }
 }
 @media screen and (max-width:400px) {
@@ -729,11 +729,12 @@ footer {
         border: none;
         outline: none;
         color: white;
-        padding: 14px 16px;
+        padding: 14px 25px 14px 4px;
         background-color: inherit;
         font-family: inherit;
         margin: 0;
-        width: 180px
+        width: 180px;
+        height: 52px;
     }
 
 .drop:hover .dropbtn {
@@ -748,11 +749,6 @@ footer {
         background-color: #EF7F29 !important;
     }
 
-@media screen and (min-width: 1311px) {
-    .navbar a:hover, .drop:hover .dropbtn {
-        font-size: 20px;
-    }
-}
 
 .drop-content {
     float:left;
@@ -830,6 +826,8 @@ footer {
         margin-right: 0.6%
     }
 
-
+    .drop:hover .dropbtn {
+        transform: none !important;
+    }
 
 } 
