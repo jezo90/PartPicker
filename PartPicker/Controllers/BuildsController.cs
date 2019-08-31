@@ -25,11 +25,80 @@ namespace PartPicker.Controllers
             return View();
         }
 
-        public ActionResult List()
-        {
-            var builds = context.Build.ToList();
+        //public ActionResult List()
+        //{
+        //    var builds = context.Build.ToList();
 
-            int amountOfBuilds = context.Build.Count() + 1;
+        //    int amountOfBuilds = context.Build.Count() + 1;
+        //    double[] sum = new double[amountOfBuilds];
+        //    double[] average = new double[amountOfBuilds];
+        //    double[] count = new double[amountOfBuilds];
+
+        //    for (int i = 0; i < amountOfBuilds; i++)
+        //    {
+        //        sum[i] = 0.0d;
+        //        count[i] = 0.0d;
+        //    }
+
+        //    foreach (Build b in builds)
+        //    {
+        //        foreach (Rate r in b.Rates)
+        //        {
+        //            sum[r.BuildId] += r.Grade;
+        //            count[r.BuildId]++;
+        //        }
+        //    }
+
+        //    for (int i = 0; i < amountOfBuilds; i++)
+        //    {
+        //        if (count[i] != 0d) average[i] = sum[i] / count[i] * 1.0d;
+        //    }
+
+        //    var buildsListViewModel = new BuildsListViewModel()
+        //    {
+        //        Builds = builds,
+        //        Average = average,
+        //        Count = count
+        //    };
+
+        //    return View(buildsListViewModel);
+        //}
+
+        public ActionResult List(BuildSearchViewModel search)
+        {
+            var builds = context.Build.Where(a => !a.Hidden).ToList();
+
+            if (search.CpuManufacturers.Count() != 0)
+            {
+                foreach (var i in search.CpuManufacturers)
+                    builds = builds.Where(a => a.Cpu.Product.Manufacturer.Name == i).ToList();
+            }
+
+            if (search.CpuSeries.Count() != 0)
+            {
+                foreach (var i in search.CpuSeries)
+                    builds = builds.Where(a => a.Cpu.Product.Series.Name == i).ToList();
+            }
+
+            if (search.GpuManufacturers.Count() != 0)
+            {
+                foreach (var i in search.GpuManufacturers)
+                    builds = builds.Where(a => a.Gpu.Product.Manufacturer.Name == i).ToList();
+            }
+
+            if (search.RamType.Count() != 0)
+            {
+                foreach (var i in search.RamType)
+                    builds = builds.Where(a => a.Ram.RamType.Name == i).ToList();
+            }
+
+            if (search.StorageType.Count() != 0)
+            {
+                foreach (var i in search.StorageType)
+                    builds = builds.Where(a => a.Storage.Interface.Name == i).ToList();
+            }
+
+            int amountOfBuilds = builds.Count() + 1;
             double[] sum = new double[amountOfBuilds];
             double[] average = new double[amountOfBuilds];
             double[] count = new double[amountOfBuilds];
@@ -54,18 +123,20 @@ namespace PartPicker.Controllers
                 if (count[i] != 0d) average[i] = sum[i] / count[i] * 1.0d;
             }
 
+
             var buildsListViewModel = new BuildsListViewModel()
             {
                 Builds = builds,
                 Average = average,
-                Count = count
+                Count = count,
+                Search = search
             };
 
             return View(buildsListViewModel);
         }
 
         [ChildActionOnly]
-        public ActionResult Filters()
+        public ActionResult Filters(BuildSearchViewModel search)
         {
             var cpus = context.Cpu.ToList();
 
@@ -96,7 +167,8 @@ namespace PartPicker.Controllers
                 CpuManufacturers = cpuManufacturer,
                 GpuManufacturers = gpuManufacturer,
                 StorageTypes = storageType,
-                RamTypes = ramType
+                RamTypes = ramType,
+                Search = search
             };
 
             return PartialView("_Filters", buildFiltersViewModel);

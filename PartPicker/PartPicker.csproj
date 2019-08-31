@@ -203,6 +203,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\BuildFiltersViewModel.cs" />
+    <Compile Include="ViewModels\BuildSearchViewModel.cs" />
     <Compile Include="ViewModels\BuildsListViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
   </ItemGroup>

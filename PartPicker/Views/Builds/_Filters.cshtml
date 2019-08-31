@@ -1,5 +1,10 @@
 ﻿@model PartPicker.ViewModels.BuildFiltersViewModel
 @using PartPicker.Infrastructure
+@using PartPicker.ViewModels
+@{ 
+    BuildSearchViewModel searching = new BuildSearchViewModel();
+}
+
 
 <div class="sidebar">
     <button class="dropdown-btn">
@@ -13,10 +18,11 @@
             <button class="dropdown-btn">
                 Producent<i class="caret-down"></i>
             </button>
+
             <div class="dropdown-container">
                 @foreach (var cpu in Model.CpuManufacturers)
                 {
-                    <button class="dropdown-btn">
+                    <button class="dropdown-btn" id="@cpu">
                         @cpu<i class="caret-down"></i>
                     </button>
                     <div class="dropdown-container">
@@ -77,5 +83,16 @@
             }
         </div>
     </div>
+    @{ 
+        searching.CpuManufacturers.Add("Intel");
+        searching.CpuManufacturers.Add("AMD");
+    }
+    @foreach (var i in Model.Search.CpuManufacturers)
+    {
+        <p> @i </p>
+    }
+
+    <a href="@Url.Action("List", "Builds", new { search = (BuildSearchViewModel)searching } )">SEND</a>
 </div>
+
 <script src="@Url.Content("~/Scripts/JavaScriptDropDown.js")"></script>

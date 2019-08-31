@@ -6,8 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@Html.Action("Filters")
-
+@Html.Action("Filters", Model.Search)
 <div class="content">
     <div class="container ">
         <div class="item-list nazwy">

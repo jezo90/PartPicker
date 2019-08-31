@@ -8,13 +8,13 @@
     <script src="@Url.Content("~/Scripts/DropDown.js")"></script>
 </head>
 <body>
-
     <div class="top-nav" id="top-nav">
         <a>Hello Guest!</a>
 
         <div class="drop">
-            <button id="dropbtn" class="dropbtn" onclick="drop()">Przeglądaj  <img id="image_down" class="image_down" src="@Url.ImagesPath("down.png")" />
-                <img id="image_up" class="image_up" src="@Url.ImagesPath("up.png")"  />
+            <button id="dropbtn" class="dropbtn" onclick="drop()">
+                Przeglądaj  <img id="image_down" class="image_down" src="@Url.ImagesPath("down.png")" />
+                <img id="image_up" class="image_up" src="@Url.ImagesPath("up.png")" />
             </button>
             <div class="drop-content" id="myDropdown">
                 <a href="@Url.Action("List", "Builds")">Buildy</a>
@@ -43,7 +43,7 @@
         <!-- Banner -->
 
         <div class="banner">
-            <a href="@Url.Action("Index", "Home")"> 
+            <a href="@Url.Action("Index", "Home")">
                 <img src="@Url.BanersImagesPath()" class="banner-img" />
             </a>
         </div>
