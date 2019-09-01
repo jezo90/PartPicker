@@ -80,9 +80,9 @@ body {
     }
 
         .top-nav a:hover {
-            -webkit-box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
-            -moz-box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
-            box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
+            -webkit-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+            -moz-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+            box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
             background-color: #EF7F29;
             color: #FFFFFF;
         }
@@ -225,9 +225,9 @@ body {
     border-left: solid 5px #0D0D0D;
     border-right: solid 5px #0D0D0D;
     border-bottom: ridge 1px #0D0D0D;
-    -webkit-box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
-    -moz-box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
-    box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
+    -webkit-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+    -moz-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+    box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
 }
     .dropdown-btn:hover {
         background-color: #EF7F29;
@@ -245,9 +245,9 @@ body {
         border-right: solid 5px #0D0D0D;
         border-bottom: ridge 1px #0D0D0D;
         background-color: #3b3b3b;
-        -webkit-box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.50);
-        -moz-box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.50);
-        box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.50);
+        -webkit-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+        -moz-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+        box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
     }
 
 .filter-send {
@@ -259,9 +259,9 @@ body {
     border-bottom: ridge 1px #0D0D0D;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
-    -webkit-box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
-    -moz-box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
-    box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
+    -webkit-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+    -moz-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+    box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
 }
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Item list !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 .item-list {
@@ -768,9 +768,9 @@ footer {
     .drop:hover .dropbtn {
         background-color: #EF7F29;
         transform: scale(1.1);
-        -webkit-box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
-        -moz-box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
-        box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
+        -webkit-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+        -moz-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+        box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
     }
     .drop:hover .drop-content a {
         transform: none !important;
@@ -778,9 +778,9 @@ footer {
 
 .orange {
     background-color: #EF7F29 !important;
-    -webkit-box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
-    -moz-box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
-    box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
+    -webkit-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+    -moz-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+    box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
 }
 
 
