@@ -6,6 +6,20 @@ function dropdownNav() {
     } else {
         x.className = "top-nav";
     }
+
+    var x = document.getElementById("plus");
+    if (x.className === "plus") {
+        x.className += " hide";
+    } else {
+        x.className = "plus";
+    }
+
+    var x = document.getElementById("minus");
+    if (x.className === "minus") {
+        x.className += " show";
+    } else {
+        x.className = "minus";
+    }
 }
 
 function drop() {

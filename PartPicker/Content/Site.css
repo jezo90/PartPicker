@@ -86,6 +86,7 @@ body {
 
     .top-nav .icon {
         display: none;
+        width:20px;
     }
 
 @media screen and (min-width: 1311px) {
@@ -120,6 +121,7 @@ body {
                 position: absolute;
                 right: 0;
                 top: 0;
+     
             }
 
             .top-nav.responsive a {
@@ -281,6 +283,7 @@ body {
         border: 1.5px solid #303030;
     }
 }
+
 @media screen and (max-width:400px) {
     .item-part {
         border: 0.5px solid #303030;
@@ -398,14 +401,14 @@ footer {
 }
 
 .slideshow-1-margin {
-    margin-left: 15%;
+    margin-left: 18%;
     margin-top: 45px;
     margin-bottom: 55px;
 }
 
 .slideshow-2-margin {
     float: right;
-    margin-right: 15%;
+    margin-right: 18%;
     margin-top: 45px;
     margin-bottom: 55px;
 }
@@ -413,13 +416,13 @@ footer {
 #slideshow {
     float: left;
     overflow: hidden;
-    height: 450px;
-    width: 540px;
+    height: 427.5px;
+    width: 513px;
 }
 
 
 .slide-wrapper {
-    width: 1620px;
+    width: 1539px;
     height: 450px;
     -webkit-animation: slide 10s ease infinite;
 }
@@ -427,16 +430,16 @@ footer {
 .slide {
     position: relative;
     float: left;
-    height: 450px;
-    width: 540px;
+    height: 427.5px;
+    width: 513px;
     background-color: #303030;
 }
 
 .slide-background {
     top: 0;
     left: 0;
-    height: 450px;
-    width: 540px;
+    height: 427.5px;
+    width: 513px;
     z-index: 1;
     position: relative;
     opacity: 0.2;
@@ -448,15 +451,15 @@ footer {
 .slide-icon {
     top: 0;
     left: 0;
-    height: 450px;
-    width: 540px;
+    height: 427.5px;
+    width: 513px;
     z-index: 2;
     position: absolute;
 }
 
 
 .slide-text {
-    width: 540px;
+    width: 513px;
     position: absolute;
     z-index: 3;
     bottom: 0;
@@ -479,19 +482,19 @@ footer {
     }
 
     45% {
-        margin-left: -540px;
+        margin-left: -513px;
     }
 
     60% {
-        margin-left: -540px;
+        margin-left: -513px;
     }
 
     75% {
-        margin-left: -1080px;
+        margin-left: -1026px;
     }
 
     90% {
-        margin-left: -1080px;
+        margin-left: -1026px;
     }
 }
 
@@ -795,7 +798,7 @@ footer {
     display: block !important;
 }
 .hide {
-    display:none;
+    display:none !important;
 }
 
 @media screen and (max-width: 1310px) {
@@ -830,4 +833,22 @@ footer {
         transform: none !important;
     }
 
-} 
+}
+
+
+
+
+
+
+
+
+
+.plus {
+    position: relative;
+    display: block;
+}
+
+.minus {
+    position: relative;
+    display: none;
+}

@@ -8,15 +8,15 @@
 
 <div class="sidebar">
     <button class="dropdown-btn">
-        Filtry<i class="caret-down"></i>
+        Filtry<i class="caret-down"><div class="plus" id="plus">+</div><div class="minus" id="minus">-</div></i>
     </button>
     <div class="dropdown-container">
         <button class="dropdown-btn">
-            Procesor<i class="caret-down"></i>
+            Procesor<i class="caret-down">+</i>
         </button>
         <div class="dropdown-container">
             <button class="dropdown-btn">
-                Producent<i class="caret-down"></i>
+                Producent<i class="caret-down">+</i>
             </button>
 
             <div class="dropdown-container">
@@ -43,11 +43,11 @@
         </div>
 
         <button class="dropdown-btn">
-            Karta graficzna<i class="caret-down"></i>
+            Karta graficzna<i class="caret-down">+</i>
         </button>
         <div class="dropdown-container">
             <button class="dropdown-btn">
-                Producent<i class="caret-down"></i>
+                Producent<i class="caret-down">+</i>
             </button>
             <div class="dropdown-container">
                 @foreach (var manufacturer in Model.GpuManufacturers)
@@ -58,11 +58,11 @@
         </div>
 
         <button class="dropdown-btn">
-            Pamięć RAM<i class="caret-down"></i>
+            Pamięć RAM<i class="caret-down">+</i>
         </button>
         <div class="dropdown-container">
             <button class="dropdown-btn">
-                Typ RAM<i class="caret-down"></i>
+                Typ RAM<i class="caret-down">+</i>
             </button>
             <div class="dropdown-container">
                 @foreach (var ramType in Model.RamTypes)
@@ -73,7 +73,7 @@
         </div>
 
         <button class="dropdown-btn">
-            Dysk Twardy<i class="caret-down"></i>
+            Dysk Twardy<i class="caret-down">+</i>
         </button>
 
         <div class="dropdown-container">
