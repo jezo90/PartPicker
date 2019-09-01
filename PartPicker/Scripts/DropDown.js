@@ -5,6 +5,17 @@ function dropdownNav() {
         x.className += " responsive";
     } else {
         x.className = "top-nav";
+
+
+        var x = document.getElementById("image_up");
+        if (x.className === "image_up") {
+        } else {
+            x.className = "image_up";
+            var x = document.getElementById("image_down");
+            x.className = "image_down";
+        }
+
+       
     }
 
     var x = document.getElementById("plus");
@@ -21,6 +32,13 @@ function dropdownNav() {
         x.className = "minus";
     }
 }
+
+
+
+
+
+
+
 
 function drop() {
     document.getElementById("myDropdown").classList.toggle("show");

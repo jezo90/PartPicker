@@ -80,13 +80,16 @@ body {
     }
 
         .top-nav a:hover {
+            -webkit-box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
+            -moz-box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
+            box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
             background-color: #EF7F29;
             color: #FFFFFF;
         }
 
     .top-nav .icon {
         display: none;
-        width:20px;
+        width:15px;
     }
 
 @media screen and (min-width: 1311px) {
@@ -213,32 +216,54 @@ body {
     color: #FFFFFF;
     display: block;
     border: none;
-    background: none;
+    background-color: #303030;
     width: 100%;
     text-align: left;
     cursor: pointer;
     outline: none;
+    border-bottom-left-radius: 15px;
+    border-left: solid 5px #0D0D0D;
+    border-right: solid 5px #0D0D0D;
+    border-bottom: ridge 1px #0D0D0D;
+    -webkit-box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
+    -moz-box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
+    box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
 }
+    .dropdown-btn:hover {
+        background-color: #EF7F29;
+    }
 
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
 .dropdown-container {
     display: none;
     background: none;
-    padding-left: 8px;
+    padding-left: 12px;
 }
+    .dropdown-container a {
+        padding: 6px 8px 6px 16px;
+        border-left: solid 5px #0D0D0D;
+        border-right: solid 5px #0D0D0D;
+        border-bottom: ridge 1px #0D0D0D;
+        background-color: #3b3b3b;
+        -webkit-box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.50);
+        -moz-box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.50);
+        box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.50);
+    }
 
-/* Optional: Style the caret down icon */
-.caret-down {
-    float: right;
-    padding-right: 8px;
+.filter-send {
+    font-family: montserrat-extrabold;
+    font-size: 20px;
+    padding: 6px 8px 6px 16px !important;
+    border-left: solid 5px #0D0D0D;
+    border-right: solid 5px #0D0D0D;
+    border-bottom: ridge 1px #0D0D0D;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    -webkit-box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
+    -moz-box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
+    box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
 }
-
-
-
-
-
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Item list !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-
 .item-list {
     font-size: 14px;
     display: flex;
@@ -740,17 +765,23 @@ footer {
         height: 52px;
     }
 
-.drop:hover .dropbtn {
+    .drop:hover .dropbtn {
         background-color: #EF7F29;
-        transform:scale(1.1)
-}
+        transform: scale(1.1);
+        -webkit-box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
+        -moz-box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
+        box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
+    }
     .drop:hover .drop-content a {
         transform: none !important;
     }
 
-    .orange {
-        background-color: #EF7F29 !important;
-    }
+.orange {
+    background-color: #EF7F29 !important;
+    -webkit-box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
+    -moz-box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
+    box-shadow: inset 0px 0px 30px 8px rgba(0,0,0,0.60);
+}
 
 
 .drop-content {
