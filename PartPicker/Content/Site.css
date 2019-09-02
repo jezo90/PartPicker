@@ -85,6 +85,7 @@ body {
             box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
             background-color: #EF7F29;
             color: #FFFFFF;
+            transition: background-color 0.3s ease-out;
         }
 
     .top-nav .icon {
@@ -92,9 +93,24 @@ body {
         width:15px;
     }
 
+
+
+.plus {
+    position: relative;
+    display: block;
+}
+
+.minus {
+    position: relative;
+    display: none;
+}
+
+
+
 @media screen and (min-width: 1311px) {
     .top-nav a:hover {
-        transform: scale(1.1)
+        transform: scaleX(1.1);
+        transition: transform 0.3s ease-out;
     }
 }
 
@@ -231,13 +247,14 @@ body {
 }
     .dropdown-btn:hover {
         background-color: #EF7F29;
+        transition: background-color 0.3s ease-out;
     }
 
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
 .dropdown-container {
     display: none;
     background: none;
-    padding-left: 12px;
+    padding-left: 14px;
 }
     .dropdown-container a {
         padding: 6px 8px 6px 16px;
@@ -250,19 +267,49 @@ body {
         box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
     }
 
-.filter-send {
+.dropdown-container-last {
     font-family: montserrat-extrabold;
     font-size: 20px;
-    padding: 6px 8px 6px 16px !important;
+    padding: 6px 8px 6px 16px;
+    float: left;
+    width: 100%;
+    text-align: left;
+    border: none;
     border-left: solid 5px #0D0D0D;
     border-right: solid 5px #0D0D0D;
+    background-color: #3b3b3b;
+    color: #FFFFFF;
+    display: block;
     border-bottom: ridge 1px #0D0D0D;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-    -webkit-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
-    -moz-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
-    box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+    -webkit-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.4);
+    -moz-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.4);
+    box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.4);
+    outline: none;
+    cursor: pointer;
 }
+    .dropdown-container-last:hover {
+        background-color: darkgreen;
+        transition: background-color 0.3s ease-out;
+    }
+
+
+    .filter-send {
+        font-family: montserrat-extrabold;
+        font-size: 20px;
+        padding: 6px 8px 6px 16px !important;
+        border-left: solid 5px #0D0D0D;
+        border-right: solid 5px #0D0D0D;
+        border-bottom: ridge 1px #0D0D0D;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        -webkit-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+        -moz-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+        box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+    }
+        .filter-send:hover {
+            background-color: #EF7F29;
+            transition: background-color 0.3s ease-out;
+        }
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Item list !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 .item-list {
     font-size: 14px;
@@ -275,16 +322,17 @@ body {
     font-family: montserrat-bold !important;
 }
     .item-list :first-child {
-        width: 10% !important;
+        width: 10% ;
     }
     .item-list :not(:first-child) {
-        width: 18% !important;
+        width: 18%;
     }
 
 .item-part {
     float: left;
     padding: 1%;
     text-align: center;
+    z-index:1;
 }
 .item-part-image {
     min-width: -webkit-fill-available;
@@ -292,6 +340,8 @@ body {
 .item-list-a {
     color: #FFFFFF;
     text-decoration: none;
+    width: 100% !important;
+    z-index: 2;
 }
 
 .item-part .star {
@@ -771,6 +821,8 @@ footer {
         -webkit-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
         -moz-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
         box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+        transition: background-color 0.3s ease-out;
+        transition: transform 0.3s ease-out;
     }
     .drop:hover .drop-content a {
         transform: none !important;
@@ -806,6 +858,7 @@ footer {
 
         .drop-content a:hover {
             background-color: #303030;
+            transition: background-color 0.3s ease-out;
         }
 .image_up {
     position: relative;
@@ -862,6 +915,7 @@ footer {
 
     .drop:hover .dropbtn {
         transform: none !important;
+
     }
 
 }
@@ -872,14 +926,3 @@ footer {
 
 
 
-
-
-.plus {
-    position: relative;
-    display: block;
-}
-
-.minus {
-    position: relative;
-    display: none;
-}

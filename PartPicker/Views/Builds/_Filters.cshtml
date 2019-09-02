@@ -15,22 +15,22 @@
 
 <div class="sidebar">
     <button class="dropdown-btn">
-        Filtry<i class="caret-down"></i>
+        Filtry
     </button>
     <div class="dropdown-container">
         <button class="dropdown-btn">
-            Procesor<i class="caret-down"></i>
+            Procesor
         </button>
         <div class="dropdown-container">
             <button class="dropdown-btn">
-                Producent<i class="caret-down"></i>
+                Producent
             </button>
 
             <div class="dropdown-container">
                 @foreach (var cpu in Model.CpuManufacturers)
                 {
                     <button class="dropdown-btn">
-                        @cpu<i class="caret-down"></i>
+                        @cpu
                     </button>
                     <div class="dropdown-container">
                         @foreach (var series in Model.CpuSeries)
@@ -39,7 +39,7 @@
                             {
                                 if (product.Product.Manufacturer.Name == cpu && product.Product.Series.Name == series)
                                 {
-                                    <button>
+                                    <button class="dropdown-container-last">
                                         @series
                                     </button>
                                     break;
@@ -52,11 +52,11 @@
         </div>
 
         <button class="dropdown-btn">
-            Karta graficzna<i class="caret-down"></i>
+            Karta graficzna
         </button>
         <div class="dropdown-container">
             <button class="dropdown-btn">
-                Producent<i class="caret-down"></i>
+                Producent
             </button>
             <div class="dropdown-container">
                 @foreach (var manufacturer in Model.GpuManufacturers)
@@ -67,11 +67,11 @@
         </div>
 
         <button class="dropdown-btn">
-            Pamięć RAM<i class="caret-down"></i>
+            Pamięć RAM
         </button>
         <div class="dropdown-container">
             <button class="dropdown-btn">
-                Typ RAM<i class="caret-down"></i>
+                Typ RAM
             </button>
             <div class="dropdown-container">
                 @foreach (var ramType in Model.RamTypes)
@@ -82,7 +82,7 @@
         </div>
 
         <button class="dropdown-btn">
-            Dysk Twardy<i class="caret-down"></i>
+            Dysk Twardy
         </button>
 
         <div class="dropdown-container">
@@ -115,7 +115,7 @@
         }
     }
 
-    <a href="@Url.Action("List", "Builds", new { @cpuM = cpuM } )">SEND</a>
+    <a class="filter-send" href="@Url.Action("List", "Builds", new { @cpuM = cpuM } )">SEND</a>
 </div>
 
 <script src="@Url.Content("~/Scripts/JavaScriptDropDown.js")"></script>
