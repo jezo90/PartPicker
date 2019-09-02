@@ -5,8 +5,40 @@ function dropdownNav() {
         x.className += " responsive";
     } else {
         x.className = "top-nav";
+
+
+        var x = document.getElementById("image_up");
+        if (x.className === "image_up") {
+        } else {
+            x.className = "image_up";
+            var x = document.getElementById("image_down");
+            x.className = "image_down";
+        }
+
+       
+    }
+
+    var x = document.getElementById("plus");
+    if (x.className === "plus") {
+        x.className += " hide";
+    } else {
+        x.className = "plus";
+    }
+
+    var x = document.getElementById("minus");
+    if (x.className === "minus") {
+        x.className += " show";
+    } else {
+        x.className = "minus";
     }
 }
+
+
+
+
+
+
+
 
 function drop() {
     document.getElementById("myDropdown").classList.toggle("show");

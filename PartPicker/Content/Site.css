@@ -80,12 +80,16 @@ body {
     }
 
         .top-nav a:hover {
+            -webkit-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+            -moz-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+            box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
             background-color: #EF7F29;
             color: #FFFFFF;
         }
 
     .top-nav .icon {
         display: none;
+        width:15px;
     }
 
 @media screen and (min-width: 1311px) {
@@ -120,6 +124,7 @@ body {
                 position: absolute;
                 right: 0;
                 top: 0;
+     
             }
 
             .top-nav.responsive a {
@@ -211,32 +216,54 @@ body {
     color: #FFFFFF;
     display: block;
     border: none;
-    background: none;
+    background-color: #303030;
     width: 100%;
     text-align: left;
     cursor: pointer;
     outline: none;
+    border-bottom-left-radius: 15px;
+    border-left: solid 5px #0D0D0D;
+    border-right: solid 5px #0D0D0D;
+    border-bottom: ridge 1px #0D0D0D;
+    -webkit-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+    -moz-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+    box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
 }
+    .dropdown-btn:hover {
+        background-color: #EF7F29;
+    }
 
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
 .dropdown-container {
     display: none;
     background: none;
-    padding-left: 8px;
+    padding-left: 12px;
 }
+    .dropdown-container a {
+        padding: 6px 8px 6px 16px;
+        border-left: solid 5px #0D0D0D;
+        border-right: solid 5px #0D0D0D;
+        border-bottom: ridge 1px #0D0D0D;
+        background-color: #3b3b3b;
+        -webkit-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+        -moz-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+        box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+    }
 
-/* Optional: Style the caret down icon */
-.caret-down {
-    float: right;
-    padding-right: 8px;
+.filter-send {
+    font-family: montserrat-extrabold;
+    font-size: 20px;
+    padding: 6px 8px 6px 16px !important;
+    border-left: solid 5px #0D0D0D;
+    border-right: solid 5px #0D0D0D;
+    border-bottom: ridge 1px #0D0D0D;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    -webkit-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+    -moz-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+    box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
 }
-
-
-
-
-
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Item list !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-
 .item-list {
     font-size: 14px;
     display: flex;
@@ -281,6 +308,7 @@ body {
         border: 1.5px solid #303030;
     }
 }
+
 @media screen and (max-width:400px) {
     .item-part {
         border: 0.5px solid #303030;
@@ -398,14 +426,14 @@ footer {
 }
 
 .slideshow-1-margin {
-    margin-left: 15%;
+    margin-left: 18%;
     margin-top: 45px;
     margin-bottom: 55px;
 }
 
 .slideshow-2-margin {
     float: right;
-    margin-right: 15%;
+    margin-right: 18%;
     margin-top: 45px;
     margin-bottom: 55px;
 }
@@ -413,13 +441,13 @@ footer {
 #slideshow {
     float: left;
     overflow: hidden;
-    height: 450px;
-    width: 540px;
+    height: 427.5px;
+    width: 513px;
 }
 
 
 .slide-wrapper {
-    width: 1620px;
+    width: 1539px;
     height: 450px;
     -webkit-animation: slide 10s ease infinite;
 }
@@ -427,16 +455,16 @@ footer {
 .slide {
     position: relative;
     float: left;
-    height: 450px;
-    width: 540px;
+    height: 427.5px;
+    width: 513px;
     background-color: #303030;
 }
 
 .slide-background {
     top: 0;
     left: 0;
-    height: 450px;
-    width: 540px;
+    height: 427.5px;
+    width: 513px;
     z-index: 1;
     position: relative;
     opacity: 0.2;
@@ -448,15 +476,15 @@ footer {
 .slide-icon {
     top: 0;
     left: 0;
-    height: 450px;
-    width: 540px;
+    height: 427.5px;
+    width: 513px;
     z-index: 2;
     position: absolute;
 }
 
 
 .slide-text {
-    width: 540px;
+    width: 513px;
     position: absolute;
     z-index: 3;
     bottom: 0;
@@ -479,19 +507,19 @@ footer {
     }
 
     45% {
-        margin-left: -540px;
+        margin-left: -513px;
     }
 
     60% {
-        margin-left: -540px;
+        margin-left: -513px;
     }
 
     75% {
-        margin-left: -1080px;
+        margin-left: -1026px;
     }
 
     90% {
-        margin-left: -1080px;
+        margin-left: -1026px;
     }
 }
 
@@ -737,17 +765,23 @@ footer {
         height: 52px;
     }
 
-.drop:hover .dropbtn {
+    .drop:hover .dropbtn {
         background-color: #EF7F29;
-        transform:scale(1.1)
-}
+        transform: scale(1.1);
+        -webkit-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+        -moz-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+        box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+    }
     .drop:hover .drop-content a {
         transform: none !important;
     }
 
-    .orange {
-        background-color: #EF7F29 !important;
-    }
+.orange {
+    background-color: #EF7F29 !important;
+    -webkit-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+    -moz-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+    box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+}
 
 
 .drop-content {
@@ -795,7 +829,7 @@ footer {
     display: block !important;
 }
 .hide {
-    display:none;
+    display:none !important;
 }
 
 @media screen and (max-width: 1310px) {
@@ -830,4 +864,22 @@ footer {
         transform: none !important;
     }
 
-} 
+}
+
+
+
+
+
+
+
+
+
+.plus {
+    position: relative;
+    display: block;
+}
+
+.minus {
+    position: relative;
+    display: none;
+}
