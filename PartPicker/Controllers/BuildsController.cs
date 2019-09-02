@@ -24,7 +24,7 @@ namespace PartPicker.Controllers
             return View();
         }
 
-        public ActionResult List(int? id, List<string> cpuM, List<string> cpuS, List<string> gpuM, List<string> ramT, List<string> storageT)
+        public ActionResult List(string cpuM = "", string cpuS = "")
         {
             var buildsBase = context.Build.Where(a => !a.Hidden).ToList();
             var builds = buildsBase;
@@ -34,81 +34,66 @@ namespace PartPicker.Controllers
             var buildsStorage = new List<Build>();
             var buildsOut = new List<Build>();
 
-            if(id==1)
+            if (cpuS != "")
             {
-                cpuM = new List<string>();
-                gpuM = new List<string>();
-                cpuS = new List<string>();
-                storageT = new List<string>();
-                ramT = new List<string>();
-            }
-
-            if (cpuS.Count() != 0)
-            {
-                foreach (var i in cpuS)
+                builds = buildsBase.Where(a => a.Cpu.Product.Series.Name == cpuS).ToList();
+                foreach (var j in builds)
                 {
-                    builds = buildsBase.Where(a => a.Cpu.Product.Series.Name == i).ToList();
-                    foreach (var j in builds)
-                    {
-                        buildsCpu.Add(j);
-                    }
+                    buildsCpu.Add(j);
                 }
                 buildsOut = buildsCpu;
             }
-            else if (cpuM.Count() != 0)
+            else if (cpuM != "")
             {
-                foreach (var i in cpuM)
+                builds = buildsBase.Where(a => a.Cpu.Product.Manufacturer.Name == cpuM).ToList();
+                foreach (var j in builds)
                 {
-                    builds = buildsBase.Where(a => a.Cpu.Product.Manufacturer.Name == i).ToList();
-                    foreach (var j in builds)
-                    {
-                        buildsCpu.Add(j);
-                    }
+                    buildsCpu.Add(j);
                 }
                 buildsOut = buildsCpu;
             }
 
-            if (gpuM.Count() != 0)
-            {
-                foreach (var i in gpuM)
-                {
-                    if (buildsCpu != null)
-                        builds = buildsCpu.Where(a => a.Gpu.Product.Manufacturer.Name == i).ToList();
-                    else
-                        builds = buildsBase.Where(a => a.Gpu.Product.Manufacturer.Name == i).ToList();
-                    foreach (var j in builds)
-                        buildsGpu.Add(j);
-                }
-                buildsOut = buildsGpu;
-            }
+            //if (gpuM.Count() != 0)
+            //{
+            //    foreach (var i in gpuM)
+            //    {
+            //        if (buildsCpu != null)
+            //            builds = buildsCpu.Where(a => a.Gpu.Product.Manufacturer.Name == i).ToList();
+            //        else
+            //            builds = buildsBase.Where(a => a.Gpu.Product.Manufacturer.Name == i).ToList();
+            //        foreach (var j in builds)
+            //            buildsGpu.Add(j);
+            //    }
+            //    buildsOut = buildsGpu;
+            //}
 
-            if (ramT.Count() != 0)
-            {
-                foreach (var i in ramT)
-                {
-                    if(buildsGpu != null)
-                        builds = buildsGpu.Where(a => a.Ram.RamType.Name == i).ToList();
-                    else
-                        builds = buildsBase.Where(a => a.Ram.RamType.Name == i).ToList();
-                    foreach (var j in builds)
-                        buildsRam.Add(j);
-                }
-                buildsOut = buildsRam;
-            }
+            //if (ramT.Count() != 0)
+            //{
+            //    foreach (var i in ramT)
+            //    {
+            //        if (buildsGpu != null)
+            //            builds = buildsGpu.Where(a => a.Ram.RamType.Name == i).ToList();
+            //        else
+            //            builds = buildsBase.Where(a => a.Ram.RamType.Name == i).ToList();
+            //        foreach (var j in builds)
+            //            buildsRam.Add(j);
+            //    }
+            //    buildsOut = buildsRam;
+            //}
 
-            if (storageT.Count() != 0)
-            {
-                foreach (var i in storageT)
-                {
-                    if (buildsRam != null)
-                        builds = buildsRam.Where(a => a.Storage.Interface.Name == i).ToList();
-                    else
-                        builds = buildsBase.Where(a => a.Storage.Interface.Name == i).ToList();
-                    foreach (var j in builds)
-                        buildsStorage.Add(j);
-                }
-                buildsOut = buildsStorage;
-            }
+            //if (storageT.Count() != 0)
+            //{
+            //    foreach (var i in storageT)
+            //    {
+            //        if (buildsRam != null)
+            //            builds = buildsRam.Where(a => a.Storage.Interface.Name == i).ToList();
+            //        else
+            //            builds = buildsBase.Where(a => a.Storage.Interface.Name == i).ToList();
+            //        foreach (var j in builds)
+            //            buildsStorage.Add(j);
+            //    }
+            //    buildsOut = buildsStorage;
+            //}
 
             if (buildsOut.Count() == 0)
                 buildsOut = buildsBase;
@@ -182,8 +167,7 @@ namespace PartPicker.Controllers
                 CpuManufacturers = cpuManufacturer,
                 GpuManufacturers = gpuManufacturer,
                 StorageTypes = storageType,
-                RamTypes = ramType,
-                Search = search
+                RamTypes = ramType
             };
 
             return PartialView("_Filters", buildFiltersViewModel);

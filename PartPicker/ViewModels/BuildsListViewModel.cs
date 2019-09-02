@@ -11,7 +11,7 @@ namespace PartPicker.ViewModels
         public IEnumerable<Build> Builds { get; set; }
         public double[] Average { get; set; }
         public double[] Count { get; set; }
-        public List<string> CpuM { get; set; }
-        public List<string> CpuS { get; set; }
+        public string CpuM { get; set; }
+        public string CpuS { get; set; }
     }
 }

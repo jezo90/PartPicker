@@ -12,7 +12,5 @@ namespace PartPicker.ViewModels
         public List<string> GpuManufacturers { get; set; }
         public List<string> RamType { get; set; }
         public List<string> StorageType { get; set; }
-
-
     }
 }

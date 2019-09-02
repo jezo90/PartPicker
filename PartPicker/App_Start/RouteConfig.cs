@@ -15,8 +15,8 @@ namespace PartPicker
 
             routes.MapRoute(
                 name: "BuildsList",
-                url: "Builds/{cpuM}/{cpuS}",
-                defaults: new { controller = "Builds", action = "List", cpuM = UrlParameter.Optional, cpuS = UrlParameter.Optional});
+                url: "Builds",
+                defaults: new { controller = "Builds", action = "List"});
 
             routes.MapRoute(
                 name: "Static",
