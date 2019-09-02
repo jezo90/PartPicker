@@ -13,7 +13,6 @@ namespace PartPicker.Controllers
     public class BuildsController : Controller
     {
         private PickerContext context = new PickerContext();
-        ICacheProvider cache = new DefaultCacheProvider();
 
         public ActionResult Index()
         {
@@ -25,80 +24,96 @@ namespace PartPicker.Controllers
             return View();
         }
 
-        //public ActionResult List()
-        //{
-        //    var builds = context.Build.ToList();
-
-        //    int amountOfBuilds = context.Build.Count() + 1;
-        //    double[] sum = new double[amountOfBuilds];
-        //    double[] average = new double[amountOfBuilds];
-        //    double[] count = new double[amountOfBuilds];
-
-        //    for (int i = 0; i < amountOfBuilds; i++)
-        //    {
-        //        sum[i] = 0.0d;
-        //        count[i] = 0.0d;
-        //    }
-
-        //    foreach (Build b in builds)
-        //    {
-        //        foreach (Rate r in b.Rates)
-        //        {
-        //            sum[r.BuildId] += r.Grade;
-        //            count[r.BuildId]++;
-        //        }
-        //    }
-
-        //    for (int i = 0; i < amountOfBuilds; i++)
-        //    {
-        //        if (count[i] != 0d) average[i] = sum[i] / count[i] * 1.0d;
-        //    }
-
-        //    var buildsListViewModel = new BuildsListViewModel()
-        //    {
-        //        Builds = builds,
-        //        Average = average,
-        //        Count = count
-        //    };
-
-        //    return View(buildsListViewModel);
-        //}
-
-        public ActionResult List(BuildSearchViewModel search)
+        public ActionResult List(int? id, List<string> cpuM, List<string> cpuS, List<string> gpuM, List<string> ramT, List<string> storageT)
         {
-            var builds = context.Build.Where(a => !a.Hidden).ToList();
+            var buildsBase = context.Build.Where(a => !a.Hidden).ToList();
+            var builds = buildsBase;
+            var buildsCpu = new List<Build>();
+            var buildsGpu = new List<Build>();
+            var buildsRam = new List<Build>();
+            var buildsStorage = new List<Build>();
+            var buildsOut = new List<Build>();
 
-            if (search.CpuManufacturers.Count() != 0)
+            if(id==1)
             {
-                foreach (var i in search.CpuManufacturers)
-                    builds = builds.Where(a => a.Cpu.Product.Manufacturer.Name == i).ToList();
+                cpuM = new List<string>();
+                gpuM = new List<string>();
+                cpuS = new List<string>();
+                storageT = new List<string>();
+                ramT = new List<string>();
             }
 
-            if (search.CpuSeries.Count() != 0)
+            if (cpuS.Count() != 0)
             {
-                foreach (var i in search.CpuSeries)
-                    builds = builds.Where(a => a.Cpu.Product.Series.Name == i).ToList();
+                foreach (var i in cpuS)
+                {
+                    builds = buildsBase.Where(a => a.Cpu.Product.Series.Name == i).ToList();
+                    foreach (var j in builds)
+                    {
+                        buildsCpu.Add(j);
+                    }
+                }
+                buildsOut = buildsCpu;
+            }
+            else if (cpuM.Count() != 0)
+            {
+                foreach (var i in cpuM)
+                {
+                    builds = buildsBase.Where(a => a.Cpu.Product.Manufacturer.Name == i).ToList();
+                    foreach (var j in builds)
+                    {
+                        buildsCpu.Add(j);
+                    }
+                }
+                buildsOut = buildsCpu;
             }
 
-            if (search.GpuManufacturers.Count() != 0)
+            if (gpuM.Count() != 0)
             {
-                foreach (var i in search.GpuManufacturers)
-                    builds = builds.Where(a => a.Gpu.Product.Manufacturer.Name == i).ToList();
+                foreach (var i in gpuM)
+                {
+                    if (buildsCpu != null)
+                        builds = buildsCpu.Where(a => a.Gpu.Product.Manufacturer.Name == i).ToList();
+                    else
+                        builds = buildsBase.Where(a => a.Gpu.Product.Manufacturer.Name == i).ToList();
+                    foreach (var j in builds)
+                        buildsGpu.Add(j);
+                }
+                buildsOut = buildsGpu;
             }
 
-            if (search.RamType.Count() != 0)
+            if (ramT.Count() != 0)
             {
-                foreach (var i in search.RamType)
-                    builds = builds.Where(a => a.Ram.RamType.Name == i).ToList();
+                foreach (var i in ramT)
+                {
+                    if(buildsGpu != null)
+                        builds = buildsGpu.Where(a => a.Ram.RamType.Name == i).ToList();
+                    else
+                        builds = buildsBase.Where(a => a.Ram.RamType.Name == i).ToList();
+                    foreach (var j in builds)
+                        buildsRam.Add(j);
+                }
+                buildsOut = buildsRam;
             }
 
-            if (search.StorageType.Count() != 0)
+            if (storageT.Count() != 0)
             {
-                foreach (var i in search.StorageType)
-                    builds = builds.Where(a => a.Storage.Interface.Name == i).ToList();
+                foreach (var i in storageT)
+                {
+                    if (buildsRam != null)
+                        builds = buildsRam.Where(a => a.Storage.Interface.Name == i).ToList();
+                    else
+                        builds = buildsBase.Where(a => a.Storage.Interface.Name == i).ToList();
+                    foreach (var j in builds)
+                        buildsStorage.Add(j);
+                }
+                buildsOut = buildsStorage;
             }
 
-            int amountOfBuilds = builds.Count() + 1;
+            if (buildsOut.Count() == 0)
+                buildsOut = buildsBase;
+
+            int amountOfBuilds = buildsBase.Count() + 1;
             double[] sum = new double[amountOfBuilds];
             double[] average = new double[amountOfBuilds];
             double[] count = new double[amountOfBuilds];
@@ -109,7 +124,7 @@ namespace PartPicker.Controllers
                 count[i] = 0.0d;
             }
 
-            foreach (Build b in builds)
+            foreach (Build b in buildsBase)
             {
                 foreach (Rate r in b.Rates)
                 {
@@ -123,13 +138,13 @@ namespace PartPicker.Controllers
                 if (count[i] != 0d) average[i] = sum[i] / count[i] * 1.0d;
             }
 
-
             var buildsListViewModel = new BuildsListViewModel()
             {
-                Builds = builds,
+                Builds = buildsOut,
                 Average = average,
                 Count = count,
-                Search = search
+                CpuM = cpuM,
+                CpuS = cpuS
             };
 
             return View(buildsListViewModel);
