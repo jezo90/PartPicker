@@ -12,8 +12,9 @@ namespace PartPicker.ViewModels
         public IEnumerable<Cpu> Cpus { get; set; }
         public IEnumerable<string> CpuSeries { get; set; }
         public IEnumerable<string> CpuManufacturers { get; set; }
-        public IEnumerable<string> GpuManufacturers { get; set; }
+        public IEnumerable<string> GpuSeries { get; set; }
         public IEnumerable<string> StorageTypes { get; set; }
         public IEnumerable<string> RamTypes { get; set; }
+        public ICacheProvider Cache { get; set; }
     }
 }
