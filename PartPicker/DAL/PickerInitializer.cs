@@ -47,7 +47,13 @@ namespace PartPicker.DAL
 
                 new FormFactor() { FormFactorId = 5, Name = "Mobile-ITX", Description = "Jeden z najmniejszych standardów produkcji płyt głównych"},
 
-                new FormFactor() { FormFactorId = 6, Name = "WTX", Description = "Rodzaj płyty głównej stworzonej przez firmę Intel w 1998 roku."}
+                new FormFactor() { FormFactorId = 6, Name = "WTX", Description = "Rodzaj płyty głównej stworzonej przez firmę Intel w 1998 roku."},
+
+                new FormFactor() { FormFactorId = 7, Name = "miniITX", Description = "Opis miniITX"},
+
+                new FormFactor() { FormFactorId = 8, Name = "nanoITX", Description = "Opis nanoITX"},
+
+                new FormFactor() { FormFactorId = 9, Name = "extendedATX", Description = "Opis extendedATX"}
             };
 
             formFactors.ForEach(s => context.FormFactor.Add(s));
@@ -87,7 +93,7 @@ namespace PartPicker.DAL
 
                 new GpuRam () { GpuRamId = 2, Name = "GDDR5X", Description = "Opis GDDR5X" },
 
-                new GpuRam () { GpuRamId = 3, Name = "GDDR6", Description = "Opis GDDR5" }
+                new GpuRam () { GpuRamId = 3, Name = "GDDR6", Description = "Opis GDDR6" }
             };
 
             gpuRams.ForEach(s => context.GpuRam.Add(s));
@@ -164,7 +170,9 @@ namespace PartPicker.DAL
 
                 new Manufacturer() { ManufacturerId = 15, Name = "Phanteks" },
 
-                new Manufacturer() { ManufacturerId = 16, Name = "Cooler Master" }
+                new Manufacturer() { ManufacturerId = 16, Name = "Cooler Master" },
+
+                new Manufacturer() { ManufacturerId = 17, Name = "ASRock" }
             };
 
             manufacturers.ForEach(s => context.Manufacturer.Add(s));
@@ -206,7 +214,11 @@ namespace PartPicker.DAL
 
                 new Product() { ProductId = 7, ManufacturerId = 4, SeriesId = 7, Description = "Opis NVIDIA GeForce"},
 
-                new Product() { ProductId = 8, ManufacturerId = 3, SeriesId = 7, Description = "Opis NVIDIA GeForce"}
+                new Product() { ProductId = 8, ManufacturerId = 3, SeriesId = 7, Description = "Opis NVIDIA GeForce"},
+
+                new Product() { ProductId = 9, ManufacturerId = 17, SeriesId = 6, Description = "Opis Radeona"},
+
+                new Product() { ProductId = 10, ManufacturerId = 5, SeriesId = 6, Description = "Opis Radeona"}
 
             };
 
@@ -218,18 +230,55 @@ namespace PartPicker.DAL
             {
                 new Case () { CaseId = 1, Name = "NZXT H500 (Black)", ManufacturerId = 14,
                             Model = "H500", Link = "https://www.morele.net/obudowa-nzxt-h500-okno-bialy-ca-h500b-w1-4596293/",
-                            FormFactorId = 2, MoboType = "ATX", GpuLenght = 381,
+                            FormFactorId = 2, MoboType = "ATX, Micro ATX, Mini ITX", GpuLenght = 381,
                             Image = "nzxt.png", ShopId = 3 },
 
                 new Case () { CaseId = 2, Name = "Phanteks Eclipse P300 Tempered Glass (Black)", ManufacturerId = 15,
                             Model = "Eclipse P300",  Link = "https://www.morele.net/obudowa-phanteks-eclipse-p300-ph-ec300ptg-bk-1603218/",
-                            FormFactorId = 2, MoboType = "ATX", GpuLenght = 330,
+                            FormFactorId = 2, MoboType = "ATX, Micro ATX, Mini ITX", GpuLenght = 330,
                             Image = "phanteks.png", ShopId = 3 },
 
                 new Case () { CaseId = 3, Name = "Cooler Master MasterBox Q300L", ManufacturerId = 16,
                             Model = "MasterBox Q300L", Link = "https://www.morele.net/obudowa-cooler-master-masterbox-q300l-mcb-q300l-kann-s00-1804692/",
-                            FormFactorId = 3, MoboType = "microATX", GpuLenght = 360,
-                            Image = "masterbox.png", ShopId = 3 }
+                            FormFactorId = 3, MoboType = "Micro ATX, Mini ITX", GpuLenght = 360,
+                            Image = "masterbox.png", ShopId = 3 },
+
+                new Case () { CaseId = 4, Name = "Cooler Master Silencio 352", ManufacturerId = 16,
+                            Model = "Silencio 352", Link = "https://www.morele.net/obudowa-cooler-master-silencio-352-sil-352m-kkn1-604750/",
+                            FormFactorId = 3, MoboType = "Micro ATX, Mini ITX", GpuLenght = 355,
+                            Image = "silencio352.png", ShopId = 3 },
+                
+                new Case () { CaseId = 5, Name = "Cooler Master MasterCase H500P Mesh Gunmetal", ManufacturerId = 16,
+                            Model = "MasterCase H500P", Link = "https://www.morele.net/obudowa-cooler-master-mastercase-h500p-mesh-gunmetal-mcm-h500p-mgnn-s10-4196809/",
+                            FormFactorId = 2, MoboType = "ATX, Micro ATX, Mini ITX", GpuLenght = 412,
+                            Image = "mastercaseh500p.png", ShopId = 3 },
+
+                new Case () { CaseId = 6, Name = "Cooler Master CM 590 III ", ManufacturerId = 16,
+                            Model = "CM 590 III", Link = "https://www.morele.net/obudowa-cooler-master-cm-590-iii-rc-593-kwn2-1254363/",
+                            FormFactorId = 2, MoboType = "ATX, Micro ATX, Mini ITX", GpuLenght = 405,
+                            Image = "cm590.png", ShopId = 3 },
+
+                new Case () { CaseId = 7, Name = "Cooler Master N200", ManufacturerId = 16,
+                            Model = "N200", Link = "https://www.morele.net/obudowa-cooler-master-n200-nse-200-kkn1-584078/",
+                            FormFactorId = 3, MoboType = "Micro ATX, Mini ITX", GpuLenght = 355,
+                            Image = "n200.png", ShopId = 3 },
+
+                new Case () { CaseId = 8, Name = "Cooler Master Elite 130 ", ManufacturerId = 16,
+                            Model = "Elite 130", Link = "https://www.morele.net/obudowa-cooler-master-elite-130-rc-130-kkn1-608939/",
+                            FormFactorId = 7, MoboType = "Mini ITX", GpuLenght = 343,
+                            Image = "elite130.png", ShopId = 3 },
+
+                new Case () { CaseId = 9, Name = "Nzxt H700 (White)", ManufacturerId = 14,
+                            Model = "H700", Link = "https://www.morele.net/obudowa-nzxt-h700-okno-bialy-ca-h700b-w1-4596291/",
+                            FormFactorId = 3, MoboType = "Extended ATX, ATX, Micro ATX, Mini ITX", GpuLenght = 413,
+                            Image = "h700.png", ShopId = 3 },
+
+                new Case () { CaseId = 10, Name = "Nzxt H400i (Black)", ManufacturerId = 14,
+                            Model = "H400i", Link = "https://www.morele.net/obudowa-nzxt-h400i-matowa-czarna-ca-h400w-bb-1683598/",
+                            FormFactorId = 7, MoboType = "Micro ATX, Mini ITX", GpuLenght = 411,
+                            Image = "h400i.png", ShopId = 3 }
+
+
             };
 
             cases.ForEach(s => context.Case.Add(s));
@@ -307,7 +356,43 @@ namespace PartPicker.DAL
                 new Gpu ()  { GpuId = 3, Name = "MSI GTX 1660 Ti VENTUS XS 6G OC", ProductId = 8,
                             Model = "GTX 1660 Ti", Link = "https://www.morele.net/karta-graficzna-msi-gtx-1660-ti-ventus-xs-6g-oc-6gb-gddr6-gtx-1660-ti-ventus-xs-6g-oc-4144268/",
                             Ram = 6, GpuRamId = 3, Frequency = 1.500, FrequencyBoost = 1.830, Length = 204, Benchmark = 1500,
-                            Image = "msigtx1660ti.png", ShopId = 3}
+                            Image = "msigtx1660ti.png", ShopId = 3},
+
+                new Gpu ()  { GpuId = 4, Name = "ASRock Radeon RX 5700 8GB GDDR6", ProductId = 9,
+                            Model = "RX 5700", Link = "https://www.morele.net/karta-graficzna-asrock-radeon-rx-5700-8gb-gddr6-hdmi-3xdp-box-radeon-rx-5700-8g-5938951/",
+                            Ram = 8, GpuRamId = 3, Frequency = 1.465, FrequencyBoost = 1.765, Length = 281, Benchmark = 1600,
+                            Image = "asrockrx5700.png", ShopId = 3},
+
+                new Gpu ()  { GpuId = 5, Name = "Asus RX5700XT-8G 8GB GDDR6", ProductId = 10,
+                            Model = "RX 5700 XT", Link = "https://www.morele.net/karta-graficzna-asus-rx5700xt-8g-8gb-gddr6-hdmi-3xdp-box-rx5700xt-8g-5938878/",
+                            Ram = 8, GpuRamId = 3, Frequency = 1.605, FrequencyBoost = 1.905, Length = 285, Benchmark = 1900,
+                            Image = "asrockrx5700xt.png", ShopId = 3},
+
+                new Gpu ()  { GpuId = 6, Name = "MSI Radeon RX 5700 XT EVOKE OC 8GB GDDR6", ProductId = 6,
+                            Model = "RX 5700 XT", Link = "https://www.morele.net/karta-graficzna-msi-radeon-rx-5700-xt-evoke-oc-8gb-gddr6-rx-5700-xt-evoke-oc-5939418/",
+                            Ram = 8, GpuRamId = 3, Frequency = 1.695, FrequencyBoost = 1.945, Length = 285, Benchmark = 1900,
+                            Image = "msirx5700xt.png", ShopId = 3},
+
+                new Gpu ()  { GpuId = 7, Name = "MSI GeForce GTX 1650 VENTUS XS 4G OC", ProductId = 8,
+                            Model = "GTX 1650", Link = "https://www.morele.net/karta-graficzna-msi-geforce-gtx-1650-ventus-xs-4g-oc-4gb-gddr5-gtx-1650-ventus-xs-4g-oc-5887879/",
+                            Ram = 4, GpuRamId = 1, Frequency = 1.485, FrequencyBoost = 1.740, Length = 177, Benchmark = 900,
+                            Image = "msigtx1650ventus.png", ShopId = 3},
+
+                new Gpu ()  { GpuId = 8, Name = "MSI GeForce GTX 1650 GAMING X 4G", ProductId = 8,
+                            Model = "GTX 1650", Link = "https://www.morele.net/karta-graficzna-msi-geforce-gtx-1650-gaming-x-4g-4gb-gddr5-gtx-1650-gaming-x-4g-5887878/",
+                            Ram = 4, GpuRamId = 1, Frequency = 1.485, FrequencyBoost = 1.860, Length = 245, Benchmark = 950,
+                            Image = "msigtx1650gaming.png", ShopId = 3},
+
+                new Gpu ()  { GpuId = 9, Name = "MSI GeForce GTX 1650 GAMING X 4G", ProductId = 8,
+                            Model = "GTX 1650", Link = "https://www.mediaexpert.pl/karty-graficzne/karta-graficzna-msi-geforce-gtx-1650-gaming-x-4g,id-1362616",
+                            Ram = 4, GpuRamId = 1, Frequency = 1.485, FrequencyBoost = 1.860, Length = 245, Benchmark = 950,
+                            Image = "msigtx1650gaming.png", ShopId = 1},
+
+                new Gpu ()  { GpuId = 10, Name = "ASRock Radeon RX 5700 8GB GDDR6", ProductId = 9,
+                            Model = "RX 5700", Link = "https://www.mediaexpert.pl/karty-graficzne/karta-graficzna-asrock-radeon-rx-5700-8gb,id-1400020",
+                            Ram = 8, GpuRamId = 3, Frequency = 1.465, FrequencyBoost = 1.765, Length = 281, Benchmark = 1600,
+                            Image = "asrockrx5700.png", ShopId = 1}
+
             };
 
             gpus.ForEach(s => context.Gpu.Add(s));
@@ -355,7 +440,7 @@ namespace PartPicker.DAL
             psus.ForEach(s => context.Psu.Add(s));
             context.SaveChanges();
 
-            var rams = new List<Ram>
+            var rams = new List<Ram>    
             {
                 new Ram ()  { RamId = 1, Name = "Corsair Vengeance LPX 2x8", ManufacturerId = 7,
                             Model = "Vengeance LPX", Link = "https://www.morele.net/pamiec-corsair-vengeance-lpx-ddr4-16-gb-3000mhz-cl15-cmk16gx4m2b3000c15r-776918/",
