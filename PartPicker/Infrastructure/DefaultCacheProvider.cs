@@ -8,27 +8,27 @@ namespace PartPicker.Infrastructure
 {
     public class DefaultCacheProvider : ICacheProvider
     {
-        private Cache cache { get { return HttpContext.Current.Cache; } }
+        private Cache Cache { get { return HttpContext.Current.Cache; } }
 
         public object Get(string key)
         {
-            return cache[key];
+            return Cache[key];
         }
 
         public void Invalidate(string key)
         {
-            cache.Remove(key);
+            Cache.Remove(key);
         }
 
         public bool IsSet(string key)
         {
-            return (cache[key] != null);
+            return (Cache[key] != null);
         }
 
         public void Set(string key, object data, int cacheTime)
         {
             var expirationTime = DateTime.Now + TimeSpan.FromMinutes(cacheTime);
-            cache.Insert(key, data, null, expirationTime, Cache.NoSlidingExpiration);
+            Cache.Insert(key, data, null, expirationTime, Cache.NoSlidingExpiration);
         }
     }
 }

@@ -1,47 +1,65 @@
 ﻿@model PartPicker.ViewModels.BuildFiltersViewModel
 @using PartPicker.Infrastructure
-@using PartPicker.ViewModels
-@{
-    BuildSearchViewModel searching = new BuildSearchViewModel()
-    {
-        CpuManufacturers = new List<string>(),
-        CpuSeries = new List<string>(),
-        GpuManufacturers = new List<string>(),
-        RamType = new List<string>(),
-        StorageType = new List<string>()
-    };
-}
-
 
 <div class="sidebar">
     <button class="dropdown-btn">
         Filtry
     </button>
-    <div class="dropdown-container">
+
+    <div class="dropdown-container"
+         @if (Model.Cache.IsSet(CacheNames.cpuMBuildsFilter) || Model.Cache.IsSet(CacheNames.cpuSBuildsFilter) || Model.Cache.IsSet(CacheNames.gpuSBuildsFilter) || Model.Cache.IsSet(CacheNames.ramTBuildsFilter) || Model.Cache.IsSet(CacheNames.storageTBuildsFilter)) { @: style="display:block !important"
+         }>
+
         <button class="dropdown-btn">
             Procesor
         </button>
-        <div class="dropdown-container">
+        <div class="dropdown-container"
+             @if (Model.Cache.IsSet(CacheNames.cpuMBuildsFilter) || Model.Cache.IsSet(CacheNames.cpuSBuildsFilter)) { @: style="display:block !important"
+             }>
             <button class="dropdown-btn">
                 Producent
             </button>
 
-            <div class="dropdown-container">
+            <div class="dropdown-container"
+                 @if (Model.Cache.IsSet(CacheNames.cpuMBuildsFilter) || Model.Cache.IsSet(CacheNames.cpuSBuildsFilter)) { @: style="display:block !important"
+                 }>
                 @foreach (var cpu in Model.CpuManufacturers)
                 {
+
                     <button class="dropdown-btn">
                         @cpu
                     </button>
-                    <div class="dropdown-container">
+                    <div class="dropdown-container"
+                         @if ((Model.Cache.IsSet(CacheNames.cpuMBuildsFilter) || Model.Cache.IsSet(CacheNames.cpuSBuildsFilter))) { @: style="display:block !important"
+                         }>
                         @foreach (var series in Model.CpuSeries)
                         {
                             foreach (var product in Model.Cpus)
                             {
                                 if (product.Product.Manufacturer.Name == cpu && product.Product.Series.Name == series)
                                 {
-                                    <button class="dropdown-container-last">
-                                        @series
-                                    </button>
+                                    if (Model.Cache.IsSet(CacheNames.cpuSBuildsFilter))
+                                    {
+                                        List<string> cpuSeries = Model.Cache.Get(CacheNames.cpuSBuildsFilter) as List<string>;
+                                        if (cpuSeries != null && cpuSeries.Contains(series))
+                                        {
+                                            <a class="filter-send" href="@Url.Action("List", "Builds", new { @cpuS = series })" style="background-color: #29ff0f">
+                                                @series
+                                            </a>
+                                        }
+                                        else if (cpuSeries != null)
+                                        {
+                                            <a class="filter-send" href="@Url.Action("List", "Builds", new { @cpuS = series })">
+                                                @series
+                                            </a>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <a class="filter-send" href="@Url.Action("List", "Builds", new { @cpuS = series })">
+                                            @series
+                                        </a>
+                                    }
                                     break;
                                 }
                             }
@@ -54,14 +72,39 @@
         <button class="dropdown-btn">
             Karta graficzna
         </button>
-        <div class="dropdown-container">
+        <div class="dropdown-container"
+             @if (Model.Cache.IsSet(CacheNames.gpuSBuildsFilter)) { @: style="display:block !important"
+             }>
             <button class="dropdown-btn">
                 Producent
             </button>
-            <div class="dropdown-container">
-                @foreach (var manufacturer in Model.GpuManufacturers)
+            <div class="dropdown-container"
+                 @if (Model.Cache.IsSet(CacheNames.gpuSBuildsFilter)) { @: style="display:block !important"
+                 }>
+                @foreach (var seriesGpu in Model.GpuSeries)
                 {
-                    <a href="#">@manufacturer</a>
+                    if (Model.Cache.IsSet(CacheNames.gpuSBuildsFilter))
+                    {
+                        List<string> gpuSeries = Model.Cache.Get(CacheNames.gpuSBuildsFilter) as List<string>;
+                        if (gpuSeries != null && gpuSeries.Contains(seriesGpu))
+                        {
+                            <a class="filter-send" href="@Url.Action("List", "Builds", new { @gpuS = seriesGpu })" style="background-color: #29ff0f">
+                                @seriesGpu
+                            </a>
+                        }
+                        else if (gpuSeries != null)
+                        {
+                            <a class="filter-send" href="@Url.Action("List", "Builds", new { @gpuS = seriesGpu })">
+                                @seriesGpu
+                            </a>
+                        }
+                    }
+                    else
+                    {
+                        <a class="filter-send" href="@Url.Action("List", "Builds", new { @gpuS = seriesGpu })">
+                            @seriesGpu
+                        </a>
+                    }
                 }
             </div>
         </div>
@@ -69,14 +112,39 @@
         <button class="dropdown-btn">
             Pamięć RAM
         </button>
-        <div class="dropdown-container">
+        <div class="dropdown-container"
+             @if (Model.Cache.IsSet(CacheNames.ramTBuildsFilter)) { @: style="display:block !important"
+             }>
             <button class="dropdown-btn">
                 Typ RAM
             </button>
-            <div class="dropdown-container">
+            <div class="dropdown-container"
+                 @if (Model.Cache.IsSet(CacheNames.ramTBuildsFilter)) { @: style="display:block !important"
+                 }>
                 @foreach (var ramType in Model.RamTypes)
                 {
-                    <a href="#">@ramType</a>
+                    if (Model.Cache.IsSet(CacheNames.ramTBuildsFilter))
+                    {
+                        List<string> ramT = Model.Cache.Get(CacheNames.ramTBuildsFilter) as List<string>;
+                        if (ramT != null && ramT.Contains(ramType))
+                        {
+                            <a class="filter-send" href="@Url.Action("List", "Builds", new { @ramT = ramType })" style="background-color: #29ff0f">
+                                @ramType
+                            </a>
+                        }
+                        else if (ramT != null)
+                        {
+                            <a class="filter-send" href="@Url.Action("List", "Builds", new { @ramT = ramType })">
+                                @ramType
+                            </a>
+                        }
+                    }
+                    else
+                    {
+                        <a class="filter-send" href="@Url.Action("List", "Builds", new { @ramT = ramType })">
+                            @ramType
+                        </a>
+                    }
                 }
             </div>
         </div>
@@ -85,37 +153,43 @@
             Dysk Twardy
         </button>
 
-        <div class="dropdown-container">
+        <div class="dropdown-container"
+             @if (Model.Cache.IsSet(CacheNames.storageTBuildsFilter)) { @: style="display:block !important"
+             }>
             @foreach (var storageType in Model.StorageTypes)
             {
-                <a>@storageType</a>
+                if (Model.Cache.IsSet(CacheNames.ramTBuildsFilter))
+                {
+                    List<string> storageT = Model.Cache.Get(CacheNames.storageTBuildsFilter) as List<string>;
+                    if (storageT != null && storageT.Contains(storageType))
+                    {
+
+                        <a class="filter-send" href="@Url.Action("List", "Builds", new { @storageT = storageType })"  style="background-color: #29ff0f">
+                            @storageType
+                        </a>
+                    }
+                    else if (storageT != null)
+                    {
+                        <a class="filter-send" href="@Url.Action("List", "Builds", new { @storageT = storageType })">
+                            @storageType
+                        </a>
+                    }
+                }
+                else
+                {
+                    <a class="filter-send" href="@Url.Action("List", "Builds", new { @storageT = storageType })">
+                        @storageType
+                    </a>
+                }
             }
         </div>
+
+        <a class="filter-send" href="@Url.Action("List", "Builds", new { @reset = 1 })">
+            Reset
+        </a>
     </div>
 
-    @foreach (var i in searching.CpuManufacturers)
-    {
-        <p> @i </p>
-    }
 
-    @{
-        var cpuM = new RouteValueDictionary();
-        var cpuS = new RouteValueDictionary();
-        searching.CpuSeries.Add("Ryzen 7");
-        searching.CpuManufacturers.Add("AMD");
-
-        for (int i = 0; i < searching.CpuManufacturers.Count; ++i)
-        {
-            cpuM.Add("CpuManufacturers[" + i + "]", searching.CpuManufacturers[i]);
-        }
-
-        for (int i = 0; i < searching.CpuSeries.Count; ++i)
-        {
-            cpuS.Add("CpuSeries[" + i + "]", searching.CpuSeries[i]);
-        }
-    }
-
-    <a class="filter-send" href="@Url.Action("List", "Builds", new { @cpuM = cpuM } )">SEND</a>
 </div>
 
 <script src="@Url.Content("~/Scripts/JavaScriptDropDown.js")"></script>
