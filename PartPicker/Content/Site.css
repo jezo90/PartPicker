@@ -107,13 +107,6 @@ body {
 
 
 
-@media screen and (min-width: 1311px) {
-    .top-nav a:hover {
-        transform: scaleX(1.1);
-        transition: transform 0.3s ease-out;
-    }
-}
-
 @media screen and (max-width: 1310px) {
     .top-nav {
         height: AUTO;
@@ -817,12 +810,10 @@ footer {
 
     .drop:hover .dropbtn {
         background-color: #EF7F29;
-        transform: scale(1.1);
         -webkit-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
         -moz-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
         box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
         transition: background-color 0.3s ease-out;
-        transition: transform 0.3s ease-out;
     }
     .drop:hover .drop-content a {
         transform: none !important;
