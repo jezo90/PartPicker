@@ -413,7 +413,42 @@ namespace PartPicker.DAL
                 new Mobo () { MoboId = 3, Name = "Gigabyte B450M DS3H", ManufacturerId = 4,
                             Model = "B450M DS3H", Link = "https://www.morele.net/plyta-glowna-gigabyte-b450m-ds3h-4141320/",
                             FormFactorId = 3, SocketId = 4, RamSlots = 4, RamTypeId = 2, MaxRam = 64, SataSlots = 4,
-                            Image = "gigabyteb450m.png", ShopId = 3}
+                            Image = "gigabyteb450m.png", ShopId = 3},
+
+                new Mobo () { MoboId = 4, Name = "Gigabyte B365M D3H", ManufacturerId = 4,
+                            Model = "B365M D3H", Link = "https://www.morele.net/plyta-glowna-gigabyte-b365m-d3h-6152502/",
+                            FormFactorId = 3, SocketId = 1, RamSlots = 4, RamTypeId = 2, MaxRam = 64, SataSlots = 6,
+                            Image = "gigabyteb365m.png", ShopId = 3},
+
+                new Mobo () { MoboId = 5, Name = "MSI H310M PRO-VH PLUS", ManufacturerId = 3,
+                            Model = "H310M PRO-VH PLUS", Link = "https://www.morele.net/plyta-glowna-msi-h310m-pro-vh-plus-5814970/",
+                            FormFactorId = 3, SocketId = 1, RamSlots = 2, RamTypeId = 2, MaxRam = 32, SataSlots = 4,
+                            Image = "msih310mpro-vhplus.png", ShopId = 3},
+
+                new Mobo () { MoboId = 6, Name = "Gigabyte X470 AORUS ULTRA GAMING", ManufacturerId = 4,
+                            Model = "X470 AORUS ULTRA GAMING", Link = "https://www.morele.net/plyta-glowna-gigabyte-x470-aorus-ultra-gaming-980414/",
+                            FormFactorId = 2, SocketId = 4, RamSlots = 4, RamTypeId = 2, MaxRam = 64, SataSlots = 6,
+                            Image = "gigabytex470aorusultragaming.png", ShopId = 3},
+
+                new Mobo () { MoboId = 7, Name = "ASRocK X370 Gaming ITX/AC", ManufacturerId = 17,
+                            Model = "X370 Gaming ITX/AC", Link = "https://www.mediaexpert.pl/plyty-glowne/plyta-glowna-asrock-x370-gaming-itx-ac,id-960530",
+                            FormFactorId = 7, SocketId = 4, RamSlots = 2, RamTypeId = 2, MaxRam = 32, SataSlots = 4,
+                            Image = "x370gamingitxac.png", ShopId = 1},
+
+                new Mobo () { MoboId = 8, Name = "ASRock H110M DVS R3.0", ManufacturerId = 17,
+                            Model = "H110M DVS R3.0", Link = "https://www.morele.net/plyta-glowna-asrock-h110m-dvs-r3-0-90-mxb4a0-a0uayz-1096449/",
+                            FormFactorId = 3, SocketId = 1, RamSlots = 2, RamTypeId = 2, MaxRam = 32, SataSlots = 4,
+                            Image = "asrockh110mdvsr30.png", ShopId = 3},
+
+                new Mobo () { MoboId = 9, Name = "MSI B360M BAZOOKA", ManufacturerId = 3,
+                            Model = "B360M BAZOOKA", Link = "https://www.morele.net/plyta-glowna-msi-b360m-bazooka-4073726/",
+                            FormFactorId = 3, SocketId = 1, RamSlots = 4, RamTypeId = 2, MaxRam = 64, SataSlots = 6,
+                            Image = "msib360mbazooka.png", ShopId = 3},
+
+                new Mobo () { MoboId = 10, Name = "Gigabyte AX370 Gaming 3", ManufacturerId = 4,
+                            Model = "AX370 Gaming 3", Link = "https://www.morele.net/plyta-glowna-gigabyte-ax370-gaming-3-1780813/",
+                            FormFactorId = 2, SocketId = 4, RamSlots = 4, RamTypeId = 2, MaxRam = 64, SataSlots = 6,
+                            Image = "gigabyteax370gaming3.png", ShopId = 3}
             };
 
             mobos.ForEach(s => context.Mobo.Add(s));
@@ -424,17 +459,17 @@ namespace PartPicker.DAL
                 new Psu ()  { PsuId = 1, Name = "EVGA SuperNOVA 750", ManufacturerId = 6,
                             Model = "SuperNOVA 750", Link = "https://www.morele.net/zasilacz-evga-supernova-g2-750w-220-g2-0750-x2-867278/",
                             FormFactorId = 2, Power = 750, Efficiency = "80+ Gold",
-                            Image = "supernova750.png", ShopId = 3},
+                            Image = "evgasupernova750.png", ShopId = 3},
 
                 new Psu ()  { PsuId = 2, Name = "Corsair CX550M", ManufacturerId = 7,
                             Model = "CX550M", Link = "https://www.morele.net/zasilacz-corsair-cx-550w-cp-9020102-eu-855753/",
                             FormFactorId = 2, Power = 550, Efficiency = "80+ Bronze",
-                            Image = "../Content/Images/Psu/cx550m.jpg", ShopId = 3},
+                            Image = "corsaircx550m.png", ShopId = 3},
 
                 new Psu ()  { PsuId = 3, Name = "EVGA SuperNOVA 650", ManufacturerId = 6,
                             Model = "SuperNOVA 650", Link = "https://www.morele.net/zasilacz-evga-supernova-650-g2-650w-220-g2-0650-y2-798167/",
                             FormFactorId = 2, Power = 650, Efficiency = "80+ Gold",
-                            Image = "../Content/Images/Psu/supernova650.jpg", ShopId = 3}
+                            Image = "evgasupernova650.png", ShopId = 3}
             };
 
             psus.ForEach(s => context.Psu.Add(s));
