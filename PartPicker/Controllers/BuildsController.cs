@@ -28,12 +28,12 @@ namespace PartPicker.Controllers
         {
             var buildsBase = context.Build.Where(a => !a.Hidden).ToList();
             var builds = buildsBase;
+            var buildsAll = buildsBase;
             int matched = -1;
             var buildsCpu = new List<Build>();
             var buildsGpu = new List<Build>();
             var buildsRam = new List<Build>();
             var buildsStorage = new List<Build>();
-            var buildsOut = new List<Build>();
             var cpuMList = new List<string>();
             var cpuSList = new List<string>();
             var gpuSList = new List<string>();
@@ -51,177 +51,176 @@ namespace PartPicker.Controllers
                 cache.Invalidate(CacheNames.storageTBuildsFilter);
             }
 
+            //////////// CPU SERIE CACHE
+
+            if (cache.IsSet(CacheNames.cpuSBuildsFilter))
+                cpuSList = cache.Get(CacheNames.cpuSBuildsFilter) as List<string>;
+
             if (cpuS != "")
             {
-                if (cache.IsSet(CacheNames.cpuSBuildsFilter))
-                {
-                    cpuSList = cache.Get(CacheNames.cpuSBuildsFilter) as List<string>;
-                    if (cpuSList.Contains(cpuS))
-                        cpuSList.Remove(cpuS);
-                    else
-                        cpuSList.Add(cpuS);
-                }
+                if (cpuSList.Contains(cpuS))
+                    cpuSList.Remove(cpuS);
                 else
-                {
                     cpuSList.Add(cpuS);
-                }
-
-                if (cpuSList.Count() == 0)
-                    cache.Invalidate(CacheNames.cpuSBuildsFilter);
-                else
-                    cache.Set(CacheNames.cpuSBuildsFilter, cpuSList, 60);
-
-                foreach (var i in cpuSList)
-                {
-                    builds = buildsBase.Where(a => a.Cpu.Product.Series.Name == i).ToList();
-                    foreach (var j in builds)
-                    {
-                        buildsCpu.Add(j);
-                    }
-                }
-                buildsOut = buildsCpu;
-                matched = buildsOut.Count();
             }
-            else if (cpuM != "")
+
+            if (cpuSList.Count() == 0 && cache.IsSet(CacheNames.cpuSBuildsFilter))
+                cache.Invalidate(CacheNames.cpuSBuildsFilter);
+            if (cpuSList.Count != 0)
+                cache.Set(CacheNames.cpuSBuildsFilter, cpuSList, 60);
+
+            //////////// CPU MODELE CACHE
+
+            if (cache.IsSet(CacheNames.cpuMBuildsFilter))
+                cpuMList = cache.Get(CacheNames.cpuMBuildsFilter) as List<string>;
+
+            if (cpuM != "")
             {
-                if (cache.IsSet(CacheNames.cpuMBuildsFilter))
-                {
-                    cpuMList = cache.Get(CacheNames.cpuMBuildsFilter) as List<string>;
-                    if (cpuMList.Contains(cpuM))
-                        cpuMList.Remove(cpuM);
-                    else
-                        cpuMList.Add(cpuM);
-                }
+                if (cpuMList.Contains(cpuM))
+                    cpuMList.Remove(cpuM);
                 else
-                {
                     cpuMList.Add(cpuM);
-                }
-
-                if (cpuMList.Count() == 0)
-                    cache.Invalidate(CacheNames.cpuMBuildsFilter);
-                else
-                    cache.Set(CacheNames.cpuMBuildsFilter, cpuMList, 60);
-
-                foreach (var i in cpuMList)
-                {
-                    builds = buildsBase.Where(a => a.Cpu.Product.Manufacturer.Name == i).ToList();
-                    foreach (var j in builds)
-                    {
-                        buildsCpu.Add(j);
-                    }
-                }
-                buildsOut = buildsCpu;
-                matched = buildsOut.Count();
             }
+
+            if (cpuMList.Count() == 0 && cache.IsSet(CacheNames.cpuMBuildsFilter))
+                cache.Invalidate(CacheNames.cpuMBuildsFilter);
+            if (cpuMList.Count() != 0)
+                cache.Set(CacheNames.cpuMBuildsFilter, cpuMList, 60);
+
+            //////////// CPU SERIE
+
+            foreach (var i in cpuSList)
+            {
+                builds = buildsBase.Where(a => a.Cpu.Product.Series.Name == i).ToList();
+                foreach (var j in builds)
+                {
+                    buildsCpu.Add(j);
+                }
+            }
+
+            if (cpuSList.Count != 0)
+            {
+                buildsBase = buildsCpu;
+                matched = buildsBase.Count();
+            }
+
+            //////////// CPU MODELE
+            
+            foreach (var i in cpuMList)
+            {
+                builds = buildsBase.Where(a => a.Cpu.Product.Manufacturer.Name == i).ToList();
+                foreach (var j in builds)
+                {
+                    buildsCpu.Add(j);
+                }
+            }
+
+            if (cpuMList.Count != 0)
+            {
+                buildsBase = buildsCpu;
+                matched = buildsBase.Count();
+            }
+            //////////// GPU SERIE
+
+            if (cache.IsSet(CacheNames.gpuSBuildsFilter))
+                gpuSList = cache.Get(CacheNames.gpuSBuildsFilter) as List<string>;
 
             if (gpuS != "")
             {
-                if (cache.IsSet(CacheNames.gpuSBuildsFilter))
-                {
-                    gpuSList = cache.Get(CacheNames.gpuSBuildsFilter) as List<string>;
-                    if (gpuSList.Contains(gpuS))
-                        gpuSList.Remove(gpuS);
-                    else
-                        gpuSList.Add(gpuS);
-                }
+                if (gpuSList.Contains(gpuS))
+                    gpuSList.Remove(gpuS);
                 else
-                {
                     gpuSList.Add(gpuS);
-                }
-
-                if (gpuSList.Count() == 0)
-                    cache.Invalidate(CacheNames.gpuSBuildsFilter);
-                else
-                    cache.Set(CacheNames.gpuSBuildsFilter, gpuSList, 60);
-
-                foreach (var i in gpuSList)
-                {
-                    if (matched == -1)
-                        builds = buildsBase.Where(a => a.Gpu.Product.Series.Name == i).ToList();
-                    else if (matched != 0)
-                        builds = buildsOut.Where(a => a.Gpu.Product.Series.Name == i).ToList();
-
-                    foreach (var j in builds)
-                    {
-                        buildsGpu.Add(j);
-                    }
-                }
-                buildsOut = buildsGpu;
-                matched = buildsOut.Count();
             }
+
+            if (gpuSList.Count() == 0 && cache.IsSet(CacheNames.gpuSBuildsFilter))
+                cache.Invalidate(CacheNames.gpuSBuildsFilter);
+            if (gpuSList.Count() != 0)
+                cache.Set(CacheNames.gpuSBuildsFilter, gpuSList, 60);
+
+            foreach (var i in gpuSList)
+            {
+                builds = buildsBase.Where(a => a.Gpu.Product.Series.Name == i).ToList();
+
+                foreach (var j in builds)
+                {
+                    buildsGpu.Add(j);
+                }
+            }
+
+            if (gpuSList.Count != 0)
+            {
+                buildsBase = buildsGpu;
+                matched = buildsBase.Count();
+            }
+
+            //////////// TYP RAM
+
+            if (cache.IsSet(CacheNames.ramTBuildsFilter))
+                ramTList = cache.Get(CacheNames.ramTBuildsFilter) as List<string>;
 
             if (ramT != "")
             {
-                if (cache.IsSet(CacheNames.ramTBuildsFilter))
-                {
-                    ramTList = cache.Get(CacheNames.ramTBuildsFilter) as List<string>;
-                    if (ramTList.Contains(ramT))
-                        ramTList.Remove(ramT);
-                    else
-                        ramTList.Add(ramT);
-                }
+                if (ramTList.Contains(ramT))
+                    ramTList.Remove(ramT);
                 else
-                {
                     ramTList.Add(ramT);
-                }
-
-                if (ramTList.Count() == 0)
-                    cache.Invalidate(CacheNames.ramTBuildsFilter);
-                else
-                    cache.Set(CacheNames.ramTBuildsFilter, ramTList, 60);
-
-                foreach (var i in ramTList)
-                {
-                    if (matched == -1)
-                        builds = buildsBase.Where(a => a.Ram.RamType.Name == i).ToList();
-                    else if (matched != 0)
-                        builds = buildsOut.Where(a => a.Ram.RamType.Name == i).ToList();
-
-                    foreach (var j in builds)
-                    {
-                        buildsRam.Add(j);
-                    }
-                }
-                buildsOut = buildsRam;
-                matched = buildsOut.Count();
             }
+
+            if (ramTList.Count() == 0 && cache.IsSet(CacheNames.ramTBuildsFilter))
+                cache.Invalidate(CacheNames.ramTBuildsFilter);
+            if (ramTList.Count() != 0)
+                cache.Set(CacheNames.ramTBuildsFilter, ramTList, 60);
+
+            foreach (var i in ramTList)
+            {
+                builds = buildsBase.Where(a => a.Ram.RamType.Name == i).ToList();
+
+                foreach (var j in builds)
+                {
+                    buildsRam.Add(j);
+                }
+            }
+
+            if (ramTList.Count() != 0)
+            {
+                buildsBase = buildsRam;
+                matched = buildsBase.Count();
+            }
+
+            //////////// STORAGE TYP
+
+            if (cache.IsSet(CacheNames.storageTBuildsFilter))
+                storageTList = cache.Get(CacheNames.storageTBuildsFilter) as List<string>;
 
             if (storageT != "")
             {
-                if (cache.IsSet(CacheNames.storageTBuildsFilter))
-                {
-                    storageTList = cache.Get(CacheNames.storageTBuildsFilter) as List<string>;
-                    if (storageTList.Contains(storageT))
-                        storageTList.Remove(storageT);
-                    else
-                        storageTList.Add(storageT);
-                }
+                if (storageTList.Contains(storageT))
+                    storageTList.Remove(storageT);
                 else
-                {
                     storageTList.Add(storageT);
-                    cache.Set(CacheNames.storageTBuildsFilter, storageTList, 60);
-                }
-                foreach (var i in storageTList)
-                {
-                    if (matched == -1)
-                        builds = buildsBase.Where(a => a.Storage.Interface.Name == i).ToList();
-                    else if (matched != 0)
-                        builds = buildsOut.Where(a => a.Storage.Interface.Name == i).ToList();
-
-                    foreach (var j in builds)
-                    {
-                        buildsStorage.Add(j);
-                    }
-                }
-                buildsOut = buildsStorage;
-                matched = buildsOut.Count();
             }
 
-            if (matched == -1)
-                buildsOut = buildsBase;
-                
+            foreach (var i in storageTList)
+            {
+                builds = buildsBase.Where(a => a.Storage.Interface.Name == i).ToList();
 
-            int amountOfBuilds = buildsBase.Count() + 1;
+                foreach (var j in builds)
+                {
+                    buildsStorage.Add(j);
+                }
+            }
+
+            if (storageTList.Count() != 0)
+            {
+                buildsBase = buildsStorage;
+                matched = buildsBase.Count();
+            }
+
+            /// KONIEC 
+
+
+            int amountOfBuilds = buildsAll.Count() + 1;
             double[] sum = new double[amountOfBuilds];
             double[] average = new double[amountOfBuilds];
             double[] count = new double[amountOfBuilds];
@@ -232,7 +231,7 @@ namespace PartPicker.Controllers
                 count[i] = 0.0d;
             }
 
-            foreach (Build b in buildsBase)
+            foreach (Build b in builds)
             {
                 foreach (Rate r in b.Rates)
                 {
@@ -248,7 +247,7 @@ namespace PartPicker.Controllers
 
             var buildsListViewModel = new BuildsListViewModel()
             {
-                Builds = buildsOut,
+                Builds = buildsBase,
                 Average = average,
                 Count = count
             };
