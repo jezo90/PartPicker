@@ -17,7 +17,7 @@
                 <img id="image_up" class="image_up" src="@Url.ImagesPath("up.png")" />
             </button>
             <div class="drop-content" id="myDropdown">
-                <a href="@Url.Action("List", "Builds")">Buildy</a>
+                <a href="@Url.Action("List", "Builds", new { @reset = 1 })">Buildy</a>
                 <a href="#">Link 2</a>
                 <a href="#">Link 3</a>
                 <a href="#">Link 1</a>

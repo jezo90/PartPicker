@@ -14,7 +14,7 @@ namespace PartPicker
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "BuildsList",
+                name: "Builds",
                 url: "Builds",
                 defaults: new { controller = "Builds", action = "List"});
 
@@ -26,8 +26,7 @@ namespace PartPicker
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional });
         }
     }
 }

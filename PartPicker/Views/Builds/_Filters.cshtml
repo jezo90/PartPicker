@@ -180,7 +180,7 @@
              }>
             @foreach (var storageType in Model.StorageTypes)
             {
-                if (Model.Cache.IsSet(CacheNames.ramTBuildsFilter))
+                if (Model.Cache.IsSet(CacheNames.storageTBuildsFilter))
                 {
                     List<string> storageT = Model.Cache.Get(CacheNames.storageTBuildsFilter) as List<string>;
                     if (storageT != null && storageT.Contains(storageType))

@@ -31,6 +31,7 @@ namespace PartPicker.Controllers
             var buildsAll = buildsBase;
             int matched = -1;
             var buildsCpu = new List<Build>();
+            var buildsCpuM = new List<Build>();
             var buildsGpu = new List<Build>();
             var buildsRam = new List<Build>();
             var buildsStorage = new List<Build>();
@@ -111,13 +112,13 @@ namespace PartPicker.Controllers
                 builds = buildsBase.Where(a => a.Cpu.Product.Manufacturer.Name == i).ToList();
                 foreach (var j in builds)
                 {
-                    buildsCpu.Add(j);
+                    buildsCpuM.Add(j);
                 }
             }
 
             if (cpuMList.Count != 0)
             {
-                buildsBase = buildsCpu;
+                buildsBase = buildsCpuM;
                 matched = buildsBase.Count();
             }
             //////////// GPU SERIE
@@ -201,9 +202,14 @@ namespace PartPicker.Controllers
                     storageTList.Add(storageT);
             }
 
+            if (storageTList.Count() == 0 && cache.IsSet(CacheNames.storageTBuildsFilter))
+                cache.Invalidate(CacheNames.storageTBuildsFilter);
+            if (storageTList.Count() != 0)
+                cache.Set(CacheNames.storageTBuildsFilter, storageTList, 60);
+
             foreach (var i in storageTList)
             {
-                builds = buildsBase.Where(a => a.Storage.Interface.Name == i).ToList();
+                builds = buildsBase.Where(a => a.Storage.Type == i).ToList();
 
                 foreach (var j in builds)
                 {
