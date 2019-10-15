@@ -172,7 +172,13 @@ namespace PartPicker.DAL
 
                 new Manufacturer() { ManufacturerId = 16, Name = "Cooler Master" },
 
-                new Manufacturer() { ManufacturerId = 17, Name = "ASRock" }
+                new Manufacturer() { ManufacturerId = 17, Name = "ASRock" },
+
+                new Manufacturer() { ManufacturerId = 18, Name = "SilentiumPC" },
+
+                new Manufacturer() { ManufacturerId = 19, Name = "be quiet!" }
+
+                
             };
 
             manufacturers.ForEach(s => context.Manufacturer.Add(s));
@@ -457,7 +463,7 @@ namespace PartPicker.DAL
             var psus = new List<Psu>
             {
                 new Psu ()  { PsuId = 1, Name = "EVGA SuperNOVA 750", ManufacturerId = 6,
-                            Model = "SuperNOVA 750", Link = "https://www.morele.net/zasilacz-evga-supernova-g2-750w-220-g2-0750-x2-867278/",
+                            Model = "SuperNOVA", Link = "https://www.morele.net/zasilacz-evga-supernova-g2-750w-220-g2-0750-x2-867278/",
                             FormFactorId = 2, Power = 750, Efficiency = "80+ Gold",
                             Image = "evgasupernova750.png", ShopId = 3},
 
@@ -467,9 +473,44 @@ namespace PartPicker.DAL
                             Image = "corsaircx550m.png", ShopId = 3},
 
                 new Psu ()  { PsuId = 3, Name = "EVGA SuperNOVA 650", ManufacturerId = 6,
-                            Model = "SuperNOVA 650", Link = "https://www.morele.net/zasilacz-evga-supernova-650-g2-650w-220-g2-0650-y2-798167/",
+                            Model = "SuperNOVA", Link = "https://www.morele.net/zasilacz-evga-supernova-650-g2-650w-220-g2-0650-y2-798167/",
                             FormFactorId = 2, Power = 650, Efficiency = "80+ Gold",
-                            Image = "evgasupernova650.png", ShopId = 3}
+                            Image = "evgasupernova650.png", ShopId = 3},
+
+                new Psu ()  { PsuId = 4, Name = "SilentiumPC Vero L2 600W", ManufacturerId = 18,
+                            Model = "Vero L2", Link = "https://www.morele.net/zasilacz-silentiumpc-vero-l2-600w-spc165-977143/",
+                            FormFactorId = 2, Power = 600, Efficiency = "80+ Bronze",
+                            Image = "silentiumpcverol2600w.png", ShopId = 3},
+
+                new Psu ()  { PsuId = 5, Name = "be quiet! SYSTEM POWER 9 500W", ManufacturerId = 19,
+                            Model = "SYSTEM POWER 9", Link = "https://www.morele.net/zasilacz-be-quiet-system-power-9-500w-bn246-1766271/",
+                            FormFactorId = 2, Power = 500, Efficiency = "80+ Bronze",
+                            Image = "bequiet!systempower9500w.png", ShopId = 3},
+
+                new Psu ()  { PsuId = 6, Name = "SilentiumPC Vero M2 Bronze 600W", ManufacturerId = 18,
+                            Model = "Vero M2 Bronze", Link = "https://www.morele.net/zasilacz-silentiumpc-vero-m2-bronze-600-w-spc166-977144/",
+                            FormFactorId = 2, Power = 600, Efficiency = "80+ Bronze",
+                            Image = "silentiumpcverom2bronze600w.png", ShopId = 3},
+
+                new Psu ()  { PsuId = 7, Name = "be quiet! SYSTEM POWER 9 600W", ManufacturerId = 19,
+                            Model = "SYSTEM POWER 9", Link = "https://www.morele.net/zasilacz-be-quiet-system-power-9-600w-bn247-1771362/",
+                            FormFactorId = 2, Power = 600, Efficiency = "80+ Bronze",
+                            Image = "bequiet!systempower9600w.png", ShopId = 3},
+
+                new Psu ()  { PsuId = 8, Name = "Corsair RM750x 750W", ManufacturerId = 7,
+                            Model = "RM750x", Link = "https://www.morele.net/zasilacz-corsair-rm750x-750w-cp-9020179-eu-1790294/",
+                            FormFactorId = 2, Power = 750, Efficiency = "80+ Gold",
+                            Image = "corsairrm750x750w.png", ShopId = 3},
+
+                new Psu ()  { PsuId = 9, Name = "SilentiumPC Supremo M2 Gold 550W", ManufacturerId = 18,
+                            Model = "Supremo M2 Gold", Link = "https://www.morele.net/zasilacz-silentiumpc-supremo-m2-gold-550w-spc140-774137/",
+                            FormFactorId = 2, Power = 550, Efficiency = "80+ Gold",
+                            Image = "silentiumpcsupremom2gold550w.png", ShopId = 3},
+
+                new Psu ()  { PsuId = 10, Name = "Corsair Builder CX 750W", ManufacturerId = 7,
+                            Model = "Builder CX", Link = "https://www.morele.net/zasilacz-corsair-builder-cx-750w-cp-9020061-eu-541540/",
+                            FormFactorId = 2, Power = 750, Efficiency = "80+ Bronze",
+                            Image = "corsairbuildercx750w.png", ShopId = 3}
             };
 
             psus.ForEach(s => context.Psu.Add(s));
@@ -477,20 +518,55 @@ namespace PartPicker.DAL
 
             var rams = new List<Ram>    
             {
-                new Ram ()  { RamId = 1, Name = "Corsair Vengeance LPX 2x8", ManufacturerId = 7,
+                new Ram ()  { RamId = 1, Name = "Corsair Vengeance LPX", ManufacturerId = 7,
                             Model = "Vengeance LPX", Link = "https://www.morele.net/pamiec-corsair-vengeance-lpx-ddr4-16-gb-3000mhz-cl15-cmk16gx4m2b3000c15r-776918/",
                             RamTypeId = 2, Amount = 2, Size = 8, Frequency = 3000, Cl = 15,
-                            Image = "../Content/Images/Ram/corsairvengeance2.jpg", ShopId = 3},
+                            Image = "corsairvengeancelpx2x8.png", ShopId = 3},
 
-                new Ram ()  { RamId = 2, Name = "G.Skill Trident Z RGB 2x8",  ManufacturerId = 8,
+                new Ram ()  { RamId = 2, Name = "G.Skill Trident Z RGB",  ManufacturerId = 8,
                             Model = "Trident Z RGB", Link = "https://www.morele.net/pamiec-g-skill-trident-z-rgb-ddr4-16-gb-3000mhz-cl16-f4-3000c16d-16gtzr-1118470/",
                             RamTypeId = 2, Amount = 2, Size = 8, Frequency = 3200, Cl = 16,
-                            Image = "../Content/Images/Ram/gskilltrident.jpg", ShopId = 3},
+                            Image = "gskilltridentzrgb2x8.png", ShopId = 3},
 
-                new Ram ()  { RamId = 3, Name = "Corsair Vengeance LPX 1x16", ManufacturerId = 7,
+                new Ram ()  { RamId = 3, Name = "Corsair Vengeance LPX", ManufacturerId = 7,
                             Model = "Vengeance LPX", Link = "https://www.morele.net/pamiec-corsair-vengeance-lpx-ddr4-16-gb-3000mhz-cl15-cmk16gx4m1b3000c15-839294/",
                             RamTypeId = 2, Amount = 1, Size = 16, Frequency = 3000, Cl = 15,
-                            Image = "../Content/Images/Ram/corsairvengeance.jpg", ShopId = 3}
+                            Image = "corsairvengeancelpx1x16.png", ShopId = 3},
+
+                new Ram ()  { RamId = 4, Name = "ADATA DDR4", ManufacturerId = 12,
+                            Model = "ADATA DDR4, 8GB", Link = "https://www.morele.net/pamiec-adata-ddr4-8-gb-2666mhz-cl16-ax4u266638g16-sbg-1640286/",
+                            RamTypeId = 2, Amount = 1, Size = 8, Frequency = 2666, Cl = 16,
+                            Image = "adataddr48gb2666hzcl16.png", ShopId = 3},
+
+                new Ram ()  { RamId = 5, Name = "Corsair Vengeance RGB PRO", ManufacturerId = 7,
+                            Model = "Vengeance RGB PRO", Link = "https://www.morele.net/pamiec-corsair-vengeance-rgb-pro-ddr4-16-gb-3200mhz-cl16-cmw16gx4m2c3200c16-4596109/",
+                            RamTypeId = 2, Amount = 2, Size = 8, Frequency = 3200, Cl = 16,
+                            Image = "corsairvengancergbproddr416gb3200mhzcl16.png", ShopId = 3},
+
+                new Ram ()  { RamId = 6, Name = "G.Skill Ripjaws V", ManufacturerId = 8,
+                            Model = "Ripjaws V", Link = "https://www.morele.net/pamiec-g-skill-ripjaws-v-ddr4-16-gb-3200mhz-cl16-f4-3200c16d-16gvkb-788195/",
+                            RamTypeId = 2, Amount = 2, Size = 8, Frequency = 3200, Cl = 16,
+                            Image = "gskillripjawsvddr416gb3200mhzcl16.png", ShopId = 3},
+
+                new Ram ()  { RamId = 7, Name = "Corsair Vengeance LPX", ManufacturerId = 7,
+                            Model = "Vengeance LPX", Link = "https://www.morele.net/pamiec-corsair-vengeance-lpx-ddr4-8-gb-3000mhz-cl16-cmk8gx4m2c3000c16-1678490/",
+                            RamTypeId = 2, Amount = 2, Size = 4, Frequency = 3000, Cl = 16,
+                            Image = "corsairvengeancelpx2x4.png", ShopId = 3},
+
+                new Ram ()  { RamId = 8, Name = "G.Skill TridentX", ManufacturerId = 8,
+                            Model = "TridentX", Link = "https://www.morele.net/pamiec-g-skill-tridentx-ddr3-16-gb-2400mhz-cl10-f3-2400c10d-16gtx-478220/",
+                            RamTypeId = 1, Amount = 2, Size = 8, Frequency = 2400, Cl = 10,
+                            Image = "gskilltridentxddr316gb2400mhzcl10.png", ShopId = 3},
+
+                new Ram ()  { RamId = 9, Name = "Corsair Vengeance", ManufacturerId = 7,
+                            Model = "Vengeance", Link = "https://www.morele.net/pamiec-corsair-vengeance-ddr3-4-gb-1600mhz-cl9-cmz4gx3m1a1600c9-360407/",
+                            RamTypeId = 1, Amount = 1, Size = 4, Frequency = 1600, Cl = 9,
+                            Image = "corsairvengeanceddr34gb1660hzcl9.png", ShopId = 3},
+
+                new Ram ()  { RamId = 10, Name = "G.Skill Ripjaws V", ManufacturerId = 8,
+                            Model = "Ripjaws V", Link = "https://www.morele.net/pamiec-g-skill-ripjaws-v-ddr4-16-gb-3000mhz-cl15-f4-3000c15d-16gvgb-831832/",
+                            RamTypeId = 2, Amount = 2, Size = 16, Frequency = 3000, Cl = 15,
+                            Image = "gskillripjawsvddr416gb3000mhzcl15.png", ShopId = 3}
             };
 
             rams.ForEach(s => context.Ram.Add(s));
@@ -554,15 +630,31 @@ namespace PartPicker.DAL
                              Image = "basic.png"},
 
                 new Build () { BuildId = 2, Name = "Druga", UserId = 1, Date = DateTime.Now, Hidden = false,
-                             CpuId = 2, MoboId = 2, GpuId = 2, PsuId = 2, CaseId = 2, RamId = 2, StorageId = 2, Price = 3500,
+                             CpuId = 2, MoboId = 2, GpuId = 2, PsuId = 2, CaseId = 2, RamId = 3, StorageId = 2, Price = 3500,
                              Image = "basic.png" },
 
-                new Build () { BuildId = 3, Name = "Ostatnia", UserId = 1, Date = DateTime.Now, Hidden = false,
-                             CpuId = 3, MoboId = 3, GpuId = 3, PsuId = 3, CaseId = 3, RamId = 3, StorageId = 3, Price = 2000,
+                new Build () { BuildId = 3, Name = "Trzecia", UserId = 1, Date = DateTime.Now, Hidden = false,
+                             CpuId = 3, MoboId = 3, GpuId = 3, PsuId = 3, CaseId = 6, RamId = 2, StorageId = 6, Price = 2000,
                              Image = "basic.png" },
 
-                new Build () { BuildId = 2, Name = "Najlepsza", UserId = 2, Date = DateTime.Now, Hidden = false,
-                             CpuId = 1, MoboId = 1, GpuId = 3, PsuId = 1, CaseId = 1, RamId = 1, StorageId = 1, Price = 4000,
+                new Build () { BuildId = 4, Name = "Czwarta", UserId = 1, Date = DateTime.Now, Hidden = false,
+                             CpuId = 4, MoboId = 1, GpuId = 4, PsuId = 4, CaseId = 5, RamId = 1, StorageId = 2, Price = 2100,
+                             Image = "basic.png" },
+
+                new Build () { BuildId = 5, Name = "Piąta", UserId = 1, Date = DateTime.Now, Hidden = false,
+                             CpuId = 5, MoboId = 4, GpuId = 5, PsuId = 5, CaseId = 2, RamId = 6, StorageId = 7, Price = 2200,
+                             Image = "basic.png" },
+
+                new Build () { BuildId = 6, Name = "Szusta", UserId = 1, Date = DateTime.Now, Hidden = false,
+                             CpuId = 6, MoboId = 5, GpuId = 6, PsuId = 6, CaseId = 2, RamId = 3, StorageId = 1, Price = 2690,
+                             Image = "basic.png" },
+
+                new Build () { BuildId = 7, Name = "Siódma", UserId = 1, Date = DateTime.Now, Hidden = false,
+                             CpuId = 7, MoboId = 8, GpuId = 7, PsuId = 7, CaseId = 5, RamId = 4, StorageId = 7, Price = 2240,
+                             Image = "basic.png" },
+
+                new Build () { BuildId = 8, Name = "ósma", UserId = 2, Date = DateTime.Now, Hidden = false,
+                             CpuId = 8, MoboId = 9, GpuId = 8, PsuId = 8, CaseId = 1, RamId = 1, StorageId = 1, Price = 4000,
                              Image = "basic.png"}
             };
 
@@ -577,11 +669,21 @@ namespace PartPicker.DAL
 
                 new Rate () { RateId = 3, BuildId = 3, UserId = 1, Grade = 2},
 
-                new Rate () { RateId = 4, BuildId = 1, UserId = 2, Grade = 5},
+                new Rate () { RateId = 4, BuildId = 5, UserId = 1, Grade = 5},
 
-                new Rate () { RateId = 5, BuildId = 2, UserId = 2, Grade = 5},
+                new Rate () { RateId = 5, BuildId = 6, UserId = 1, Grade = 1},
 
-                new Rate () { RateId = 6, BuildId = 3, UserId = 2, Grade = 3},
+                new Rate () { RateId = 6, BuildId = 7, UserId = 1, Grade = 4},
+
+                new Rate () { RateId = 7, BuildId = 1, UserId = 2, Grade = 5},
+
+                new Rate () { RateId = 8, BuildId = 4, UserId = 2, Grade = 5},
+
+                new Rate () { RateId = 9, BuildId = 7, UserId = 2, Grade = 3},
+
+                new Rate () { RateId = 10, BuildId = 2, UserId = 2, Grade = 3},
+
+                new Rate () { RateId = 11, BuildId = 6, UserId = 2, Grade = 3},
 
                 new Rate () { RateId = 7, BuildId = 1, UserId = 3, Grade = 4},
 
