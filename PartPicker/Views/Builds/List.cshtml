@@ -28,14 +28,14 @@
                 Ocena
             </div>
             <div class="item-part">
-                Cena
+                TU COŚ BĘDZIE XD
             </div>
         </div>
     </div>
     @foreach (var build in Model.Builds)
     {
         <div class="container">
-            <a class="item-list-a" href="@Url.Action("Details", "Builds", new { id = build.BuildId })">
+            <a class="item-list-a" href="@Url.Action("Details", "Builds", new { id = build.BuildId, name = build.Name })">
                 <div class="item-list">
                     <div class="item-part item-part-photo">
                         <img class="item-part-image" src="@Url.BuildsImagesPath(build.Image)" />
@@ -88,7 +88,7 @@
 
                     </div>
                     <div class="item-part">
-                        @build.Price zł
+                        TU COŚ BĘDZIE XD
                     </div>
                 </div>
             </a>

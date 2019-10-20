@@ -29,7 +29,7 @@ namespace PartPicker.DAL
                             Class = "price-new" },
 
                 new Shop() { ShopId = 4, Name = "Sferis", Logo = "sferis.png",
-                            Class = "prices solo" }
+                            Class = "prices multi" }
             };
 
             shops.ForEach(s => context.Shop.Add(s));
@@ -338,10 +338,10 @@ namespace PartPicker.DAL
                             SocketId = 1, Cores = 8, Frequency = 3.6, Turbo = 4.9, Gpu = "Intel UHD Graphics 630", Benchmark = 4500,
                             Image = "i79700k.png", ShopId = 3},
 
-                new Cpu () { CpuId = 10, Name = "Intel Core i7-8700K", ProductId = 5,
-                            Model = "8700K", Link = "https://www.sferis.pl/procesor-intel-core-i7-8700k-core-i7-8700k-bx80684i78700k-961566-3700-mhz-min-4700-mhz-max-lga-1151-p591227",
-                            SocketId = 1, Cores = 6, Frequency = 3.7, Turbo = 4.7, Gpu = "Intel UHD Graphics 630", Benchmark = 4000,
-                            Image = "i78700k.png", ShopId = 4}
+                new Cpu () { CpuId = 10, Name = "Intel Core i5-9600K", ProductId = 3,
+                            Model = "9600K", Link = "https://www.sferis.pl/procesor-intel-core-i5-9600k-core-i5-9600k-bx80684i59600k-984505-3700-mhz-min-4600-mhz-max-lga-1151-p615821",
+                            SocketId = 1, Cores = 6, Frequency = 3.7, Turbo = 4.6, Gpu = "Intel UHD Graphics 630", Benchmark = 3500,
+                            Image = "i59600k.png", ShopId = 4}
             };
 
             cpus.ForEach(s => context.Cpu.Add(s));
@@ -626,35 +626,35 @@ namespace PartPicker.DAL
             var builds = new List<Build>
             {
                 new Build () { BuildId = 1, Name = "Pierwsza", UserId = 1, Date = DateTime.Now, Hidden = false,
-                             CpuId = 1, MoboId = 1, GpuId = 1, PsuId = 1, CaseId = 1, RamId = 1, StorageId = 1, Price = 3000,
+                             CpuId = 1, MoboId = 1, GpuId = 1, PsuId = 1, CaseId = 1, RamId = 1, StorageId = 1,
                              Image = "basic.png"},
 
                 new Build () { BuildId = 2, Name = "Druga", UserId = 1, Date = DateTime.Now, Hidden = false,
-                             CpuId = 2, MoboId = 2, GpuId = 2, PsuId = 2, CaseId = 2, RamId = 3, StorageId = 2, Price = 3500,
+                             CpuId = 2, MoboId = 2, GpuId = 2, PsuId = 2, CaseId = 2, RamId = 3, StorageId = 2, 
                              Image = "basic.png" },
 
                 new Build () { BuildId = 3, Name = "Trzecia", UserId = 1, Date = DateTime.Now, Hidden = false,
-                             CpuId = 3, MoboId = 3, GpuId = 3, PsuId = 3, CaseId = 6, RamId = 2, StorageId = 6, Price = 2000,
+                             CpuId = 3, MoboId = 3, GpuId = 3, PsuId = 3, CaseId = 6, RamId = 2, StorageId = 6, 
                              Image = "basic.png" },
 
                 new Build () { BuildId = 4, Name = "Czwarta", UserId = 1, Date = DateTime.Now, Hidden = false,
-                             CpuId = 4, MoboId = 1, GpuId = 4, PsuId = 4, CaseId = 5, RamId = 1, StorageId = 2, Price = 2100,
+                             CpuId = 4, MoboId = 1, GpuId = 4, PsuId = 4, CaseId = 5, RamId = 1, StorageId = 2,
                              Image = "basic.png" },
 
                 new Build () { BuildId = 5, Name = "Piąta", UserId = 1, Date = DateTime.Now, Hidden = false,
-                             CpuId = 5, MoboId = 4, GpuId = 5, PsuId = 5, CaseId = 2, RamId = 6, StorageId = 7, Price = 2200,
+                             CpuId = 5, MoboId = 4, GpuId = 5, PsuId = 5, CaseId = 2, RamId = 6, StorageId = 7, 
                              Image = "basic.png" },
 
                 new Build () { BuildId = 6, Name = "Szusta", UserId = 1, Date = DateTime.Now, Hidden = false,
-                             CpuId = 6, MoboId = 5, GpuId = 6, PsuId = 6, CaseId = 2, RamId = 3, StorageId = 1, Price = 2690,
+                             CpuId = 6, MoboId = 5, GpuId = 6, PsuId = 6, CaseId = 2, RamId = 3, StorageId = 1, 
                              Image = "basic.png" },
 
                 new Build () { BuildId = 7, Name = "Siódma", UserId = 1, Date = DateTime.Now, Hidden = false,
-                             CpuId = 7, MoboId = 8, GpuId = 7, PsuId = 7, CaseId = 5, RamId = 4, StorageId = 7, Price = 2240,
+                             CpuId = 7, MoboId = 8, GpuId = 7, PsuId = 7, CaseId = 5, RamId = 4, StorageId = 7, 
                              Image = "basic.png" },
 
                 new Build () { BuildId = 8, Name = "ósma", UserId = 2, Date = DateTime.Now, Hidden = false,
-                             CpuId = 8, MoboId = 9, GpuId = 8, PsuId = 8, CaseId = 1, RamId = 1, StorageId = 1, Price = 4000,
+                             CpuId = 8, MoboId = 9, GpuId = 8, PsuId = 8, CaseId = 1, RamId = 1, StorageId = 1, 
                              Image = "basic.png"}
             };
 

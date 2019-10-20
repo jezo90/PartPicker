@@ -1,0 +1,40 @@
+﻿@using PartPicker.Infrastructure
+@model PartPicker.ViewModels.CpuDetailsViewModel
+
+@{
+    ViewBag.Title = Model.Cpu.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content">
+    <div class="container">
+        <div class="obrazek">
+            <img src="@Url.CpusImagesPath(Model.Cpu.Image)" />
+        </div>
+        <div class="informacje">
+            @{ int i = 0; }
+            @foreach (var cpu in Model.CpuList)
+            {
+                <a href=@cpu.Link>
+                    <img src="@Url.ShopsImagesPath(cpu.Shop.Logo)" height="50px" />
+                    @Model.Prizes[i]
+                </a>
+                <img src="@Url.ImagesPath("add.png")" width="20px" height="20px" />
+                <img src="@Url.ImagesPath("delete.png")" width="20px" height="20px" />
+                <br />
+                i++;
+            }
+
+            Nazwa: @Model.Cpu.Name<br />
+            Producent: @Model.Cpu.Product.Manufacturer.Name <br />
+            Seria: @Model.Cpu.Product.Series.Name <br />
+            Model: @Model.Cpu.Model <br />
+            Liczba rdzeni: @Model.Cpu.Cores <br />
+            Socket: @Model.Cpu.Socket.Name <br />
+            Częstotliwość taktowania(GHz): @Model.Cpu.Frequency <br />
+            Częstotliwość taktowania w trybie Turbo(GHz): @Model.Cpu.Turbo <br />
+            Wbudowana karta graficzna: @Model.Cpu.Gpu <br />
+        </div>
+    </div>
+</div>
+

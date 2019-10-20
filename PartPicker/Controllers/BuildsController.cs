@@ -19,9 +19,10 @@ namespace PartPicker.Controllers
             return View();
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(int id, string name)
         {
-            return View();
+            var build = context.Build.Find(id);
+            return View(build);
         }
 
         public ActionResult List(string cpuM = "", string cpuS = "", string gpuS = "", string ramT = "", string storageT = "", int reset = 0)

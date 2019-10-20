@@ -18,6 +18,15 @@ namespace PartPicker.Infrastructure
             return directPath;
         }
 
+        public static string ShopsImagesPath(this UrlHelper helper, string name)
+        {
+            var ShopsImagesPath = AppConfig.ShopsImagesFolder;
+            var path = Path.Combine(ShopsImagesPath, name);
+            var directPath = helper.Content(path);
+
+            return directPath;
+        }
+
         public static string BanersImagesPath(this UrlHelper helper)
         {
             var BanersImagesPath = AppConfig.BanersImagesFolder;

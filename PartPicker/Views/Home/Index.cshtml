@@ -9,36 +9,37 @@
     <div class="slideshow-1">
         <div class="slideshow-1-margin">
             <div id="slideshow">
-                <div class="slide-wrapper">
-                    @foreach (var news in Model.New)
-                    {
-                        <div class="slide">
-                            <a href="@Url.Action("Details", "Builds", new { id = news.BuildId })">
-                                <img src="@Url.BuildsImagesPath(news.Image)" class="slide-background" />
-                                <img src="@Url.ImagesPath("new.png")" class="slide-icon" />
-                                <div class="slide-text">
-                                    <ul>
-                                        <li>
-                                            @news.Cpu.Product.Manufacturer.Name
-                                            @news.Cpu.Product.Series.Name
-                                            @news.Cpu.Model
-                                        </li>
-                                        <li>
-                                            @news.Mobo.Manufacturer.Name
-                                            @news.Mobo.Model
-                                        </li>
-                                        <li>
-                                            @news.Gpu.Product.Manufacturer.Name
-                                            @news.Gpu.Product.Series.Name
-                                            @news.Gpu.Model
-                                        </li>
-                                    </ul>
-                                </div>
-                            </a>
-                        </div>
-                    }
-                </div>
-            </div>
+                <a href="@Url.Action("Details", "Cpu", new { id = 10, name="Intel Core i5-9600K" })"> AC AC AC</a>
+                    <div class="slide-wrapper">
+                        @foreach (var news in Model.New)
+                        {
+                            <div class="slide">
+                                <a href="@Url.Action("Details", "Builds", new { id = news.BuildId, name = news.Name})">
+                                    <img src="@Url.BuildsImagesPath(news.Image)" class="slide-background" />
+                                    <img src="@Url.ImagesPath("new.png")" class="slide-icon" />
+                                    <div class="slide-text">
+                                        <ul>
+                                            <li>
+                                                @news.Cpu.Product.Manufacturer.Name
+                                                @news.Cpu.Product.Series.Name
+                                                @news.Cpu.Model
+                                            </li>
+                                            <li>
+                                                @news.Mobo.Manufacturer.Name
+                                                @news.Mobo.Model
+                                            </li>
+                                            <li>
+                                                @news.Gpu.Product.Manufacturer.Name
+                                                @news.Gpu.Product.Series.Name
+                                                @news.Gpu.Model
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+                    </div>
+</div>
         </div>
     </div>
     <div class="slideshow-2">
@@ -48,62 +49,68 @@
                     @foreach (var hotBuild in Model.HotBuild)
                     {
                         <div class="slide">
-                            <img src="@Url.BuildsImagesPath(hotBuild.Image)" class="slide-background" />
-                            <img src="@Url.ImagesPath("hot.png")" class="slide-icon" />
-                            <div class="slide-text">
-                                <ul>
-                                    <li>
-                                        @hotBuild.Cpu.Product.Manufacturer.Name
-                                        @hotBuild.Cpu.Product.Series.Name
-                                        @hotBuild.Cpu.Model
-                                    </li>
-                                    <li>
-                                        @hotBuild.Mobo.Manufacturer.Name
-                                        @hotBuild.Mobo.Model
-                                    </li>
-                                    <li>
-                                        @hotBuild.Gpu.Product.Manufacturer.Name
-                                        @hotBuild.Gpu.Product.Series.Name
-                                        @hotBuild.Gpu.Model
-                                    </li>
-                                </ul>
-                            </div>
+                            <a href="@Url.Action("Details", "Builds", new { id = hotBuild.BuildId, name = hotBuild.Name })">
+                                <img src="@Url.BuildsImagesPath(hotBuild.Image)" class="slide-background" />
+                                <img src="@Url.ImagesPath("hot.png")" class="slide-icon" />
+                                <div class="slide-text">
+                                    <ul>
+                                        <li>
+                                            @hotBuild.Cpu.Product.Manufacturer.Name
+                                            @hotBuild.Cpu.Product.Series.Name
+                                            @hotBuild.Cpu.Model
+                                        </li>
+                                        <li>
+                                            @hotBuild.Mobo.Manufacturer.Name
+                                            @hotBuild.Mobo.Model
+                                        </li>
+                                        <li>
+                                            @hotBuild.Gpu.Product.Manufacturer.Name
+                                            @hotBuild.Gpu.Product.Series.Name
+                                            @hotBuild.Gpu.Model
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
                         </div>
                     }
                     @foreach (var hotCpu in Model.HotCpu)
                     {
                         <div class="slide">
-                            <img src="@Url.CpusImagesPath(hotCpu.Image)" class="slide-background" />
-                            <img src="@Url.ImagesPath("hot.png")" class="slide-icon" />
-                            <div class="slide-text">
-                                <ul>
-                                    <li>
-                                        @hotCpu.Product.Manufacturer.Name
-                                    </li>
-                                    <li>
-                                        @hotCpu.Product.Series.Name
-                                        @hotCpu.Model
-                                    </li>
-                                </ul>
-                            </div>
+                            <a href="@Url.Action("Details", "Cpu", new { id = hotCpu.CpuId, name = hotCpu.Name })">
+                                <img src="@Url.CpusImagesPath(hotCpu.Image)" class="slide-background" />
+                                <img src="@Url.ImagesPath("hot.png")" class="slide-icon" />
+                                <div class="slide-text">
+                                    <ul>
+                                        <li>
+                                            @hotCpu.Product.Manufacturer.Name
+                                        </li>
+                                        <li>
+                                            @hotCpu.Product.Series.Name
+                                            @hotCpu.Model
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
                         </div>
                     }
                     @foreach (var hotGpu in Model.HotGpu)
                     {
                         <div class="slide">
-                            <img src="@Url.GpusImagesPath(hotGpu.Image)" class="slide-background" />
-                            <img src="@Url.ImagesPath("hot.png")" class="slide-icon" />
-                            <div class="slide-text">
-                                <ul>
-                                    <li>
-                                        @hotGpu.Product.Manufacturer.Name
-                                    </li>
-                                    <li>
-                                        @hotGpu.Product.Series.Name
-                                        @hotGpu.Model
-                                    </li>
-                                </ul>
-                            </div>
+                            <a href="@Url.Action("Details", "Gpu", new { id = hotGpu.GpuId, name = hotGpu.Name})">
+                                <img src="@Url.GpusImagesPath(hotGpu.Image)" class="slide-background" />
+                                <img src="@Url.ImagesPath("hot.png")" class="slide-icon" />
+                                <div class="slide-text">
+                                    <ul>
+                                        <li>
+                                            @hotGpu.Product.Manufacturer.Name
+                                        </li>
+                                        <li>
+                                            @hotGpu.Product.Series.Name
+                                            @hotGpu.Model
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
                         </div>
                     }
                 </div>

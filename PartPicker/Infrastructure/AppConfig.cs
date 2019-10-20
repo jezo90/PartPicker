@@ -18,6 +18,16 @@ namespace PartPicker.Infrastructure
             }
         }
 
+        private static string _shopsImagesFolder = ConfigurationManager.AppSettings["ShopsImages"];
+
+        public static string ShopsImagesFolder
+        {
+            get
+            {
+                return _shopsImagesFolder;
+            }
+        }
+
         private static string _banersImagesFolder = ConfigurationManager.AppSettings["BanersImages"];
 
         public static string BanersImagesFolder

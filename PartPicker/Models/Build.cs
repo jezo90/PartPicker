@@ -46,10 +46,6 @@ namespace PartPicker.Models
         public string Image { get; set; }
 
         [Required]
-        [Range(1,99999)]
-        public int Price { get; set; }
-
-        [Required]
         public bool Hidden { get; set; }
 
 
