@@ -33,6 +33,7 @@ namespace PartPicker.Controllers
                 prizes.Add(Functions.GetPrice(c));                 
             }
 
+
             var cpuDetailsViewModel = new CpuDetailsViewModel()
             {
                 Cpu = cpu,
