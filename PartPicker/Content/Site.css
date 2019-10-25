@@ -307,34 +307,42 @@ body {
 .item-list {
     font-size: 14px;
     display: flex;
-    width: 100%;
     font-family: montserrat-semibold;
+
+
 }
 .nazwy {
     font-size: 16px !important;
     font-family: montserrat-bold !important;
 }
-    .item-list :first-child {
-        width: 10% ;
-    }
-    .item-list :not(:first-child) {
-        width: 18%;
-    }
+.item-list :nth-child(n) {
+    width: 100%;
+    height:auto;
+}
+
+
+.item-box {
+    border: 1.5px solid #303030;
+    display: flex;
+}
 
 .item-part {
-    float: left;
     padding: 1%;
     text-align: center;
-    z-index:1;
+    z-index: 1;
+    margin: auto;
+    align-self: flex-start;
 }
-.item-part-image {
-    min-width: -webkit-fill-available;
-}
+
 .item-list-a {
     color: #FFFFFF;
     text-decoration: none;
     width: 100% !important;
     z-index: 2;
+}
+
+.item-part-photo{
+    width:60% !important;
 }
 
 .item-part .star {
@@ -348,13 +356,7 @@ body {
 
 @media screen and (min-width:401px) {
     .item-part {
-        border: 1.5px solid #303030;
-    }
-}
-
-@media screen and (max-width:400px) {
-    .item-part {
-        border: 0.5px solid #303030;
+        
     }
 }
 
@@ -390,6 +392,7 @@ body {
     .item-part-photo{
         display:none !important;
     }
+
 }
 
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Footer !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/

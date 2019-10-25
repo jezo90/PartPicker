@@ -10,26 +10,39 @@
 <div class="content">
     <div class="container ">
         <div class="item-list nazwy">
-            <div class="item-part item-part-photo">
-                Zdjęcie
+            <div class="item-box  item-part-photo">
+                <div class="item-part">
+                    Zdjęcie
+                </div>
             </div>
-            <div class="item-part">
-                Procesor
+            <div class="item-box">
+                <div class="item-part">
+                    Procesor
+                </div>
             </div>
-            <div class="item-part">
-                Karta Graficzna
+            <div class="item-box">
+                <div class="item-part">
+                    Karta Graficzna
+                </div>
             </div>
-            <div class="item-part">
-                Ilość RAM 
-                <br />
-                [GB]
+            <div class="item-box">
+                <div class="item-part">
+                    Ilość RAM
+                    <br />
+                    [GB]
+                </div>
             </div>
-            <div class="item-part">
-                Ocena
+            <div class="item-box">
+                <div class="item-part">
+                    Ocena
+                </div>
             </div>
-            <div class="item-part">
-                TU COŚ BĘDZIE XD
+            <div class="item-box">
+                <div class="item-part">
+                    TU COŚ BĘDZIE XD
+                </div>
             </div>
+            
         </div>
     </div>
     @foreach (var build in Model.Builds)
@@ -37,59 +50,72 @@
         <div class="container">
             <a class="item-list-a" href="@Url.Action("Details", "Builds", new { id = build.BuildId, name = build.Name })">
                 <div class="item-list">
-                    <div class="item-part item-part-photo">
-                        <img class="item-part-image" src="@Url.BuildsImagesPath(build.Image)" />
+                    <div class="item-box item-part-photo">
+                        <div class="item-part">
+                            <img class="item-part-image" src="@Url.BuildsImagesPath(build.Image)" />
+                        </div>
                     </div>
-                    <div class="item-part">
+                    <div class="item-box">
+                        <div class="item-part">
 
-                        <img class="part-image" src="@Url.CpusImagesPath(build.Cpu.Image)" />
-                        <br />
-                        @build.Cpu.Name
+                            <img class="part-image" src="@Url.CpusImagesPath(build.Cpu.Image)" />
+                            <br />
+                            @build.Cpu.Name
 
+                        </div>
                     </div>
-                    <div class="item-part">
+                    <div class="item-box">
+                        <div class="item-part">
 
-                        <img class="part-image" src="@Url.GpusImagesPath(build.Gpu.Image)" />
-                        <br />
-                        @build.Gpu.Name
+                            <img class="part-image" src="@Url.GpusImagesPath(build.Gpu.Image)" />
+                            <br />
+                            @build.Gpu.Name
 
+                        </div>
                     </div>
-                    <div class="item-part">
+                    <div class="item-box">
+                        <div class="item-part">
 
-                        @build.Ram.Size
+                            @build.Ram.Size
 
+                        </div>
                     </div>
-                    <div class="item-part">
+                    <div class="item-box">
+                        <div class="item-part">
 
 
-                        @{ double grade = Model.Average[build.BuildId]; }
-                        @for (var i = 0; i < 5; i++)
-                        {
-                            if (grade >= 0.75d)
+                            @{ double grade = Model.Average[build.BuildId]; }
+                            @for (var i = 0; i < 5; i++)
                             {
-                                <img class="star" src="@Url.ImagesPath("star.png")" />
-                                grade = grade - 1.0d;
+                                if (grade >= 0.75d)
+                                {
+                                    <img class="star" src="@Url.ImagesPath("star.png")" />
+                                    grade = grade - 1.0d;
+                                }
+                                else if (grade < 0.75d && grade > 0.25d)
+                                {
+                                    <img class="star" src="@Url.ImagesPath("half.png")" />
+                                    grade = grade - 1.0d;
+                                }
+                                else
+                                {
+                                    <img class="star" src="@Url.ImagesPath("zero.png")" />
+                                    grade = grade - 1.0d;
+                                }
                             }
-                            else if (grade < 0.75d && grade > 0.25d)
-                            {
-                                <img class="star" src="@Url.ImagesPath("half.png")" />
-                                grade = grade - 1.0d;
-                            }
-                            else
-                            {
-                                <img class="star" src="@Url.ImagesPath("zero.png")" />
-                                grade = grade - 1.0d;
-                            }
-                        }
-                        <br />
-                        @string.Format("{0:N2}", Model.Average[build.BuildId])
-                        (@String.Format("{0:0.##}", Model.Count[build.BuildId]))
+                            <br />
+                            @string.Format("{0:N2}", Model.Average[build.BuildId])
+                            (@String.Format("{0:0.##}", Model.Count[build.BuildId]))
 
 
+                        </div>
                     </div>
-                    <div class="item-part">
-                        TU COŚ BĘDZIE XD
+                    <div class="item-box">
+                        <div class="item-part">
+                            TU COŚ BĘDZIE XD
+                        </div>
                     </div>
+                    
                 </div>
             </a>
         </div>
