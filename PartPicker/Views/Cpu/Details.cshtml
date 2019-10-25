@@ -6,35 +6,53 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="content">
-    <div class="container">
-        <div class="obrazek">
-            <img src="@Url.CpusImagesPath(Model.Cpu.Image)" />
+<div class="content-details">
+    <div class="container-details">
+        <div class="details-image">
+            <img class="details-image-product" src="@Url.CpusImagesPath(Model.Cpu.Image)" />
         </div>
-        <div class="informacje">
+        <div class="details-prices">
             @{ int i = 0; }
             @foreach (var cpu in Model.CpuList)
             {
-                <a href=@cpu.Link>
-                    <img src="@Url.ShopsImagesPath(cpu.Shop.Logo)" height="50px" />
-                    @Model.Prizes[i]
-                </a>
-                <img src="@Url.ImagesPath("add.png")" width="20px" height="20px" />
-                <img src="@Url.ImagesPath("delete.png")" width="20px" height="20px" />
-                <br />
-                i++;
-            }
+            <div class="details-prices-shop">
+                <div class="details-prices-shop-item abc">
+                    <a class="details-prices-shop-link" href=@cpu.Link>
+                        
+                            <img class="details-prices-shop-image" src="@Url.ShopsImagesPath(cpu.Shop.Logo)" />
+                        
 
-            Nazwa: @Model.Cpu.Name<br />
-            Producent: @Model.Cpu.Product.Manufacturer.Name <br />
-            Seria: @Model.Cpu.Product.Series.Name <br />
-            Model: @Model.Cpu.Model <br />
-            Liczba rdzeni: @Model.Cpu.Cores <br />
-            Socket: @Model.Cpu.Socket.Name <br />
-            Częstotliwość taktowania(GHz): @Model.Cpu.Frequency <br />
-            Częstotliwość taktowania w trybie Turbo(GHz): @Model.Cpu.Turbo <br />
-            Wbudowana karta graficzna: @Model.Cpu.Gpu <br />
+                        <div class="details-prices-shop-price">
+                            @Model.Prizes[i]
+                        </div>
+
+                    </a>
+                </div>
+                <div class="details-prices-shop-item">
+                    <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" />
+                </div>
+                <div class="details-prices-shop-item">
+                    <img class="details-prices-shop-delete" src="@Url.ImagesPath("delete.png")" />
+                </div>
+                
+                <br />
+            </div>
+                
+             i++;
+            }
+        </div>
+    </div>
+    <div class="container-details">
+        <div class="details-info">
+            <div class="details-info-text">Nazwa: @Model.Cpu.Name<br /></div>
+            <div class="details-info-text">Producent: @Model.Cpu.Product.Manufacturer.Name<br /></div>
+            <div class="details-info-text">Seria: @Model.Cpu.Product.Series.Name<br /></div>
+            <div class="details-info-text">Model: @Model.Cpu.Model<br /></div>
+            <div class="details-info-text">Liczba rdzeni: @Model.Cpu.Cores<br /></div>
+            <div class="details-info-text">Socket: @Model.Cpu.Socket.Name<br /></div>
+            <div class="details-info-text">Częstotliwość taktowania(GHz): @Model.Cpu.Frequency<br /></div>
+            <div class="details-info-text">Częstotliwość taktowania w trybie Turbo(GHz): @Model.Cpu.Turbo<br /></div>
+            <div class="details-info-text">Wbudowana karta graficzna: @Model.Cpu.Gpu<br /></div>
         </div>
     </div>
 </div>
-
