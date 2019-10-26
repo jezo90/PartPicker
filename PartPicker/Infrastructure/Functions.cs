@@ -11,33 +11,40 @@ namespace PartPicker.Infrastructure
 {
     public class Functions
     {
-        public static string GetPrice(Cpu c)
+        public static string GetPrice<T>(T a)
         {
-            using (WebClient webClient = new WebClient())
+            if (a is Cpu)
             {
-                webClient.Encoding = Encoding.UTF8;
-                string html = webClient.DownloadString(c.Link);
+                Cpu c = a as Cpu;
 
-                HtmlDocument pageDocument = new HtmlDocument();
-                pageDocument.LoadHtml(html);
-                if (c.Shop.Name == "Sferis")
+                using (WebClient webClient = new WebClient())
                 {
-                    if (html.ToString().Contains("Produkt chwilowo niedostępny"))
+                    webClient.Encoding = Encoding.UTF8;
+                    string html = webClient.DownloadString(c.Link);
+
+                    HtmlDocument pageDocument = new HtmlDocument();
+                    pageDocument.LoadHtml(html);
+                    if (c.Shop.Name == "Sferis")
                     {
-                        return ("Produkt niedostępny");
+                        if (html.ToString().Contains("Produkt chwilowo niedostępny"))
+                        {
+                            return ("Produkt niedostępny");
+                        }
+                        else
+                        {
+                            var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']/span");
+                            return (prize.InnerHtml.ToString());
+                        }
                     }
                     else
                     {
-                        var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']/span");
+                        var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']");
                         return (prize.InnerHtml.ToString());
                     }
                 }
-                else
-                {
-                    var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']");
-                    return (prize.InnerHtml.ToString());
-                }
             }
+            else
+                return "0";
         }
     }
 }

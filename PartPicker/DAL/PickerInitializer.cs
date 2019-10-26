@@ -177,8 +177,6 @@ namespace PartPicker.DAL
                 new Manufacturer() { ManufacturerId = 18, Name = "SilentiumPC" },
 
                 new Manufacturer() { ManufacturerId = 19, Name = "be quiet!" }
-
-                
             };
 
             manufacturers.ForEach(s => context.Manufacturer.Add(s));
@@ -225,7 +223,6 @@ namespace PartPicker.DAL
                 new Product() { ProductId = 9, ManufacturerId = 17, SeriesId = 6, Description = "Opis Radeona"},
 
                 new Product() { ProductId = 10, ManufacturerId = 5, SeriesId = 6, Description = "Opis Radeona"}
-
             };
 
             products.ForEach(s => context.Product.Add(s));
@@ -283,8 +280,6 @@ namespace PartPicker.DAL
                             Model = "H400i", Link = "https://www.morele.net/obudowa-nzxt-h400i-matowa-czarna-ca-h400w-bb-1683598/",
                             FormFactorId = 7, MoboType = "Micro ATX, Mini ITX", GpuLenght = 411,
                             Image = "h400i.png", ShopId = 3 }
-
-
             };
 
             cases.ForEach(s => context.Case.Add(s));

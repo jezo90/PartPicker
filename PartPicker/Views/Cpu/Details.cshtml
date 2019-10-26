@@ -8,10 +8,14 @@
 
 <div class="content">
     <div class="container">
+        <div class="ramka" style="background-color: #cc3a3a;">
+            NIE MOŻESZ DODAĆ TEGO PROCESORA DO BUILDU PONIEWAŻ NIE PASUJE ON DO TWOJEJ PŁYTY GŁÓWNEJ
+        </div>
         <div class="obrazek">
             <img src="@Url.CpusImagesPath(Model.Cpu.Image)" />
         </div>
         <div class="informacje">
+
             @{ int i = 0; }
             @foreach (var cpu in Model.CpuList)
             {
