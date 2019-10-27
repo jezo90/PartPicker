@@ -974,7 +974,7 @@ footer {
     display:block;
     width:5%;
 }
-.abc{
+.details-prices-shop-item-link{
     width: 90% !important;
 }
 
@@ -988,4 +988,46 @@ footer {
 .details-info-text{
     border-bottom:solid;
     padding: 5px;
+}
+
+.info-red {
+    background-color: #cc3a3a;
+    display: flex !important;
+    border: #661d1d solid 7px;
+    border-radius: 25px;
+    padding: 15px;
+    margin-bottom:5px;
+}
+
+.info-green {
+    background-color: #29ff0f;
+    display: flex !important;
+    border: #147f07 solid 7px;
+    border-radius: 25px;
+    padding: 15px;
+    margin-bottom: 5px;
+}
+
+.info-left {
+    width: 6%;
+    height: inherit;
+    align-self: center;
+}
+
+.info-right {
+    width: 94%;
+    height: auto;
+    height: inherit;
+    align-self: center;
+    -webkit-text-stroke: 0.8px BLACK;
+}
+
+.info-left img {
+    width: 80%;
+    height: auto;
+}
+
+.newbuild-add {
+    height: 10px;
+    width: 10px;
 }
