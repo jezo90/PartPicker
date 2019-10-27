@@ -10,6 +10,7 @@ namespace PartPicker.ViewModels
     {
         public Cpu Cpu { get; set; }
         public List<Cpu> CpuList { get; set; }
-        public List<string> Prizes { get; set; }
+        public List<string> Prices { get; set; }
+        public NewBuildViewModel NewBuildViewModel { get; set; }
     }
 }

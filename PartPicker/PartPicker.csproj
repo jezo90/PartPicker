@@ -116,6 +116,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\!.png" />
     <Content Include="Content\Images\add.png" />
     <Content Include="Content\Images\Baner\baner1.jpg" />
     <Content Include="Content\Images\Baner\baner2.jpg" />
@@ -216,6 +217,7 @@
     <Compile Include="ViewModels\BuildsListViewModel.cs" />
     <Compile Include="ViewModels\CpuDetailsViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\NewBuildViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -230,6 +232,7 @@
     <Content Include="Views\Builds\_Filters.cshtml" />
     <Content Include="Views\Cpu\Details.cshtml" />
     <Content Include="Views\Builds\Details.cshtml" />
+    <Content Include="Views\NewBuild\NewBuild.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -240,7 +243,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Images\Psu\" />
-    <Folder Include="Views\NewBuild\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

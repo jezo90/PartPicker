@@ -1,0 +1,91 @@
+﻿@model PartPicker.ViewModels.NewBuildViewModel
+@using PartPicker.Infrastructure
+@{
+    ViewBag.Title = "Nowa konfiguracja";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+Procesor:
+@if (@Model.Cpu != null)
+{
+    @Model.Cpu.Name
+    <a href="@Url.Action("DeleteCpuFromBuild", "NewBuild")">
+        <img class="details-prices-shop-add" src="@Url.ImagesPath("delete.png")" style="width: 30px; height: 30px;" />
+    </a>
+}
+else
+{
+    <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" style="height:30px; width: 30px" />
+}
+
+<br />
+Karta graficzna:
+@if (@Model.Gpu != null)
+{
+    @Model.Gpu.Name
+    <a href="@Url.Action("DeleteGpuFromBuild", "NewBuild")">
+        <img class="details-prices-shop-add" src="@Url.ImagesPath("delete.png")" style="width: 30px; height: 30px;" />
+    </a>
+}
+else
+{
+    <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" style="height:30px; width: 30px" />
+}
+
+<br />
+Płyta główna:
+@if (@Model.Mobo != null)
+{
+    @Model.Mobo.Name
+    <a href="@Url.Action("DeleteMoboFromBuild", "NewBuild")">
+        <img class="details-prices-shop-add" src="@Url.ImagesPath("delete.png")" style="width: 30px; height: 30px;" />
+    </a>
+}
+else
+{
+    <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" style="height:30px; width: 30px" />
+}
+
+<br />
+RAM:
+@if (@Model.Ram != null)
+{
+    @Model.Ram.Name
+    <a href="@Url.Action("DeleteRamFromBuild", "NewBuild")">
+        <img class="details-prices-shop-add" src="@Url.ImagesPath("delete.png")" style="width: 30px; height: 30px;" />
+    </a>
+}
+else
+{
+    <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" style="height:30px; width: 30px" />
+}
+
+<br />
+Obudowa:
+@if (@Model.Case != null)
+{
+    @Model.Case.Name
+    <a href="@Url.Action("DeleteCaseFromBuild", "NewBuild")">
+        <img class="details-prices-shop-add" src="@Url.ImagesPath("delete.png")" style="width: 30px; height: 30px;" />
+    </a>
+}
+else
+{
+    <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" style="height:30px; width: 30px" />
+}
+
+<br />
+Zasilacz:
+@if (@Model.Psu != null)
+{
+    @Model.Psu.Name
+    <a href="@Url.Action("DeletePsuFromBuild", "NewBuild")">
+        <img class="details-prices-shop-add" src="@Url.ImagesPath("delete.png")" style="width: 30px; height: 30px;" />
+    </a>
+}
+else
+{
+    <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" style="height:30px; width: 30px" />
+}
+
+
+

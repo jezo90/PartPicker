@@ -11,40 +11,211 @@ namespace PartPicker.Infrastructure
 {
     public class Functions
     {
-        public static string GetPrice<T>(T a)
+        public static string GetPrice(Cpu c)
         {
-            if (a is Cpu)
+            using (WebClient webClient = new WebClient())
             {
-                Cpu c = a as Cpu;
+                webClient.Encoding = Encoding.UTF8;
+                string html = webClient.DownloadString(c.Link);
 
-                using (WebClient webClient = new WebClient())
+                HtmlDocument pageDocument = new HtmlDocument();
+                pageDocument.LoadHtml(html);
+                if (c.Shop.Name == "Sferis")
                 {
-                    webClient.Encoding = Encoding.UTF8;
-                    string html = webClient.DownloadString(c.Link);
-
-                    HtmlDocument pageDocument = new HtmlDocument();
-                    pageDocument.LoadHtml(html);
-                    if (c.Shop.Name == "Sferis")
+                    if (html.ToString().Contains("Produkt chwilowo niedostępny"))
                     {
-                        if (html.ToString().Contains("Produkt chwilowo niedostępny"))
-                        {
-                            return ("Produkt niedostępny");
-                        }
-                        else
-                        {
-                            var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']/span");
-                            return (prize.InnerHtml.ToString());
-                        }
+                        return ("Produkt niedostępny");
                     }
                     else
                     {
-                        var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']");
+                        var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']/span");
                         return (prize.InnerHtml.ToString());
                     }
                 }
+                else
+                {
+                    var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']");
+                    return (prize.InnerHtml.ToString());
+                }
             }
-            else
-                return "0";
         }
+
+        public static string GetPrice(Gpu c)
+        {
+            using (WebClient webClient = new WebClient())
+            {
+                webClient.Encoding = Encoding.UTF8;
+                string html = webClient.DownloadString(c.Link);
+
+                HtmlDocument pageDocument = new HtmlDocument();
+                pageDocument.LoadHtml(html);
+                if (c.Shop.Name == "Sferis")
+                {
+                    if (html.ToString().Contains("Produkt chwilowo niedostępny"))
+                    {
+                        return ("Produkt niedostępny");
+                    }
+                    else
+                    {
+                        var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']/span");
+                        return (prize.InnerHtml.ToString());
+                    }
+                }
+                else
+                {
+                    var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']");
+                    return (prize.InnerHtml.ToString());
+                }
+            }
+        }
+
+        public static string GetPrice(Ram c)
+        {
+            using (WebClient webClient = new WebClient())
+            {
+                webClient.Encoding = Encoding.UTF8;
+                string html = webClient.DownloadString(c.Link);
+
+                HtmlDocument pageDocument = new HtmlDocument();
+                pageDocument.LoadHtml(html);
+                if (c.Shop.Name == "Sferis")
+                {
+                    if (html.ToString().Contains("Produkt chwilowo niedostępny"))
+                    {
+                        return ("Produkt niedostępny");
+                    }
+                    else
+                    {
+                        var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']/span");
+                        return (prize.InnerHtml.ToString());
+                    }
+                }
+                else
+                {
+                    var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']");
+                    return (prize.InnerHtml.ToString());
+                }
+            }
+        }
+
+
+        public static string GetPrice(Storage c)
+        {
+            using (WebClient webClient = new WebClient())
+            {
+                webClient.Encoding = Encoding.UTF8;
+                string html = webClient.DownloadString(c.Link);
+
+                HtmlDocument pageDocument = new HtmlDocument();
+                pageDocument.LoadHtml(html);
+                if (c.Shop.Name == "Sferis")
+                {
+                    if (html.ToString().Contains("Produkt chwilowo niedostępny"))
+                    {
+                        return ("Produkt niedostępny");
+                    }
+                    else
+                    {
+                        var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']/span");
+                        return (prize.InnerHtml.ToString());
+                    }
+                }
+                else
+                {
+                    var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']");
+                    return (prize.InnerHtml.ToString());
+                }
+            }
+        }
+
+        public static string GetPrice(Case c)
+        {
+            using (WebClient webClient = new WebClient())
+            {
+                webClient.Encoding = Encoding.UTF8;
+                string html = webClient.DownloadString(c.Link);
+
+                HtmlDocument pageDocument = new HtmlDocument();
+                pageDocument.LoadHtml(html);
+                if (c.Shop.Name == "Sferis")
+                {
+                    if (html.ToString().Contains("Produkt chwilowo niedostępny"))
+                    {
+                        return ("Produkt niedostępny");
+                    }
+                    else
+                    {
+                        var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']/span");
+                        return (prize.InnerHtml.ToString());
+                    }
+                }
+                else
+                {
+                    var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']");
+                    return (prize.InnerHtml.ToString());
+                }
+            }
+        }
+
+
+        public static string GetPrice(Psu c)
+        {
+            using (WebClient webClient = new WebClient())
+            {
+                webClient.Encoding = Encoding.UTF8;
+                string html = webClient.DownloadString(c.Link);
+
+                HtmlDocument pageDocument = new HtmlDocument();
+                pageDocument.LoadHtml(html);
+                if (c.Shop.Name == "Sferis")
+                {
+                    if (html.ToString().Contains("Produkt chwilowo niedostępny"))
+                    {
+                        return ("Produkt niedostępny");
+                    }
+                    else
+                    {
+                        var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']/span");
+                        return (prize.InnerHtml.ToString());
+                    }
+                }
+                else
+                {
+                    var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']");
+                    return (prize.InnerHtml.ToString());
+                }
+            }
+        }
+
+        public static string GetPrice(Mobo c)
+        {
+            using (WebClient webClient = new WebClient())
+            {
+                webClient.Encoding = Encoding.UTF8;
+                string html = webClient.DownloadString(c.Link);
+
+                HtmlDocument pageDocument = new HtmlDocument();
+                pageDocument.LoadHtml(html);
+                if (c.Shop.Name == "Sferis")
+                {
+                    if (html.ToString().Contains("Produkt chwilowo niedostępny"))
+                    {
+                        return ("Produkt niedostępny");
+                    }
+                    else
+                    {
+                        var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']/span");
+                        return (prize.InnerHtml.ToString());
+                    }
+                }
+                else
+                {
+                    var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']");
+                    return (prize.InnerHtml.ToString());
+                }
+            }
+        }
+
     }
+
 }

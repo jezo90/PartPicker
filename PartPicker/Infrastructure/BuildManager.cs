@@ -48,6 +48,22 @@ namespace PartPicker.Infrastructure
             build.Cpu = null;
         }
 
+        public Cpu GetCpu()
+        {
+            NewBuild build;
+            if (session.Get<NewBuild>(SessionNames.BuildSessionKey)==null)
+            {
+                build = new NewBuild();
+            }
+            else
+            {
+                build = session.Get<NewBuild>(SessionNames.BuildSessionKey) as NewBuild;
+            }
+
+            return build.Cpu;
+
+        }
+
         /// GPU
         public void GpuAddToBuild(Gpu gpu)
         {
@@ -60,6 +76,22 @@ namespace PartPicker.Infrastructure
         {
             var build = NewBuild();
             build.Gpu = null;
+        }
+
+        public Gpu GetGpu()
+        {
+            NewBuild build;
+            if (session.Get<NewBuild>(SessionNames.BuildSessionKey) == null)
+            {
+                build = new NewBuild();
+            }
+            else
+            {
+                build = session.Get<NewBuild>(SessionNames.BuildSessionKey) as NewBuild;
+            }
+
+            return build.Gpu;
+
         }
 
         /// MOBO
@@ -76,6 +108,22 @@ namespace PartPicker.Infrastructure
             build.Mobo = null;
         }
 
+        public Mobo GetMobo()
+        {
+            NewBuild build;
+            if (session.Get<NewBuild>(SessionNames.BuildSessionKey) == null)
+            {
+                build = new NewBuild();
+            }
+            else
+            {
+                build = session.Get<NewBuild>(SessionNames.BuildSessionKey) as NewBuild;
+            }
+
+            return build.Mobo;
+
+        }
+
         /// CASE
         public void CaseAddToBuild(Case casee)
         {
@@ -88,6 +136,22 @@ namespace PartPicker.Infrastructure
         {
             var build = NewBuild();
             build.Case = null;
+        }
+
+        public Case GetCase()
+        {
+            NewBuild build;
+            if (session.Get<NewBuild>(SessionNames.BuildSessionKey) == null)
+            {
+                build = new NewBuild();
+            }
+            else
+            {
+                build = session.Get<NewBuild>(SessionNames.BuildSessionKey) as NewBuild;
+            }
+
+            return build.Case;
+
         }
 
         /// PSU
@@ -104,6 +168,22 @@ namespace PartPicker.Infrastructure
             build.Psu = null;
         }
 
+        public Psu GetPsu()
+        {
+            NewBuild build;
+            if (session.Get<NewBuild>(SessionNames.BuildSessionKey) == null)
+            {
+                build = new NewBuild();
+            }
+            else
+            {
+                build = session.Get<NewBuild>(SessionNames.BuildSessionKey) as NewBuild;
+            }
+
+            return build.Psu;
+
+        }
+
         /// RAM
         public void RamAddToBuild(Ram ram)
         {
@@ -118,6 +198,22 @@ namespace PartPicker.Infrastructure
             build.Ram = null;
         }
 
+        public Ram GetRam()
+        {
+            NewBuild build;
+            if (session.Get<NewBuild>(SessionNames.BuildSessionKey) == null)
+            {
+                build = new NewBuild();
+            }
+            else
+            {
+                build = session.Get<NewBuild>(SessionNames.BuildSessionKey) as NewBuild;
+            }
+
+            return build.Ram;
+
+        }
+
         /// STORAGE
         public void StorageAddToBuild(Storage storage)
         {
@@ -130,6 +226,22 @@ namespace PartPicker.Infrastructure
         {
             var build = NewBuild();
             build.Storage = null;
+        }
+
+        public Storage GetStorage()
+        {
+            NewBuild build;
+            if (session.Get<NewBuild>(SessionNames.BuildSessionKey) == null)
+            {
+                build = new NewBuild();
+            }
+            else
+            {
+                build = session.Get<NewBuild>(SessionNames.BuildSessionKey) as NewBuild;
+            }
+
+            return build.Storage;
+
         }
 
         public Build CreateBuild(NewBuild createdBuild, int userId)

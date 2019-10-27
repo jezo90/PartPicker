@@ -12,33 +12,78 @@
             <img class="details-image-product" src="@Url.CpusImagesPath(Model.Cpu.Image)" />
         </div>
         <div class="details-prices">
+            @if (Model.NewBuildViewModel.Mobo != null && Model.NewBuildViewModel.Mobo.Socket.Name != Model.Cpu.Socket.Name)
+            {
+                <div class="infoRED" style="background-color: #cc3a3a;">
+                    <div class="infoLewo">
+                        <img src="@Url.ImagesPath("!.png")" style="width:50px !important; height:50px !important;" />
+                    </div>
+                    <div class="infoPrawo">
+                        Ten procesor nie pasuje do wybranej przez Ciebie płyty głównej.
+                        <br />
+                        Aktualnie wybrana płyta główna to: @Model.NewBuildViewModel.Mobo.Name
+                        <br />
+                        Odpowiedni Socket do wybranej przez Ciebie płyty głównej to: @Model.NewBuildViewModel.Mobo.Socket.Name
+                        <br />
+                        Kliknij tutaj by przejść do wyszukiwania kompatybilnych procesorów.
+                    </div>
+                </div>
+            }
+            @if (Model.NewBuildViewModel.Cpu != null)
+            {
+                <div class="infoGREEN" style="background-color: #29ff0f;">
+                    <div class="infoLewo">
+                        <img src="@Url.ImagesPath("!.png")" style="width:50px !important; height:50px !important;" />
+                    </div>
+                    <div class="infoPrawo">
+                        W Twojej konfiguracji znajduje się już procesor:
+                        <a href="@Url.Action("Details", "Cpu", new { id = Model.NewBuildViewModel.Cpu.CpuId })">
+                            @Model.NewBuildViewModel.Cpu.Name
+                        </a>
+                    </div>
+                </div>
+            }
+
+
             @{ int i = 0; }
             @foreach (var cpu in Model.CpuList)
             {
-            <div class="details-prices-shop">
-                <div class="details-prices-shop-item abc">
-                    <a class="details-prices-shop-link" href=@cpu.Link>
-                        
+                <div class="details-prices-shop">
+                    <div class="details-prices-shop-item abc">
+                        <a class="details-prices-shop-link" href=@cpu.Link>
+
                             <img class="details-prices-shop-image" src="@Url.ShopsImagesPath(cpu.Shop.Logo)" />
-                        
 
-                        <div class="details-prices-shop-price">
-                            @Model.Prizes[i]
+
+                            <div class="details-prices-shop-price">
+                                @Model.Prices[i]
+                            </div>
+
+                        </a>
+                    </div>
+                    @if (Model.NewBuildViewModel.Mobo != null)
+                    {
+                        if (Model.NewBuildViewModel.Mobo.Socket.Name == cpu.Socket.Name)
+                        {
+                            <div class="details-prices-shop-item">
+                                <a href="@Url.Action("AddCpuToBuild", "NewBuild", new { @id = cpu.CpuId })">
+                                    <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" />
+                                </a>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="details-prices-shop-item">
+                            <a href="@Url.Action("AddCpuToBuild", "NewBuild", new { @id = cpu.CpuId })">
+                                <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" />
+                            </a>
                         </div>
+                    }
+                    <br />
+                </div>
 
-                    </a>
-                </div>
-                <div class="details-prices-shop-item">
-                    <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" />
-                </div>
-                <div class="details-prices-shop-item">
-                    <img class="details-prices-shop-delete" src="@Url.ImagesPath("delete.png")" />
-                </div>
-                
-                <br />
-            </div>
-                
-             i++;
+                i++;
             }
         </div>
     </div>

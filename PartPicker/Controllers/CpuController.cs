@@ -15,7 +15,15 @@ namespace PartPicker.Controllers
 {
     public class CpuController : Controller
     {
+        private BuildManager BuildManager;
         private PickerContext context = new PickerContext();
+        private ISessionManager SessionManager { get; set; }
+
+        public CpuController()
+        {
+            SessionManager = new SessionManager();
+            BuildManager = new BuildManager(SessionManager, context);
+        }
 
         public ActionResult Index()
         {
@@ -26,11 +34,11 @@ namespace PartPicker.Controllers
         {
             var cpu = context.Cpu.Find(id);
             var cpuList = context.Cpu.Where(a => a.Name == cpu.Name).ToList();
-            List<string> prizes = new List<string>();
+            List<string> prices = new List<string>();
 
             foreach (Cpu c in cpuList)
             {
-                prizes.Add(Functions.GetPrice(c));                 
+                prices.Add(Functions.GetPrice(c));
             }
 
 
@@ -38,7 +46,18 @@ namespace PartPicker.Controllers
             {
                 Cpu = cpu,
                 CpuList = cpuList,
-                Prizes = prizes
+                Prices = prices,
+                NewBuildViewModel = new NewBuildViewModel()
+                {
+                    Cpu = BuildManager.GetCpu(),
+                    Gpu = BuildManager.GetGpu(),
+                    Ram = BuildManager.GetRam(),
+                    Case = BuildManager.GetCase(),
+                    Mobo = BuildManager.GetMobo(),
+                    Psu = BuildManager.GetPsu(),
+                    Storage = BuildManager.GetStorage()
+                }
+
             };
 
             return View(cpuDetailsViewModel);
