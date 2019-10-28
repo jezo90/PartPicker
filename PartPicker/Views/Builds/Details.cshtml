@@ -6,150 +6,182 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <div class="content-details-build">
-        <div class="container-details-build">
-            <div class="details-image">
-                <img class="details-image-product" src="@Url.BuildsImagesPath(Model.Image)" />
+<div class="content-details-build">
+    <div class="container-details-build">
+        <div class="details-image">
+            <img class="details-image-product" src="@Url.BuildsImagesPath(Model.Image)" />
+        </div>
+
+        <div class="details-prices">
+            <div>
+                @Model.Name.ToUpper() <= Większą czcionką plus troche większy odstęp żeby był na dole
+            
+                @{
+                    double sum = 0;
+                    foreach (var rate in Model.Rates)
+                    {
+                        sum += rate.Grade;
+                    }
+                    double buildGrade = sum / Model.Rates.Count();
+
+                    for (var i = 0; i < 5; i++)
+                    {
+                        if (buildGrade >= 0.75d)
+                        {
+                            <img class="details-build-comments-grade-star" src="@Url.ImagesPath("star.png")" />
+                            buildGrade = buildGrade - 1.0d;
+                        }
+                        else if (buildGrade < 0.75d && buildGrade > 0.25d)
+                        {
+                            <img class="details-build-comments-grade-star" src="@Url.ImagesPath("half.png")" />
+                            buildGrade = buildGrade - 1.0d;
+                        }
+                        else
+                        {
+                            <img class="details-build-comments-grade-star" src="@Url.ImagesPath("zero.png")" />
+                            buildGrade = buildGrade - 1.0d;
+                        }
+                    }
+                }
+                (@Model.Rates.Count())
             </div>
 
-
-
-            <div class="details-prices">
-                <div class="details-build-description">
-                    @Model.Description
-                    123451234512345123451234512345123451234512345123451234512345123451234512345123451234512345123451234512345123451234512345123451234512345123451234512345
-                </div>
+            <div class="details-build-description">
+                OPIS: <br />
+                @Model.Description
             </div>
-
-
-
 
         </div>
 
-        <div class="container-details-build">
-            <div class="details-build">
-                <div class="details-build-info">
-                    <div class="details-build-info-text">
-                        Procesor:
-                    </div>
-                    <a class="details-build-info-link" href="@Url.Action("Details", "Cpu", new { id = Model.CpuId, name=Model.Cpu.Name })">
-                        <img class="details-build-info-image" src="@Url.CpusImagesPath(Model.Cpu.Image)" />
-                        <div class="details-build-info-name">
-                            @Model.Cpu.Name
-                        </div>
-                    </a>
-                    <br />
+    </div>
+
+    <br />
+
+    <div class="container-details-build">
+        <div class="details-build">
+            <div class="details-build-info">
+                <div class="details-build-info-text">
+                    PROCESOR:
                 </div>
-                <div class="details-build-info">
-                    <div class="details-build-info-text">
-                        Karta graficzna:
+                <a class="details-build-info-link" href="@Url.Action("Details", "Cpu", new { id = Model.CpuId, name=Model.Cpu.Name })">
+                    <img class="details-build-info-image" src="@Url.CpusImagesPath(Model.Cpu.Image)" />
+                    <div class="details-build-info-name">
+                        @Model.Cpu.Name
                     </div>
-                    <a class="details-build-info-link" href="@Url.Action("Details", "Gpu", new { id = Model.GpuId, name=Model.Gpu.Name })">
-                        <img class="details-build-info-image" src="@Url.GpusImagesPath(Model.Gpu.Image)" />
-                        <div class="details-build-info-name">
-                            @Model.Gpu.Name
-                        </div>
-                    </a>
-                    <br />
-                </div>
-                <div class="details-build-info">
-                    <div class="details-build-info-text">
-                        Płyta główna:
-                    </div>
-                    <a class="details-build-info-link" href="@Url.Action("Details", "Mobo", new { id = Model.MoboId, name=Model.Mobo.Name })">
-                        <img class="details-build-info-image" src="@Url.MobosImagesPath(Model.Mobo.Image)" />
-                        <div class="details-build-info-name">
-                            @Model.Mobo.Name
-                        </div>
-                    </a>
-                    <br />
-                </div>
-                <div class="details-build-info">
-                    <div class="details-build-info-text">
-                        Dysk twardy:
-                    </div>
-                    <a class="details-build-info-link" href="@Url.Action("Details", "Storage", new { id = Model.StorageId, name=Model.Storage.Name })">
-                        <img class="details-build-info-image" src="@Url.StoragesImagesPath(Model.Storage.Image)" />
-                        <div class="details-build-info-name">
-                            @Model.Storage.Name
-                        </div>
-                    </a>
-                    <br />
-                </div>
-                <div class="details-build-info">
-                    <div class="details-build-info-text">
-                        Pamięć RAM:
-                    </div>
-                    <a class="details-build-info-link" href="@Url.Action("Details", "Ram", new { id = Model.RamId, name=Model.Ram.Name })">
-                        <img class="details-build-info-image" src="@Url.RamsImagesPath(Model.Ram.Image)" />
-                        <div class="details-build-info-name">
-                            @Model.Ram.Name
-                        </div>
-                    </a>
-                    <br />
-                </div>
-                <div class="details-build-info">
-                    <div class="details-build-info-text">
-                        Zasilacz:
-                    </div>
-                    <a class="details-build-info-link" href="@Url.Action("Details", "Psu", new { id = Model.PsuId, name=Model.Psu.Name })">
-                        <img class="details-build-info-image" src="@Url.PsusImagesPath(Model.Psu.Image)" />
-                        <div class="details-build-info-name">
-                            @Model.Psu.Name
-                        </div>
-                    </a>
-                    <br />
-                </div>
-                <div class="details-build-info">
-                    <div class="details-build-info-text">
-                        Obudowa:
-                    </div>
-                    <a class="details-build-info-link" href="@Url.Action("Details", "Case", new { id = Model.CaseId, name=Model.Case.Name })">
-                        <img class="details-build-info-image" src="@Url.CasesImagesPath(Model.Case.Image)" />
-                        <div class="details-build-info-name">
-                            @Model.Case.Name
-                        </div>
-                    </a>
-                    <br />
-                </div>
+                </a>
+                <br />
             </div>
+            <div class="details-build-info">
+                <div class="details-build-info-text">
+                    KARTA GRAFICZNA:
+                </div>
+                <a class="details-build-info-link" href="@Url.Action("Details", "Gpu", new { id = Model.GpuId, name=Model.Gpu.Name })">
+                    <img class="details-build-info-image" src="@Url.GpusImagesPath(Model.Gpu.Image)" />
+                    <div class="details-build-info-name">
+                        @Model.Gpu.Name
+                    </div>
+                </a>
+                <br />
+            </div>
+            <div class="details-build-info">
+                <div class="details-build-info-text">
+                    PŁYTA GŁÓWNA:
+                </div>
+                <a class="details-build-info-link" href="@Url.Action("Details", "Mobo", new { id = Model.MoboId, name=Model.Mobo.Name })">
+                    <img class="details-build-info-image" src="@Url.MobosImagesPath(Model.Mobo.Image)" />
+                    <div class="details-build-info-name">
+                        @Model.Mobo.Name
+                    </div>
+                </a>
+                <br />
+            </div>
+            <div class="details-build-info">
+                <div class="details-build-info-text">
+                    DYSK TWARDY:
+                </div>
+                <a class="details-build-info-link" href="@Url.Action("Details", "Storage", new { id = Model.StorageId, name=Model.Storage.Name })">
+                    <img class="details-build-info-image" src="@Url.StoragesImagesPath(Model.Storage.Image)" />
+                    <div class="details-build-info-name">
+                        @Model.Storage.Name
+                    </div>
+                </a>
+                <br />
+            </div>
+            <div class="details-build-info">
+                <div class="details-build-info-text">
+                    PAMIĘĆ RAM:
+                </div>
+                <a class="details-build-info-link" href="@Url.Action("Details", "Ram", new { id = Model.RamId, name=Model.Ram.Name })">
+                    <img class="details-build-info-image" src="@Url.RamsImagesPath(Model.Ram.Image)" />
+                    <div class="details-build-info-name">
+                        @Model.Ram.Name
+                    </div>
+                </a>
+                <br />
+            </div>
+            <div class="details-build-info">
+                <div class="details-build-info-text">
+                    ZASILACZ:
+                </div>
+                <a class="details-build-info-link" href="@Url.Action("Details", "Psu", new { id = Model.PsuId, name=Model.Psu.Name })">
+                    <img class="details-build-info-image" src="@Url.PsusImagesPath(Model.Psu.Image)" />
+                    <div class="details-build-info-name">
+                        @Model.Psu.Name
+                    </div>
+                </a>
+                <br />
+            </div>
+            <div class="details-build-info">
+                <div class="details-build-info-text">
+                    OBUDOWA:
+                </div>
+                <a class="details-build-info-link" href="@Url.Action("Details", "Case", new { id = Model.CaseId, name=Model.Case.Name })">
+                    <img class="details-build-info-image" src="@Url.CasesImagesPath(Model.Case.Image)" />
+                    <div class="details-build-info-name">
+                        @Model.Case.Name
+                    </div>
+                </a>
+                <br />
+            </div>
+        </div>
+
+        <br />
+
+        <div class="details-build-comments">
+            @foreach (var rate in Model.Rates.OrderByDescending(a => a.Grade))
+            {
+                <div class="details-build-comments-grade">
+                    <div class="details-build-comments-grade-text">
+                        @rate.User.Nickname @rate.Grade
+                    </div>
 
 
-            <div class="details-build-comments">
-                @foreach (var rate in Model.Rates.OrderByDescending(a => a.Grade))
-                {
-                    <div class="details-build-comments-grade">
-                        <div class="details-build-comments-grade-text">
-                            @rate.User.Nickname @rate.Grade
-                        </div>
-
-
-                        @{ double grade = rate.Grade; }
-                        @for (var i = 0; i < 5; i++)
+                    @{ double grade = rate.Grade; }
+                    @for (var i = 0; i < 5; i++)
+                    {
+                        if (grade >= 0.75d)
                         {
-                            if (grade >= 0.75d)
-                            {
-                                <img class="details-build-comments-grade-star" src="@Url.ImagesPath("star.png")" />
-                                grade = grade - 1.0d;
-                            }
-                            else if (grade < 0.75d && grade > 0.25d)
-                            {
-                                <img class="details-build-comments-grade-star" src="@Url.ImagesPath("half.png")" />
-                                grade = grade - 1.0d;
-                            }
-                            else
-                            {
-                                <img class="details-build-comments-grade-star" src="@Url.ImagesPath("zero.png")" />
-                                grade = grade - 1.0d;
-                            }
+                            <img class="details-build-comments-grade-star" src="@Url.ImagesPath("star.png")" />
+                            grade = grade - 1.0d;
                         }
-                        <br />
-                    </div>
-                    <div class="details-build-comments-text">
-                        @rate.Comment
-                    </div>
-                }
-            </div>
+                        else if (grade < 0.75d && grade > 0.25d)
+                        {
+                            <img class="details-build-comments-grade-star" src="@Url.ImagesPath("half.png")" />
+                            grade = grade - 1.0d;
+                        }
+                        else
+                        {
+                            <img class="details-build-comments-grade-star" src="@Url.ImagesPath("zero.png")" />
+                            grade = grade - 1.0d;
+                        }
+                    }
+                    <br />
+                </div>
+                <div class="details-build-comments-text">
+                    @rate.Comment
+                </div>
+            }
         </div>
     </div>
+</div>
 

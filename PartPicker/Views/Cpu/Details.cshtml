@@ -16,7 +16,7 @@
             {
                 <div class="info-red">
                     <div class="info-left">
-                        <img src="@Url.ImagesPath("!.png")"/>
+                        <img src="@Url.ImagesPath("!.png")" />
                     </div>
                     <div class="info-right">
                         Ten procesor nie pasuje do wybranej przez Ciebie płyty głównej.
@@ -33,7 +33,7 @@
             {
                 <div class="info-green">
                     <div class="info-left">
-                        <img src="@Url.ImagesPath("!.png")"/>
+                        <img src="@Url.ImagesPath("!.png")" />
                     </div>
                     <div class="info-right">
                         W Twojej konfiguracji znajduje się już procesor:
@@ -71,6 +71,12 @@
                                 </a>
                             </div>
                         }
+                        else
+                        {
+                            <div class="details-prices-shop-item">
+                                <img class="details-prices-shop-add" src="@Url.ImagesPath("addDisabled.png")" />
+                            </div>
+                        }
                     }
                     else
                     {
@@ -89,15 +95,15 @@
     </div>
     <div class="container-details">
         <div class="details-info">
-            <div class="details-info-text">Nazwa: @Model.Cpu.Name<br /></div>
-            <div class="details-info-text">Producent: @Model.Cpu.Product.Manufacturer.Name<br /></div>
-            <div class="details-info-text">Seria: @Model.Cpu.Product.Series.Name<br /></div>
-            <div class="details-info-text">Model: @Model.Cpu.Model<br /></div>
-            <div class="details-info-text">Liczba rdzeni: @Model.Cpu.Cores<br /></div>
-            <div class="details-info-text">Socket: @Model.Cpu.Socket.Name<br /></div>
-            <div class="details-info-text">Częstotliwość taktowania(GHz): @Model.Cpu.Frequency<br /></div>
-            <div class="details-info-text">Częstotliwość taktowania w trybie Turbo(GHz): @Model.Cpu.Turbo<br /></div>
-            <div class="details-info-text">Wbudowana karta graficzna: @Model.Cpu.Gpu<br /></div>
+            <div class="details-info-text">NAZWA: @Model.Cpu.Name<br /></div>
+            <div class="details-info-text">PRODUCENT: @Model.Cpu.Product.Manufacturer.Name<br /></div>
+            <div class="details-info-text">SERIA: @Model.Cpu.Product.Series.Name<br /></div>
+            <div class="details-info-text">MODEL: @Model.Cpu.Model<br /></div>
+            <div class="details-info-text">LICZBA RDZENI: @Model.Cpu.Cores<br /></div>
+            <div class="details-info-text">SOCKET: @Model.Cpu.Socket.Name<br /></div>
+            <div class="details-info-text">CZĘSTOTLIWOŚĆ TAKTOWANIA(GHz): @Model.Cpu.Frequency<br /></div>
+            <div class="details-info-text">CZĘSTOTLIWOŚĆ TAKTOWANIA W TRYBIE TURBO(GHz): @Model.Cpu.Turbo<br /></div>
+            <div class="details-info-text">WBUDOWANA KARTA GRAFICZNA: @Model.Cpu.Gpu<br /></div>
         </div>
     </div>
 </div>
