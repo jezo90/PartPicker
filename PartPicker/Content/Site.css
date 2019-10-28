@@ -912,7 +912,7 @@ footer {
 
 
 
-/* !!!!!!!!!!!!!!!!!!!!!!!! details !!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+/* !!!!!!!!!!!!!!!!!!!!!!!! details cpu.... !!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
 .details-image {
     width: 30%;
@@ -937,9 +937,7 @@ footer {
     border-bottom:solid;
 }
 
-.details-info {
-    width: 100%;
-}
+
 
 .container-details{
     width:100%;
@@ -1019,7 +1017,7 @@ footer {
     height: auto;
     height: inherit;
     align-self: center;
-    -webkit-text-stroke: 0.8px BLACK;
+    -webkit-text-stroke: 0.5px BLACK;
 }
 
 .info-left img {
@@ -1030,4 +1028,77 @@ footer {
 .newbuild-add {
     height: 10px;
     width: 10px;
+}
+
+
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! DETAILS BUILD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+.details-build {
+    width: 100%;
+}
+
+.container-details-build {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.details-build-info{
+    margin-left:auto;
+    margin-right:auto;
+    width: 95%;
+    display:flex;
+    padding:5px;
+    border-bottom: solid 2px;
+}
+.details-build-info-text {
+    width: 15%;
+    height: auto;
+    align-self:center;
+}
+.details-build-info-image {
+    width: 6%;
+    height: auto;
+    align-self: center;
+}
+.details-build-info-name {
+    margin-left:1%;
+    width: 95%;
+    height: auto;
+    align-self: center;
+}
+.details-build-info-link {
+    width:85%;
+    display:flex;
+}
+.details-build-description {
+    width: 100%;
+    display: inline-block;
+    height: auto;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.details-build-comments {
+    background-color: #3b3b3b;
+    border: solid 4px #3b3b3b;
+    border-top: 0px !important;
+    width: 95% !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+.details-build-comments-grade {
+    padding: 3px;
+    display: flex;
+}
+.details-build-comments-grade-text {
+    width: 10%;
+    height: auto;
+    align-self: center;
+}
+.details-build-comments-grade-star{
+    width:2%;
+}
+.details-build-comments-text{
+    background-color:#1b1b1b;
+    padding: 2%;
 }
