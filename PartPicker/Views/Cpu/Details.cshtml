@@ -14,11 +14,11 @@
         <div class="details-prices">
             @if (Model.NewBuildViewModel.Mobo != null && Model.NewBuildViewModel.Mobo.Socket.Name != Model.Cpu.Socket.Name)
             {
-                <div class="infoRED" style="background-color: #cc3a3a;">
-                    <div class="infoLewo">
-                        <img src="@Url.ImagesPath("!.png")" style="width:50px !important; height:50px !important;" />
+                <div class="info-red">
+                    <div class="info-left">
+                        <img src="@Url.ImagesPath("!.png")"/>
                     </div>
-                    <div class="infoPrawo">
+                    <div class="info-right">
                         Ten procesor nie pasuje do wybranej przez Ciebie płyty głównej.
                         <br />
                         Aktualnie wybrana płyta główna to: @Model.NewBuildViewModel.Mobo.Name
@@ -31,11 +31,11 @@
             }
             @if (Model.NewBuildViewModel.Cpu != null)
             {
-                <div class="infoGREEN" style="background-color: #29ff0f;">
-                    <div class="infoLewo">
-                        <img src="@Url.ImagesPath("!.png")" style="width:50px !important; height:50px !important;" />
+                <div class="info-green">
+                    <div class="info-left">
+                        <img src="@Url.ImagesPath("!.png")"/>
                     </div>
-                    <div class="infoPrawo">
+                    <div class="info-right">
                         W Twojej konfiguracji znajduje się już procesor:
                         <a href="@Url.Action("Details", "Cpu", new { id = Model.NewBuildViewModel.Cpu.CpuId })">
                             @Model.NewBuildViewModel.Cpu.Name
@@ -49,7 +49,7 @@
             @foreach (var cpu in Model.CpuList)
             {
                 <div class="details-prices-shop">
-                    <div class="details-prices-shop-item abc">
+                    <div class="details-prices-shop-item details-prices-shop-item-link">
                         <a class="details-prices-shop-link" href=@cpu.Link>
 
                             <img class="details-prices-shop-image" src="@Url.ShopsImagesPath(cpu.Shop.Logo)" />
