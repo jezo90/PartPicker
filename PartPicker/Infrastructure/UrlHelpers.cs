@@ -74,5 +74,40 @@ namespace PartPicker.Infrastructure
             return directPath;
         }
 
+        public static string MobosImagesPath(this UrlHelper helper, string name)
+        {
+            var MoboImagesPath = AppConfig.MobosImagesFolder;
+            var path = Path.Combine(MoboImagesPath, name);
+            var directPath = helper.Content(path);
+
+            return directPath;
+        }
+
+        public static string CasesImagesPath(this UrlHelper helper, string name)
+        {
+            var CaseImagesPath = AppConfig.CasesImagesFolder;
+            var path = Path.Combine(CaseImagesPath, name);
+            var directPath = helper.Content(path);
+
+            return directPath;
+        }
+
+        public static string StoragesImagesPath(this UrlHelper helper, string name)
+        {
+            var StoragesImagesPath = AppConfig.StoragesImagesFolder;
+            var path = Path.Combine(StoragesImagesPath, name);
+            var directPath = helper.Content(path);
+
+            return directPath;
+        }
+
+        public static string PsusImagesPath(this UrlHelper helper, string name)
+        {
+            var PsusImagesPath = AppConfig.PsusImagesFolder;
+            var path = Path.Combine(PsusImagesPath, name);
+            var directPath = helper.Content(path);
+
+            return directPath;
+        }
     }
 }

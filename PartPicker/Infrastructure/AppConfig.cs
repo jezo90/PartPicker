@@ -80,5 +80,45 @@ namespace PartPicker.Infrastructure
                 return _ramsImagesFolder;
             }
         }
+
+        private static string _psusImagesFolder = ConfigurationManager.AppSettings["PsusImages"];
+
+        public static string PsusImagesFolder
+        {
+            get
+            {
+                return _psusImagesFolder;
+            }
+        }
+
+        private static string _mobosImagesFolder = ConfigurationManager.AppSettings["MobosImages"];
+
+        public static string MobosImagesFolder
+        {
+            get
+            {
+                return _mobosImagesFolder;
+            }
+        }
+
+        private static string _storagesImagesFolder = ConfigurationManager.AppSettings["StoragesImages"];
+
+        public static string StoragesImagesFolder
+        {
+            get
+            {
+                return _storagesImagesFolder;
+            }
+        }
+
+        private static string _casesImagesFolder = ConfigurationManager.AppSettings["CasesImages"];
+
+        public static string CasesImagesFolder
+        {
+            get
+            {
+                return _casesImagesFolder;
+            }
+        }
     }
 }

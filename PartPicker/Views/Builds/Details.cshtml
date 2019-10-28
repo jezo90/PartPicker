@@ -1,8 +1,116 @@
-﻿
+﻿@using PartPicker.Infrastructure
+@model PartPicker.Models.Build
+
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="content-details">
+    <div class="container-details">
+        <div class="details-image">
+            <img class="details-image-product" src="@Url.BuildsImagesPath(Model.Image)" />
+        </div>
+
+        <div class="opisBuildu">
+            @Model.Description
+        </div>
+
+        <div class="container-details">
+            <div class="details-info">
+                <div class="details-info-text">
+                    Procesor:
+                    <a href="@Url.Action("Details", "Cpu", new { id = Model.CpuId, name=Model.Cpu.Name })">
+                        <img class="details-image-product" src="@Url.CpusImagesPath(Model.Cpu.Image)" />
+                        @Model.Cpu.Name
+                    </a>
+                    <br />
+                </div>
+                <div class="details-info-text">
+                    Karta graficzna:
+                    <a href="@Url.Action("Details", "Gpu", new { id = Model.GpuId, name=Model.Gpu.Name })">
+                        <img class="details-image-product" src="@Url.GpusImagesPath(Model.Gpu.Image)" />
+                        @Model.Gpu.Name
+                    </a>
+                    <br />
+                </div>
+                <div class="details-info-text">
+                    Płyta główna:
+                    <a href="@Url.Action("Details", "Mobo", new { id = Model.MoboId, name=Model.Mobo.Name })">
+                        <img class="details-image-product" src="@Url.MobosImagesPath(Model.Mobo.Image)" />
+                        @Model.Mobo.Name
+                    </a>
+                    <br />
+                </div>
+                <div class="details-info-text">
+                    Dysk Twardy:
+                    <a href="@Url.Action("Details", "Storage", new { id = Model.StorageId, name=Model.Storage.Name })">
+                        <img class="details-image-product" src="@Url.StoragesImagesPath(Model.Storage.Image)" />
+                        @Model.Storage.Name
+                    </a>
+                    <br />
+                </div>
+                <div class="details-info-text">
+                    Pamięć RAM:
+                    <a href="@Url.Action("Details", "Ram", new { id = Model.RamId, name=Model.Ram.Name })">
+                        <img class="details-image-product" src="@Url.RamsImagesPath(Model.Ram.Image)" />
+                        @Model.Ram.Name
+                    </a>
+                    <br />
+                </div>
+                <div class="details-info-text">
+                    Zasilacz:
+                    <a href="@Url.Action("Details", "Psu", new { id = Model.PsuId, name=Model.Psu.Name })">
+                        <img class="details-image-product" src="@Url.PsusImagesPath(Model.Psu.Image)" />
+                        @Model.Psu.Name
+                    </a>
+                    <br />
+                </div>
+                <div class="details-info-text">
+                    Obudowa:
+                    <a href="@Url.Action("Details", "Case", new { id = Model.CaseId, name=Model.Case.Name })">
+                        <img class="details-image-product" src="@Url.CasesImagesPath(Model.Case.Image)" />
+                        @Model.Case.Name
+                    </a>
+                    <br />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="oceny">
+            @foreach (var rate in Model.Rates.OrderByDescending(a => a.Grade))
+            {
+                <div class="pojedynczaOcena">
+                    @rate.User.Nickname ocenił na @rate.Grade
+
+                    @{ double grade = rate.Grade; }
+                    @for (var i = 0; i < 5; i++)
+                    {
+                        if (grade >= 0.75d)
+                        {
+                            <img class="star" src="@Url.ImagesPath("star.png")" />
+                            grade = grade - 1.0d;
+                        }
+                        else if (grade < 0.75d && grade > 0.25d)
+                        {
+                            <img class="star" src="@Url.ImagesPath("half.png")" />
+                            grade = grade - 1.0d;
+                        }
+                        else
+                        {
+                            <img class="star" src="@Url.ImagesPath("zero.png")" />
+                            grade = grade - 1.0d;
+                        }
+                    }
+                    <br />
+                </div>
+                <div class="komentarz">
+                    @rate.Comment
+                </div>
+            }
+        </div>
+
+    </div>
+</div>
 

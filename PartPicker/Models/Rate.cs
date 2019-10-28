@@ -17,8 +17,15 @@ namespace PartPicker.Models
         public int BuildId { get; set; }
 
         [Required]
-        [Range(1,9)]
+        [Range(1,5)]
         public int Grade { get; set; }
+
+        [Required]
+        public DateTime Added { get; set; }
+
+        [Required]
+        [StringLength(150)]
+        public string Comment { get; set; }
 
         public virtual User User { get; set; }
         public virtual Build Build { get; set; }

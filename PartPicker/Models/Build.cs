@@ -48,6 +48,10 @@ namespace PartPicker.Models
         [Required]
         public bool Hidden { get; set; }
 
+        [Required]
+        [StringLength(150)]
+        public string Description { get; set; }
+
 
         public virtual User User { get; set; }
         public virtual Cpu Cpu { get; set; }

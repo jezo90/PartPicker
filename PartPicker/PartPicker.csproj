@@ -153,7 +153,6 @@
     <Content Include="Content\Images\zero.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
-    <Content Include="Prototype\index.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\Montserrat-Bold.otf" />
@@ -243,6 +242,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Images\Psu\" />
+    <Folder Include="Content\Images\Ram\" />
+    <Folder Include="Content\Images\Storage\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
