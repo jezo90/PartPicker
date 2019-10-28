@@ -945,8 +945,11 @@ footer {
     margin-bottom:30px;
 }
 
-.content-details{
-    display:grid;
+.content-details {
+    display: grid;
+    width:95%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .details-prices-shop-add {
@@ -977,10 +980,9 @@ footer {
 }
 
 .details-info{
-    font-size: 20px;
-    width:95%;
-    margin-left:auto;
-    margin-right:auto;
+    font-size: 14px;
+    width:100%;
+
 }
 
 .details-info-text{
@@ -1038,14 +1040,14 @@ footer {
 }
 
 .container-details-build {
-    width: 100%;
+    width: 95%;
     margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .details-build-info{
-    margin-left:auto;
-    margin-right:auto;
-    width: 95%;
+    width: 100%;
     display:flex;
     padding:5px;
     border-bottom: solid 2px;
@@ -1082,9 +1084,7 @@ footer {
     background-color: #3b3b3b;
     border: solid 4px #3b3b3b;
     border-top: 0px !important;
-    width: 95% !important;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%
 }
 .details-build-comments-grade {
     padding: 3px;
