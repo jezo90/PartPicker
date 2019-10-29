@@ -13,9 +13,12 @@
         </div>
 
         <div class="details-prices">
-            <div>
-                @Model.Name.ToUpper() <= Większą czcionką plus troche większy odstęp żeby był na dole
-            
+
+            <div class="details-name">
+                @Model.Name.ToUpper() 
+            </div>
+
+            <div class="details-grade">
                 @{
                     double sum = 0;
                     foreach (var rate in Model.Rates)

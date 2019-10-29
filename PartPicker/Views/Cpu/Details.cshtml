@@ -11,7 +11,16 @@
         <div class="details-image">
             <img class="details-image-product" src="@Url.CpusImagesPath(Model.Cpu.Image)" />
         </div>
+
+
         <div class="details-prices">
+
+
+            <div class="details-name">
+                @Model.Cpu.Name
+            </div>
+            <br />
+
             @if (Model.NewBuildViewModel.Mobo != null && Model.NewBuildViewModel.Mobo.Socket.Name != Model.Cpu.Socket.Name)
             {
                 <div class="info-red">
@@ -29,6 +38,7 @@
                     </div>
                 </div>
             }
+
             @if (Model.NewBuildViewModel.Cpu != null)
             {
                 <div class="info-green">
@@ -65,11 +75,11 @@
                     {
                         if (Model.NewBuildViewModel.Mobo.Socket.Name == cpu.Socket.Name)
                         {
-                            <div class="details-prices-shop-item">
-                                <a href="@Url.Action("AddCpuToBuild", "NewBuild", new { @id = cpu.CpuId })">
+                            
+                                <a class="details-prices-shop-item" href="@Url.Action("AddCpuToBuild", "NewBuild", new { @id = cpu.CpuId })">
                                     <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" />
                                 </a>
-                            </div>
+                            
                         }
                         else
                         {
@@ -80,11 +90,11 @@
                     }
                     else
                     {
-                        <div class="details-prices-shop-item">
-                            <a href="@Url.Action("AddCpuToBuild", "NewBuild", new { @id = cpu.CpuId })">
+                        
+                            <a class="details-prices-shop-item" href="@Url.Action("AddCpuToBuild", "NewBuild", new { @id = cpu.CpuId })">
                                 <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" />
                             </a>
-                        </div>
+                        
                     }
                     <br />
                 </div>
@@ -95,7 +105,6 @@
     </div>
     <div class="container-details">
         <div class="details-info">
-            <div class="details-info-text">NAZWA: @Model.Cpu.Name<br /></div>
             <div class="details-info-text">PRODUCENT: @Model.Cpu.Product.Manufacturer.Name<br /></div>
             <div class="details-info-text">SERIA: @Model.Cpu.Product.Series.Name<br /></div>
             <div class="details-info-text">MODEL: @Model.Cpu.Model<br /></div>
@@ -104,6 +113,7 @@
             <div class="details-info-text">CZĘSTOTLIWOŚĆ TAKTOWANIA(GHz): @Model.Cpu.Frequency<br /></div>
             <div class="details-info-text">CZĘSTOTLIWOŚĆ TAKTOWANIA W TRYBIE TURBO(GHz): @Model.Cpu.Turbo<br /></div>
             <div class="details-info-text">WBUDOWANA KARTA GRAFICZNA: @Model.Cpu.Gpu<br /></div>
+            <div class="details-info-text">BENCHMARK: @Model.Cpu.Benchmark<br /></div>
         </div>
     </div>
 </div>

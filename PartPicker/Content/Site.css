@@ -925,7 +925,7 @@ footer {
 }
 
 .details-prices {
-    width: 62.5%;
+    width: 65%;
     float: left;
     margin-left:5%;
 }
@@ -937,6 +937,11 @@ footer {
     border-bottom:solid;
 }
 
+.details-name{
+    font-size:30px;
+    border-bottom: solid;
+    padding: 1%;
+}
 
 
 .container-details{
@@ -953,8 +958,15 @@ footer {
 }
 
 .details-prices-shop-add {
-    width:60% !important;
+    width:80% !important;
+    vertical-align:middle;
 }
+
+.add-link{
+    height:100%;
+    width:auto;
+}
+
 .details-prices-shop-delete {
     width: 60% !important;
 }
@@ -974,6 +986,7 @@ footer {
 .details-prices-shop-item{
     display:block;
     width:5%;
+    align-self:center;
 }
 .details-prices-shop-item-link{
     width: 90% !important;
