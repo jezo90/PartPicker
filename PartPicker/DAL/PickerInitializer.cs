@@ -101,17 +101,17 @@ namespace PartPicker.DAL
 
             var sockets = new List<Socket>
             {
-                new Socket () { SocketId = 1, Name = "Socket 1151", Description = "Opis Socketu 1151"},
+                new Socket () { SocketId = 1, Name = "1151", Description = "Opis Socketu 1151"},
 
-                new Socket () { SocketId = 2, Name = "Socket 2011-3", Description = "Opis Socketu 2011-3"},
+                new Socket () { SocketId = 2, Name = "2011-3", Description = "Opis Socketu 2011-3"},
 
-                new Socket () { SocketId = 3, Name = "Socket 2066", Description = "Opis Socketu 2066"},
+                new Socket () { SocketId = 3, Name = "2066", Description = "Opis Socketu 2066"},
 
-                new Socket () { SocketId = 4, Name = "Socket AM4", Description = "Opis Socketu AM4"},
+                new Socket () { SocketId = 4, Name = "AM4", Description = "Opis Socketu AM4"},
 
-                new Socket () { SocketId = 5, Name = "Socket FM2/FM2+", Description = "Opis Socketu FM/FM2+"},
+                new Socket () { SocketId = 5, Name = "FM2/FM2+", Description = "Opis Socketu FM/FM2+"},
 
-                new Socket () { SocketId = 6, Name = "Socket TR4", Description = "Opis Socketu TR4"}
+                new Socket () { SocketId = 6, Name = "TR4", Description = "Opis Socketu TR4"}
             };
 
             sockets.ForEach(s => context.Socket.Add(s));
@@ -140,43 +140,43 @@ namespace PartPicker.DAL
 
             var manufacturers = new List<Manufacturer>
             {
-                new Manufacturer() { ManufacturerId = 1, Name = "AMD" },
+                new Manufacturer() { ManufacturerId = 1, Name = "AMD", Image = "amd.png"},
 
-                new Manufacturer() { ManufacturerId = 2, Name = "Intel" },
+                new Manufacturer() { ManufacturerId = 2, Name = "Intel", Image = "intel.png" },
 
-                new Manufacturer() { ManufacturerId = 3, Name = "MSI" },
+                new Manufacturer() { ManufacturerId = 3, Name = "MSI", Image = "msi.png" },
 
-                new Manufacturer() { ManufacturerId = 4, Name = "Gigabyte" },
+                new Manufacturer() { ManufacturerId = 4, Name = "Gigabyte", Image = "gigabyte.png" },
 
-                new Manufacturer() { ManufacturerId = 5, Name = "ASUS" },
+                new Manufacturer() { ManufacturerId = 5, Name = "ASUS", Image = "asus.png" },
 
-                new Manufacturer() { ManufacturerId = 6, Name = "EVGA" },
+                new Manufacturer() { ManufacturerId = 6, Name = "EVGA", Image = "evga.png" },
 
-                new Manufacturer() { ManufacturerId = 7, Name = "Corsair" },
+                new Manufacturer() { ManufacturerId = 7, Name = "Corsair", Image = "corsair.png" },
 
-                new Manufacturer() { ManufacturerId = 8, Name = "G.Skill" },
+                new Manufacturer() { ManufacturerId = 8, Name = "G.Skill", Image = "gskill.png" },
 
-                new Manufacturer() { ManufacturerId = 9, Name = "Kingston" },
+                new Manufacturer() { ManufacturerId = 9, Name = "Kingston", Image = "kingston.png" },
 
-                new Manufacturer() { ManufacturerId = 10, Name = "Seagate" },
+                new Manufacturer() { ManufacturerId = 10, Name = "Seagate", Image = "seagate.png" },
 
-                new Manufacturer() { ManufacturerId = 11, Name = "Western Digital" },
+                new Manufacturer() { ManufacturerId = 11, Name = "Western Digital", Image = "wd.png" },
 
-                new Manufacturer() { ManufacturerId = 12, Name = "ADATA" },
+                new Manufacturer() { ManufacturerId = 12, Name = "ADATA", Image = "adata.png" },
 
-                new Manufacturer() { ManufacturerId = 13, Name = "Samsung" },
+                new Manufacturer() { ManufacturerId = 13, Name = "Samsung", Image = "samsung.png" },
 
-                new Manufacturer() { ManufacturerId = 14, Name = "NXZT" },
+                new Manufacturer() { ManufacturerId = 14, Name = "NXZT", Image = "nxzt.png" },
 
-                new Manufacturer() { ManufacturerId = 15, Name = "Phanteks" },
+                new Manufacturer() { ManufacturerId = 15, Name = "Phanteks", Image = "phanteks.png" },
 
-                new Manufacturer() { ManufacturerId = 16, Name = "Cooler Master" },
+                new Manufacturer() { ManufacturerId = 16, Name = "Cooler Master", Image = "coolermaster.png" },
 
-                new Manufacturer() { ManufacturerId = 17, Name = "ASRock" },
+                new Manufacturer() { ManufacturerId = 17, Name = "ASRock", Image = "asrock.png" },
 
-                new Manufacturer() { ManufacturerId = 18, Name = "SilentiumPC" },
+                new Manufacturer() { ManufacturerId = 18, Name = "SilentiumPC", Image = "silentium.png" },
 
-                new Manufacturer() { ManufacturerId = 19, Name = "be quiet!" }
+                new Manufacturer() { ManufacturerId = 19, Name = "be quiet!", Image = "bequiet.png" }
             };
 
             manufacturers.ForEach(s => context.Manufacturer.Add(s));

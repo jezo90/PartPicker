@@ -109,5 +109,14 @@ namespace PartPicker.Infrastructure
 
             return directPath;
         }
+
+        public static string ManufacturersImagesPath(this UrlHelper helper, string name)
+        {
+            var ManufacturersImagesPath = AppConfig.ManufacturersImagesFolder;
+            var path = Path.Combine(ManufacturersImagesPath, name);
+            var directPath = helper.Content(path);
+
+            return directPath;
+        }
     }
 }

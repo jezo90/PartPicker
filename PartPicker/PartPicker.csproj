@@ -68,6 +68,12 @@
       <HintPath>..\packages\HtmlAgilityPack.1.11.16\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -141,6 +147,8 @@
     <Content Include="Content\Images\Gpu\msirx580.png" />
     <Content Include="Content\Images\half.png" />
     <Content Include="Content\Images\hot.png" />
+    <Content Include="Content\Images\Manufacturers\amd.png" />
+    <Content Include="Content\Images\Manufacturers\intel.png" />
     <Content Include="Content\Images\Mobo\asusrogstrix.png" />
     <Content Include="Content\Images\Mobo\gigabyteb450m.png" />
     <Content Include="Content\Images\Mobo\tomahawk.png" />
@@ -152,6 +160,7 @@
     <Content Include="Content\Images\star.png" />
     <Content Include="Content\Images\up.png" />
     <Content Include="Content\Images\zero.png" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
@@ -173,6 +182,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BuildsController.cs" />
     <Compile Include="Controllers\CpuController.cs" />
+    <Compile Include="Controllers\GpuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewBuildController.cs" />
     <Compile Include="DAL\PickerContext.cs" />
@@ -216,6 +226,9 @@
     <Compile Include="ViewModels\BuildSearchViewModel.cs" />
     <Compile Include="ViewModels\BuildsListViewModel.cs" />
     <Compile Include="ViewModels\CpuDetailsViewModel.cs" />
+    <Compile Include="ViewModels\CpuFormCheckedViewModel.cs" />
+    <Compile Include="ViewModels\CpuFormViewModel.cs" />
+    <Compile Include="ViewModels\CpuListViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\NewBuildViewModel.cs" />
   </ItemGroup>
@@ -228,11 +241,13 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Builds\List.cshtml" />
+    <Content Include="Views\Builds\BuildsList.cshtml" />
     <Content Include="Views\Builds\_Filters.cshtml" />
-    <Content Include="Views\Cpu\Details.cshtml" />
-    <Content Include="Views\Builds\Details.cshtml" />
+    <Content Include="Views\Cpu\CpuDetails.cshtml" />
+    <Content Include="Views\Builds\BuildsDetails.cshtml" />
     <Content Include="Views\NewBuild\NewBuild.cshtml" />
+    <Content Include="Views\Cpu\CpuList.cshtml" />
+    <Content Include="Views\Cpu\_Form.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -245,6 +260,7 @@
     <Folder Include="Content\Images\Psu\" />
     <Folder Include="Content\Images\Ram\" />
     <Folder Include="Content\Images\Storage\" />
+    <Folder Include="Views\Gpu\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

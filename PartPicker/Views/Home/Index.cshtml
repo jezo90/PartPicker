@@ -9,13 +9,13 @@
     <div class="slideshow-1">
         <div class="slideshow-1-margin">
             <div id="slideshow">
-                <a href="@Url.Action("Details", "Cpu", new { id = 10, name="Intel Core i5-9600K" })"> AC AC AC</a>
+                <a href="@Url.Action("CpuDetails", "Cpu", new { id = 10, name="Intel Core i5-9600K" })"> AC AC AC</a>
                 <a href="@Url.Action("AddMoboToBuild", "NewBuild", new { @id = 5 })"> PŁYTA </a>
                     <div class="slide-wrapper">
                         @foreach (var news in Model.New)
                         {
                             <div class="slide">
-                                <a href="@Url.Action("Details", "Builds", new { id = news.BuildId, name = news.Name})">
+                                <a href="@Url.Action("BuildsDetails", "Builds", new { id = news.BuildId, name = news.Name})">
                                     <img src="@Url.BuildsImagesPath(news.Image)" class="slide-background" />
                                     <img src="@Url.ImagesPath("new.png")" class="slide-icon" />
                                     <div class="slide-text">
@@ -50,7 +50,7 @@
                     @foreach (var hotBuild in Model.HotBuild)
                     {
                         <div class="slide">
-                            <a href="@Url.Action("Details", "Builds", new { id = hotBuild.BuildId, name = hotBuild.Name })">
+                            <a href="@Url.Action("BuildsDetails", "Builds", new { id = hotBuild.BuildId, name = hotBuild.Name })">
                                 <img src="@Url.BuildsImagesPath(hotBuild.Image)" class="slide-background" />
                                 <img src="@Url.ImagesPath("hot.png")" class="slide-icon" />
                                 <div class="slide-text">
@@ -77,7 +77,7 @@
                     @foreach (var hotCpu in Model.HotCpu)
                     {
                         <div class="slide">
-                            <a href="@Url.Action("Details", "Cpu", new { id = hotCpu.CpuId, name = hotCpu.Name })">
+                            <a href="@Url.Action("CpuDetails", "Cpu", new { id = hotCpu.CpuId, name = hotCpu.Name })">
                                 <img src="@Url.CpusImagesPath(hotCpu.Image)" class="slide-background" />
                                 <img src="@Url.ImagesPath("hot.png")" class="slide-icon" />
                                 <div class="slide-text">
@@ -97,7 +97,7 @@
                     @foreach (var hotGpu in Model.HotGpu)
                     {
                         <div class="slide">
-                            <a href="@Url.Action("Details", "Gpu", new { id = hotGpu.GpuId, name = hotGpu.Name})">
+                            <a href="@Url.Action("GpuDetails", "Gpu", new { id = hotGpu.GpuId, name = hotGpu.Name})">
                                 <img src="@Url.GpusImagesPath(hotGpu.Image)" class="slide-background" />
                                 <img src="@Url.ImagesPath("hot.png")" class="slide-icon" />
                                 <div class="slide-text">

@@ -120,5 +120,15 @@ namespace PartPicker.Infrastructure
                 return _casesImagesFolder;
             }
         }
+
+        private static string _manufacturersImagesFolder = ConfigurationManager.AppSettings["ManufacturersImages"];
+
+        public static string ManufacturersImagesFolder
+        {
+            get
+            {
+                return _manufacturersImagesFolder;
+            }
+        }
     }
 }

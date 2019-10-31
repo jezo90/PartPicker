@@ -19,13 +19,13 @@ namespace PartPicker.Controllers
             return View();
         }
 
-        public ActionResult Details(int id, string name)
+        public ActionResult BuildsDetails(int id, string name)
         {
             var build = context.Build.Find(id);
             return View(build);
         }
 
-        public ActionResult List(string cpuM = "", string cpuS = "", string gpuS = "", string ramT = "", string storageT = "", int reset = 0)
+        public ActionResult BuildsList(string cpuM = "", string cpuS = "", string gpuS = "", string ramT = "", string storageT = "", int reset = 0)
         {
             var buildsBase = context.Build.Where(a => !a.Hidden).ToList();
             var builds = buildsBase;

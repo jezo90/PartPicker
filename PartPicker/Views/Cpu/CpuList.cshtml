@@ -1,0 +1,162 @@
+﻿@model PartPicker.ViewModels.CpuListViewModel
+@using PartPicker.Infrastructure
+@using PagedList.Mvc
+
+<link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Procesory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Action("Form", new { checkd = Model.CpuFormCheckedViewModel })
+
+
+<div class="content">
+    <div class="container ">
+        <div class="item-list nazwy">
+            <div class="item-box  item-part-photo">
+                <div class="item-part">
+                    Zdjęcie
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Producent
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Model
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Socket
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Zintegrowana karta graficzna
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    BENCHMARK
+                </div>
+            </div>
+
+        </div>
+    </div>
+    @foreach (var cpu in Model.PagedList)
+    {
+        <div class="container">
+            <a class="item-list-a" href="@Url.Action("CpuDetails", "Cpu", new { id = cpu.CpuId, name = cpu.Name })">
+                <div class="item-list">
+                    <div class="item-box item-part-photo">
+                        <div class="item-part">
+                            <img class="item-part-image" src="@Url.CpusImagesPath(cpu.Image)" />
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            <img class="part-image" src="@Url.ManufacturersImagesPath(cpu.Product.Manufacturer.Image)" />
+                            <br />
+
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            @cpu.Product.Series.Name @cpu.Model
+
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            @cpu.Socket.Name
+
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            @cpu.Gpu
+
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            @cpu.Benchmark / @Model.BenchmarkMax
+
+                        </div>
+                    </div>
+
+                </div>
+            </a>
+        </div>
+    }
+    <br />
+    Strona @( Model.PagedList.PageCount < Model.PagedList.PageNumber ? 0 : Model.PagedList.PageNumber) z @Model.PagedList.PageCount
+    <br />
+    @{
+        string seriesPage = "";
+        foreach (var serie in Model.CpuFormCheckedViewModel.SeriesChecked)
+        {
+            if (serie != "")
+            {
+                seriesPage += serie + "_";
+            }
+        }
+
+        string socketsPage = "";
+        foreach (var socket in Model.CpuFormCheckedViewModel.SocketsChecked)
+        {
+            if (socket != "")
+            {
+                socketsPage += socket + "_";
+            }
+        }
+    }
+
+    @if (Model.CpuFormCheckedViewModel.CoresMaxChecked != 0 && Model.CpuFormCheckedViewModel.CoresMinChecked != 0)
+    {
+        @Html.PagedListPager(Model.PagedList, page => Url.Action("CpuList", new { page,
+        @seriesString = seriesPage,
+        @socketsString =  socketsPage,
+        @coresMin = Model.CpuFormCheckedViewModel.CoresMinChecked,
+        @coresMax = Model.CpuFormCheckedViewModel.CoresMaxChecked,
+        @gpu = Model.CpuFormCheckedViewModel.GpuChecked}))
+    }
+    else if (Model.CpuFormCheckedViewModel.CoresMaxChecked != 0)
+    {
+        @Html.PagedListPager(Model.PagedList, page => Url.Action("CpuList", new { page,
+        @seriesString = seriesPage,
+        @socketsString =  socketsPage,
+        @coresMax = Model.CpuFormCheckedViewModel.CoresMaxChecked,
+        @gpu = Model.CpuFormCheckedViewModel.GpuChecked}))
+    }
+    else if (Model.CpuFormCheckedViewModel.CoresMinChecked != 0)
+    {
+        @Html.PagedListPager(Model.PagedList, page => Url.Action("CpuList", new { page,
+        @seriesString = seriesPage,
+        @socketsString =  socketsPage,
+        @coresMin = Model.CpuFormCheckedViewModel.CoresMinChecked,
+        @gpu = Model.CpuFormCheckedViewModel.GpuChecked}))
+    }
+    else
+    {
+        @Html.PagedListPager(Model.PagedList, page => Url.Action("CpuList", new { page,
+        @seriesString = seriesPage,
+        @socketsString =  socketsPage,
+        @gpu = Model.CpuFormCheckedViewModel.GpuChecked}))
+    }
+
+
+</div>
+
+
+
