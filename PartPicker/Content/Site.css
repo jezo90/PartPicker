@@ -161,7 +161,7 @@ body {
     width: 20%;
     position: relative;
     height: 100%;
-    overflow: auto;
+    overflow: hidden;
     float: left;
 }
 
@@ -183,8 +183,8 @@ body {
     }
 
 
-/* On screens that are less than 800px wide, make the sidebar into a topbar */
-@media screen and (max-width: 890px) {
+/* On screens that are less than 980px wide, make the sidebar into a topbar */
+@media screen and (max-width: 980px) {
     .sidebar {
         width: 100%;
         height: auto;
@@ -201,10 +201,18 @@ body {
         height: inherit;
         width: 100%
     }
+
+    .filter-send-text {
+        width: 80% !important;
+    }
+
+    .filter-send-input-number {
+        width: 20% !important;
+    }
 }
 
-/* On screens that are less than 800px, display the bar vertically, instead of horizontally */
-@media screen and (max-width: 890px) {
+/* On screens that are less than 980px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 980px) {
     .sidebar a {
         text-align: left;
         float: none;
@@ -298,10 +306,25 @@ body {
         -moz-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
         box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
     }
-        .filter-send input{
-            float:right;
-            align-self:center;
-        }
+
+    .filter-send input[type=submit]{
+
+    }
+    .flex {
+        display:flex;
+    }
+.filter-send-text{
+    width:35%;
+}
+.filter-send-input-number{
+    width:65%;
+}
+    .filter-send-input-number input {
+        width: 100%;
+    }
+.filter-send .checkbox-invisible {
+    float: right;
+}
         .filter-send:hover {
             background-color: #EF7F29;
             transition: background-color 0.3s ease-out;
