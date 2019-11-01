@@ -8,114 +8,135 @@
 <div class="sidebar">
     <form action="@Url.Action("CpuList", "Cpu")" method="post">
 
-        @foreach (var manufacturer in Model.Manufacturers)
-        {
-            <button>
-                Producent:
-            </button>
-            <br />
-            @manufacturer <br />
-            <button>
-                Serie:
-            </button>
-            <br />
-            foreach (var serie in Model.Series)
-            {
-                foreach (var cpus in Model.Cpus)
-                {
-                    if (cpus.Product.Manufacturer.Name == manufacturer && cpus.Product.Series.Name == serie)
-                    {
-                        if (Model.CpuFormCheckedViewModel.SeriesChecked.Contains(serie))
-                        {
-                            @cpus.Product.Series.Name
-                            <input type="checkbox" name="series" value="@cpus.Product.Series.Name" checked />
-                        }
-                        else
-                        {
-                            @cpus.Product.Series.Name
-                            <input type="checkbox" name="series" value="@cpus.Product.Series.Name" />
-                        }
-                        <br />
-                        break;
-                    }
-                }
-            }
-        }
+        <button type="button" class="dropdown-btn">
+            Producent
+        </button>
 
-        <button>
+        <div class="dropdown-container">
+
+            @foreach (var manufacturer in Model.Manufacturers)
+            {
+
+                <button type="button" class="dropdown-btn">
+                    @manufacturer
+                </button>
+
+                <div class="dropdown-container">
+                    @foreach (var serie in Model.Series)
+                    {
+                        foreach (var cpus in Model.Cpus)
+                        {
+                            if (cpus.Product.Manufacturer.Name == manufacturer && cpus.Product.Series.Name == serie)
+                            {
+                                <div class="filter-send">
+                                    @if (Model.CpuFormCheckedViewModel.SeriesChecked.Contains(serie))
+                                    {
+
+                                        @cpus.Product.Series.Name
+                                        <input type="checkbox" name="series" value="@cpus.Product.Series.Name" checked />
+
+                                    }
+                                    else
+                                    {
+
+                                        @cpus.Product.Series.Name
+                                        <input type="checkbox" name="series" value="@cpus.Product.Series.Name" />
+
+                                    }
+                                </div>
+                                break;
+                            }
+                        }
+                    }
+                </div>
+            }
+
+        <button type="button" class="dropdown-btn">
             Socket:
         </button>
-        <br />
-        @foreach (var socket in Model.Sockets)
-        {
-            if (Model.CpuFormCheckedViewModel.SocketsChecked.Contains(socket))
+            
+        <div class="dropdown-container">
+            @foreach (var socket in Model.Sockets)
             {
-                @socket <input type="checkbox" name="sockets" value="@socket" checked />
+                <div class="filter-send">
+                    @if (Model.CpuFormCheckedViewModel.SocketsChecked.Contains(socket))
+                    {
+                        
+                            @socket <input type="checkbox" name="sockets" value="@socket" checked />
+                        
+                    }
+                    else
+                    {
+                       
+                            @socket <input type="checkbox" name="sockets" value="@socket" />
+                       
+                    }
+                </div>
             }
-            else
-            {
-                @socket <input type="checkbox" name="sockets" value="@socket" />
-            }
+        </div>
 
-            <br />
-        }
-
-
-        <button>
+        <button type="button" class="dropdown-btn">
             Ilość rdzeni:
         </button>
-        <br />
-        Min:
-        @if (Model.CpuFormCheckedViewModel.CoresMinChecked != 0 && Model.CpuFormCheckedViewModel.CoresMinChecked != 100)
-        {
-            <input type="number" name="coresMin" value="@Model.CpuFormCheckedViewModel.CoresMinChecked" />
-        }
-        else
-        {
-            <input type="number" name="coresMin" />
-        }
-        <br />
+        <div class="dropdown-container">
+            <div class="filter-send">
+                Min:
+                @if (Model.CpuFormCheckedViewModel.CoresMinChecked != 0 && Model.CpuFormCheckedViewModel.CoresMinChecked != 100)
+                {
+                    <input type="number" name="coresMin" value="@Model.CpuFormCheckedViewModel.CoresMinChecked" />
+                }
+                else
+                {
+                    <input type="number" name="coresMin" />
+                }
+                <br />
+            </div>
+            <div class="filter-send">
+                Max:
+                @if (Model.CpuFormCheckedViewModel.CoresMaxChecked != 0)
+                {
+                    <input type="number" name="coresMax" value="@Model.CpuFormCheckedViewModel.CoresMaxChecked" />
+                }
+                else
+                {
+                    <input type="number" name="coresMax" />
+                }
+            </div>
+        </div>
 
-        Max:
-        @if (Model.CpuFormCheckedViewModel.CoresMaxChecked != 0)
-        {
-            <input type="number" name="coresMax" value="@Model.CpuFormCheckedViewModel.CoresMaxChecked" />
-        }
-        else
-        {
-            <input type="number" name="coresMax" />
-        }
-        <br />
-
-
-        <button>
+        <button type="button" class="dropdown-btn">
             Zintegrowana karta graficzna:
         </button>
-        <br />
-        Tak
-        @if (Model.CpuFormCheckedViewModel.GpuChecked == "true")
-        {
-            <input type="radio" name="gpu" value="true" checked />
-        }
-        else
-        {
-            <input type="radio" name="gpu" value="true" />
-        }
-        <br />
-        Nie
-        @if (Model.CpuFormCheckedViewModel.GpuChecked == "false")
-        {
-            <input type="radio" name="gpu" value="false" checked />
-        }
-        else
-        {
-            <input type="radio" name="gpu" value="false" />
+        <div class="dropdown-container">
+            <div class="filter-send">
+                Tak
+                @if (Model.CpuFormCheckedViewModel.GpuChecked == "true")
+                {
+                    <input type="radio" name="gpu" value="true" checked />
+                }
+                else
+                {
+                    <input type="radio" name="gpu" value="true" />
+                }
+                <br />
+            </div>
+            <div class="filter-send">
+                Nie
+                @if (Model.CpuFormCheckedViewModel.GpuChecked == "false")
+                {
+                    <input type="radio" name="gpu" value="false" checked />
+                }
+                else
+                {
+                    <input type="radio" name="gpu" value="false" />
 
-        }
-        <br />
+                }
+            </div>
+        </div>
 
-
-        <input type="submit" value="submit" />
-
+            <input type="submit" value="submit" />
+        </div>
     </form>
 </div>
+
+<script src="@Url.Content("~/Scripts/JavaScriptDropDown.js")"></script>

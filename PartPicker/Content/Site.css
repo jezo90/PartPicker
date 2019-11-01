@@ -298,6 +298,10 @@ body {
         -moz-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
         box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
     }
+        .filter-send input{
+            float:right;
+            align-self:center;
+        }
         .filter-send:hover {
             background-color: #EF7F29;
             transition: background-color 0.3s ease-out;
