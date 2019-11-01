@@ -34,14 +34,14 @@
                                         {
 
                                             @cpus.Product.Series.Name
-                                            <input type="checkbox" name="series" value="@cpus.Product.Series.Name" checked />
+                                            <input class="checkbox-invisible" type="checkbox" name="series" value="@cpus.Product.Series.Name" checked />
 
                                         }
                                         else
                                         {
 
                                             @cpus.Product.Series.Name
-                                            <input type="checkbox" name="series" value="@cpus.Product.Series.Name" />
+                                            <input class="checkbox-invisible" type="checkbox" name="series" value="@cpus.Product.Series.Name" />
 
                                         }
                                     </div>
@@ -65,13 +65,13 @@
                         @if (Model.CpuFormCheckedViewModel.SocketsChecked.Contains(socket))
                         {
 
-                            @socket <input type="checkbox" name="sockets" value="@socket" checked />
+                            @socket <input class="checkbox-invisible" type="checkbox" name="sockets" value="@socket" checked />
 
                         }
                         else
                         {
 
-                            @socket <input type="checkbox" name="sockets" value="@socket" />
+                            @socket <input class="checkbox-invisible" type="checkbox" name="sockets" value="@socket" />
 
                         }
                     </div>
@@ -84,32 +84,40 @@
         </button>
         <div class="dropdown-container">
             <label name="min">
-                <div class="filter-send">
-                    Min:
-                    @if (Model.CpuFormCheckedViewModel.CoresMinChecked != 0 && Model.CpuFormCheckedViewModel.CoresMinChecked != 100)
-                    {
-                        <input type="number" name="coresMin" value="@Model.CpuFormCheckedViewModel.CoresMinChecked" />
-                    }
-                    else
-                    {
-                        <input type="number" name="coresMin" />
-                    }
+                <div class="filter-send flex">
+                    <div class="filter-send-text">
+                        Min:
+                    </div>
+                    <div class="filter-send-input-number">
+                        @if (Model.CpuFormCheckedViewModel.CoresMinChecked != 0 && Model.CpuFormCheckedViewModel.CoresMinChecked != 100)
+                        {
+                            <input type="number" name="coresMin" value="@Model.CpuFormCheckedViewModel.CoresMinChecked" />
+                        }
+                        else
+                        {
+                            <input type="number" name="coresMin" />
+                        }
+                    </div>
                 </div>
             </label>
 
-            <br />
-
             <label name="max">
                 <div class="filter-send">
-                    Max:
-                    @if (Model.CpuFormCheckedViewModel.CoresMaxChecked != 0)
-                    {
-                        <input type="number" name="coresMax" value="@Model.CpuFormCheckedViewModel.CoresMaxChecked" />
-                    }
-                    else
-                    {
-                        <input type="number" name="coresMax" />
-                    }
+                    <div class="flex">
+                        <div class="filter-send-text">
+                            Max:
+                        </div>
+                        <div class="filter-send-input-number">
+                            @if (Model.CpuFormCheckedViewModel.CoresMaxChecked != 0)
+                            {
+                                <input type="number" name="coresMax" value="@Model.CpuFormCheckedViewModel.CoresMaxChecked" />
+                            }
+                            else
+                            {
+                                <input type="number" name="coresMax" />
+                            }
+                        </div>
+                    </div>
                 </div>
             </label>
         </div>
@@ -123,11 +131,11 @@
                     Tak
                     @if (Model.CpuFormCheckedViewModel.GpuChecked == "true")
                     {
-                        <input type="radio" name="gpu" value="true" checked />
+                        <input class="checkbox-invisible" type="radio" name="gpu" value="true" checked />
                     }
                     else
                     {
-                        <input type="radio" name="gpu" value="true" />
+                        <input class="checkbox-invisible" type="radio" name="gpu" value="true" />
                     }
                     <br />
                 </div>
@@ -137,19 +145,20 @@
                     Nie
                     @if (Model.CpuFormCheckedViewModel.GpuChecked == "false")
                     {
-                        <input type="radio" name="gpu" value="false" checked />
+                        <input class="checkbox-invisible" type="radio" name="gpu" value="false" checked />
                     }
                     else
                     {
-                        <input type="radio" name="gpu" value="false" />
+                        <input class="checkbox-invisible" type="radio" name="gpu" value="false" />
 
                     }
                 </div>
             </label>
         </div>
 
-        <input type="submit" value="submit" />
-
+        <button class="dropdown-btn">
+             SUBMIT
+        </button>
     </form>
 </div>
 
