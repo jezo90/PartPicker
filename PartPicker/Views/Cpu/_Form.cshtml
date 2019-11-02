@@ -12,7 +12,8 @@
             Producent:
         </button>
 
-        <div class="dropdown-container">
+        <div class="dropdown-container" @{ if (Model.CpuFormCheckedViewModel.ManufacturersChecked[0] != "") { @: style="display:block !important"
+             } }>
 
             @foreach (var manufacturer in Model.Manufacturers)
             {
@@ -21,7 +22,8 @@
                     @manufacturer
                 </button>
 
-                <div class="dropdown-container">
+                <div class="dropdown-container" @{ if (Model.CpuFormCheckedViewModel.ManufacturersChecked.Contains(manufacturer)) { @: style="display:block !important"
+                     } }>
                     @foreach (var serie in Model.Series)
                     {
                         foreach (var cpus in Model.Cpus)
@@ -57,7 +59,8 @@
             Socket:
         </button>
 
-        <div class="dropdown-container">
+        <div class="dropdown-container" @{ if (Model.CpuFormCheckedViewModel.SocketsChecked[0] != "") { @: style="display:block !important"
+             } }>
             @foreach (var socket in Model.Sockets)
             {
                 <label name="@socket">
@@ -82,7 +85,8 @@
         <button type="button" class="dropdown-btn">
             Ilość rdzeni:
         </button>
-        <div class="dropdown-container">
+        <div class="dropdown-container" @{ if (Model.CpuFormCheckedViewModel.CoresMaxChecked != 0 && Model.CpuFormCheckedViewModel.CoresMinChecked != 0) { @: style="display:block !important"
+             } }>
             <label name="min">
                 <div class="filter-send flex">
                     <div class="filter-send-text">
@@ -125,7 +129,8 @@
         <button type="button" class="dropdown-btn">
             Zintegrowana karta graficzna:
         </button>
-        <div class="dropdown-container">
+        <div class="dropdown-container" @{ if (Model.CpuFormCheckedViewModel.GpuChecked != "") { @: style="display:block !important"
+             } }>
             <label name="true">
                 <div class="filter-send">
                     Tak
@@ -157,7 +162,10 @@
         </div>
 
         <button class="dropdown-btn">
-             FILTRUJ
+            FILTRUJ
+        </button>
+        <button class="dropdown-btn">
+            RESET
         </button>
     </form>
 </div>

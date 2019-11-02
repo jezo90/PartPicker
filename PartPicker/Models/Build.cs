@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using static PartPicker.Models.IdentityModels;
 
 namespace PartPicker.Models
 {
@@ -15,7 +16,7 @@ namespace PartPicker.Models
         public string Name { get; set; }
 
         [Required]
-        public int UserId { get; set; }
+        public string ApplicationUserId { get; set; }
 
         [Required]
         public DateTime Date { get; set; }
@@ -53,7 +54,7 @@ namespace PartPicker.Models
         public string Description { get; set; }
 
 
-        public virtual User User { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
         public virtual Cpu Cpu { get; set; }
         public virtual Mobo Mobo { get; set; }
         public virtual Storage Storage { get; set; }

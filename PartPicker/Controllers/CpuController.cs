@@ -205,9 +205,18 @@ namespace PartPicker.Controllers
                 cpuFound.Clear();
                 filtred = 0;
             }
-
+            List<string> manufacturers = new List<string>();
             List<string> emptyList = new List<string> { "" };
+            if (series == null) manufacturers = emptyList;
             if (series == null) series = emptyList;
+            else
+            {
+                foreach(var serie in series)
+                {
+                    var manu = context.Product.Where(a => a.Series.Name == serie).Select(a => a.Manufacturer.Name).ToList();
+                    manufacturers.Add(manu[0]);
+                }
+            }
             if (sockets == null) sockets = emptyList;
 
             int pageSize = 5;
@@ -219,6 +228,7 @@ namespace PartPicker.Controllers
                 PagedList = cpu.ToPagedList(pageNumber, pageSize),
                 CpuFormCheckedViewModel = new CpuFormCheckedViewModel()
                 {
+                    ManufacturersChecked = manufacturers,
                     SeriesChecked = series,
                     SocketsChecked = sockets,
                     CoresMaxChecked = coresMax,

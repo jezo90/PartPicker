@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using static PartPicker.Models.IdentityModels;
 
 namespace PartPicker.Models
 {
@@ -11,7 +12,7 @@ namespace PartPicker.Models
         public int RateId { get; set; }
 
         [Required]
-        public int UserId { get; set; }
+        public string ApplicationUserId { get; set; }
 
         [Required]
         public int BuildId { get; set; }
@@ -27,7 +28,7 @@ namespace PartPicker.Models
         [StringLength(150)]
         public string Comment { get; set; }
 
-        public virtual User User { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
         public virtual Build Build { get; set; }
 
     }

@@ -1,18 +1,25 @@
-﻿using PartPicker.Models;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using PartPicker.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
+using static PartPicker.Models.IdentityModels;
 
 namespace PartPicker.DAL
 {
-    public class PickerContext : DbContext
+    public class PickerContext : IdentityDbContext<ApplicationUser>
     {
         public PickerContext() : base("PickerCString")
         {
 
+        }
+
+        public static PickerContext Create()
+        {
+            return new PickerContext();
         }
 
         static PickerContext()
@@ -38,7 +45,6 @@ namespace PartPicker.DAL
         public DbSet<Ram> Ram { get; set; }
         public DbSet<Storage> Storage { get; set; }
 
-        public DbSet<User> User { get; set; }
         public DbSet<Rate> Rate { get; set; }
 
         public DbSet<Build> Build { get; set; }

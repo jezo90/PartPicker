@@ -7,6 +7,7 @@
 <div>
     @using (Html.BeginForm("Register", "Account"))
     {
+        @Html.AntiForgeryToken()
         <div>
             @Html.ValidationMessage("loginerror", "")
             @Html.ValidationSummary()
@@ -21,10 +22,10 @@
         </div>
 
         <div>
-            @Html.LabelFor(o => o.NickName, "Pseudonim:")
-            @Html.TextBoxFor(o => o.NickName)
+            @Html.LabelFor(o => o.UserName, "Pseudonim:")
+            @Html.TextBoxFor(o => o.UserName)
             <div>
-                @Html.ValidationMessageFor(o => o.NickName)
+                @Html.ValidationMessageFor(o => o.UserName)
             </div>
         </div>
 

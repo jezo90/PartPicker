@@ -24,18 +24,22 @@ namespace PartPicker.Controllers
 
         public ActionResult Index()
         {
-            NewBuildViewModel newBuildViewModel = new NewBuildViewModel()
+            if (Request.IsAuthenticated)
             {
-                Cpu = BuildManager.GetCpu(),
-                Gpu = BuildManager.GetGpu(),
-                Ram = BuildManager.GetRam(),
-                Case = BuildManager.GetCase(),
-                Mobo = BuildManager.GetMobo(),
-                Psu = BuildManager.GetPsu(),
-                Storage = BuildManager.GetStorage()
-            };
+                NewBuildViewModel newBuildViewModel = new NewBuildViewModel()
+                {
+                    Cpu = BuildManager.GetCpu(),
+                    Gpu = BuildManager.GetGpu(),
+                    Ram = BuildManager.GetRam(),
+                    Case = BuildManager.GetCase(),
+                    Mobo = BuildManager.GetMobo(),
+                    Psu = BuildManager.GetPsu(),
+                    Storage = BuildManager.GetStorage()
+                };
 
-            return View("NewBuild", newBuildViewModel);
+                return View("NewBuild", newBuildViewModel);
+            }
+            else return RedirectToAction("Login", "Account");
         }
 
         // CPU

@@ -61,7 +61,8 @@ namespace PartPicker.Controllers
                         .OrderByDescending(o => o.count)
                         .Take(1)
                         .ToList();
-            int hotCpuValue = hotCpuId[0].CpuId;
+            //int hotCpuValue = hotCpuId[0].CpuId;
+            int hotCpuValue = 1;
             var hotCpu = context.Cpu.Where(a => a.CpuId == hotCpuValue)
                         .ToList();
 
@@ -71,7 +72,8 @@ namespace PartPicker.Controllers
                         .OrderByDescending(o => o.count)
                         .Take(1)
                         .ToList();
-            int hotGpuValue = hotGpuId[0].GpuId;
+            //int hotGpuValue = hotGpuId[0].GpuId;
+            int hotGpuValue = 1;
             var hotGpu = context.Gpu.Where(a => a.GpuId == hotGpuValue)
                         .ToList();
 

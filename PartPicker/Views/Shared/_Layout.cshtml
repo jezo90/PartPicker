@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 @using PartPicker.Infrastructure
+@using Microsoft.AspNet.Identity
 <html>
 <head>
     <title>@ViewBag.Title</title>
@@ -9,29 +10,49 @@
 </head>
 <body>
     <div class="top-nav" id="top-nav">
-        <a>Hello Guest!</a>
+        <div>
 
-        <div class="drop">
-            <button id="dropbtn" class="dropbtn" onclick="drop()">
-                Przeglądaj  <img id="image_down" class="image_down" src="@Url.ImagesPath("down.png")" />
-                <img id="image_up" class="image_up" src="@Url.ImagesPath("up.png")" />
-            </button>
-            <div class="drop-content" id="myDropdown">
-                <a href="@Url.Action("BuildsList", "Builds", new { @reset = 1 })">Buildy</a>
-                <a href="@Url.Action("CpuList", "Cpu")">Procesory</a>
-                <a href="#">Link 3</a>
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
+            @if (Request.IsAuthenticated)
+            {
+                <a href="@Url.Action("Index", "Manage")">Witaj @User.Identity.GetUserName()</a>
+                using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
+                }
+                if(@User.Identity.GetUserName() == "admin")
+                {
+                    <a href="">Zarządzanie</a>
+                }
+                <a href="@Url.Action("Index", "NewBuild")">Utwórz build</a>
+            }
+            else
+            {
+                <a>Witaj</a>
+                <a href="@Url.Action("Login", "Account")">Zaloguj się</a>
+                <a href="@Url.Action("Register","Account")">Zarejestruj się</a>
+            }
+
+            <div class="drop">
+                <button id="dropbtn" class="dropbtn" onclick="drop()">
+                    Przeglądaj  <img id="image_down" class="image_down" src="@Url.ImagesPath("down.png")" />
+                    <img id="image_up" class="image_up" src="@Url.ImagesPath("up.png")" />
+                </button>
+                <div class="drop-content" id="myDropdown">
+                    <a href="@Url.Action("BuildsList", "Builds", new { @reset = 1 })">Buildy</a>
+                    <a href="@Url.Action("CpuList", "Cpu")">Procesory</a>
+                    <a href="#">Link 3</a>
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
             </div>
-        </div>
-        <a href="@Url.Action("Index", "NewBuild")">Utwórz build</a>
-        <a href="#register">Zarejestruj</a>
-        <a href="#contact">Zaloguj</a>
-        <a><input type="text" name="password" placeholder="Password"></a>
-        <a><input type="text" name="login" placeholder="Login"></a>
 
-        <a class="icon" id="icon" onclick="dropdownNav()"><div class="plus" id="plus">+</div><div class="minus" id="minus">-</div></a>
+
+            <a class="icon" id="icon" onclick="dropdownNav()"><div class="plus" id="plus">+</div><div class="minus" id="minus">-</div></a>
+
+        </div>
+
     </div>
 
     <div class="bar">    </div>

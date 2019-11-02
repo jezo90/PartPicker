@@ -10,7 +10,7 @@
     {
         @Html.AntiForgeryToken()
 
-        <div >
+        <div>
             @Html.LabelFor(o => o.Email, "Email:")
             @Html.TextBoxFor(o => o.Email)
             <div>
@@ -24,6 +24,11 @@
             <div>
                 @Html.ValidationMessageFor(o => o.Password)
             </div>
+        </div>
+
+        <div>
+            @Html.CheckBoxFor(m => m.RememberMe, new { @checked = "checked" })
+            @Html.LabelFor(m => m.RememberMe)
         </div>
 
         <input type="submit" value="Zaloguj" />

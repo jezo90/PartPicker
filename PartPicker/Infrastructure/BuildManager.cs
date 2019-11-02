@@ -244,13 +244,13 @@ namespace PartPicker.Infrastructure
 
         }
 
-        public Build CreateBuild(NewBuild createdBuild, int userId)
+        public Build CreateBuild(NewBuild createdBuild, string userId)
         {
             var build = NewBuild();
             var buildToAdd = new Build()
             {
                 Name = build.Name,
-                UserId = userId,
+                ApplicationUserId = userId,
                 Date = DateTime.Now,
                 Hidden = false,
                 CpuId = createdBuild.Cpu.CpuId,

@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using PartPicker.Models;
+using static PartPicker.Models.IdentityModels;
 
 namespace PartPicker.DAL
 {
-    public class PickerInitializer : DropCreateDatabaseAlways<PickerContext>
+    public class PickerInitializer : CreateDatabaseIfNotExists<PickerContext>
     {
         protected override void Seed(PickerContext context)
         {
@@ -115,27 +116,6 @@ namespace PartPicker.DAL
             };
 
             sockets.ForEach(s => context.Socket.Add(s));
-            context.SaveChanges();
-
-            var users = new List<User>
-            {
-                new User () { UserId = 1, Nickname = "adam",
-                            Email = "adam@o2.pl", Password = "adam", Permission = true},
-
-                new User () { UserId = 2, Nickname = "adrian",
-                            Email = "adrian@o2.pl", Password = "adrian", Permission = false},
-
-                new User () { UserId = 3, Nickname = "jacek",
-                            Email = "jacek@o2.pl", Password = "jacek", Permission = false},
-
-                new User () { UserId = 4, Nickname = "admin",
-                            Email = "admin@o2.pl", Password = "admin", Permission = true},
-
-                new User () { UserId = 5, Nickname = "test",
-                            Email = "test@o2.pl", Password = "test", Permission = false}
-            };
-
-            users.ForEach(s => context.User.Add(s));
             context.SaveChanges();
 
             var manufacturers = new List<Manufacturer>
@@ -618,77 +598,6 @@ namespace PartPicker.DAL
             storages.ForEach(s => context.Storage.Add(s));
             context.SaveChanges();
 
-            var builds = new List<Build>
-            {
-                new Build () { BuildId = 1, Name = "Pierwsza", UserId = 1, Date = DateTime.Now, Hidden = false,
-                             CpuId = 1, MoboId = 1, GpuId = 1, PsuId = 1, CaseId = 1, RamId = 1, StorageId = 1,
-                             Image = "basic.png", Description = "AWESOME PC TO WORK" },
-
-                new Build () { BuildId = 2, Name = "Druga", UserId = 1, Date = DateTime.Now, Hidden = false,
-                             CpuId = 2, MoboId = 2, GpuId = 2, PsuId = 2, CaseId = 2, RamId = 3, StorageId = 2,
-                             Image = "basic.png", Description = "AWESOME PC TO WORK" },
-
-                new Build () { BuildId = 3, Name = "Trzecia", UserId = 1, Date = DateTime.Now, Hidden = false,
-                             CpuId = 3, MoboId = 3, GpuId = 3, PsuId = 3, CaseId = 6, RamId = 2, StorageId = 6,
-                             Image = "basic.png", Description = "AWESOME PC TO WORK" },
-
-                new Build () { BuildId = 4, Name = "Czwarta", UserId = 1, Date = DateTime.Now, Hidden = false,
-                             CpuId = 4, MoboId = 1, GpuId = 4, PsuId = 4, CaseId = 5, RamId = 1, StorageId = 2,
-                             Image = "basic.png", Description = "AWESOME PC TO WORK" },
-
-                new Build () { BuildId = 5, Name = "Piąta", UserId = 1, Date = DateTime.Now, Hidden = false,
-                             CpuId = 5, MoboId = 4, GpuId = 5, PsuId = 5, CaseId = 2, RamId = 6, StorageId = 7,
-                             Image = "basic.png", Description = "AWESOME PC TO GAMES" },
-
-                new Build () { BuildId = 6, Name = "Szusta", UserId = 1, Date = DateTime.Now, Hidden = false,
-                             CpuId = 6, MoboId = 5, GpuId = 6, PsuId = 6, CaseId = 2, RamId = 3, StorageId = 1,
-                             Image = "basic.png", Description = "AWESOME PC TO GAMES" },
-
-                new Build () { BuildId = 7, Name = "Siódma", UserId = 1, Date = DateTime.Now, Hidden = false,
-                             CpuId = 7, MoboId = 8, GpuId = 7, PsuId = 7, CaseId = 5, RamId = 4, StorageId = 7,
-                             Image = "basic.png", Description = "AWESOME PC TO GAMES" },
-
-                new Build () { BuildId = 8, Name = "ósma", UserId = 2, Date = DateTime.Now, Hidden = false,
-                             CpuId = 8, MoboId = 9, GpuId = 8, PsuId = 8, CaseId = 1, RamId = 1, StorageId = 1,
-                             Image = "basic.png", Description = "AWESOME PC TO GAMES" }
-            };
-
-            builds.ForEach(s => context.Build.Add(s));
-            context.SaveChanges();
-
-            var rates = new List<Rate>
-            {
-                new Rate () { RateId = 1, BuildId = 1, UserId = 1, Grade = 5, Added = DateTime.Now, Comment = "Nice!"},
-
-                new Rate () { RateId = 2, BuildId = 2, UserId = 1, Grade = 4, Added = DateTime.Now, Comment = "Nice!"},
-
-                new Rate () { RateId = 3, BuildId = 3, UserId = 1, Grade = 2, Added = DateTime.Now, Comment = "Nice!"},
-
-                new Rate () { RateId = 4, BuildId = 5, UserId = 1, Grade = 5, Added = DateTime.Now, Comment = "Gooood!"},
-
-                new Rate () { RateId = 5, BuildId = 6, UserId = 1, Grade = 1, Added = DateTime.Now, Comment =" Meh!"},
-
-                new Rate () { RateId = 6, BuildId = 7, UserId = 1, Grade = 4, Added = DateTime.Now, Comment = "Change Cpu!"},
-
-                new Rate () { RateId = 7, BuildId = 1, UserId = 2, Grade = 5, Added= DateTime.Now, Comment = "Nice!"},
-
-                new Rate () { RateId = 8, BuildId = 4, UserId = 2, Grade = 5, Added = DateTime.Now, Comment = "Nice!"},
-
-                new Rate () { RateId = 9, BuildId = 7, UserId = 2, Grade = 3, Added = DateTime.Now, Comment = "Nice!"},
-
-                new Rate () { RateId = 10, BuildId = 2, UserId = 2, Grade = 3, Added = DateTime.Now, Comment = "Wow!"},
-                 
-                new Rate () { RateId = 11, BuildId = 6, UserId = 2, Grade = 3, Added = DateTime.Now, Comment = "Great!"},
-
-                new Rate () { RateId = 7, BuildId = 1, UserId = 3, Grade = 4, Added = DateTime.Now, Comment = "Awesome!"},
-
-                new Rate () { RateId = 8, BuildId = 2, UserId = 3, Grade = 5, Added = DateTime.Now, Comment = "Superb!"},
-
-                new Rate () { RateId = 9, BuildId = 3, UserId = 3, Grade = 1, Added = DateTime.Now, Comment = "Bad!"}
-            };
-
-            rates.ForEach(s => context.Rate.Add(s));
-            context.SaveChanges();
         }
     }
 }
