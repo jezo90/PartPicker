@@ -150,6 +150,140 @@ body {
 
 
 
+.drop {
+    float: right;
+    overflow: hidden;
+}
+
+    .drop .dropbtn {
+        cursor: pointer;
+        font-size: 18px;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 13px 25px 15px 4px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+        width: 180px;
+        height: 52px;
+    }
+
+    .drop:hover .dropbtn {
+        background-color: #EF7F29;
+        -webkit-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+        -moz-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+        box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+        transition: background-color 0.3s ease-out;
+    }
+
+    .drop:hover .drop-content a {
+        transform: none !important;
+    }
+
+.orange {
+    background-color: #EF7F29 !important;
+    -webkit-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+    -moz-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+    box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
+}
+
+
+.drop-content {
+    float: left;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 4;
+    width:180px;
+}
+
+    .drop-content a {
+        float: left;
+        color: #0D0D0D;
+        padding: 10px 0px;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+        width: 100%;
+    }
+
+        .drop-content a:hover {
+            background-color: #303030;
+            transition: background-color 0.3s ease-out;
+        }
+
+.image_up {
+    position: relative;
+    pointer-events: none;
+    margin-top: 3px;
+    display: none;
+    float: right;
+    width: 15px;
+    height: 15px;
+}
+
+.image_down {
+    position: relative;
+    pointer-events: none;
+    margin-top: 3px;
+    float: right;
+    display: block;
+    width: 15px;
+    height: 15px;
+}
+
+.show {
+    display: block !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+@media screen and (max-width: 1310px) {
+    .drop-content {
+        width: 100%;
+    }
+
+    .drop .dropbtn {
+        width: 100%;
+        PADDING: 14px 8px 14PX 30PX;
+    }
+
+    .drop-content {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+        .drop-content a {
+            width: 100%;
+        }
+
+    .image_up {
+        margin-right: 0.6%
+    }
+
+    .image_down {
+        margin-right: 0.6%
+    }
+
+    .drop:hover .dropbtn {
+        transform: none !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
 
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! SIDE NAV !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
@@ -172,10 +306,7 @@ body {
         text-decoration: none;
     }
 
-    .sidebar .active {
-        background-color: #EF7F29;
-        color: #FFFFFF;
-    }
+
 
     .sidebar a:hover:not(.active) {
         background-color: #EF7F29;
@@ -267,30 +398,6 @@ body {
         box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
     }
 
-.dropdown-container-last {
-    font-family: montserrat-extrabold;
-    font-size: 20px;
-    padding: 6px 8px 6px 16px;
-    float: left;
-    width: 100%;
-    text-align: left;
-    border: none;
-    border-left: solid 5px #0D0D0D;
-    border-right: solid 5px #0D0D0D;
-    background-color: #3b3b3b;
-    color: #FFFFFF;
-    display: block;
-    border-bottom: ridge 1px #0D0D0D;
-    -webkit-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.4);
-    -moz-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.4);
-    box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.4);
-    outline: none;
-    cursor: pointer;
-}
-    .dropdown-container-last:hover {
-        background-color: darkgreen;
-        transition: background-color 0.3s ease-out;
-    }
 
 
     .filter-send {
@@ -307,9 +414,8 @@ body {
         box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
     }
 
-    .filter-send input[type=submit]{
 
-    }
+
     .flex {
         display:flex;
     }
@@ -324,6 +430,8 @@ body {
     }
 .filter-send .checkbox-invisible {
     float: right;
+    height: 20px;
+    width:18px;
 }
         .filter-send:hover {
             background-color: #EF7F29;
@@ -334,8 +442,6 @@ body {
     font-size: 14px;
     display: flex;
     font-family: montserrat-semibold;
-
-
 }
 .nazwy {
     font-size: 16px !important;
@@ -368,7 +474,8 @@ body {
 }
 
 .item-part-photo{
-    width:60% !important;
+    width:50% !important;
+    padding:2%;
 }
 
 .item-part .star {
@@ -813,129 +920,6 @@ footer {
 
 
 
-.drop {
-    float: right;
-    overflow: hidden;
-}
-
-    .drop .dropbtn {
-        cursor: pointer;
-        font-size: 18px;
-        border: none;
-        outline: none;
-        color: white;
-        padding: 13px 25px 15px 4px;
-        background-color: inherit;
-        font-family: inherit;
-        margin: 0;
-        width: 180px;
-        height: 52px;
-    }
-
-    .drop:hover .dropbtn {
-        background-color: #EF7F29;
-        -webkit-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
-        -moz-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
-        box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
-        transition: background-color 0.3s ease-out;
-    }
-    .drop:hover .drop-content a {
-        transform: none !important;
-    }
-
-.orange {
-    background-color: #EF7F29 !important;
-    -webkit-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
-    -moz-box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
-    box-shadow: inset 0px 0px 30px 8px rgba(13,13,13,0.5);
-}
-
-
-.drop-content {
-    float:left;
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 4;
-}
-
-    .drop-content a {
-        float: left;
-        color: #0D0D0D;
-        padding: 10px 0px;
-        text-decoration: none;
-        display: block;
-        text-align: center;
-        width: 100%;
-    }
-
-        .drop-content a:hover {
-            background-color: #303030;
-            transition: background-color 0.3s ease-out;
-        }
-.image_up {
-    position: relative;
-    pointer-events: none;
-    margin-top: 3px;
-    display: none;
-    float: right;
-    width: 15px;
-    height: 15px;
-}
-.image_down {
-    position: relative;
-    pointer-events: none;
-    margin-top: 3px;
-    float: right;
-    display: block;
-    width: 15px;
-    height: 15px;
-}
-.show {
-    display: block !important;
-}
-.hide {
-    display:none !important;
-}
-
-@media screen and (max-width: 1310px) {
-    .drop-content {
-        width: 100%;
-    }
-
-    .drop .dropbtn {
-        width: 100%;
-        PADDING: 14px 8px 14PX 30PX;
-    }
-
-    .drop-content {
-        width:100%;
-        height: auto;
-        position: relative;
-    }
-
-        .drop-content a {
-            width: 100%;
-        }
-
-    .image_up {
-        margin-right: 0.6%
-    }
-
-    .image_down {
-        margin-right: 0.6%
-    }
-
-    .drop:hover .dropbtn {
-        transform: none !important;
-
-    }
-
-}
-
-
 
 
 
@@ -985,8 +969,8 @@ footer {
 }
 
 .details-prices-shop-add {
-    width:80% !important;
-    vertical-align:middle;
+    width:34px;
+
 }
 
 .add-link{
@@ -999,21 +983,20 @@ footer {
 }
 
 .details-prices-shop-image {
-    width: 20%;
+    height:34px;
     float:left;
 }
 
 .details-prices-shop-price {
-    font-size:25px;
-    height: auto;
+    font-size:28px;
     float:right;
     margin-right:10%;
 }
 
 .details-prices-shop-item{
     display:block;
-    width:5%;
-    align-self:center;
+    width:34px;
+    height:34px;
 }
 .details-prices-shop-item-link{
     width: 90% !important;
