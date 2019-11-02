@@ -173,6 +173,11 @@
     <Content Include="Scripts\JavaScriptDropDown.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -180,6 +185,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BuildsController.cs" />
     <Compile Include="Controllers\CpuController.cs" />
     <Compile Include="Controllers\GpuController.cs" />
@@ -222,6 +228,7 @@
     <Compile Include="Models\Storage.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\BuildFiltersViewModel.cs" />
     <Compile Include="ViewModels\BuildSearchViewModel.cs" />
     <Compile Include="ViewModels\BuildsListViewModel.cs" />
@@ -248,6 +255,8 @@
     <Content Include="Views\NewBuild\NewBuild.cshtml" />
     <Content Include="Views\Cpu\CpuList.cshtml" />
     <Content Include="Views\Cpu\_Form.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

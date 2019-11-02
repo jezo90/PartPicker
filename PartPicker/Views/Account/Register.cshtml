@@ -1,0 +1,54 @@
+﻿@model PartPicker.ViewModels.RegisterViewModel
+@{
+    ViewBag.Title = "Rejestracja";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    @using (Html.BeginForm("Register", "Account"))
+    {
+        <div>
+            @Html.ValidationMessage("loginerror", "")
+            @Html.ValidationSummary()
+        </div>
+
+        <div>
+            @Html.LabelFor(o => o.Email, "Email:")
+            @Html.TextBoxFor(o => o.Email)
+            <div>
+                @Html.ValidationMessageFor(o => o.Email)
+            </div>
+        </div>
+
+        <div>
+            @Html.LabelFor(o => o.NickName, "Pseudonim:")
+            @Html.TextBoxFor(o => o.NickName)
+            <div>
+                @Html.ValidationMessageFor(o => o.NickName)
+            </div>
+        </div>
+
+        <div>
+            @Html.LabelFor(o => o.Password, "Hasło:")
+            @Html.PasswordFor(o => o.Password)
+            <div>
+                @Html.ValidationMessageFor(o => o.Password)
+            </div>
+        </div>
+
+        <div>
+            @Html.LabelFor(o => o.ConfirmPassword, "Potwierdź hasło:")
+            @Html.PasswordFor(o => o.ConfirmPassword)
+            <div>
+                @Html.ValidationMessageFor(o => o.ConfirmPassword)
+            </div>
+        </div>
+
+        <input type="submit" value="Zarejestruj" />
+    }
+</div>
+
+
+<script src="@Url.Content("~/Scripts/jquery-1.10.2.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")"></script>

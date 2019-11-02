@@ -119,19 +119,19 @@ namespace PartPicker.DAL
 
             var users = new List<User>
             {
-                new User () { UserId = 1, Login = "adam", Nickname = "adam",
+                new User () { UserId = 1, Nickname = "adam",
                             Email = "adam@o2.pl", Password = "adam", Permission = true},
 
-                new User () { UserId = 2, Login = "adrian", Nickname = "adrian",
+                new User () { UserId = 2, Nickname = "adrian",
                             Email = "adrian@o2.pl", Password = "adrian", Permission = false},
 
-                new User () { UserId = 3, Login = "jacek", Nickname = "jacek",
+                new User () { UserId = 3, Nickname = "jacek",
                             Email = "jacek@o2.pl", Password = "jacek", Permission = false},
 
-                new User () { UserId = 4, Login = "admin", Nickname = "admin",
+                new User () { UserId = 4, Nickname = "admin",
                             Email = "admin@o2.pl", Password = "admin", Permission = true},
 
-                new User () { UserId = 5, Login = "test", Nickname = "test",
+                new User () { UserId = 5, Nickname = "test",
                             Email = "test@o2.pl", Password = "test", Permission = false}
             };
 

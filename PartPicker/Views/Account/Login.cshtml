@@ -1,0 +1,40 @@
+﻿@model PartPicker.ViewModels.LoginViewModel
+
+@{
+    ViewBag.Title = "Logowanie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div >
+            @Html.LabelFor(o => o.Email, "Email:")
+            @Html.TextBoxFor(o => o.Email)
+            <div>
+                @Html.ValidationMessageFor(o => o.Email)
+            </div>
+        </div>
+
+        <div>
+            @Html.LabelFor(o => o.Password)
+            @Html.PasswordFor(o => o.Password)
+            <div>
+                @Html.ValidationMessageFor(o => o.Password)
+            </div>
+        </div>
+
+        <input type="submit" value="Zaloguj" />
+    }
+
+    <div>
+        <a href="@Url.Action("Register")">Załóż konto</a>
+    </div>
+
+</div>
+
+<script src="@Url.Content("~/Scripts/jquery-1.10.2.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")"></script>
