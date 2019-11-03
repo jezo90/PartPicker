@@ -45,34 +45,43 @@ namespace PartPicker.Controllers
             else return RedirectToAction("Login", "Account");
         }
 
-        public ActionResult AddBuild(string name, string description)
+        public async Task<ActionResult> AddBuild(NewBuild build, string name, string description)
         {
-            if(Request.IsAuthenticated)
+            if (ModelState.IsValid)
             {
-                var build = new Build()
+                if (Request.IsAuthenticated)
                 {
-                    ApplicationUserId = User.Identity.GetUserId(),
-                    CaseId = BuildManager.GetCase().CaseId,
-                    CpuId = BuildManager.GetCpu().CpuId,
-                    GpuId = BuildManager.GetGpu().GpuId,
-                    MoboId = BuildManager.GetMobo().MoboId,
-                    RamId = BuildManager.GetRam().RamId,
-                    PsuId = BuildManager.GetPsu().PsuId,
-                    StorageId = BuildManager.GetStorage().StorageId,
-                    Description = description,
-                    Name = name,
-                    Date = DateTime.Now,
-                    Image = "basic.png",
-                    Hidden = false
-                };
+                    var userId = User.Identity.GetUserId();
+                    var newBuild = BuildManager.CreateBuild(build, userId, description, name);
 
-                context.Build.Add(build);
-                context.SaveChanges();
-                return RedirectToAction("BuildsList", "Builds");
+                    var user = await UserManager.FindByIdAsync(userId);
+                    TryUpdateModel(user.Builds);
+                    await UserManager.UpdateAsync(user);
+
+                    BuildManager.EmptyBuild();
+
+                    return RedirectToAction("BuildsList", "Builds");
+                }
+                else return RedirectToAction("Login", "Account");
             }
-            else return RedirectToAction("Login", "Account");
+            else
+            {
+                return View(build);
+            }
         }
 
+        private ApplicationUserManager _userManager;
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
 
         // CPU
         public ActionResult AddCpuToBuild(int id)

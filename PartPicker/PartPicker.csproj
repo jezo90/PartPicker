@@ -180,6 +180,7 @@
     <Content Include="Content\Images\Manufacturers\adata.png" />
     <Content Include="Content\Images\Manufacturers\amd.png" />
     <Content Include="Content\Images\Manufacturers\asrock.png" />
+    <Content Include="Content\Images\Manufacturers\asus.png" />
     <Content Include="Content\Images\Manufacturers\bequiet.png" />
     <Content Include="Content\Images\Manufacturers\coolermaster.png" />
     <Content Include="Content\Images\Manufacturers\corsair.png" />

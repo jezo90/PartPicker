@@ -244,12 +244,13 @@ namespace PartPicker.Infrastructure
 
         }
 
-        public Build CreateBuild(NewBuild createdBuild, string userId)
+        public Build CreateBuild(NewBuild createdBuild, string userId, string description, string name)
         {
             var build = NewBuild();
             var buildToAdd = new Build()
             {
-                Name = build.Name,
+                Name = name,
+                Description = description,
                 ApplicationUserId = userId,
                 Date = DateTime.Now,
                 Hidden = false,
@@ -260,7 +261,7 @@ namespace PartPicker.Infrastructure
                 CaseId = createdBuild.Case.CaseId,
                 RamId = createdBuild.Ram.RamId,
                 StorageId = createdBuild.Storage.StorageId,
-                Image = "basic.png"
+                Image = "basic.png"                
             };
 
             context.Build.Add(buildToAdd);

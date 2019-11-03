@@ -299,7 +299,7 @@ namespace PartPicker.Controllers
 
             var rams = gpus.OrderBy(a => a.GpuRam.Name)
                                 .Select(a => a.GpuRam.Name)
-                                .ToList();
+                                .Distinct().ToList();
 
             List<string> emptyList = new List<string> { "" };
             if (checkd.ManufacturersChecked == null) checkd.ManufacturersChecked = emptyList;
