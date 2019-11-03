@@ -1,0 +1,180 @@
+﻿@model PartPicker.ViewModels.GpuFormViewModel
+@using PartPicker.Infrastructure
+
+
+@{
+    ViewBag.Title = "_Form";
+}
+<div class="sidebar">
+    <form action="@Url.Action("GpuList", "Gpu")" method="post">
+
+        <button type="button" class="dropdown-btn">
+            Producent:
+        </button>
+
+        <div class="dropdown-container" @{ if (Model.GpuFormCheckedViewModel.ManufacturersChecked[0] != "") { @: style="display:block !important"
+             } }>
+
+            @foreach (var manufacturer in Model.Manufacturers)
+            {
+
+                <label name="@manufacturer">
+                    <div class="filter-send">
+                        @if (Model.GpuFormCheckedViewModel.ManufacturersChecked.Contains(manufacturer))
+                        {
+
+                            @manufacturer
+                            <input class="checkbox-invisible" type="checkbox" name="manufacturers" value="@manufacturer" checked />
+
+                        }
+                        else
+                        {
+
+                            @manufacturer
+                            <input class="checkbox-invisible" type="checkbox" name="manufacturers" value="@manufacturer" />
+
+                        }
+                    </div>
+                </label>
+            }
+        </div>
+
+        <button type="button" class="dropdown-btn">
+            Serie:
+        </button>
+        <div class="dropdown-container" @{ if (Model.GpuFormCheckedViewModel.SeriesChecked[0] != "") { @: style="display:block !important"
+             } }>
+            @foreach (var serie in Model.Series)
+            {
+                foreach (var gpus in Model.Gpus)
+                {
+                    if (gpus.Product.Series.Name == serie)
+                    {
+                        <label name="@serie">
+                            <div class="filter-send">
+                                @if (Model.GpuFormCheckedViewModel.SeriesChecked.Contains(serie))
+                                {
+
+                                    @gpus.Product.Series.Name
+                                    <input class="checkbox-invisible" type="checkbox" name="series" value="@gpus.Product.Series.Name" checked />
+
+                                }
+                                else
+                                {
+
+                                    @gpus.Product.Series.Name
+                                    <input class="checkbox-invisible" type="checkbox" name="series" value="@gpus.Product.Series.Name" />
+
+                                }
+                            </div>
+                        </label>
+                        break;
+                    }
+                }
+            }
+        </div>
+
+
+        <button type="button" class="dropdown-btn">
+            Typ pamięci RAM:
+        </button>
+
+        <div class="dropdown-container" @{ if (Model.GpuFormCheckedViewModel.RamsChecked[0] != "") { @: style="display:block !important"
+             } }>
+            @foreach (var rams in Model.Rams)
+            {
+                <label name="@rams">
+                    <div class="filter-send">
+                        @if (Model.GpuFormCheckedViewModel.RamsChecked.Contains(rams))
+                        {
+
+                            @rams <input class="checkbox-invisible" type="checkbox" name="sockets" value="@rams" checked />
+
+                        }
+                        else
+                        {
+
+                            @rams <input class="checkbox-invisible" type="checkbox" name="sockets" value="@rams" />
+
+                        }
+                    </div>
+                </label>
+            }
+        </div>
+
+        <button type="button" class="dropdown-btn">
+            Ilość pamięci RAM:
+        </button>
+        <div class="dropdown-container" @{ if (Model.GpuFormCheckedViewModel.RamMinChecked != 0 && Model.GpuFormCheckedViewModel.RamMaxChecked != 0) { @: style="display:block !important"
+             } }>
+            <label name="min">
+                <div class="filter-send flex">
+                    <div class="filter-send-text">
+                        Min:
+                    </div>
+                    <div class="filter-send-input-number">
+                        @if (Model.GpuFormCheckedViewModel.RamMinChecked != 0)
+                        {
+                            <input type="number" name="coresMin" value="@Model.GpuFormCheckedViewModel.RamMinChecked" />
+                        }
+                        else
+                        {
+                            <input type="number" name="coresMin" />
+                        }
+                    </div>
+                </div>
+            </label>
+
+            <label name="max">
+                <div class="filter-send">
+                    <div class="flex">
+                        <div class="filter-send-text">
+                            Max:
+                        </div>
+                        <div class="filter-send-input-number">
+                            @if (Model.GpuFormCheckedViewModel.RamMaxChecked != 0)
+                            {
+                                <input type="number" name="coresMax" value="@Model.GpuFormCheckedViewModel.RamMaxChecked" />
+                            }
+                            else
+                            {
+                                <input type="number" name="coresMax" />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </label>
+        </div>
+
+        <button type="button" class="dropdown-btn">
+            Maksymalna długość:
+        </button>
+        <div class="dropdown-container" @{ if (Model.GpuFormCheckedViewModel.LengthMaxChecked != 0) { @: style="display:block !important"
+             } }>
+            <div class="filter-send">
+
+                <div class="filter-send-input-number">
+                    @if (Model.GpuFormCheckedViewModel.RamMaxChecked != 0)
+                    {
+                        <input type="number" name="lenghtMax" value="@Model.GpuFormCheckedViewModel.LengthMaxChecked" />
+                    }
+                    else
+                    {
+                        <input type="number" name="lenghtMax" />
+                    }
+                </div>
+
+            </div>
+        </div>
+
+        <button class="dropdown-btn">
+            FILTRUJ
+        </button>
+        <button class="dropdown-btn">
+            RESET
+        </button>
+    </form>
+</div>
+
+<script src="@Url.Content("~/Scripts/JavaScriptDropDown.js")"></script>
+

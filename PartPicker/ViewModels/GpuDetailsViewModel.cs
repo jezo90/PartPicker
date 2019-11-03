@@ -6,10 +6,10 @@ using System.Web;
 
 namespace PartPicker.ViewModels
 {
-    public class CpuDetailsViewModel
+    public class GpuDetailsViewModel
     {
-        public Cpu Cpu { get; set; }
-        public List<Cpu> CpuList { get; set; }
+        public Gpu Gpu { get; set; }
+        public List<Gpu> GpuList { get; set; }
         public List<string> Prices { get; set; }
         public int BenchmarkMax { get; set; }
         public NewBuildViewModel NewBuildViewModel { get; set; }

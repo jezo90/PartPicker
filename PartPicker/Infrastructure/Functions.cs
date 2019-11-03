@@ -61,6 +61,12 @@ namespace PartPicker.Infrastructure
                         return (prize.InnerHtml.ToString());
                     }
                 }
+                else if(c.Shop.Name == "Media Expert")
+                {
+                    var prize = pageDocument.DocumentNode.SelectSingleNode("//p[@class='" + c.Shop.Class + "']");
+                    var prizeMod = prize.InnerHtml.ToString().Replace("<span>", ",").Replace("</span>", "") + " zł";
+                    return (prizeMod);
+                }
                 else
                 {
                     var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']");

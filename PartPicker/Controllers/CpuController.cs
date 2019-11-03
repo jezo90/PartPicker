@@ -1,5 +1,4 @@
-﻿using HtmlAgilityPack;
-using PartPicker.DAL;
+﻿using PartPicker.DAL;
 using PartPicker.Infrastructure;
 using PartPicker.Models;
 using PartPicker.ViewModels;
@@ -34,7 +33,6 @@ namespace PartPicker.Controllers
         public ActionResult CpuList(List<string> series, List<string> sockets, int? page, string gpu = "",
                                     int coresMin = 0, int coresMax = 0, string seriesString = "", string socketsString = "")
         {
-
             if (coresMin != 0 || coresMax != 0)
             {
                 if (coresMin > coresMax && coresMin != 0 && coresMax != 0)
@@ -205,6 +203,19 @@ namespace PartPicker.Controllers
                 cpuFound.Clear();
                 filtred = 0;
             }
+
+            if (cpu.Count() > 0)
+            {
+                var names = cpu.Select(a => a.Name).Distinct().ToList();
+                foreach (var name in names)
+                {
+                    var add = cpu.Where(a => a.Name == name).Take(1).ToList();
+                    cpuFound.Add(add[0]);
+                }
+                cpu = cpuFound;
+            }
+
+
             List<string> manufacturers = new List<string>();
             List<string> emptyList = new List<string> { "" };
             if (series == null) manufacturers = emptyList;
@@ -277,8 +288,10 @@ namespace PartPicker.Controllers
 
         public ActionResult CpuDetails(int id, string name)
         {
-            var cpu = context.Cpu.Find(id);
-            var cpuList = context.Cpu.Where(a => a.Name == cpu.Name).ToList();
+            var cpus = context.Cpu.ToList();
+            var cpu = cpus.Find(a => a.CpuId == id);
+            var cpuList = cpus.Where(a => a.Name == cpu.Name).ToList();
+            var benchmarkMax = cpus.Max(a => a.Benchmark);
             List<string> prices = new List<string>();
 
             foreach (Cpu c in cpuList)
@@ -292,6 +305,7 @@ namespace PartPicker.Controllers
                 Cpu = cpu,
                 CpuList = cpuList,
                 Prices = prices,
+                BenchmarkMax = benchmarkMax,
                 NewBuildViewModel = new NewBuildViewModel()
                 {
                     Cpu = BuildManager.GetCpu(),

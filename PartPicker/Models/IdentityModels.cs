@@ -14,7 +14,7 @@ namespace PartPicker.Models
         public class ApplicationUser : IdentityUser
         {
             public virtual ICollection<Rate> Rates { get; set; }
-
+            public virtual ICollection<Build> Builds { get; set; }
             public string Permission { get; set; }
 
             public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)

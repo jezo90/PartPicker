@@ -1013,6 +1013,15 @@ footer {
     padding: 5px;
 }
 
+.info-yellow {
+    background-color: #ef7f29;
+    display: flex !important;
+    border: #661d1d solid 7px;
+    border-radius: 25px;
+    padding: 15px;
+    margin-bottom: 5px;
+}
+
 .info-red {
     background-color: #cc3a3a;
     display: flex !important;

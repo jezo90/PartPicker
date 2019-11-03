@@ -177,8 +177,24 @@
     <Content Include="Content\Images\Gpu\msirx580.png" />
     <Content Include="Content\Images\half.png" />
     <Content Include="Content\Images\hot.png" />
+    <Content Include="Content\Images\Manufacturers\adata.png" />
     <Content Include="Content\Images\Manufacturers\amd.png" />
+    <Content Include="Content\Images\Manufacturers\asrock.png" />
+    <Content Include="Content\Images\Manufacturers\bequiet.png" />
+    <Content Include="Content\Images\Manufacturers\coolermaster.png" />
+    <Content Include="Content\Images\Manufacturers\corsair.png" />
+    <Content Include="Content\Images\Manufacturers\evga.png" />
+    <Content Include="Content\Images\Manufacturers\gigabyte.png" />
+    <Content Include="Content\Images\Manufacturers\gskill.png" />
     <Content Include="Content\Images\Manufacturers\intel.png" />
+    <Content Include="Content\Images\Manufacturers\kingston.png" />
+    <Content Include="Content\Images\Manufacturers\msi.png" />
+    <Content Include="Content\Images\Manufacturers\nzxt.png" />
+    <Content Include="Content\Images\Manufacturers\phanteks.png" />
+    <Content Include="Content\Images\Manufacturers\samsung.png" />
+    <Content Include="Content\Images\Manufacturers\seagate.png" />
+    <Content Include="Content\Images\Manufacturers\silentium.png" />
+    <Content Include="Content\Images\Manufacturers\wd.png" />
     <Content Include="Content\Images\Mobo\asusrogstrix.png" />
     <Content Include="Content\Images\Mobo\gigabyteb450m.png" />
     <Content Include="Content\Images\Mobo\tomahawk.png" />
@@ -269,6 +285,10 @@
     <Compile Include="ViewModels\CpuFormCheckedViewModel.cs" />
     <Compile Include="ViewModels\CpuFormViewModel.cs" />
     <Compile Include="ViewModels\CpuListViewModel.cs" />
+    <Compile Include="ViewModels\GpuDetailsViewModel.cs" />
+    <Compile Include="ViewModels\GpuFormCheckedViewModel.cs" />
+    <Compile Include="ViewModels\GpuFormViewModel.cs" />
+    <Compile Include="ViewModels\GpuListViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\NewBuildViewModel.cs" />
   </ItemGroup>
@@ -290,6 +310,9 @@
     <Content Include="Views\Cpu\_Form.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Gpu\GpuList.cshtml" />
+    <Content Include="Views\Gpu\_Form.cshtml" />
+    <Content Include="Views\Gpu\GpuDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -302,7 +325,6 @@
     <Folder Include="Content\Images\Psu\" />
     <Folder Include="Content\Images\Ram\" />
     <Folder Include="Content\Images\Storage\" />
-    <Folder Include="Views\Gpu\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

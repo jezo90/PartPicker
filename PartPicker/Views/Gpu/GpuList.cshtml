@@ -1,0 +1,207 @@
+﻿@model PartPicker.ViewModels.GpuListViewModel
+    @using PartPicker.Infrastructure
+    @using PagedList.Mvc
+
+    <link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" />
+
+    @{
+        ViewBag.Title = "Karty graficzne";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    @Html.Action("Form", new { checkd = Model.GpuFormCheckedViewModel })
+
+
+    <div class="content">
+        <div class="container ">
+            <div class="item-list nazwy">
+                <div class="item-box  item-part-photo">
+                    <div class="item-part">
+                        Zdjęcie
+                    </div>
+                </div>
+                <div class="item-box">
+                    <div class="item-part">
+                        Producent
+                    </div>
+                </div>
+                <div class="item-box">
+                    <div class="item-part">
+                        Model
+                    </div>
+                </div>
+                <div class="item-box">
+                    <div class="item-part">
+                        Ilość pamięci RAM
+                    </div>
+                </div>
+                <div class="item-box">
+                    <div class="item-part">
+                        Typ pamięci RAM
+                    </div>
+                </div>
+                <div class="item-box">
+                    <div class="item-part">
+                        BENCHMARK
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        @foreach (var gpu in Model.PagedList)
+        {
+            <div class="container">
+                <a class="item-list-a" href="@Url.Action("GpuDetails", "Gpu", new { id = gpu.GpuId, name = gpu.Name })">
+                    <div class="item-list">
+                        <div class="item-box item-part-photo">
+                            <div class="item-part">
+                                <img class="item-part-image" src="@Url.CpusImagesPath(gpu.Image)" />
+                            </div>
+                        </div>
+                        <div class="item-box">
+                            <div class="item-part">
+
+                                <img class="part-image" src="@Url.ManufacturersImagesPath(gpu.Product.Manufacturer.Image)" />
+
+                            </div>
+                        </div>
+                        <div class="item-box">
+                            <div class="item-part">
+
+                                @gpu.Product.Series.Name @gpu.Model
+
+                            </div>
+                        </div>
+                        <div class="item-box">
+                            <div class="item-part">
+
+                                @gpu.Ram GB
+
+                            </div>
+                        </div>
+                        <div class="item-box">
+                            <div class="item-part">
+
+                                @gpu.GpuRam.Name
+
+                            </div>
+                        </div>
+                        <div class="item-box">
+                            <div class="item-part">
+
+                                @gpu.Benchmark / @Model.BenchmarkMax
+
+                            </div>
+                        </div>
+
+                    </div>
+                </a>
+            </div>
+        }
+        <br />
+        Strona @( Model.PagedList.PageCount < Model.PagedList.PageNumber ? 0 : Model.PagedList.PageNumber) z @Model.PagedList.PageCount
+        <br />
+        @{
+            string seriesPage = "";
+            foreach (var serie in Model.GpuFormCheckedViewModel.SeriesChecked)
+            {
+                if (serie != "")
+                {
+                    seriesPage += serie + "_";
+                }
+            }
+
+            string ramsPage = "";
+            foreach (var ram in Model.GpuFormCheckedViewModel.RamsChecked)
+            {
+                if (ram != "")
+                {
+                    ramsPage += ram + "_";
+                }
+            }
+
+            string manufacturersString = "";
+            foreach(var manu in Model.GpuFormCheckedViewModel.ManufacturersChecked)
+            {
+                if(manu != "")
+                {
+                    manufacturersString += manu + "_";
+                }
+            }
+        }
+
+        @if (Model.GpuFormCheckedViewModel.RamMaxChecked != 0 && Model.GpuFormCheckedViewModel.RamMinChecked != 0 && Model.GpuFormCheckedViewModel.LengthMaxChecked != 0)
+        {
+            @Html.PagedListPager(Model.PagedList, page => Url.Action("GpuList", new { page,
+            @seriesString = seriesPage,
+            @ramsString =  ramsPage,
+            @manufacturersString = manufacturersString,
+            @ramMin = Model.GpuFormCheckedViewModel.RamMinChecked,
+            @ramMax = Model.GpuFormCheckedViewModel.RamMaxChecked,
+            @lengthMax = Model.GpuFormCheckedViewModel.LengthMaxChecked}))
+        }
+        else if (Model.GpuFormCheckedViewModel.RamMaxChecked != 0 && Model.GpuFormCheckedViewModel.RamMinChecked != 0)
+        {
+            @Html.PagedListPager(Model.PagedList, page => Url.Action("GpuList", new { page,
+            @seriesString = seriesPage,
+            @ramsString =  ramsPage,
+            @manufacturersString = manufacturersString,
+            @ramMin = Model.GpuFormCheckedViewModel.RamMinChecked,
+            @ramMax = Model.GpuFormCheckedViewModel.RamMaxChecked }))
+        }
+        else if (Model.GpuFormCheckedViewModel.LengthMaxChecked != 0 && Model.GpuFormCheckedViewModel.RamMinChecked != 0)
+        {
+            @Html.PagedListPager(Model.PagedList, page => Url.Action("GpuList", new { page,
+            @seriesString = seriesPage,
+            @ramsString =  ramsPage,
+            @manufacturersString = manufacturersString,
+            @ramMin = Model.GpuFormCheckedViewModel.RamMinChecked,
+            @lengthMax = Model.GpuFormCheckedViewModel.LengthMaxChecked }))
+        }
+        else if (Model.GpuFormCheckedViewModel.LengthMaxChecked != 0 && Model.GpuFormCheckedViewModel.RamMaxChecked != 0)
+        {
+            @Html.PagedListPager(Model.PagedList, page => Url.Action("GpuList", new { page,
+            @seriesString = seriesPage,
+            @ramsString =  ramsPage,
+            @manufacturersString = manufacturersString,
+            @ramMax = Model.GpuFormCheckedViewModel.RamMaxChecked,
+            @lengthMax = Model.GpuFormCheckedViewModel.LengthMaxChecked }))
+        }
+        else if (Model.GpuFormCheckedViewModel.LengthMaxChecked != 0)
+        {
+            @Html.PagedListPager(Model.PagedList, page => Url.Action("GpuList", new { page,
+            @seriesString = seriesPage,
+            @ramsString = ramsPage,
+            @manufacturersString = manufacturersString,
+            @length = Model.GpuFormCheckedViewModel.LengthMaxChecked }))
+        }
+        else if (Model.GpuFormCheckedViewModel.RamMaxChecked != 0)
+        {
+            @Html.PagedListPager(Model.PagedList, page => Url.Action("GpuList", new { page,
+            @seriesString = seriesPage,
+            @ramsString = ramsPage,
+            @manufacturersString = manufacturersString,
+            @ramMax = Model.GpuFormCheckedViewModel.RamMaxChecked }))
+        }
+        else if (Model.GpuFormCheckedViewModel.RamMinChecked != 0)
+        {
+            @Html.PagedListPager(Model.PagedList, page => Url.Action("GpuList", new { page,
+            @seriesString = seriesPage,
+            @ramsString = ramsPage,
+            @manufacturersString = manufacturersString,
+            @ramMin = Model.GpuFormCheckedViewModel.RamMinChecked }))
+        }
+        else
+        {
+            @Html.PagedListPager(Model.PagedList, page => Url.Action("GpuList", new { page,
+            @seriesString = seriesPage,
+            @ramsString = ramsPage,
+            @manufacturersString = manufacturersString }))
+        }
+
+
+    </div>
+
+
+
+

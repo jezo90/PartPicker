@@ -14,6 +14,16 @@ namespace PartPicker
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "GpuDetails",
+                url: "karty-graficzne/{name}-{id}",
+                defaults: new { controller = "Gpu", action = "GpuDetails", id = UrlParameter.Optional, name = UrlParameter.Optional });
+
+            routes.MapRoute(
+                name: "Gpus",
+                url: "karty-graficzne",
+                defaults: new { controller = "Gpu", action = "GpuList" });
+
+            routes.MapRoute(
                 name: "CpuDetails",
                 url: "procesory/{name}-{id}",
                 defaults: new { controller = "Cpu", action = "CpuDetails", id = UrlParameter.Optional, name = UrlParameter.Optional });

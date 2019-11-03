@@ -9,12 +9,12 @@ Procesor:
 {
     @Model.Cpu.Name
     <a href="@Url.Action("DeleteCpuFromBuild", "NewBuild")">
-        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")"/>
+        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
     </a>
 }
 else
 {
-    <img class="newbuild-add" src="@Url.ImagesPath("add.png")"/>
+    <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
 }
 
 <br />
@@ -23,12 +23,12 @@ Karta graficzna:
 {
     @Model.Gpu.Name
     <a href="@Url.Action("DeleteGpuFromBuild", "NewBuild")">
-        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")"/>
+        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
     </a>
 }
 else
 {
-    <img class="newbuild-add" src="@Url.ImagesPath("add.png")"/>
+    <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
 }
 
 <br />
@@ -37,12 +37,12 @@ Płyta główna:
 {
     @Model.Mobo.Name
     <a href="@Url.Action("DeleteMoboFromBuild", "NewBuild")">
-        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")"/>
+        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
     </a>
 }
 else
 {
-    <img class="newbuild-add" src="@Url.ImagesPath("add.png")"/>
+    <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
 }
 
 <br />
@@ -51,12 +51,12 @@ RAM:
 {
     @Model.Ram.Name
     <a href="@Url.Action("DeleteRamFromBuild", "NewBuild")">
-        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")"/>
+        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
     </a>
 }
 else
 {
-    <img class="newbuild-add" src="@Url.ImagesPath("add.png")"/>
+    <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
 }
 
 <br />
@@ -65,12 +65,12 @@ Obudowa:
 {
     @Model.Case.Name
     <a href="@Url.Action("DeleteCaseFromBuild", "NewBuild")">
-        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")"/>
+        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
     </a>
 }
 else
 {
-    <img class="newbuild-add" src="@Url.ImagesPath("add.png")"/>
+    <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
 }
 
 <br />
@@ -79,13 +79,20 @@ Zasilacz:
 {
     @Model.Psu.Name
     <a href="@Url.Action("DeletePsuFromBuild", "NewBuild")">
-        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")"/>
+        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
     </a>
 }
 else
 {
-    <img class="newbuild-add" src="@Url.ImagesPath("add.png")"/>
+    <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
 }
 
+<form action="@Url.Action("AddBuild", "NewBuild")" method="post">
+    Nazwa <input type="text" maxlength="45" />
+    <br />
+    Opis: <input type="text" maxlength="150" />
+    <br />
+    <input type="submit" value="Dodaj build" />
+</form>
 
 

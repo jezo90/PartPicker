@@ -1,15 +1,15 @@
 ﻿@using PartPicker.Infrastructure
-@model PartPicker.ViewModels.CpuDetailsViewModel
+@model PartPicker.ViewModels.GpuDetailsViewModel
 
 @{
-    ViewBag.Title = Model.Cpu.Name;
+    ViewBag.Title = Model.Gpu.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="content-details">
     <div class="container-details">
         <div class="details-image">
-            <img class="details-image-product" src="@Url.CpusImagesPath(Model.Cpu.Image)" />
+            <img class="details-image-product" src="@Url.CpusImagesPath(Model.Gpu.Image)" />
         </div>
 
 
@@ -17,41 +17,41 @@
 
 
             <div class="details-name">
-                @Model.Cpu.Name
+                @Model.Gpu.Name
             </div>
             <br />
             @if (Request.IsAuthenticated)
             {
-                if (Model.NewBuildViewModel.Mobo != null && Model.NewBuildViewModel.Mobo.Socket.Name != Model.Cpu.Socket.Name)
+                if (Model.NewBuildViewModel.Case != null && Model.NewBuildViewModel.Case.GpuLenght < Model.Gpu.Length)
                 {
                     <div class="info-red">
                         <div class="info-left">
                             <img src="@Url.ImagesPath("!.png")" />
                         </div>
                         <div class="info-right">
-                            Ten procesor nie pasuje do wybranej przez Ciebie płyty głównej.
+                            Ta karta graficzna nie pasuje do wybranej przez Ciebie obudowy, ponieważ jest zbyt długa.
                             <br />
-                            Aktualnie wybrana płyta główna to: @Model.NewBuildViewModel.Mobo.Name
+                            Aktualnie wybrana obudowa to: @Model.NewBuildViewModel.Case.Name
                             <br />
-                            Odpowiedni Socket do wybranej przez Ciebie płyty głównej to: @Model.NewBuildViewModel.Mobo.Socket.Name
+                            Maksymalna długość karty graficznej dla wybranej obudowy to: @Model.NewBuildViewModel.Case.GpuLenght:mm.
                             <br />
-                            <a href="@Url.Action("CpuList", "Cpu", new { @socketsString = Model.NewBuildViewModel.Mobo.Socket.Name })">
-                                Kliknij tutaj by przejść do wyszukiwania kompatybilnych procesorów.
+                            <a href="@Url.Action("GpuList", "Gpu", new { @lengthMax = Model.NewBuildViewModel.Case.GpuLenght })">
+                            Kliknij tutaj by przejść do wyszukiwania kompatybilnych kart graficznych.
                             </a>
                         </div>
                     </div>
                 }
 
-                if (Model.NewBuildViewModel.Cpu != null)
+                if (Model.NewBuildViewModel.Gpu != null)
                 {
                     <div class="info-green">
                         <div class="info-left">
                             <img src="@Url.ImagesPath("!.png")" />
                         </div>
                         <div class="info-right">
-                            W Twojej konfiguracji znajduje się już procesor:
-                            <a href="@Url.Action("CpuDetails", "Cpu", new { id = Model.NewBuildViewModel.Cpu.CpuId })">
-                                @Model.NewBuildViewModel.Cpu.Name
+                            W Twojej konfiguracji znajduje się już karta graficzna:
+                            <a href="@Url.Action("GpuDetails", "Gpu", new { id = Model.NewBuildViewModel.Gpu.GpuId })">
+                                @Model.NewBuildViewModel.Gpu.Name
                             </a>
                         </div>
                     </div>
@@ -71,14 +71,15 @@
                 </div>
             }
 
+
             @{ int i = 0; }
-            @foreach (var cpu in Model.CpuList)
+            @foreach (var gpu in Model.GpuList)
             {
                 <div class="details-prices-shop">
                     <div class="details-prices-shop-item details-prices-shop-item-link">
-                        <a class="details-prices-shop-link" href=@cpu.Link>
+                        <a class="details-prices-shop-link" href=@gpu.Link>
 
-                            <img class="details-prices-shop-image" src="@Url.ShopsImagesPath(cpu.Shop.Logo)" />
+                            <img class="details-prices-shop-image" src="@Url.ShopsImagesPath(gpu.Shop.Logo)" />
 
 
                             <div class="details-prices-shop-price">
@@ -89,12 +90,12 @@
                     </div>
                     @if (Request.IsAuthenticated)
                     {
-                        if (Model.NewBuildViewModel.Mobo != null)
+                        if (Model.NewBuildViewModel.Case != null)
                         {
-                            if (Model.NewBuildViewModel.Mobo.Socket.Name == cpu.Socket.Name)
+                            if (Model.NewBuildViewModel.Case.GpuLenght >= Model.Gpu.Length)
                             {
 
-                                <a class="details-prices-shop-item" href="@Url.Action("AddCpuToBuild", "NewBuild", new { @id = cpu.CpuId })">
+                                <a class="details-prices-shop-item" href="@Url.Action("AddGpuToBuild", "NewBuild", new { @id = gpu.GpuId })">
                                     <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" />
                                 </a>
 
@@ -109,7 +110,7 @@
                         else
                         {
 
-                            <a class="details-prices-shop-item" href="@Url.Action("AddCpuToBuild", "NewBuild", new { @id = cpu.CpuId })">
+                            <a class="details-prices-shop-item" href="@Url.Action("AddGpuToBuild", "NewBuild", new { @id = gpu.GpuId })">
                                 <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" />
                             </a>
 
@@ -130,15 +131,15 @@
     </div>
     <div class="container-details">
         <div class="details-info">
-            <div class="details-info-text">PRODUCENT: @Model.Cpu.Product.Manufacturer.Name<br /></div>
-            <div class="details-info-text">SERIA: @Model.Cpu.Product.Series.Name<br /></div>
-            <div class="details-info-text">MODEL: @Model.Cpu.Model<br /></div>
-            <div class="details-info-text">LICZBA RDZENI: @Model.Cpu.Cores<br /></div>
-            <div class="details-info-text">SOCKET: @Model.Cpu.Socket.Name<br /></div>
-            <div class="details-info-text">CZĘSTOTLIWOŚĆ TAKTOWANIA(GHz): @Model.Cpu.Frequency<br /></div>
-            <div class="details-info-text">CZĘSTOTLIWOŚĆ TAKTOWANIA W TRYBIE TURBO(GHz): @Model.Cpu.Turbo<br /></div>
-            <div class="details-info-text">WBUDOWANA KARTA GRAFICZNA: @Model.Cpu.Gpu<br /></div>
-            <div class="details-info-text">BENCHMARK: @Model.Cpu.Benchmark / @Model.BenchmarkMax <br /></div>
+            <div class="details-info-text">PRODUCENT: @Model.Gpu.Product.Manufacturer.Name<br /></div>
+            <div class="details-info-text">SERIA: @Model.Gpu.Product.Series.Name<br /></div>
+            <div class="details-info-text">MODEL: @Model.Gpu.Model<br /></div>
+            <div class="details-info-text">CZĘSTOTLIWOŚĆ TAKTOWANIA: @Model.Gpu.Frequency GHz<br /></div>
+            <div class="details-info-text">CZĘSTOTLIWOŚĆ TAKTOWANIA W TRYBIE TURBO: @Model.Gpu.FrequencyBoost GHz<br /></div>
+            <div class="details-info-text">TYP RAM: @Model.Gpu.GpuRam.Name<br /></div>
+            <div class="details-info-text">ILOŚĆ RAM: @Model.Gpu.Ram GB<br /></div>
+            <div class="details-info-text">DŁUGOŚĆ KARTY: @Model.Gpu.Length mm<br /></div>
+            <div class="details-info-text">BENCHMARK: @Model.Gpu.Benchmark / @Model.BenchmarkMax <br /></div>
         </div>
     </div>
 </div>

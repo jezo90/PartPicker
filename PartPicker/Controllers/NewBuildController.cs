@@ -1,10 +1,13 @@
-﻿using PartPicker.DAL;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using PartPicker.DAL;
 using PartPicker.Infrastructure;
 using PartPicker.Models;
 using PartPicker.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -42,33 +45,71 @@ namespace PartPicker.Controllers
             else return RedirectToAction("Login", "Account");
         }
 
+        public ActionResult AddBuild(string name, string description)
+        {
+            if(Request.IsAuthenticated)
+            {
+                var build = new Build()
+                {
+                    ApplicationUserId = User.Identity.GetUserId(),
+                    CaseId = BuildManager.GetCase().CaseId,
+                    CpuId = BuildManager.GetCpu().CpuId,
+                    GpuId = BuildManager.GetGpu().GpuId,
+                    MoboId = BuildManager.GetMobo().MoboId,
+                    RamId = BuildManager.GetRam().RamId,
+                    PsuId = BuildManager.GetPsu().PsuId,
+                    StorageId = BuildManager.GetStorage().StorageId,
+                    Description = description,
+                    Name = name,
+                    Date = DateTime.Now,
+                    Image = "basic.png",
+                    Hidden = false
+                };
+
+                context.Build.Add(build);
+                context.SaveChanges();
+                return RedirectToAction("BuildsList", "Builds");
+            }
+            else return RedirectToAction("Login", "Account");
+        }
+
+
         // CPU
         public ActionResult AddCpuToBuild(int id)
         {
-            var c = context.Cpu.Where(a => a.CpuId == id).Take(1).ToList();
-            if (BuildManager.GetMobo() != null)
+            if (Request.IsAuthenticated)
             {
-                if(BuildManager.GetMobo().Socket.Name == c[0].Socket.Name)
+                var c = context.Cpu.Where(a => a.CpuId == id).Take(1).ToList();
+
+                if (BuildManager.GetMobo() != null)
                 {
-                    BuildManager.CpuAddToBuild(c[0]);
+                    if (BuildManager.GetMobo().Socket.Name == c[0].Socket.Name)
+                    {
+                        BuildManager.CpuAddToBuild(c[0]);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Home");
+                    BuildManager.CpuAddToBuild(c[0]);
                 }
-            }
-            else
-            {
-                BuildManager.CpuAddToBuild(c[0]);
-            }
 
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+            else return RedirectToAction("Login", "Account");
         }
 
         public ActionResult DeleteCpuFromBuild()
         {
-            BuildManager.CpuDeleteFromBuild();
+            if (Request.IsAuthenticated)
+            {
+                BuildManager.CpuDeleteFromBuild();
+            }
+            else return RedirectToAction("Login", "Account");
 
             return RedirectToAction("Index");
         }
@@ -76,111 +117,214 @@ namespace PartPicker.Controllers
         // GPU
         public ActionResult AddGpuToBuild(int id)
         {
-            var c = context.Gpu.Where(a => a.GpuId == id).Take(1).ToList();
-            BuildManager.GpuAddToBuild(c[0]);
-
-            return RedirectToAction("Index");
+            if (Request.IsAuthenticated)
+            {
+                var c = context.Gpu.Where(a => a.GpuId == id).Take(1).ToList();
+                if (BuildManager.GetCase() != null)
+                {
+                    if (BuildManager.GetCase().GpuLenght >= c[0].Length)
+                    {
+                        BuildManager.GpuAddToBuild(c[0]);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    BuildManager.GpuAddToBuild(c[0]);
+                }
+                return RedirectToAction("Index");
+            }
+            else return RedirectToAction("Login", "Account");
         }
 
         public ActionResult DeleteGpuFromBuild()
         {
-            BuildManager.GpuDeleteFromBuild();
-
-            return RedirectToAction("Index");
+            if (Request.IsAuthenticated)
+            {
+                BuildManager.GpuDeleteFromBuild();
+                return RedirectToAction("Index");
+            }
+            else return RedirectToAction("Login", "Account");
         }
 
         // MOBO
         public ActionResult AddMoboToBuild(int id)
         {
-            var c = context.Mobo.Where(a => a.MoboId == id).Take(1).ToList();
-            if (BuildManager.GetCpu() != null)
+            if (Request.IsAuthenticated)
             {
-                if (BuildManager.GetCpu().Socket.Name == c[0].Socket.Name)
+                var c = context.Mobo.Where(a => a.MoboId == id).Take(1).ToList();
+                if (BuildManager.GetCpu() != null)
                 {
-                    BuildManager.MoboAddToBuild(c[0]);
+                    if (BuildManager.GetCpu().Socket.Name == c[0].Socket.Name)
+                    {
+                        BuildManager.MoboAddToBuild(c[0]);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Home");
+                    BuildManager.MoboAddToBuild(c[0]);
                 }
-            }
-            else
-            {
-                BuildManager.MoboAddToBuild(c[0]);
-            }
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+            else return RedirectToAction("Login", "Account");
         }
 
         public ActionResult DeleteMoboFromBuild()
         {
-            BuildManager.MoboDeleteFromBuild();
-
-            return RedirectToAction("Index");
+            if (Request.IsAuthenticated)
+            {
+                BuildManager.MoboDeleteFromBuild();
+                return RedirectToAction("Index");
+            }
+            else return RedirectToAction("Login", "Account");
         }
 
         // RAM
         public ActionResult AddRamToBuild(int id)
         {
-            var c = context.Ram.Where(a => a.RamId == id).Take(1).ToList();
-            BuildManager.RamAddToBuild(c[0]);
-
-            return RedirectToAction("Index");
+            if (Request.IsAuthenticated)
+            {
+                var c = context.Ram.Where(a => a.RamId == id).Take(1).ToList();
+                if (BuildManager.GetMobo() != null)
+                {
+                    if (BuildManager.GetMobo().RamType.Name == c[0].RamType.Name)
+                    {
+                        BuildManager.RamAddToBuild(c[0]);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    BuildManager.RamAddToBuild(c[0]);
+                }
+                return RedirectToAction("Index");
+            }
+            else return RedirectToAction("Login", "Account");
         }
 
         public ActionResult DeleteRamFromBuild()
         {
-            BuildManager.RamDeleteFromBuild();
-
-            return RedirectToAction("Index");
+            if (Request.IsAuthenticated)
+            {
+                BuildManager.RamDeleteFromBuild();
+                return RedirectToAction("Index");
+            }
+            else return RedirectToAction("Login", "Account");
         }
 
         // PSU
         public ActionResult AddPsuToBuild(int id)
         {
-            var c = context.Psu.Where(a => a.PsuId == id).Take(1).ToList();
-            BuildManager.PsuAddToBuild(c[0]);
+            if (Request.IsAuthenticated)
+            {
+                var c = context.Psu.Where(a => a.PsuId == id).Take(1).ToList();
+                BuildManager.PsuAddToBuild(c[0]);
+            }
+            else return RedirectToAction("Login", "Account");
 
             return RedirectToAction("Index");
         }
 
         public ActionResult DeletePsuFromBuild()
         {
-            BuildManager.PsuDeleteFromBuild();
-
-            return RedirectToAction("Index");
+            if (Request.IsAuthenticated)
+            {
+                BuildManager.PsuDeleteFromBuild();
+                return RedirectToAction("Index");
+            }
+            else return RedirectToAction("Login", "Account");
         }
 
         // CASE
         public ActionResult AddCaseToBuild(int id)
         {
-            var c = context.Case.Where(a => a.CaseId == id).Take(1).ToList();
-            BuildManager.CaseAddToBuild(c[0]);
-
-            return RedirectToAction("Index");
+            if (Request.IsAuthenticated)
+            {
+                var c = context.Case.Where(a => a.CaseId == id).Take(1).ToList();
+                if (BuildManager.GetMobo() != null && BuildManager.GetGpu() != null)
+                {
+                    if (BuildManager.GetMobo().FormFactor.Name == c[0].FormFactor.Name && BuildManager.GetGpu().Length < c[0].GpuLenght)
+                    {
+                        BuildManager.CaseAddToBuild(c[0]);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else if (BuildManager.GetMobo() != null)
+                {
+                    if (BuildManager.GetMobo().FormFactor.Name == c[0].FormFactor.Name)
+                    {
+                        BuildManager.CaseAddToBuild(c[0]);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else if (BuildManager.GetGpu() != null)
+                {
+                    if (BuildManager.GetGpu().Length < c[0].GpuLenght)
+                    {
+                        BuildManager.CaseAddToBuild(c[0]);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    BuildManager.CaseAddToBuild(c[0]);
+                }
+                return RedirectToAction("Index");
+            }
+            else return RedirectToAction("Login", "Account");
         }
 
         public ActionResult DeleteCaseFromBuild()
         {
-            BuildManager.CaseDeleteFromBuild();
-
-            return RedirectToAction("Index");
+            if (Request.IsAuthenticated)
+            {
+                BuildManager.CaseDeleteFromBuild();
+                return RedirectToAction("Index");
+            }
+            else return RedirectToAction("Login", "Account");
         }
 
         // STORAGE
         public ActionResult AddStorageToBuild(int id)
         {
-            var c = context.Storage.Where(a => a.StorageId == id).Take(1).ToList();
-            BuildManager.StorageAddToBuild(c[0]);
+            if (Request.IsAuthenticated)
+            {
+                var c = context.Storage.Where(a => a.StorageId == id).Take(1).ToList();
+                BuildManager.StorageAddToBuild(c[0]);
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+            else return RedirectToAction("Login", "Account");
         }
 
         public ActionResult DeleteStorageFromBuild()
         {
-            BuildManager.StorageDeleteFromBuild();
-
-            return RedirectToAction("Index");
+            if (Request.IsAuthenticated)
+            {
+                BuildManager.StorageDeleteFromBuild();
+                return RedirectToAction("Index");
+            }
+            else return RedirectToAction("Login", "Account");
         }
     }
 }
