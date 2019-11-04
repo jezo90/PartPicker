@@ -1,0 +1,142 @@
+﻿@using PartPicker.Infrastructure
+@model PartPicker.ViewModels.MoboDetailsViewModel
+
+@{
+    ViewBag.Title = Model.Mobo.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-details">
+    <div class="container-details">
+        <div class="details-image">
+            <img class="details-image-product" src="@Url.MobosImagesPath(Model.Mobo.Image)" />
+        </div>
+
+
+        <div class="details-prices">
+
+
+            <div class="details-name">
+                @Model.Mobo.Name
+            </div>
+            <br />
+            @if (Request.IsAuthenticated)
+            {
+                if (Model.NewBuildViewModel.Cpu != null && Model.NewBuildViewModel.Cpu.Socket.Name != Model.Mobo.Socket.Name)
+                {
+                    <div class="info-red">
+                        <div class="info-left">
+                            <img src="@Url.ImagesPath("!.png")" />
+                        </div>
+                        <div class="info-right">
+                            Ta płyta główna nie pasuje do wybranego przez Ciebie procesora.
+                            <br />
+                            Aktualnie wybrany procesor to: @Model.NewBuildViewModel.Cpu.Name
+                            <br />
+                            Odpowiedni Socket do wybranego przez Ciebie procesora to: @Model.NewBuildViewModel.Cpu.Socket.Name
+                            <br />
+                            <a href="@Url.Action("MoboList", "Mobo", new { @socketsString = Model.NewBuildViewModel.Cpu.Socket.Name })">
+                                Kliknij tutaj by przejść do wyszukiwania kompatybilnych płyt głównych.
+                            </a>
+                        </div>
+                    </div>
+                }
+
+                if (Model.NewBuildViewModel.Mobo != null)
+                {
+                    <div class="info-green">
+                        <div class="info-left">
+                            <img src="@Url.ImagesPath("!.png")" />
+                        </div>
+                        <div class="info-right">
+                            W Twojej konfiguracji znajduje się już płyta główna:
+                            <a href="@Url.Action("MoboDetails", "Mobo", new { id = Model.NewBuildViewModel.Mobo.MoboId })">
+                                @Model.NewBuildViewModel.Mobo.Name
+                            </a>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="info-yellow">
+                    <div class="info-left">
+                        <img src="@Url.ImagesPath("!.png")" />
+                    </div>
+                    <div class="info-right">
+                        Zaloguj się by stworzyć własną konfigurację.
+                        <br />
+                        <a href="@Url.Action("Login", "Account")">Kliknij tutaj by się zalogować.</a>
+                    </div>
+                </div>
+            }
+
+            @{ int i = 0; }
+            @foreach (var mobo in Model.MoboList)
+            {
+                <div class="details-prices-shop">
+                    <div class="details-prices-shop-item details-prices-shop-item-link">
+                        <a class="details-prices-shop-link" href=@mobo.Link>
+
+                            <img class="details-prices-shop-image" src="@Url.ShopsImagesPath(mobo.Shop.Logo)" />
+
+
+                            <div class="details-prices-shop-price">
+                                @Model.Prices[i]
+                            </div>
+
+                        </a>
+                    </div>
+                    @if (Request.IsAuthenticated)
+                    {
+                        if (Model.NewBuildViewModel.Cpu != null)
+                        {
+                            if (Model.NewBuildViewModel.Cpu.Socket.Name == mobo.Socket.Name)
+                            {
+
+                                <a class="details-prices-shop-item" href="@Url.Action("AddMoboToBuild", "NewBuild", new { @id = mobo.MoboId })">
+                                    <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" />
+                                </a>
+
+                            }
+                            else
+                            {
+                                <div class="details-prices-shop-item">
+                                    <img class="details-prices-shop-add" src="@Url.ImagesPath("addDisabled.png")" />
+                                </div>
+                            }
+                        }
+                        else
+                        {
+
+                            <a class="details-prices-shop-item" href="@Url.Action("AddMoboToBuild", "NewBuild", new { @id = mobo.MoboId })">
+                                <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" />
+                            </a>
+
+                        }
+                    }
+                    else
+                    {
+                        <div class="details-prices-shop-item">
+                            <img class="details-prices-shop-add" src="@Url.ImagesPath("addDisabled.png")" />
+                        </div>
+                    }
+                    <br />
+                </div>
+
+                i++;
+            }
+        </div>
+    </div>
+    <div class="container-details">
+        <div class="details-info">
+            <div class="details-info-text">PRODUCENT: @Model.Mobo.Manufacturer.Name<br /></div>
+            <div class="details-info-text">MODEL: @Model.Mobo.Model<br /></div>
+            <div class="details-info-text">SOCKET: @Model.Mobo.Socket.Name<br /></div>
+            <div class="details-info-text">TYP PAMIĘCI RAM: @Model.Mobo.RamType.Name<br /></div>
+            <div class="details-info-text">ILOŚĆ SLOTÓW PAMIĘCI RAM: @Model.Mobo.RamSlots<br /></div>
+            <div class="details-info-text">MAKSYMALNA ILOŚĆ PAMIĘCI RAM: @Model.Mobo.MaxRam GB<br /></div>
+            <div class="details-info-text">ILOŚĆ SLOTÓW SATA: @Model.Mobo.SataSlots <br /></div>
+        </div>
+    </div>
+</div>

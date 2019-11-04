@@ -239,6 +239,7 @@
     <Compile Include="Controllers\CpuController.cs" />
     <Compile Include="Controllers\GpuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MoboController.cs" />
     <Compile Include="Controllers\NewBuildController.cs" />
     <Compile Include="DAL\PickerContext.cs" />
     <Compile Include="DAL\PickerInitializer.cs" />
@@ -282,15 +283,19 @@
     <Compile Include="ViewModels\BuildFiltersViewModel.cs" />
     <Compile Include="ViewModels\BuildSearchViewModel.cs" />
     <Compile Include="ViewModels\BuildsListViewModel.cs" />
-    <Compile Include="ViewModels\CpuDetailsViewModel.cs" />
-    <Compile Include="ViewModels\CpuFormCheckedViewModel.cs" />
-    <Compile Include="ViewModels\CpuFormViewModel.cs" />
-    <Compile Include="ViewModels\CpuListViewModel.cs" />
-    <Compile Include="ViewModels\GpuDetailsViewModel.cs" />
-    <Compile Include="ViewModels\GpuFormCheckedViewModel.cs" />
-    <Compile Include="ViewModels\GpuFormViewModel.cs" />
-    <Compile Include="ViewModels\GpuListViewModel.cs" />
+    <Compile Include="ViewModels\Cpu\CpuDetailsViewModel.cs" />
+    <Compile Include="ViewModels\Cpu\CpuFormCheckedViewModel.cs" />
+    <Compile Include="ViewModels\Cpu\CpuFormViewModel.cs" />
+    <Compile Include="ViewModels\Cpu\CpuListViewModel.cs" />
+    <Compile Include="ViewModels\Gpu\GpuDetailsViewModel.cs" />
+    <Compile Include="ViewModels\Gpu\GpuFormCheckedViewModel.cs" />
+    <Compile Include="ViewModels\Gpu\GpuFormViewModel.cs" />
+    <Compile Include="ViewModels\Gpu\GpuListViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\Mobo\MoboDetailsViewModel.cs" />
+    <Compile Include="ViewModels\Mobo\MoboFormCheckedViewModel.cs" />
+    <Compile Include="ViewModels\Mobo\MoboFormViewModel.cs" />
+    <Compile Include="ViewModels\Mobo\MoboListViewModel.cs" />
     <Compile Include="ViewModels\NewBuildViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -314,6 +319,9 @@
     <Content Include="Views\Gpu\GpuList.cshtml" />
     <Content Include="Views\Gpu\_Form.cshtml" />
     <Content Include="Views\Gpu\GpuDetails.cshtml" />
+    <Content Include="Views\Mobo\_Form.cshtml" />
+    <Content Include="Views\Mobo\MoboList.cshtml" />
+    <Content Include="Views\Mobo\MoboDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

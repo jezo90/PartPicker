@@ -1,0 +1,154 @@
+﻿@model PartPicker.ViewModels.MoboListViewModel
+@using PartPicker.Infrastructure
+@using PagedList.Mvc
+
+<link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Płyty główne";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Action("Form", new { checkd = Model.MoboFormCheckedViewModel })
+
+
+<div class="content">
+    <div class="container ">
+        <div class="item-list nazwy">
+            <div class="item-box  item-part-photo">
+                <div class="item-part">
+                    Zdjęcie
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Producent
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Model
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Socket
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Format
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Typ pamięci RAM
+                </div>
+            </div>
+
+        </div>
+    </div>
+    @foreach (var mobo in Model.PagedList)
+    {
+        <div class="container">
+            <a class="item-list-a" href="@Url.Action("MoboDetails", "Mobo", new { id = mobo.MoboId, name = mobo.Name })">
+                <div class="item-list">
+                    <div class="item-box item-part-photo">
+                        <div class="item-part">
+                            <img class="item-part-image" src="@Url.MobosImagesPath(mobo.Image)" />
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            <img class="part-image" src="@Url.ManufacturersImagesPath(mobo.Manufacturer.Image)" />
+                            <br />
+
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            @mobo.Model
+
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            @mobo.Socket.Name
+
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            @mobo.FormFactor.Name
+
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            @mobo.RamType.Name
+
+                        </div>
+                    </div>
+
+                </div>
+            </a>
+        </div>
+    }
+    <br />
+    Strona @( Model.PagedList.PageCount < Model.PagedList.PageNumber ? 0 : Model.PagedList.PageNumber) z @Model.PagedList.PageCount
+    <br />
+    @{
+        string formsPage = "";
+        foreach (var form in Model.MoboFormCheckedViewModel.FormFactorChecked)
+        {
+            if (form != "")
+            {
+                formsPage += form + "_";
+            }
+        }
+
+        string socketsPage = "";
+        foreach (var socket in Model.MoboFormCheckedViewModel.SocketsChecked)
+        {
+            if (socket != "")
+            {
+                socketsPage += socket + "_";
+            }
+        }
+
+        string manufacturersPage = "";
+        foreach (var manu in Model.MoboFormCheckedViewModel.ManufacturersChecked)
+        {
+            if (manu != "")
+            {
+                manufacturersPage += manu + "_";
+            }
+        }
+
+        string ramsPage = "";
+        foreach (var ram in Model.MoboFormCheckedViewModel.RamTypeChecked)
+        {
+            if (ram != "")
+            {
+                ramsPage += ram + "_";
+            }
+        }
+    }
+
+
+    @Html.PagedListPager(Model.PagedList, page => Url.Action("MoboList", new { page,
+    @manufacturersString = manufacturersPage,
+    @socketsString =  socketsPage,
+    @ramsString = ramsPage,
+    @formsString = formsPage }))
+
+
+</div>
+
+
+

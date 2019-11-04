@@ -1,0 +1,136 @@
+﻿@model PartPicker.ViewModels.MoboFormViewModel
+@using PartPicker.Infrastructure
+
+@{
+    ViewBag.Title = "_Form";
+}
+<div class="sidebar">
+    <form action="@Url.Action("MoboList", "Mobo")" method="post">
+
+        <button type="button" class="dropdown-btn">
+            Producent:
+        </button>
+
+        <div class="dropdown-container" @{ if (Model.MoboFormCheckedViewModel.ManufacturersChecked[0] != "") { @: style="display:block !important"
+             } }>
+
+            @foreach (var manufacturer in Model.Manufacturers)
+            {
+
+                <label name="@manufacturer">
+                    <div class="filter-send">
+                        @if (Model.MoboFormCheckedViewModel.ManufacturersChecked.Contains(manufacturer))
+                        {
+
+                            @manufacturer
+                            <input class="checkbox-invisible" type="checkbox" name="manufacturers" value="@manufacturer" checked />
+
+                        }
+                        else
+                        {
+
+                            @manufacturer
+                            <input class="checkbox-invisible" type="checkbox" name="manufacturers" value="@manufacturer" />
+
+                        }
+                    </div>
+                </label>
+            }
+        </div>
+
+        <button type="button" class="dropdown-btn">
+            Socket:
+        </button>
+
+        <div class="dropdown-container" @{ if (Model.MoboFormCheckedViewModel.SocketsChecked[0] != "") { @: style="display:block !important"
+             } }>
+            @foreach (var socket in Model.Sockets)
+            {
+                <label name="@socket">
+                    <div class="filter-send">
+                        @if (Model.MoboFormCheckedViewModel.SocketsChecked.Contains(socket))
+                        {
+
+                            @socket <input class="checkbox-invisible" type="checkbox" name="sockets" value="@socket" checked />
+
+                        }
+                        else
+                        {
+
+                            @socket <input class="checkbox-invisible" type="checkbox" name="sockets" value="@socket" />
+
+                        }
+                    </div>
+                </label>
+            }
+        </div>
+
+        <button type="button" class="dropdown-btn">
+            Format:
+        </button>
+
+        <div class="dropdown-container" @{ if (Model.MoboFormCheckedViewModel.FormFactorChecked[0] != "") { @: style="display:block !important"
+             } }>
+
+            @foreach (var formFactor in Model.FormFactor)
+            {
+
+                <label name="@formFactor">
+                    <div class="filter-send">
+                        @if (Model.MoboFormCheckedViewModel.FormFactorChecked.Contains(formFactor))
+                        {
+
+                            @formFactor
+                            <input class="checkbox-invisible" type="checkbox" name="formFactor" value="@formFactor" checked />
+
+                        }
+                        else
+                        {
+
+                            @formFactor
+                            <input class="checkbox-invisible" type="checkbox" name="formFactor" value="@formFactor" />
+
+                        }
+                    </div>
+                </label>
+            }
+        </div>
+
+        <button type="button" class="dropdown-btn">
+            Typ pamięci RAM:
+        </button>
+
+        <div class="dropdown-container" @{ if (Model.MoboFormCheckedViewModel.RamTypeChecked[0] != "") { @: style="display:block !important"
+             } }>
+            @foreach (var rams in Model.RamType)
+            {
+                <label name="@rams">
+                    <div class="filter-send">
+                        @if (Model.MoboFormCheckedViewModel.RamTypeChecked.Contains(rams))
+                        {
+
+                            @rams <input class="checkbox-invisible" type="checkbox" name="rams" value="@rams" checked />
+
+                        }
+                        else
+                        {
+
+                            @rams <input class="checkbox-invisible" type="checkbox" name="rams" value="@rams" />
+
+                        }
+                    </div>
+                </label>
+            }
+        </div>
+
+        <button class="dropdown-btn">
+            FILTRUJ
+        </button>
+        <button class="dropdown-btn">
+            RESET
+        </button>
+    </form>
+</div>
+
+<script src="@Url.Content("~/Scripts/JavaScriptDropDown.js")"></script>
+
