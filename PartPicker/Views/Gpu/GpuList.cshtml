@@ -120,12 +120,12 @@
                 }
             }
 
-            string manufacturersString = "";
+            string manufacturersPage = "";
             foreach(var manu in Model.GpuFormCheckedViewModel.ManufacturersChecked)
             {
                 if(manu != "")
                 {
-                    manufacturersString += manu + "_";
+                    manufacturersPage += manu + "_";
                 }
             }
         }
@@ -135,7 +135,7 @@
             @Html.PagedListPager(Model.PagedList, page => Url.Action("GpuList", new { page,
             @seriesString = seriesPage,
             @ramsString =  ramsPage,
-            @manufacturersString = manufacturersString,
+            @manufacturersString = manufacturersPage,
             @ramMin = Model.GpuFormCheckedViewModel.RamMinChecked,
             @ramMax = Model.GpuFormCheckedViewModel.RamMaxChecked,
             @lengthMax = Model.GpuFormCheckedViewModel.LengthMaxChecked}))
@@ -145,7 +145,7 @@
             @Html.PagedListPager(Model.PagedList, page => Url.Action("GpuList", new { page,
             @seriesString = seriesPage,
             @ramsString =  ramsPage,
-            @manufacturersString = manufacturersString,
+            @manufacturersString = manufacturersPage,
             @ramMin = Model.GpuFormCheckedViewModel.RamMinChecked,
             @ramMax = Model.GpuFormCheckedViewModel.RamMaxChecked }))
         }
@@ -154,7 +154,7 @@
             @Html.PagedListPager(Model.PagedList, page => Url.Action("GpuList", new { page,
             @seriesString = seriesPage,
             @ramsString =  ramsPage,
-            @manufacturersString = manufacturersString,
+            @manufacturersString = manufacturersPage,
             @ramMin = Model.GpuFormCheckedViewModel.RamMinChecked,
             @lengthMax = Model.GpuFormCheckedViewModel.LengthMaxChecked }))
         }
@@ -163,7 +163,7 @@
             @Html.PagedListPager(Model.PagedList, page => Url.Action("GpuList", new { page,
             @seriesString = seriesPage,
             @ramsString =  ramsPage,
-            @manufacturersString = manufacturersString,
+            @manufacturersString = manufacturersPage,
             @ramMax = Model.GpuFormCheckedViewModel.RamMaxChecked,
             @lengthMax = Model.GpuFormCheckedViewModel.LengthMaxChecked }))
         }
@@ -172,7 +172,7 @@
             @Html.PagedListPager(Model.PagedList, page => Url.Action("GpuList", new { page,
             @seriesString = seriesPage,
             @ramsString = ramsPage,
-            @manufacturersString = manufacturersString,
+            @manufacturersString = manufacturersPage,
             @length = Model.GpuFormCheckedViewModel.LengthMaxChecked }))
         }
         else if (Model.GpuFormCheckedViewModel.RamMaxChecked != 0)
@@ -180,7 +180,7 @@
             @Html.PagedListPager(Model.PagedList, page => Url.Action("GpuList", new { page,
             @seriesString = seriesPage,
             @ramsString = ramsPage,
-            @manufacturersString = manufacturersString,
+            @manufacturersString = manufacturersPage,
             @ramMax = Model.GpuFormCheckedViewModel.RamMaxChecked }))
         }
         else if (Model.GpuFormCheckedViewModel.RamMinChecked != 0)
@@ -188,7 +188,7 @@
             @Html.PagedListPager(Model.PagedList, page => Url.Action("GpuList", new { page,
             @seriesString = seriesPage,
             @ramsString = ramsPage,
-            @manufacturersString = manufacturersString,
+            @manufacturersString = manufacturersPage,
             @ramMin = Model.GpuFormCheckedViewModel.RamMinChecked }))
         }
         else
@@ -196,7 +196,7 @@
             @Html.PagedListPager(Model.PagedList, page => Url.Action("GpuList", new { page,
             @seriesString = seriesPage,
             @ramsString = ramsPage,
-            @manufacturersString = manufacturersString }))
+            @manufacturersString = manufacturersPage }))
         }
 
 

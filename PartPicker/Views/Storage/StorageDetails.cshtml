@@ -1,0 +1,97 @@
+﻿@using PartPicker.Infrastructure
+@model PartPicker.ViewModels.StorageDetailsViewModel
+
+@{
+    ViewBag.Title = Model.Storage.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-details">
+    <div class="container-details">
+        <div class="details-image">
+            <img class="details-image-product" src="@Url.StoragesImagesPath(Model.Storage.Image)" />
+        </div>
+
+        <div class="details-prices">
+
+            <div class="details-name">
+                @Model.Storage.Name
+            </div>
+            <br />
+            @if (Request.IsAuthenticated)
+            {
+                if (Model.NewBuildViewModel.Storage != null)
+                {
+                    <div class="info-green">
+                        <div class="info-left">
+                            <img src="@Url.ImagesPath("!.png")" />
+                        </div>
+                        <div class="info-right">
+                            W Twojej konfiguracji znajduje się już dysk twardy:
+                            <a href="@Url.Action("StorageDetails", "Storage", new { id = Model.NewBuildViewModel.Storage.StorageId })">
+                                @Model.NewBuildViewModel.Storage.Name
+                            </a>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="info-yellow">
+                    <div class="info-left">
+                        <img src="@Url.ImagesPath("!.png")" />
+                    </div>
+                    <div class="info-right">
+                        Zaloguj się by stworzyć własną konfigurację.
+                        <br />
+                        <a href="@Url.Action("Login", "Account")">Kliknij tutaj by się zalogować.</a>
+                    </div>
+                </div>
+            }
+
+            @{ int i = 0; }
+            @foreach (var storage in Model.StorageList)
+            {
+                <div class="details-prices-shop">
+                    <div class="details-prices-shop-item details-prices-shop-item-link">
+                        <a class="details-prices-shop-link" href=@storage.Link>
+
+                            <img class="details-prices-shop-image" src="@Url.ShopsImagesPath(storage.Shop.Logo)" />
+
+
+                            <div class="details-prices-shop-price">
+                                @Model.Prices[i]
+                            </div>
+
+                        </a>
+                    </div>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <a class="details-prices-shop-item" href="@Url.Action("AddStorageToBuild", "NewBuild", new { @id = storage.StorageId })">
+                            <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" />
+                        </a>
+                    }
+                    else
+                    {
+                        <div class="details-prices-shop-item">
+                            <img class="details-prices-shop-add" src="@Url.ImagesPath("addDisabled.png")" />
+                        </div>
+                    }
+                    <br />
+                </div>
+
+                i++;
+            }
+        </div>
+    </div>
+    <div class="container-details">
+        <div class="details-info">
+            <div class="details-info-text">PRODUCENT: @Model.Storage.Manufacturer.Name<br /></div>
+            <div class="details-info-text">MODEL: @Model.Storage.Model<br /></div>
+            <div class="details-info-text">RODZAJ DYSKU: @Model.Storage.Type<br /></div>
+            <div class="details-info-text">POJEMNOŚĆ: @Model.Storage.Capacity<br /></div>
+            <div class="details-info-text">INTERFACE: @Model.Storage.Interface.Name<br /></div>
+            <div class="details-info-text">ROZMIAR DYSKU: @Model.Storage.Size<br /></div>
+        </div>
+    </div>
+</div>

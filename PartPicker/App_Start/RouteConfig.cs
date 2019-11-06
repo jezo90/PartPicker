@@ -14,6 +14,16 @@ namespace PartPicker
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "StorageDetails",
+                url: "dyski-twarde/{name}-{id}",
+                defaults: new { controller = "Storage", action = "StorageDetails", id = UrlParameter.Optional, name = UrlParameter.Optional });
+
+            routes.MapRoute(
+                name: "Storages",
+                url: "dyski-twarde",
+                defaults: new { controller = "Storage", action = "StorageList" });
+
+            routes.MapRoute(
                 name: "MoboDetails",
                 url: "plyty-glowne/{name}-{id}",
                 defaults: new { controller = "Mobo", action = "MoboDetails", id = UrlParameter.Optional, name = UrlParameter.Optional });

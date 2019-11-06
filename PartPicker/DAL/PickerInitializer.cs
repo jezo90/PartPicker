@@ -550,7 +550,7 @@ namespace PartPicker.DAL
             var storages = new List<Storage>
             {
                 new Storage ()  { StorageId = 1, Name = "KINGSTON A400 SSD 240GB",  ManufacturerId = 9,
-                                Model = "A400", Link = "https://www.mediaexpert.pl/?ds_rl=1259140&ds_rl=1259140&gclid=EAIaIQobChMIuJbux6XP4QIVnsmyCh3p8gBBEAAYASAAEgK4HvD_BwE&gclsrc=aw.ds",
+                                Model = "A400", Link = "https://www.mediaexpert.pl/dyski-ssd/dysk-kingston-a400-240gb-ssd,id-1021586",
                                 Type = "SSD", Capacity = 240, InterfaceId = 2, Size = 2.5,
                                 Image = "kingstona400.jpg", ShopId = 1},
 

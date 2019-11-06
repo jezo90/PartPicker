@@ -241,6 +241,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MoboController.cs" />
     <Compile Include="Controllers\NewBuildController.cs" />
+    <Compile Include="Controllers\StorageController.cs" />
     <Compile Include="DAL\PickerContext.cs" />
     <Compile Include="DAL\PickerInitializer.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
@@ -297,6 +298,10 @@
     <Compile Include="ViewModels\Mobo\MoboFormViewModel.cs" />
     <Compile Include="ViewModels\Mobo\MoboListViewModel.cs" />
     <Compile Include="ViewModels\NewBuildViewModel.cs" />
+    <Compile Include="ViewModels\Storage\StorageDetailsViewModel.cs" />
+    <Compile Include="ViewModels\Storage\StorageFormCheckedViewModel.cs" />
+    <Compile Include="ViewModels\Storage\StorageFormViewModel.cs" />
+    <Compile Include="ViewModels\Storage\StorageListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -322,6 +327,9 @@
     <Content Include="Views\Mobo\_Form.cshtml" />
     <Content Include="Views\Mobo\MoboList.cshtml" />
     <Content Include="Views\Mobo\MoboDetails.cshtml" />
+    <Content Include="Views\Storage\_Form.cshtml" />
+    <Content Include="Views\Storage\StorageList.cshtml" />
+    <Content Include="Views\Storage\StorageDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

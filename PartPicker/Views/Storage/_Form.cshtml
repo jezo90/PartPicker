@@ -1,0 +1,150 @@
+﻿@model PartPicker.ViewModels.StorageFormViewModel
+@using PartPicker.Infrastructure
+
+<div class="sidebar">
+    <form action="@Url.Action("StorageList", "Storage")" method="post">
+
+        <button type="button" class="dropdown-btn">
+            Producent:
+        </button>
+
+        <div class="dropdown-container" @{ if (Model.StorageFormCheckedViewModel.ManufacturersChecked[0] != "") { @: style="display:block !important"
+             } }>
+
+            @foreach (var manufacturer in Model.Manufacturers)
+            {
+
+                <label name="@manufacturer">
+                    <div class="filter-send">
+                        @if (Model.StorageFormCheckedViewModel.ManufacturersChecked.Contains(manufacturer))
+                        {
+
+                            @manufacturer
+                            <input class="checkbox-invisible" type="checkbox" name="manufacturers" value="@manufacturer" checked />
+
+                        }
+                        else
+                        {
+
+                            @manufacturer
+                            <input class="checkbox-invisible" type="checkbox" name="manufacturers" value="@manufacturer" />
+
+                        }
+                    </div>
+                </label>
+            }
+        </div>
+
+        <button type="button" class="dropdown-btn">
+            Typ dysku:
+        </button>
+
+        <div class="dropdown-container" @{ if (Model.StorageFormCheckedViewModel.TypeChecked[0] != "") { @: style="display:block !important"
+             } }>
+            @foreach (var type in Model.Types)
+            {
+                <label name="@type">
+                    <div class="filter-send">
+                        @if (Model.StorageFormCheckedViewModel.TypeChecked.Contains(type))
+                        {
+
+                            @type <input class="checkbox-invisible" type="checkbox" name="types" value="@type" checked />
+
+                        }
+                        else
+                        {
+
+                            @type <input class="checkbox-invisible" type="checkbox" name="types" value="@type" />
+
+                        }
+                    </div>
+                </label>
+            }
+        </div>
+
+        <button type="button" class="dropdown-btn">
+            Interface:
+        </button>
+
+        <div class="dropdown-container" @{ if (Model.StorageFormCheckedViewModel.InterfaceChecked[0] != "") { @: style="display:block !important"
+             } }>
+
+            @foreach (var interf in Model.Interfaces)
+            {
+
+                <label name="@interf">
+                    <div class="filter-send">
+                        @if (Model.StorageFormCheckedViewModel.InterfaceChecked.Contains(interf))
+                        {
+
+                            @interf
+                            <input class="checkbox-invisible" type="checkbox" name="interfaces" value="@interf" checked />
+
+                        }
+                        else
+                        {
+
+                            @interf
+                            <input class="checkbox-invisible" type="checkbox" name="interfaces" value="@interf" />
+
+                        }
+                    </div>
+                </label>
+            }
+        </div>
+
+        <button type="button" class="dropdown-btn">
+            Pojemność:
+        </button>
+        <div class="dropdown-container" @{ if (Model.StorageFormCheckedViewModel.CapacityMaxChecked != 0 && Model.StorageFormCheckedViewModel.CapacityMinChecked != 0) { @: style="display:block !important"
+             } }>
+            <label name="min">
+                <div class="filter-send flex">
+                    <div class="filter-send-text">
+                        Min:
+                    </div>
+                    <div class="filter-send-input-number">
+                        @if (Model.StorageFormCheckedViewModel.CapacityMinChecked != 0 && Model.StorageFormCheckedViewModel.CapacityMinChecked != 10000)
+                        {
+                            <input type="number" name="capacityMin" value="@Model.StorageFormCheckedViewModel.CapacityMinChecked" />@: GB
+                        }
+                        else
+                        {
+                            <input type="number" name="capacityMin" />@: GB
+                        }
+                    </div>
+                </div>
+            </label>
+
+            <label name="max">
+                <div class="filter-send">
+                    <div class="flex">
+                        <div class="filter-send-text">
+                            Max:
+                        </div>
+                        <div class="filter-send-input-number">
+                            @if (Model.StorageFormCheckedViewModel.CapacityMaxChecked != 0)
+                            {
+                                <input type="number" name="capacityMax" value="@Model.StorageFormCheckedViewModel.CapacityMaxChecked" />@: GB
+                            }
+                            else
+                            {
+                                <input type="number" name="capacityMax" />@: GB
+                            }
+                        </div>
+                    </div>
+                </div>
+            </label>
+        </div>
+
+        <button class="dropdown-btn">
+            FILTRUJ
+        </button>
+        <button class="dropdown-btn">
+            RESET
+        </button>
+    </form>
+</div>
+
+<script src="@Url.Content("~/Scripts/JavaScriptDropDown.js")"></script>
+

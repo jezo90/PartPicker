@@ -32,6 +32,25 @@ namespace PartPicker.Infrastructure
                         return (prize.InnerHtml.ToString());
                     }
                 }
+                else if (c.Shop.Name == "Media Expert")
+                {
+                    var prize = pageDocument.DocumentNode.SelectSingleNode("//p[@class='" + c.Shop.Class + "']");
+                    var prizeMod = prize.InnerHtml.ToString().Replace("<span>", ",").Replace("</span>", "") + " zł";
+                    return (prizeMod);
+                }
+                else if (c.Shop.Name == "Vobis")
+                {
+                    if (html.ToString().Contains("Produkt niedostępny"))
+                    {
+                        return ("Produkt niedostępny");
+                    }
+                    else
+                    {
+                        var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']/span");
+                        var prizeMod = prize.InnerHtml.ToString().Replace("PLN", "zł");
+                        return (prizeMod);
+                    }
+                }
                 else
                 {
                     var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']");
@@ -61,11 +80,24 @@ namespace PartPicker.Infrastructure
                         return (prize.InnerHtml.ToString());
                     }
                 }
-                else if(c.Shop.Name == "Media Expert")
+                else if (c.Shop.Name == "Media Expert")
                 {
                     var prize = pageDocument.DocumentNode.SelectSingleNode("//p[@class='" + c.Shop.Class + "']");
                     var prizeMod = prize.InnerHtml.ToString().Replace("<span>", ",").Replace("</span>", "") + " zł";
                     return (prizeMod);
+                }
+                else if (c.Shop.Name == "Vobis")
+                {
+                    if (html.ToString().Contains("Produkt niedostępny"))
+                    {
+                        return ("Produkt niedostępny");
+                    }
+                    else
+                    {
+                        var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']/span");
+                        var prizeMod = prize.InnerHtml.ToString().Replace("PLN", "zł");
+                        return (prizeMod);
+                    }
                 }
                 else
                 {
@@ -94,6 +126,25 @@ namespace PartPicker.Infrastructure
                     {
                         var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']/span");
                         return (prize.InnerHtml.ToString());
+                    }
+                }
+                else if (c.Shop.Name == "Media Expert")
+                {
+                    var prize = pageDocument.DocumentNode.SelectSingleNode("//p[@class='" + c.Shop.Class + "']");
+                    var prizeMod = prize.InnerHtml.ToString().Replace("<span>", ",").Replace("</span>", "") + " zł";
+                    return (prizeMod);
+                }
+                else if (c.Shop.Name == "Vobis")
+                {
+                    if (html.ToString().Contains("Produkt niedostępny"))
+                    {
+                        return ("Produkt niedostępny");
+                    }
+                    else
+                    {
+                        var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']/span");
+                        var prizeMod = prize.InnerHtml.ToString().Replace("PLN", "zł");
+                        return (prizeMod);
                     }
                 }
                 else
@@ -126,6 +177,25 @@ namespace PartPicker.Infrastructure
                         return (prize.InnerHtml.ToString());
                     }
                 }
+                else if (c.Shop.Name == "Media Expert")
+                {
+                    var prize = pageDocument.DocumentNode.SelectSingleNode("//p[@class='" + c.Shop.Class + "']");
+                    var prizeMod = prize.InnerHtml.ToString().Replace("<span>", ",").Replace("</span>", "") + " zł";
+                    return (prizeMod);
+                }
+                else if (c.Shop.Name == "Vobis")
+                {
+                    if (html.ToString().Contains("Produkt niedostępny"))
+                    {
+                        return ("Produkt niedostępny");
+                    }
+                    else
+                    {
+                        var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']/span");
+                        var prizeMod = prize.InnerHtml.ToString().Replace("PLN", "zł");
+                        return (prizeMod);
+                    }
+                }
                 else
                 {
                     var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']");
@@ -153,6 +223,25 @@ namespace PartPicker.Infrastructure
                     {
                         var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']/span");
                         return (prize.InnerHtml.ToString());
+                    }
+                }
+                else if (c.Shop.Name == "Media Expert")
+                {
+                    var prize = pageDocument.DocumentNode.SelectSingleNode("//p[@class='" + c.Shop.Class + "']");
+                    var prizeMod = prize.InnerHtml.ToString().Replace("<span>", ",").Replace("</span>", "") + " zł";
+                    return (prizeMod);
+                }
+                else if (c.Shop.Name == "Vobis")
+                {
+                    if (html.ToString().Contains("Produkt niedostępny"))
+                    {
+                        return ("Produkt niedostępny");
+                    }
+                    else
+                    {
+                        var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']/span");
+                        var prizeMod = prize.InnerHtml.ToString().Replace("PLN", "zł");
+                        return (prizeMod);
                     }
                 }
                 else
@@ -185,6 +274,25 @@ namespace PartPicker.Infrastructure
                         return (prize.InnerHtml.ToString());
                     }
                 }
+                else if (c.Shop.Name == "Media Expert")
+                {
+                    var prize = pageDocument.DocumentNode.SelectSingleNode("//p[@class='" + c.Shop.Class + "']");
+                    var prizeMod = prize.InnerHtml.ToString().Replace("<span>", ",").Replace("</span>", "") + " zł";
+                    return (prizeMod);
+                }
+                else if (c.Shop.Name == "Vobis")
+                {
+                    if (html.ToString().Contains("Produkt niedostępny"))
+                    {
+                        return ("Produkt niedostępny");
+                    }
+                    else
+                    {
+                        var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']/span");
+                        var prizeMod = prize.InnerHtml.ToString().Replace("PLN", "zł");
+                        return (prizeMod);
+                    }
+                }
                 else
                 {
                     var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']");
@@ -214,14 +322,32 @@ namespace PartPicker.Infrastructure
                         return (prize.InnerHtml.ToString());
                     }
                 }
+                else if (c.Shop.Name == "Media Expert")
+                {
+                    var prize = pageDocument.DocumentNode.SelectSingleNode("//p[@class='" + c.Shop.Class + "']");
+                    var prizeMod = prize.InnerHtml.ToString().Replace("<span>", ",").Replace("</span>", "") + " zł";
+                    return (prizeMod);
+                }
+                else if (c.Shop.Name == "Vobis")
+                {
+                    if (html.ToString().Contains("Produkt niedostępny"))
+                    {
+                        return ("Produkt niedostępny");
+                    }
+                    else
+                    {
+                        var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']/span");
+                        var prizeMod = prize.InnerHtml.ToString().Replace("PLN", "zł");
+                        return (prizeMod);
+                    }
+                }
                 else
                 {
                     var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']");
                     return (prize.InnerHtml.ToString());
                 }
             }
-        }
 
-    }
+        }
 
 }

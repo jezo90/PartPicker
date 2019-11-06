@@ -1,0 +1,172 @@
+﻿@model PartPicker.ViewModels.StorageListViewModel
+@using PartPicker.Infrastructure
+@using PagedList.Mvc
+
+<link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Dyski twarde";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Action("Form", new { checkd = Model.StorageFormCheckedViewModel })
+
+
+<div class="content">
+    <div class="container ">
+        <div class="item-list nazwy">
+            <div class="item-box  item-part-photo">
+                <div class="item-part">
+                    Zdjęcie
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Producent
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Model
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Typ
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Pojemność
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Interface
+                </div>
+            </div>
+
+        </div>
+    </div>
+    @foreach (var storage in Model.PagedList)
+    {
+        <div class="container">
+            <a class="item-list-a" href="@Url.Action("StorageDetails", "Storage", new { id = storage.StorageId, name = storage.Name })">
+                <div class="item-list">
+                    <div class="item-box item-part-photo">
+                        <div class="item-part">
+                            <img class="item-part-image" src="@Url.StoragesImagesPath(storage.Image)" />
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            <img class="part-image" src="@Url.ManufacturersImagesPath(storage.Manufacturer.Image)" />
+
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            @storage.Model
+
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            @storage.Type
+
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            @storage.Capacity
+
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            @storage.Interface.Name
+
+                        </div>
+                    </div>
+
+                </div>
+            </a>
+        </div>
+    }
+    <br />
+    Strona @( Model.PagedList.PageCount < Model.PagedList.PageNumber ? 0 : Model.PagedList.PageNumber) z @Model.PagedList.PageCount
+    <br />
+    @{
+        string interfacesPage = "";
+        foreach (var inter in Model.StorageFormCheckedViewModel.InterfaceChecked)
+        {
+            if (inter != "")
+            {
+                interfacesPage += inter + "_";
+            }
+        }
+
+        string typesPage = "";
+        foreach (var type in Model.StorageFormCheckedViewModel.TypeChecked)
+        {
+            if (type != "")
+            {
+                typesPage += type + "_";
+            }
+        }
+
+        string manufacturersPage = "";
+        foreach (var manu in Model.StorageFormCheckedViewModel.ManufacturersChecked)
+        {
+            if (manu != "")
+            {
+                manufacturersPage += manu + "_";
+            }
+        }
+    }
+
+
+    @if (Model.StorageFormCheckedViewModel.CapacityMaxChecked != 0 && Model.StorageFormCheckedViewModel.CapacityMinChecked != 0)
+    {
+        @Html.PagedListPager(Model.PagedList, page => Url.Action("StorageList", new { page,
+        @interfacesString = interfacesPage,
+        @typesString = typesPage,
+        @manufacturersString = manufacturersPage,
+        @capacityMin = Model.StorageFormCheckedViewModel.CapacityMinChecked,
+        @capacityMax = Model.StorageFormCheckedViewModel.CapacityMaxChecked }))
+    }
+    else if (Model.StorageFormCheckedViewModel.CapacityMaxChecked != 0)
+    {
+        @Html.PagedListPager(Model.PagedList, page => Url.Action("StorageList", new { page,
+        @interfacesString = interfacesPage,
+        @typesString = typesPage,
+        @manufacturersString = manufacturersPage,
+        @capacityMax = Model.StorageFormCheckedViewModel.CapacityMaxChecked }))
+    }
+    else if (Model.StorageFormCheckedViewModel.CapacityMinChecked != 0)
+    {
+        @Html.PagedListPager(Model.PagedList, page => Url.Action("StorageList", new { page,
+        @interfacesString = interfacesPage,
+        @typesString = typesPage,
+        @manufacturersString = manufacturersPage,
+        @capacityMin = Model.StorageFormCheckedViewModel.CapacityMinChecked }))
+    }
+    else
+    {
+        @Html.PagedListPager(Model.PagedList, page => Url.Action("StorageList", new { page,
+        @interfacesString = interfacesPage,
+        @typesString = typesPage,
+        @manufacturersString = manufacturersPage }))
+    }
+
+
+</div>
+
+
+
+
