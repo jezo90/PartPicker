@@ -165,16 +165,47 @@ namespace PartPicker.Controllers
             if (Request.IsAuthenticated)
             {
                 var c = context.Mobo.Where(a => a.MoboId == id).Take(1).ToList();
-                if (BuildManager.GetCpu() != null)
+                if (BuildManager.GetCpu() != null || BuildManager.GetCase() != null)
                 {
-                    if (BuildManager.GetCpu().Socket.Name == c[0].Socket.Name)
+                    if(BuildManager.GetCase() != null && BuildManager.GetCpu() != null)
                     {
-                        BuildManager.MoboAddToBuild(c[0]);
+                        if (BuildManager.GetCpu().Socket.Name == c[0].Socket.Name && 
+                            BuildManager.GetCase().FormFactor.Name == c[0].FormFactor.Name)
+                        {
+                            BuildManager.MoboAddToBuild(c[0]);
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
+                    }
+                    else if(BuildManager.GetCase() != null)
+                    {
+                        if(BuildManager.GetCase().FormFactor.Name == c[0].FormFactor.Name)
+                        {
+                            BuildManager.MoboAddToBuild(c[0]);
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
+                    }
+                    else if(BuildManager.GetCpu() != null)
+                    {
+                        if (BuildManager.GetCpu().Socket.Name == c[0].Socket.Name)
+                        {
+                            BuildManager.MoboAddToBuild(c[0]);
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
                     }
                     else
                     {
                         return RedirectToAction("Index", "Home");
                     }
+
                 }
                 else
                 {

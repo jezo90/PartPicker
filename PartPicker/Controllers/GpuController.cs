@@ -195,7 +195,7 @@ namespace PartPicker.Controllers
                     if (ramMax < 1) ramMax = 100;
                     if (ramMin < 1) ramMin = 0;
 
-                    gpuOut = gpu.Where(a => a.Ram > ramMin && a.Ram < ramMax).ToList();
+                    gpuOut = gpu.Where(a => a.Ram >= ramMin && a.Ram <= ramMax).ToList();
                     foreach (var gpuout in gpuOut)
                     {
                         gpuFound.Add(gpuout);

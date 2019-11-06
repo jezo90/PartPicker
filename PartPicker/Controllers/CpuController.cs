@@ -184,7 +184,7 @@ namespace PartPicker.Controllers
                     if (coresMax < 1) coresMax = 100;
                     if (coresMin < 1) coresMin = 0;
 
-                    cpuOut = cpu.Where(a => a.Cores > coresMin && a.Cores < coresMax).ToList();
+                    cpuOut = cpu.Where(a => a.Cores >= coresMin && a.Cores <= coresMax).ToList();
                     foreach (var cpuout in cpuOut)
                     {
                         cpuFound.Add(cpuout);

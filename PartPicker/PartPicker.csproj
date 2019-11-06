@@ -241,6 +241,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MoboController.cs" />
     <Compile Include="Controllers\NewBuildController.cs" />
+    <Compile Include="Controllers\RamController.cs" />
     <Compile Include="Controllers\StorageController.cs" />
     <Compile Include="DAL\PickerContext.cs" />
     <Compile Include="DAL\PickerInitializer.cs" />
@@ -298,6 +299,10 @@
     <Compile Include="ViewModels\Mobo\MoboFormViewModel.cs" />
     <Compile Include="ViewModels\Mobo\MoboListViewModel.cs" />
     <Compile Include="ViewModels\NewBuildViewModel.cs" />
+    <Compile Include="ViewModels\RAM\RamDetailsViewModel.cs" />
+    <Compile Include="ViewModels\RAM\RamFormCheckedViewModel.cs" />
+    <Compile Include="ViewModels\RAM\RamFormViewModel.cs" />
+    <Compile Include="ViewModels\RAM\RamListViewModel.cs" />
     <Compile Include="ViewModels\Storage\StorageDetailsViewModel.cs" />
     <Compile Include="ViewModels\Storage\StorageFormCheckedViewModel.cs" />
     <Compile Include="ViewModels\Storage\StorageFormViewModel.cs" />
@@ -330,6 +335,9 @@
     <Content Include="Views\Storage\_Form.cshtml" />
     <Content Include="Views\Storage\StorageList.cshtml" />
     <Content Include="Views\Storage\StorageDetails.cshtml" />
+    <Content Include="Views\Ram\_Form.cshtml" />
+    <Content Include="Views\Ram\RamList.cshtml" />
+    <Content Include="Views\Ram\RamDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

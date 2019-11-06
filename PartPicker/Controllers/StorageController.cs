@@ -192,7 +192,7 @@ namespace PartPicker.Controllers
                     if (capacityMax < 1) capacityMax = 10000;
                     if (capacityMin < 1) capacityMin = 0;
 
-                    storageOut = storage.Where(a => a.Capacity > capacityMin && a.Capacity < capacityMax).ToList();
+                    storageOut = storage.Where(a => a.Capacity >= capacityMin && a.Capacity <= capacityMax).ToList();
                     foreach (var add in storageFound)
                     {
                         storage.Add(add);

@@ -1,0 +1,159 @@
+﻿@model PartPicker.ViewModels.RamListViewModel
+@using PartPicker.Infrastructure
+@using PagedList.Mvc
+
+<link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Ram";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Action("Form", new { checkd = Model.RamFormCheckedViewModel })
+
+
+<div class="content">
+    <div class="container ">
+        <div class="item-list nazwy">
+            <div class="item-box  item-part-photo">
+                <div class="item-part">
+                    Zdjęcie
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Producent
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Model
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Ilość pamięci RAM
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Typ pamięci RAM
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    CL
+                </div>
+            </div>
+
+        </div>
+    </div>
+    @foreach (var ram in Model.PagedList)
+    {
+        <div class="container">
+            <a class="item-list-a" href="@Url.Action("RamDetails", "Ram", new { id = ram.RamId, name = ram.Name })">
+                <div class="item-list">
+                    <div class="item-box item-part-photo">
+                        <div class="item-part">
+                            <img class="item-part-image" src="@Url.RamsImagesPath(ram.Image)" />
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            <img class="part-image" src="@Url.ManufacturersImagesPath(ram.Manufacturer.Image)" />
+
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            @ram.Model
+
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            @ram.Size GB
+
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            @ram.RamType.Name
+
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            @ram.Cl
+
+                        </div>
+                    </div>
+
+                </div>
+            </a>
+        </div>
+    }
+    <br />
+    Strona @( Model.PagedList.PageCount < Model.PagedList.PageNumber ? 0 : Model.PagedList.PageNumber) z @Model.PagedList.PageCount
+    <br />
+    @{
+        string ramsPage = "";
+        foreach (var ram in Model.RamFormCheckedViewModel.TypeChecked)
+        {
+            if (ram != "")
+            {
+                ramsPage += ram + "_";
+            }
+        }
+
+        string manufacturersPage = "";
+        foreach (var manu in Model.RamFormCheckedViewModel.ManufacturersChecked)
+        {
+            if (manu != "")
+            {
+                manufacturersPage += manu + "_";
+            }
+        }
+    }
+
+    
+    @if (Model.RamFormCheckedViewModel.AmountMaxChecked != 0 && Model.RamFormCheckedViewModel.AmountMinChecked != 0)
+    {
+        @Html.PagedListPager(Model.PagedList, page => Url.Action("RamList", new { page,
+        @ramsString =  ramsPage,
+        @manufacturersString = manufacturersPage,
+        @ramMin = Model.RamFormCheckedViewModel.AmountMinChecked,
+        @ramMax = Model.RamFormCheckedViewModel.AmountMaxChecked }))
+    }
+    else if (Model.RamFormCheckedViewModel.AmountMaxChecked != 0)
+    {
+        @Html.PagedListPager(Model.PagedList, page => Url.Action("RamList", new { page,
+        @ramsString = ramsPage,
+        @manufacturersString = manufacturersPage,
+        @ramMax = Model.RamFormCheckedViewModel.AmountMaxChecked }))
+    }
+    else if (Model.RamFormCheckedViewModel.AmountMinChecked != 0)
+    {
+        @Html.PagedListPager(Model.PagedList, page => Url.Action("RamList", new { page,
+        @ramsString = ramsPage,
+        @manufacturersString = manufacturersPage,
+        @ramMin = Model.RamFormCheckedViewModel.AmountMinChecked }))
+    }
+    else
+    {
+        @Html.PagedListPager(Model.PagedList, page => Url.Action("RamList", new { page,
+        @ramsString = ramsPage,
+        @manufacturersString = manufacturersPage }))
+    }
+
+
+</div>
+
+
+
+

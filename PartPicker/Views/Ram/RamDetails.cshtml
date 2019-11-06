@@ -1,0 +1,143 @@
+﻿@using PartPicker.Infrastructure
+@model PartPicker.ViewModels.RamDetailsViewModel
+
+@{
+    ViewBag.Title = Model.Ram.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-details">
+    <div class="container-details">
+        <div class="details-image">
+            <img class="details-image-product" src="@Url.RamsImagesPath(Model.Ram.Image)" />
+        </div>
+
+
+        <div class="details-prices">
+
+
+            <div class="details-name">
+                @Model.Ram.Name
+            </div>
+            <br />
+            @if (Request.IsAuthenticated)
+            {
+                if (Model.NewBuildViewModel.Mobo != null && Model.NewBuildViewModel.Mobo.RamType.Name != Model.Ram.RamType.Name)
+                {
+                    <div class="info-red">
+                        <div class="info-left">
+                            <img src="@Url.ImagesPath("!.png")" />
+                        </div>
+                        <div class="info-right">
+                            Ta pamięć RAM nie pasuje do wybranej przez Ciebie płyty głównej.
+                            <br />
+                            Aktualnie wybrana płyta główna to: @Model.NewBuildViewModel.Mobo.Name
+                            <br />
+                            Typ pamięci RAM wymagany dla wybranej przez Ciebie płyty głównej to: @Model.NewBuildViewModel.Mobo.RamType.Name
+                            <br />
+                            <a href="@Url.Action("RamList", "Ram", new { @types = Model.NewBuildViewModel.Mobo.RamType.Name })">
+                                Kliknij tutaj by przejść do wyszukiwania kompatybilnych pamięci RAM.
+                            </a>
+                        </div>
+                    </div>
+                }
+
+                if (Model.NewBuildViewModel.Ram != null)
+                {
+                    <div class="info-green">
+                        <div class="info-left">
+                            <img src="@Url.ImagesPath("!.png")" />
+                        </div>
+                        <div class="info-right">
+                            W Twojej konfiguracji znajduje się już pamięć RAM:
+                            <a href="@Url.Action("RamDetails", "Ram", new { id = Model.NewBuildViewModel.Gpu.GpuId })">
+                                @Model.NewBuildViewModel.Ram.Name
+                            </a>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="info-yellow">
+                    <div class="info-left">
+                        <img src="@Url.ImagesPath("!.png")" />
+                    </div>
+                    <div class="info-right">
+                        Zaloguj się by stworzyć własną konfigurację.
+                        <br />
+                        <a href="@Url.Action("Login", "Account")">Kliknij tutaj by się zalogować.</a>
+                    </div>
+                </div>
+            }
+
+
+            @{ int i = 0; }
+            @foreach (var ram in Model.RamList)
+            {
+                <div class="details-prices-shop">
+                    <div class="details-prices-shop-item details-prices-shop-item-link">
+                        <a class="details-prices-shop-link" href=@ram.Link>
+
+                            <img class="details-prices-shop-image" src="@Url.ShopsImagesPath(ram.Shop.Logo)" />
+
+
+                            <div class="details-prices-shop-price">
+                                @Model.Prices[i]
+                            </div>
+
+                        </a>
+                    </div>
+                    @if (Request.IsAuthenticated)
+                    {
+                        if (Model.NewBuildViewModel.Mobo != null)
+                        {
+                            if (Model.NewBuildViewModel.Mobo.RamType.Name == Model.Ram.RamType.Name)
+                            {
+
+                                <a class="details-prices-shop-item" href="@Url.Action("AddRamToBuild", "NewBuild", new { @id = ram.RamId })">
+                                    <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" />
+                                </a>
+
+                            }
+                            else
+                            {
+                                <div class="details-prices-shop-item">
+                                    <img class="details-prices-shop-add" src="@Url.ImagesPath("addDisabled.png")" />
+                                </div>
+                            }
+                        }
+                        else
+                        {
+
+                            <a class="details-prices-shop-item" href="@Url.Action("AddRamToBuild", "NewBuild", new { @id = ram.RamId })">
+                                <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" />
+                            </a>
+
+                        }
+                    }
+                    else
+                    {
+                        <div class="details-prices-shop-item">
+                            <img class="details-prices-shop-add" src="@Url.ImagesPath("addDisabled.png")" />
+                        </div>
+                    }
+                    <br />
+                </div>
+
+                i++;
+            }
+        </div>
+    </div>
+    <div class="container-details">
+        <div class="details-info">
+            <div class="details-info-text">PRODUCENT: @Model.Ram.Manufacturer.Name<br /></div>
+            <div class="details-info-text">MODEL: @Model.Ram.Model<br /></div>
+            <div class="details-info-text">TYP PAMIĘCI RAM: @Model.Ram.RamType.Name<br /></div>
+            <div class="details-info-text">ILOŚĆ PAMIĘCI RAM: @Model.Ram.Size GB<br /></div>
+            <div class="details-info-text">LICZBA KOŚCI: @Model.Ram.Amount<br /></div>
+            <div class="details-info-text">CZĘSTOTLIWOŚĆ TAKTOWANIA: @Model.Ram.Frequency MHz<br /></div>
+            <div class="details-info-text">CL: @Model.Ram.Cl <br /></div>
+        </div>
+    </div>
+</div>

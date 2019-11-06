@@ -493,52 +493,52 @@ namespace PartPicker.DAL
 
             var rams = new List<Ram>
             {
-                new Ram ()  { RamId = 1, Name = "Corsair Vengeance LPX", ManufacturerId = 7,
+                new Ram ()  { RamId = 1, Name = "Corsair Vengeance LPX 8GB", ManufacturerId = 7,
                             Model = "Vengeance LPX", Link = "https://www.morele.net/pamiec-corsair-vengeance-lpx-ddr4-16-gb-3000mhz-cl15-cmk16gx4m2b3000c15r-776918/",
                             RamTypeId = 2, Amount = 2, Size = 8, Frequency = 3000, Cl = 15,
                             Image = "corsairvengeancelpx2x8.png", ShopId = 3},
 
-                new Ram ()  { RamId = 2, Name = "G.Skill Trident Z RGB",  ManufacturerId = 8,
+                new Ram ()  { RamId = 2, Name = "G.Skill Trident Z RGB 8GB",  ManufacturerId = 8,
                             Model = "Trident Z RGB", Link = "https://www.morele.net/pamiec-g-skill-trident-z-rgb-ddr4-16-gb-3000mhz-cl16-f4-3000c16d-16gtzr-1118470/",
                             RamTypeId = 2, Amount = 2, Size = 8, Frequency = 3200, Cl = 16,
                             Image = "gskilltridentzrgb2x8.png", ShopId = 3},
 
-                new Ram ()  { RamId = 3, Name = "Corsair Vengeance LPX", ManufacturerId = 7,
+                new Ram ()  { RamId = 3, Name = "Corsair Vengeance LPX 16GB", ManufacturerId = 7,
                             Model = "Vengeance LPX", Link = "https://www.morele.net/pamiec-corsair-vengeance-lpx-ddr4-16-gb-3000mhz-cl15-cmk16gx4m1b3000c15-839294/",
                             RamTypeId = 2, Amount = 1, Size = 16, Frequency = 3000, Cl = 15,
                             Image = "corsairvengeancelpx1x16.png", ShopId = 3},
 
-                new Ram ()  { RamId = 4, Name = "ADATA DDR4", ManufacturerId = 12,
-                            Model = "ADATA DDR4, 8GB", Link = "https://www.morele.net/pamiec-adata-ddr4-8-gb-2666mhz-cl16-ax4u266638g16-sbg-1640286/",
+                new Ram ()  { RamId = 4, Name = "ADATA DDR4 8GB", ManufacturerId = 12,
+                            Model = "ADATA DDR4", Link = "https://www.morele.net/pamiec-adata-ddr4-8-gb-2666mhz-cl16-ax4u266638g16-sbg-1640286/",
                             RamTypeId = 2, Amount = 1, Size = 8, Frequency = 2666, Cl = 16,
                             Image = "adataddr48gb2666hzcl16.png", ShopId = 3},
 
-                new Ram ()  { RamId = 5, Name = "Corsair Vengeance RGB PRO", ManufacturerId = 7,
+                new Ram ()  { RamId = 5, Name = "Corsair Vengeance RGB PRO 8GB", ManufacturerId = 7,
                             Model = "Vengeance RGB PRO", Link = "https://www.morele.net/pamiec-corsair-vengeance-rgb-pro-ddr4-16-gb-3200mhz-cl16-cmw16gx4m2c3200c16-4596109/",
                             RamTypeId = 2, Amount = 2, Size = 8, Frequency = 3200, Cl = 16,
                             Image = "corsairvengancergbproddr416gb3200mhzcl16.png", ShopId = 3},
 
-                new Ram ()  { RamId = 6, Name = "G.Skill Ripjaws V", ManufacturerId = 8,
+                new Ram ()  { RamId = 6, Name = "G.Skill Ripjaws V 8GB", ManufacturerId = 8,
                             Model = "Ripjaws V", Link = "https://www.morele.net/pamiec-g-skill-ripjaws-v-ddr4-16-gb-3200mhz-cl16-f4-3200c16d-16gvkb-788195/",
                             RamTypeId = 2, Amount = 2, Size = 8, Frequency = 3200, Cl = 16,
                             Image = "gskillripjawsvddr416gb3200mhzcl16.png", ShopId = 3},
 
-                new Ram ()  { RamId = 7, Name = "Corsair Vengeance LPX", ManufacturerId = 7,
+                new Ram ()  { RamId = 7, Name = "Corsair Vengeance LPX 4GB", ManufacturerId = 7,
                             Model = "Vengeance LPX", Link = "https://www.morele.net/pamiec-corsair-vengeance-lpx-ddr4-8-gb-3000mhz-cl16-cmk8gx4m2c3000c16-1678490/",
                             RamTypeId = 2, Amount = 2, Size = 4, Frequency = 3000, Cl = 16,
                             Image = "corsairvengeancelpx2x4.png", ShopId = 3},
 
-                new Ram ()  { RamId = 8, Name = "G.Skill TridentX", ManufacturerId = 8,
+                new Ram ()  { RamId = 8, Name = "G.Skill TridentX 8GB", ManufacturerId = 8,
                             Model = "TridentX", Link = "https://www.morele.net/pamiec-g-skill-tridentx-ddr3-16-gb-2400mhz-cl10-f3-2400c10d-16gtx-478220/",
                             RamTypeId = 1, Amount = 2, Size = 8, Frequency = 2400, Cl = 10,
                             Image = "gskilltridentxddr316gb2400mhzcl10.png", ShopId = 3},
 
-                new Ram ()  { RamId = 9, Name = "Corsair Vengeance", ManufacturerId = 7,
+                new Ram ()  { RamId = 9, Name = "Corsair Vengeance 4GB", ManufacturerId = 7,
                             Model = "Vengeance", Link = "https://www.morele.net/pamiec-corsair-vengeance-ddr3-4-gb-1600mhz-cl9-cmz4gx3m1a1600c9-360407/",
                             RamTypeId = 1, Amount = 1, Size = 4, Frequency = 1600, Cl = 9,
                             Image = "corsairvengeanceddr34gb1660hzcl9.png", ShopId = 3},
 
-                new Ram ()  { RamId = 10, Name = "G.Skill Ripjaws V", ManufacturerId = 8,
+                new Ram ()  { RamId = 10, Name = "G.Skill Ripjaws V 16GB", ManufacturerId = 8,
                             Model = "Ripjaws V", Link = "https://www.morele.net/pamiec-g-skill-ripjaws-v-ddr4-16-gb-3000mhz-cl15-f4-3000c15d-16gvgb-831832/",
                             RamTypeId = 2, Amount = 2, Size = 16, Frequency = 3000, Cl = 15,
                             Image = "gskillripjawsvddr416gb3000mhzcl15.png", ShopId = 3}

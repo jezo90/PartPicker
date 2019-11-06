@@ -1,0 +1,121 @@
+﻿@model PartPicker.ViewModels.RamFormViewModel
+@using PartPicker.Infrastructure
+
+<div class="sidebar">
+    <form action="@Url.Action("RamList", "Ram")" method="post">
+
+        <button type="button" class="dropdown-btn">
+            Producent:
+        </button>
+
+        <div class="dropdown-container" @{ if (Model.RamFormCheckedViewModel.ManufacturersChecked[0] != "") { @: style="display:block !important"
+             } }>
+
+            @foreach (var manufacturer in Model.Manufacturers)
+            {
+
+                <label name="@manufacturer">
+                    <div class="filter-send">
+                        @if (Model.RamFormCheckedViewModel.ManufacturersChecked.Contains(manufacturer))
+                        {
+
+                            @manufacturer
+                            <input class="checkbox-invisible" type="checkbox" name="manufacturers" value="@manufacturer" checked />
+
+                        }
+                        else
+                        {
+
+                            @manufacturer
+                            <input class="checkbox-invisible" type="checkbox" name="manufacturers" value="@manufacturer" />
+
+                        }
+                    </div>
+                </label>
+            }
+        </div>
+
+        
+        <button type="button" class="dropdown-btn">
+            Typ pamięci RAM:
+        </button>
+
+        <div class="dropdown-container" @{ if (Model.RamFormCheckedViewModel.TypeChecked[0] != "") { @: style="display:block !important"
+             } }>
+            @foreach (var type in Model.Types)
+            {
+                <label name="@type">
+                    <div class="filter-send">
+                        @if (Model.RamFormCheckedViewModel.TypeChecked.Contains(type))
+                        {
+
+                            @type <input class="checkbox-invisible" type="checkbox" name="types" value="@type" checked />
+
+                        }
+                        else
+                        {
+
+                            @type <input class="checkbox-invisible" type="checkbox" name="types" value="@type" />
+
+                        }
+                    </div>
+                </label>
+            }
+        </div>
+
+        <button type="button" class="dropdown-btn">
+            Ilość pamięci RAM:
+        </button>
+        <div class="dropdown-container" @{ if (Model.RamFormCheckedViewModel.AmountMinChecked != 0 && Model.RamFormCheckedViewModel.AmountMaxChecked != 0) { @: style="display:block !important"
+             } }>
+            <label name="min">
+                <div class="filter-send flex">
+                    <div class="filter-send-text">
+                        Min:
+                    </div>
+                    <div class="filter-send-input-number">
+                        @if (Model.RamFormCheckedViewModel.AmountMinChecked != 0)
+                        {
+                            <input type="number" name="ramMin" value="@Model.RamFormCheckedViewModel.AmountMinChecked" />
+                        }
+                        else
+                        {
+                            <input type="number" name="ramMin" />
+                        }
+                    </div>
+                </div>
+            </label>
+
+            <label name="max">
+                <div class="filter-send">
+                    <div class="flex">
+                        <div class="filter-send-text">
+                            Max:
+                        </div>
+                        <div class="filter-send-input-number">
+                            @if (Model.RamFormCheckedViewModel.AmountMaxChecked != 0)
+                            {
+                                <input type="number" name="ramMax" value="@Model.RamFormCheckedViewModel.AmountMaxChecked" />
+
+                            }
+                            else
+                            {
+                                <input type="number" name="ramMax" />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </label>
+        </div>
+
+        <button class="dropdown-btn">
+            FILTRUJ
+        </button>
+        <button class="dropdown-btn">
+            RESET
+        </button>
+    </form>
+</div>
+
+<script src="@Url.Content("~/Scripts/JavaScriptDropDown.js")"></script>
+
