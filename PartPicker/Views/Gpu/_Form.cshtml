@@ -101,7 +101,7 @@
         <button type="button" class="dropdown-btn">
             Ilość pamięci RAM:
         </button>
-        <div class="dropdown-container" @{ if (Model.GpuFormCheckedViewModel.RamMinChecked != 0 && Model.GpuFormCheckedViewModel.RamMaxChecked != 0) { @: style="display:block !important"
+        <div class="dropdown-container" @{ if (Model.GpuFormCheckedViewModel.RamMinChecked != 0 || Model.GpuFormCheckedViewModel.RamMaxChecked != 0) { @: style="display:block !important"
              } }>
             <label name="min">
                 <div class="filter-send flex">
@@ -111,11 +111,11 @@
                     <div class="filter-send-input-number">
                         @if (Model.GpuFormCheckedViewModel.RamMinChecked != 0)
                         {
-                            <input type="number" name="coresMin" value="@Model.GpuFormCheckedViewModel.RamMinChecked" />
+                            <input type="number" name="ramMin" value="@Model.GpuFormCheckedViewModel.RamMinChecked" />
                         }
                         else
                         {
-                            <input type="number" name="coresMin" />
+                            <input type="number" name="ramMin" />
                         }
                     </div>
                 </div>
@@ -130,12 +130,12 @@
                         <div class="filter-send-input-number">
                             @if (Model.GpuFormCheckedViewModel.RamMaxChecked != 0)
                             {
-                                <input type="number" name="coresMax" value="@Model.GpuFormCheckedViewModel.RamMaxChecked" />
-                                
+                                <input type="number" name="ramMax" value="@Model.GpuFormCheckedViewModel.RamMaxChecked" />
+
                             }
                             else
                             {
-                                <input type="number" name="coresMax" />
+                                <input type="number" name="ramMax" />
                             }
                         </div>
                     </div>
@@ -167,6 +167,9 @@
         <button class="dropdown-btn">
             FILTRUJ
         </button>
+    </form>
+
+    <form action="@Url.Action("GpuList", "Gpu")" method="post">
         <button class="dropdown-btn">
             RESET
         </button>

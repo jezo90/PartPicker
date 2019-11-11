@@ -1,0 +1,96 @@
+﻿@using PartPicker.Infrastructure
+@model PartPicker.ViewModels.PsuDetailsViewModel
+
+@{
+    ViewBag.Title = Model.Psu.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-details">
+    <div class="container-details">
+        <div class="details-image">
+            <img class="details-image-product" src="@Url.MobosImagesPath(Model.Psu.Image)" />
+        </div>
+
+        <div class="details-prices">
+
+            <div class="details-name">
+                @Model.Psu.Name
+            </div>
+            <br />
+            @if (Request.IsAuthenticated)
+            {
+                if (Model.NewBuildViewModel.Psu != null)
+                {
+                    <div class="info-green">
+                        <div class="info-left">
+                            <img src="@Url.ImagesPath("!.png")" />
+                        </div>
+                        <div class="info-right">
+                            W Twojej konfiguracji znajduje się już zasilacz:
+                            <a href="@Url.Action("PsuDetails", "Psu", new { id = Model.NewBuildViewModel.Psu.PsuId })">
+                                @Model.NewBuildViewModel.Psu.Name
+                            </a>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="info-yellow">
+                    <div class="info-left">
+                        <img src="@Url.ImagesPath("!.png")" />
+                    </div>
+                    <div class="info-right">
+                        Zaloguj się by stworzyć własną konfigurację.
+                        <br />
+                        <a href="@Url.Action("Login", "Account")">Kliknij tutaj by się zalogować.</a>
+                    </div>
+                </div>
+            }
+
+            @{ int i = 0; }
+            @foreach (var psu in Model.PsuList)
+            {
+                <div class="details-prices-shop">
+                    <div class="details-prices-shop-item details-prices-shop-item-link">
+                        <a class="details-prices-shop-link" href=@psu.Link>
+
+                            <img class="details-prices-shop-image" src="@Url.ShopsImagesPath(psu.Shop.Logo)" />
+
+
+                            <div class="details-prices-shop-price">
+                                @Model.Prices[i]
+                            </div>
+
+                        </a>
+                    </div>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <a class="details-prices-shop-item" href="@Url.Action("AddPsuToBuild", "NewBuild", new { @id = psu.PsuId })">
+                            <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" />
+                        </a>
+                    }
+                    else
+                    {
+                        <div class="details-prices-shop-item">
+                            <img class="details-prices-shop-add" src="@Url.ImagesPath("addDisabled.png")" />
+                        </div>
+                    }
+                    <br />
+                </div>
+
+                i++;
+            }
+        </div>
+    </div>
+    <div class="container-details">
+        <div class="details-info">
+            <div class="details-info-text">PRODUCENT: @Model.Psu.Manufacturer.Name<br /></div>
+            <div class="details-info-text">MODEL: @Model.Psu.Model<br /></div>
+            <div class="details-info-text">SPRAWNOŚĆ: @Model.Psu.Efficiency<br /></div>
+            <div class="details-info-text">FORMAT: @Model.Psu.FormFactor.Name<br /></div>
+            <div class="details-info-text">MOC: @Model.Psu.Power W<br /></div>
+        </div>
+    </div>
+</div>

@@ -96,7 +96,7 @@
         <button type="button" class="dropdown-btn">
             Pojemność:
         </button>
-        <div class="dropdown-container" @{ if (Model.StorageFormCheckedViewModel.CapacityMaxChecked != 0 && Model.StorageFormCheckedViewModel.CapacityMinChecked != 0) { @: style="display:block !important"
+        <div class="dropdown-container" @{ if (Model.StorageFormCheckedViewModel.CapacityMaxChecked != 0 || Model.StorageFormCheckedViewModel.CapacityMinChecked != 0) { @: style="display:block !important"
              } }>
             <label name="min">
                 <div class="filter-send flex">
@@ -104,7 +104,7 @@
                         Min:
                     </div>
                     <div class="filter-send-input-number">
-                        @if (Model.StorageFormCheckedViewModel.CapacityMinChecked != 0 && Model.StorageFormCheckedViewModel.CapacityMinChecked != 10000)
+                        @if (Model.StorageFormCheckedViewModel.CapacityMinChecked != 0)
                         {
                             <input type="number" name="capacityMin" value="@Model.StorageFormCheckedViewModel.CapacityMinChecked" />@: GB
                         }
@@ -123,7 +123,7 @@
                             Max:
                         </div>
                         <div class="filter-send-input-number">
-                            @if (Model.StorageFormCheckedViewModel.CapacityMaxChecked != 0)
+                            @if (Model.StorageFormCheckedViewModel.CapacityMaxChecked != 0 && Model.StorageFormCheckedViewModel.CapacityMinChecked < 10000 )
                             {
                                 <input type="number" name="capacityMax" value="@Model.StorageFormCheckedViewModel.CapacityMaxChecked" />@: GB
                             }
@@ -140,10 +140,14 @@
         <button class="dropdown-btn">
             FILTRUJ
         </button>
+        
+    </form>
+    <form action="@Url.Action("StorageList", "Storage")" method="post">
         <button class="dropdown-btn">
             RESET
         </button>
     </form>
+
 </div>
 
 <script src="@Url.Content("~/Scripts/JavaScriptDropDown.js")"></script>

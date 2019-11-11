@@ -81,7 +81,7 @@
         <button type="button" class="dropdown-btn">
             Ilość rdzeni:
         </button>
-        <div class="dropdown-container" @{ if (Model.CpuFormCheckedViewModel.CoresMaxChecked != 0 && Model.CpuFormCheckedViewModel.CoresMinChecked != 0) { @: style="display:block !important"
+        <div class="dropdown-container" @{ if (Model.CpuFormCheckedViewModel.CoresMaxChecked != 0 || Model.CpuFormCheckedViewModel.CoresMinChecked != 0) { @: style="display:block !important"
              } }>
             <label name="min">
                 <div class="filter-send flex">
@@ -89,7 +89,7 @@
                         Min:
                     </div>
                     <div class="filter-send-input-number">
-                        @if (Model.CpuFormCheckedViewModel.CoresMinChecked != 0 && Model.CpuFormCheckedViewModel.CoresMinChecked != 100)
+                        @if (Model.CpuFormCheckedViewModel.CoresMinChecked != 0)
                         {
                             <input type="number" name="coresMin" value="@Model.CpuFormCheckedViewModel.CoresMinChecked" />
                         }
@@ -108,7 +108,7 @@
                             Max:
                         </div>
                         <div class="filter-send-input-number">
-                            @if (Model.CpuFormCheckedViewModel.CoresMaxChecked != 0)
+                            @if (Model.CpuFormCheckedViewModel.CoresMaxChecked != 0 && Model.CpuFormCheckedViewModel.CoresMaxChecked >= 100)
                             {
                                 <input type="number" name="coresMax" value="@Model.CpuFormCheckedViewModel.CoresMaxChecked" />
                             }
@@ -160,6 +160,9 @@
         <button class="dropdown-btn">
             FILTRUJ
         </button>
+    </form>
+
+    <form action="@Url.Action("CpuList", "Cpu")" method="post">
         <button class="dropdown-btn">
             RESET
         </button>

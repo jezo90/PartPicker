@@ -1,14 +1,14 @@
-﻿@model PartPicker.ViewModels.RamFormViewModel
+﻿@model PartPicker.ViewModels.PsuFormViewModel
 @using PartPicker.Infrastructure
 
 <div class="sidebar">
-    <form action="@Url.Action("RamList", "Ram")" method="post">
+    <form action="@Url.Action("PsuList", "Psu")" method="post">
 
         <button type="button" class="dropdown-btn">
             Producent:
         </button>
 
-        <div class="dropdown-container" @{ if (Model.RamFormCheckedViewModel.ManufacturersChecked[0] != "") { @: style="display:block !important"
+        <div class="dropdown-container" @{ if (Model.PsuFormCheckedViewModel.ManufacturersChecked[0] != "") { @: style="display:block !important"
              } }>
 
             @foreach (var manufacturer in Model.Manufacturers)
@@ -16,7 +16,7 @@
 
                 <label name="@manufacturer">
                     <div class="filter-send">
-                        @if (Model.RamFormCheckedViewModel.ManufacturersChecked.Contains(manufacturer))
+                        @if (Model.PsuFormCheckedViewModel.ManufacturersChecked.Contains(manufacturer))
                         {
 
                             @manufacturer
@@ -35,27 +35,30 @@
             }
         </div>
 
-
         <button type="button" class="dropdown-btn">
-            Typ pamięci RAM:
+            Format:
         </button>
 
-        <div class="dropdown-container" @{ if (Model.RamFormCheckedViewModel.TypeChecked[0] != "") { @: style="display:block !important"
+        <div class="dropdown-container" @{ if (Model.PsuFormCheckedViewModel.FormFactorChecked[0] != "") { @: style="display:block !important"
              } }>
-            @foreach (var type in Model.Types)
+
+            @foreach (var formFactor in Model.FormFactor)
             {
-                <label name="@type">
+
+                <label name="@formFactor">
                     <div class="filter-send">
-                        @if (Model.RamFormCheckedViewModel.TypeChecked.Contains(type))
+                        @if (Model.PsuFormCheckedViewModel.FormFactorChecked.Contains(formFactor))
                         {
 
-                            @type <input class="checkbox-invisible" type="checkbox" name="types" value="@type" checked />
+                            @formFactor
+                            <input class="checkbox-invisible" type="checkbox" name="formFactor" value="@formFactor" checked />
 
                         }
                         else
                         {
 
-                            @type <input class="checkbox-invisible" type="checkbox" name="types" value="@type" />
+                            @formFactor
+                            <input class="checkbox-invisible" type="checkbox" name="formFactor" value="@formFactor" />
 
                         }
                     </div>
@@ -64,9 +67,9 @@
         </div>
 
         <button type="button" class="dropdown-btn">
-            Ilość pamięci RAM:
+            Moc:
         </button>
-        <div class="dropdown-container" @{ if (Model.RamFormCheckedViewModel.AmountMinChecked != 0 || Model.RamFormCheckedViewModel.AmountMaxChecked != 0) { @: style="display:block !important"
+        <div class="dropdown-container" @{ if (Model.PsuFormCheckedViewModel.PowerMax != 0 || Model.PsuFormCheckedViewModel.PowerMin != 0) { @: style="display:block !important"
              } }>
             <label name="min">
                 <div class="filter-send flex">
@@ -74,13 +77,13 @@
                         Min:
                     </div>
                     <div class="filter-send-input-number">
-                        @if (Model.RamFormCheckedViewModel.AmountMinChecked != 0)
+                        @if (Model.PsuFormCheckedViewModel.PowerMin != 0)
                         {
-                            <input type="number" name="ramMin" value="@Model.RamFormCheckedViewModel.AmountMinChecked" />
+                            <input type="number" name="powerMin" value="@Model.PsuFormCheckedViewModel.PowerMin" />@: W
                         }
                         else
                         {
-                            <input type="number" name="ramMin" />
+                            <input type="number" name="powerMin" />@: W
                         }
                     </div>
                 </div>
@@ -93,14 +96,13 @@
                             Max:
                         </div>
                         <div class="filter-send-input-number">
-                            @if (Model.RamFormCheckedViewModel.AmountMaxChecked != 0)
+                            @if (Model.PsuFormCheckedViewModel.PowerMax != 0 && Model.PsuFormCheckedViewModel.PowerMax < 1000)
                             {
-                                <input type="number" name="ramMax" value="@Model.RamFormCheckedViewModel.AmountMaxChecked" />
-
+                                <input type="number" name="powerMax" value="@Model.PsuFormCheckedViewModel.PowerMax" />@: W
                             }
                             else
                             {
-                                <input type="number" name="ramMax" />
+                                <input type="number" name="powerMax" />@: W
                             }
                         </div>
                     </div>
@@ -113,7 +115,7 @@
         </button>
     </form>
 
-    <form action="@Url.Action("RamList", "Ram")" method="post">
+    <form action="@Url.Action("PsuList", "Psu")" method="post">
         <button class="dropdown-btn">
             RESET
         </button>

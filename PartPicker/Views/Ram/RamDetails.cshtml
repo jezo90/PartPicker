@@ -50,12 +50,14 @@
                         </div>
                         <div class="info-right">
                             W Twojej konfiguracji znajduje się już pamięć RAM:
-                            <a href="@Url.Action("RamDetails", "Ram", new { id = Model.NewBuildViewModel.Gpu.GpuId })">
+                            <a href="@Url.Action("RamDetails", "Ram", new { id = Model.NewBuildViewModel.Ram.RamId })">
                                 @Model.NewBuildViewModel.Ram.Name
                             </a>
                         </div>
                     </div>
                 }
+
+
             }
             else
             {

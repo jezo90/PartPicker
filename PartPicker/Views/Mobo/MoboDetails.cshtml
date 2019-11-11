@@ -40,6 +40,46 @@
                     </div>
                 }
 
+                if (Model.NewBuildViewModel.Ram != null && Model.NewBuildViewModel.Ram.RamType.Name != Model.Mobo.RamType.Name)
+                {
+                    <div class="info-red">
+                        <div class="info-left">
+                            <img src="@Url.ImagesPath("!.png")" />
+                        </div>
+                        <div class="info-right">
+                            Ta płyta główna nie pasuje do wybranej przez Ciebie pamięci RAM.
+                            <br />
+                            Aktualnie wybrana pamięć RAM to: @Model.NewBuildViewModel.Ram.Name
+                            <br />
+                            Odpowiedni typ do wybanej przez Ciebie pamięci RAM to: @Model.NewBuildViewModel.Ram.RamType.Name
+                            <br />
+                            <a href="@Url.Action("MoboList", "Mobo", new { @ramsString = Model.NewBuildViewModel.Ram.RamType.Name })">
+                                Kliknij tutaj by przejść do wyszukiwania kompatybilnych płyt głównych.
+                            </a>
+                        </div>
+                    </div>
+                }
+
+                if (Model.NewBuildViewModel.Case != null && Model.NewBuildViewModel.Case.FormFactor.Name != Model.Mobo.FormFactor.Name)
+                {
+                    <div class="info-red">
+                        <div class="info-left">
+                            <img src="@Url.ImagesPath("!.png")" />
+                        </div>
+                        <div class="info-right">
+                            Ta płyta główna nie pasuje do wybranej przez Ciebie obudowy.
+                            <br />
+                            Aktualna wybrana obudowa to: @Model.NewBuildViewModel.Ram.Name
+                            <br />
+                            Odpowiedni format do wybranej przez Ciebie obudowy to: @Model.NewBuildViewModel.Case.FormFactor.Name
+                            <br />
+                            <a href="@Url.Action("MoboList", "Mobo", new { @formsString = Model.NewBuildViewModel.Case.FormFactor.Name })">
+                                Kliknij tutaj by przejść do wyszukiwania kompatybilnych płyt głównych.
+                            </a>
+                        </div>
+                    </div>
+                }
+
                 if (Model.NewBuildViewModel.Mobo != null)
                 {
                     <div class="info-green">
@@ -87,7 +127,114 @@
                     </div>
                     @if (Request.IsAuthenticated)
                     {
-                        if (Model.NewBuildViewModel.Cpu != null)
+                        if (Model.NewBuildViewModel.Cpu != null && Model.NewBuildViewModel.Case != null && Model.NewBuildViewModel.Ram != null)
+                        {
+                            if (Model.NewBuildViewModel.Cpu.Socket.Name == mobo.Socket.Name &&
+                                Model.NewBuildViewModel.Case.FormFactor.Name == mobo.FormFactor.Name &&
+                                Model.NewBuildViewModel.Ram.RamType.Name == mobo.RamType.Name)
+                            {
+
+                                <a class="details-prices-shop-item" href="@Url.Action("AddMoboToBuild", "NewBuild", new { @id = mobo.MoboId })">
+                                    <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" />
+                                </a>
+
+                            }
+                            else
+                            {
+                                <div class="details-prices-shop-item">
+                                    <img class="details-prices-shop-add" src="@Url.ImagesPath("addDisabled.png")" />
+                                </div>
+                            }
+                        }
+                        else if (Model.NewBuildViewModel.Cpu == null && Model.NewBuildViewModel.Case != null && Model.NewBuildViewModel.Ram != null)
+                        {
+                            if (Model.NewBuildViewModel.Case.FormFactor.Name == mobo.FormFactor.Name &&
+                                Model.NewBuildViewModel.Ram.RamType.Name == mobo.RamType.Name)
+                            {
+
+                                <a class="details-prices-shop-item" href="@Url.Action("AddMoboToBuild", "NewBuild", new { @id = mobo.MoboId })">
+                                    <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" />
+                                </a>
+
+                            }
+                            else
+                            {
+                                <div class="details-prices-shop-item">
+                                    <img class="details-prices-shop-add" src="@Url.ImagesPath("addDisabled.png")" />
+                                </div>
+                            }
+                        }
+                        else if (Model.NewBuildViewModel.Cpu != null && Model.NewBuildViewModel.Case == null && Model.NewBuildViewModel.Ram != null)
+                        {
+                            if (Model.NewBuildViewModel.Cpu.Socket.Name == mobo.Socket.Name &&
+                                Model.NewBuildViewModel.Ram.RamType.Name == mobo.RamType.Name)
+                            {
+
+                                <a class="details-prices-shop-item" href="@Url.Action("AddMoboToBuild", "NewBuild", new { @id = mobo.MoboId })">
+                                    <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" />
+                                </a>
+
+                            }
+                            else
+                            {
+                                <div class="details-prices-shop-item">
+                                    <img class="details-prices-shop-add" src="@Url.ImagesPath("addDisabled.png")" />
+                                </div>
+                            }
+                        }
+                        else if (Model.NewBuildViewModel.Cpu != null && Model.NewBuildViewModel.Case != null && Model.NewBuildViewModel.Ram == null)
+                        {
+                            if (Model.NewBuildViewModel.Cpu.Socket.Name == mobo.Socket.Name &&
+                                Model.NewBuildViewModel.Case.FormFactor.Name == mobo.FormFactor.Name)
+                            {
+
+                                <a class="details-prices-shop-item" href="@Url.Action("AddMoboToBuild", "NewBuild", new { @id = mobo.MoboId })">
+                                    <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" />
+                                </a>
+
+                            }
+                            else
+                            {
+                                <div class="details-prices-shop-item">
+                                    <img class="details-prices-shop-add" src="@Url.ImagesPath("addDisabled.png")" />
+                                </div>
+                            }
+                        }
+                        else if (Model.NewBuildViewModel.Cpu == null && Model.NewBuildViewModel.Case == null && Model.NewBuildViewModel.Ram != null)
+                        {
+                            if (Model.NewBuildViewModel.Ram.RamType.Name == mobo.RamType.Name)
+                            {
+
+                                <a class="details-prices-shop-item" href="@Url.Action("AddMoboToBuild", "NewBuild", new { @id = mobo.MoboId })">
+                                    <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" />
+                                </a>
+
+                            }
+                            else
+                            {
+                                <div class="details-prices-shop-item">
+                                    <img class="details-prices-shop-add" src="@Url.ImagesPath("addDisabled.png")" />
+                                </div>
+                            }
+                        }
+                        else if (Model.NewBuildViewModel.Cpu == null && Model.NewBuildViewModel.Case != null && Model.NewBuildViewModel.Ram == null)
+                        {
+                            if (Model.NewBuildViewModel.Case.FormFactor.Name == mobo.FormFactor.Name)
+                            {
+
+                                <a class="details-prices-shop-item" href="@Url.Action("AddMoboToBuild", "NewBuild", new { @id = mobo.MoboId })">
+                                    <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" />
+                                </a>
+
+                            }
+                            else
+                            {
+                                <div class="details-prices-shop-item">
+                                    <img class="details-prices-shop-add" src="@Url.ImagesPath("addDisabled.png")" />
+                                </div>
+                            }
+                        }
+                        else if (Model.NewBuildViewModel.Cpu != null && Model.NewBuildViewModel.Case == null && Model.NewBuildViewModel.Ram == null)
                         {
                             if (Model.NewBuildViewModel.Cpu.Socket.Name == mobo.Socket.Name)
                             {

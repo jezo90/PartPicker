@@ -241,6 +241,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MoboController.cs" />
     <Compile Include="Controllers\NewBuildController.cs" />
+    <Compile Include="Controllers\PsuController.cs" />
     <Compile Include="Controllers\RamController.cs" />
     <Compile Include="Controllers\StorageController.cs" />
     <Compile Include="DAL\PickerContext.cs" />
@@ -299,6 +300,10 @@
     <Compile Include="ViewModels\Mobo\MoboFormViewModel.cs" />
     <Compile Include="ViewModels\Mobo\MoboListViewModel.cs" />
     <Compile Include="ViewModels\NewBuildViewModel.cs" />
+    <Compile Include="ViewModels\Psu\PsuDetailsViewModel.cs" />
+    <Compile Include="ViewModels\Psu\PsuFormCheckedViewModel.cs" />
+    <Compile Include="ViewModels\Psu\PsuFormViewModel.cs" />
+    <Compile Include="ViewModels\Psu\PsuListViewModel.cs" />
     <Compile Include="ViewModels\RAM\RamDetailsViewModel.cs" />
     <Compile Include="ViewModels\RAM\RamFormCheckedViewModel.cs" />
     <Compile Include="ViewModels\RAM\RamFormViewModel.cs" />
@@ -338,6 +343,9 @@
     <Content Include="Views\Ram\_Form.cshtml" />
     <Content Include="Views\Ram\RamList.cshtml" />
     <Content Include="Views\Ram\RamDetails.cshtml" />
+    <Content Include="Views\Psu\_Form.cshtml" />
+    <Content Include="Views\Psu\PsuList.cshtml" />
+    <Content Include="Views\Psu\PsuDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

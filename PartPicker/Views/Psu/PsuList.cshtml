@@ -1,0 +1,162 @@
+﻿@model PartPicker.ViewModels.PsuListViewModel
+@using PartPicker.Infrastructure
+@using PagedList.Mvc
+
+<link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Zasilacze";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Action("Form", new { checkd = Model.PsuFormCheckedViewModel })
+
+
+<div class="content">
+    <div class="container ">
+        <div class="item-list nazwy">
+            <div class="item-box  item-part-photo">
+                <div class="item-part">
+                    Zdjęcie
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Producent
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Model
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Moc
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Format
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Certyfikat
+                </div>
+            </div>
+
+        </div>
+    </div>
+    @foreach (var psu in Model.PagedList)
+    {
+        <div class="container">
+            <a class="item-list-a" href="@Url.Action("PsuDetails", "Psu", new { id = psu.PsuId, name = psu.Name })">
+                <div class="item-list">
+                    <div class="item-box item-part-photo">
+                        <div class="item-part">
+                            <img class="item-part-image" src="@Url.PsusImagesPath(psu.Image)" />
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            <img class="part-image" src="@Url.ManufacturersImagesPath(psu.Manufacturer.Image)" />
+                            <br />
+
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            @psu.Model
+
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            @psu.Power
+
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            @psu.FormFactor.Name
+
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            @psu.Efficiency
+
+                        </div>
+                    </div>
+
+                </div>
+            </a>
+        </div>
+    }
+    <br />
+    Strona @( Model.PagedList.PageCount < Model.PagedList.PageNumber ? 0 : Model.PagedList.PageNumber) z @Model.PagedList.PageCount
+    <br />
+    @{
+        string formsPage = "";
+        foreach (var form in Model.PsuFormCheckedViewModel.FormFactorChecked)
+        {
+            if (form != "")
+            {
+                formsPage += form + "_";
+            }
+        }
+
+        string manufacturersPage = "";
+        foreach (var manu in Model.PsuFormCheckedViewModel.ManufacturersChecked)
+        {
+            if (manu != "")
+            {
+                manufacturersPage += manu + "_";
+            }
+        }
+    }
+
+    @if (Model.PsuFormCheckedViewModel.PowerMax != 0 && Model.PsuFormCheckedViewModel.PowerMin != 0)
+    {
+        @Html.PagedListPager(Model.PagedList, page => Url.Action("PsuList", new {
+         page,
+         @manufacturersString = manufacturersPage,
+         @formsString = formsPage,
+         @powerMin = Model.PsuFormCheckedViewModel.PowerMin,
+         @powerMax = Model.PsuFormCheckedViewModel.PowerMax }))
+    }
+    else if (Model.PsuFormCheckedViewModel.PowerMax != 0)
+    {
+        @Html.PagedListPager(Model.PagedList, page => Url.Action("PsuList", new {
+         page,
+         @manufacturersString = manufacturersPage,
+         @formsString = formsPage,
+         @powerMax = Model.PsuFormCheckedViewModel.PowerMax }))
+    }
+    else if (Model.PsuFormCheckedViewModel.PowerMin != 0)
+    {
+        @Html.PagedListPager(Model.PagedList, page => Url.Action("PsuList", new {
+         page,
+         @manufacturersString = manufacturersPage,
+         @formsString = formsPage,
+         @powerMin = Model.PsuFormCheckedViewModel.PowerMin }))
+    }
+    else
+    {
+        @Html.PagedListPager(Model.PagedList, page => Url.Action("PsuList", new {
+         page,
+         @manufacturersString = manufacturersPage,
+         @formsString = formsPage }))
+    }
+
+
+</div>
+
+
+
