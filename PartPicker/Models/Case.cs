@@ -29,8 +29,8 @@ namespace PartPicker.Models
         public int FormFactorId { get; set; }
 
         [Required]
-        [StringLength(45)]
-        public string MoboType { get; set; }
+        [Range(1, 10)]
+        public int Fans { get; set; }
 
         [Required]
         [Range(1,999)]

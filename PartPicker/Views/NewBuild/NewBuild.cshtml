@@ -14,7 +14,9 @@ Procesor:
 }
 else
 {
-    <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
+    <a href="@Url.Action("AddCpuToBuild", "NewBuild", new { id = 1 })">
+        <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
+    </a>
 }
 
 <br />
@@ -28,7 +30,9 @@ Karta graficzna:
 }
 else
 {
-    <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
+    <a href="@Url.Action("AddGpuToBuild", "NewBuild", new { id = 1 })">
+        <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
+    </a>
 }
 
 <br />
@@ -42,7 +46,9 @@ Płyta główna:
 }
 else
 {
-    <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
+    <a href="@Url.Action("AddMoboToBuild", "NewBuild", new { id = 1 })">
+        <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
+    </a>
 }
 
 <br />
@@ -56,11 +62,29 @@ RAM:
 }
 else
 {
-    <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
+    <a href="@Url.Action("AddRamToBuild", "NewBuild", new { id = 1 })">
+        <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
+    </a>
 }
 
 <br />
-Obudowa:
+        Dysk twardy:
+@if (@Model.Storage != null)
+{
+    @Model.Storage.Name
+    <a href="@Url.Action("DeleteStorageFromBuild", "NewBuild")">
+        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
+    </a>
+}
+else
+{
+    <a href="@Url.Action("AddStorageToBuild", "NewBuild", new { id = 1 })">
+        <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
+    </a>
+}
+
+<br />
+        Obudowa:
 @if (@Model.Case != null)
 {
     @Model.Case.Name
@@ -70,11 +94,13 @@ Obudowa:
 }
 else
 {
-    <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
+    <a href="@Url.Action("AddCaseToBuild", "NewBuild", new { id = 1 })">
+        <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
+    </a>
 }
 
 <br />
-Zasilacz:
+        Zasilacz:
 @if (@Model.Psu != null)
 {
     @Model.Psu.Name
@@ -84,13 +110,15 @@ Zasilacz:
 }
 else
 {
-    <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
+    <a href="@Url.Action("AddPsuToBuild", "NewBuild", new { id = 1 })">
+        <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
+    </a>
 }
 
 <form action="@Url.Action("AddBuild", "NewBuild")" method="post">
-    Nazwa <input type="text" maxlength="45" />
+    Nazwa <input type="text" name="name" maxlength="45" value="Test nazwa"/>
     <br />
-    Opis: <input type="text" maxlength="150" />
+    Opis: <input type="text" name="description" maxlength="150" value="Test Opis"/>
     <br />
     <input type="submit" value="Dodaj build" />
 </form>

@@ -25,6 +25,7 @@ namespace PartPicker.Controllers
             BuildManager = new BuildManager(SessionManager, context);
         }
 
+
         public ActionResult Index()
         {
             if (Request.IsAuthenticated)
@@ -45,28 +46,27 @@ namespace PartPicker.Controllers
             else return RedirectToAction("Login", "Account");
         }
 
-        public async Task<ActionResult> AddBuild(NewBuild build, string name, string description)
+        public async Task<ActionResult> AddBuild(string name, string description)
         {
             if (ModelState.IsValid)
             {
                 if (Request.IsAuthenticated)
                 {
                     var userId = User.Identity.GetUserId();
+                    var build = BuildManager.NewBuild();
                     var newBuild = BuildManager.CreateBuild(build, userId, description, name);
 
-                    var user = await UserManager.FindByIdAsync(userId);
-                    TryUpdateModel(user.Builds);
-                    await UserManager.UpdateAsync(user);
-
+                    context.Build.Add(newBuild);
+                    context.SaveChanges();
                     BuildManager.EmptyBuild();
 
-                    return RedirectToAction("BuildsList", "Builds");
+                    return RedirectToAction("Index", "Home");
                 }
                 else return RedirectToAction("Login", "Account");
             }
             else
             {
-                return View(build);
+                return View();
             }
         }
 

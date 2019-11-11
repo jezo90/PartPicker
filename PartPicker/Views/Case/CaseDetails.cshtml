@@ -1,0 +1,178 @@
+﻿@using PartPicker.Infrastructure
+@model PartPicker.ViewModels.CaseDetailsViewModel
+
+@{
+    ViewBag.Title = Model.Case.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-details">
+    <div class="container-details">
+        <div class="details-image">
+            <img class="details-image-product" src="@Url.CasesImagesPath(Model.Case.Image)" />
+        </div>
+
+
+        <div class="details-prices">
+
+
+            <div class="details-name">
+                @Model.Case.Name
+            </div>
+            <br />
+            @if (Request.IsAuthenticated)
+            {
+                if (Model.NewBuildViewModel.Gpu != null && Model.NewBuildViewModel.Gpu.Length > Model.Case.GpuLenght)
+                {
+                    <div class="info-red">
+                        <div class="info-left">
+                            <img src="@Url.ImagesPath("!.png")" />
+                        </div>
+                        <div class="info-right">
+                            Ta obudowa nie pasuje do wybranej przez Ciebie karty graficznej.
+                            <br />
+                            Aktualnie wybrana karta graficzna to: @Model.NewBuildViewModel.Gpu.Name
+                            <br />
+                            Minimalna długość dla wybranej karty graficznej to: @Model.NewBuildViewModel.Gpu.Length mm.
+                            <br />
+                            <a href="@Url.Action("CaseList", "Case", new { @lengthMin = Model.NewBuildViewModel.Gpu.Length })">
+                                Kliknij tutaj by przejść do wyszukiwania kompatybilnych obudów.
+                            </a>
+                        </div>
+                    </div>
+                }
+
+                if (Model.NewBuildViewModel.Mobo != null && Model.NewBuildViewModel.Mobo.FormFactor.Name != Model.Case.FormFactor.Name)
+                {
+                    <div class="info-red">
+                        <div class="info-left">
+                            <img src="@Url.ImagesPath("!.png")" />
+                        </div>
+                        <div class="info-right">
+                            Ta obudowa nie pasuje do wybranej przez Ciebie płyty głównej.
+                            <br />
+                            Aktualna wybrana płyta główna to: @Model.NewBuildViewModel.Mobo.Name
+                            <br />
+                            Odpowiedni format do wybranej przez Ciebie płyty głównej to: @Model.NewBuildViewModel.Mobo.FormFactor.Name
+                            <br />
+                            <a href="@Url.Action("CaseList", "Case", new { @formsString = Model.NewBuildViewModel.Mobo.FormFactor.Name })">
+                                Kliknij tutaj by przejść do wyszukiwania kompatybilnych obudów.
+                            </a>
+                        </div>
+                    </div>
+                }
+
+                if (Model.NewBuildViewModel.Case != null)
+                {
+                    <div class="info-green">
+                        <div class="info-left">
+                            <img src="@Url.ImagesPath("!.png")" />
+                        </div>
+                        <div class="info-right">
+                            W Twojej konfiguracji znajduje się już obudowa:
+                            <a href="@Url.Action("CaseDetails", "Case", new { id = Model.NewBuildViewModel.Case.CaseId })">
+                                @Model.NewBuildViewModel.Case.Name
+                            </a>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="info-yellow">
+                    <div class="info-left">
+                        <img src="@Url.ImagesPath("!.png")" />
+                    </div>
+                    <div class="info-right">
+                        Zaloguj się by stworzyć własną konfigurację.
+                        <br />
+                        <a href="@Url.Action("Login", "Account")">Kliknij tutaj by się zalogować.</a>
+                    </div>
+                </div>
+            }
+
+
+            @{ int i = 0; }
+            @foreach (var cas in Model.CaseList)
+            {
+                <div class="details-prices-shop">
+                    <div class="details-prices-shop-item details-prices-shop-item-link">
+                        <a class="details-prices-shop-link" href=@cas.Link>
+
+                            <img class="details-prices-shop-image" src="@Url.ShopsImagesPath(cas.Shop.Logo)" />
+
+
+                            <div class="details-prices-shop-price">
+                                @Model.Prices[i]
+                            </div>
+
+                        </a>
+                    </div>
+                    @if (Request.IsAuthenticated)
+                    {
+                        if (Model.NewBuildViewModel.Gpu != null)
+                        {
+                            if (Model.NewBuildViewModel.Gpu.Length <= Model.Case.GpuLenght)
+                            {
+
+                                <a class="details-prices-shop-item" href="@Url.Action("AddCaseToBuild", "NewBuild", new { @id = cas.CaseId })">
+                                    <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" />
+                                </a>
+
+                            }
+                            else
+                            {
+                                <div class="details-prices-shop-item">
+                                    <img class="details-prices-shop-add" src="@Url.ImagesPath("addDisabled.png")" />
+                                </div>
+                            }
+                        }
+                        else if (Model.NewBuildViewModel.Mobo != null)
+                        {
+                            if (Model.NewBuildViewModel.Mobo.FormFactor.Name == Model.Case.FormFactor.Name)
+                            {
+
+                                <a class="details-prices-shop-item" href="@Url.Action("AddCaseToBuild", "NewBuild", new { @id = cas.CaseId })">
+                                    <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" />
+                                </a>
+
+                            }
+                            else
+                            {
+                                <div class="details-prices-shop-item">
+                                    <img class="details-prices-shop-add" src="@Url.ImagesPath("addDisabled.png")" />
+                                </div>
+                            }
+                        }
+                        else
+                        {
+
+                            <a class="details-prices-shop-item" href="@Url.Action("AddCaseToBuild", "NewBuild", new { @id = cas.CaseId })">
+                                <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" />
+                            </a>
+
+                        }
+                    }
+                    else
+                    {
+                        <div class="details-prices-shop-item">
+                            <img class="details-prices-shop-add" src="@Url.ImagesPath("addDisabled.png")" />
+                        </div>
+                    }
+                    <br />
+                </div>
+
+                i++;
+            }
+        </div>
+    </div>
+    <div class="container-details">
+        <div class="details-info">
+            <div class="details-info-text">PRODUCENT: @Model.Case.Manufacturer.Name<br /></div>
+            <div class="details-info-text">MODEL: @Model.Case.Model<br /></div>
+            <div class="details-info-text">FORMAT: @Model.Case.FormFactor.Name<br /></div>
+            <div class="details-info-text">MAKSYMALNA DŁUGOŚĆ KARTY GRAFICZNEJ: @Model.Case.GpuLenght<br /></div>
+            <div class="details-info-text">MAKSYMALNA ILOŚĆ WIATRAKÓW: @Model.Case.Fans<br /></div>
+        </div>
+    </div>
+</div>

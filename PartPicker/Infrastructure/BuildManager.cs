@@ -246,7 +246,14 @@ namespace PartPicker.Infrastructure
 
         public Build CreateBuild(NewBuild createdBuild, string userId, string description, string name)
         {
-            var build = NewBuild();
+            var CpuId = createdBuild.Cpu.CpuId;
+            var MoboId = createdBuild.Mobo.MoboId;
+            var GpuId = createdBuild.Gpu.GpuId;
+            var CaseId = createdBuild.Case.CaseId;
+            var PsuId = createdBuild.Psu.PsuId;
+            var RamId = createdBuild.Ram.RamId;
+            var StorageId = createdBuild.Storage.StorageId;
+
             var buildToAdd = new Build()
             {
                 Name = name,
@@ -264,8 +271,6 @@ namespace PartPicker.Infrastructure
                 Image = "basic.png"                
             };
 
-            context.Build.Add(buildToAdd);
-            context.SaveChanges();
 
             return buildToAdd;
         }

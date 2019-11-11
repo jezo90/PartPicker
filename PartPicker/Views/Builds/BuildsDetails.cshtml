@@ -66,7 +66,7 @@
                 <div class="details-build-info-text">
                     PROCESOR:
                 </div>
-                <a class="details-build-info-link" href="@Url.Action("Details", "Cpu", new { id = Model.CpuId, name=Model.Cpu.Name })">
+                <a class="details-build-info-link" href="@Url.Action("CpuDetails", "Cpu", new { id = Model.CpuId, name=Model.Cpu.Name })">
                     <img class="details-build-info-image" src="@Url.CpusImagesPath(Model.Cpu.Image)" />
                     <div class="details-build-info-name">
                         @Model.Cpu.Name
@@ -78,7 +78,7 @@
                 <div class="details-build-info-text">
                     KARTA GRAFICZNA:
                 </div>
-                <a class="details-build-info-link" href="@Url.Action("Details", "Gpu", new { id = Model.GpuId, name=Model.Gpu.Name })">
+                <a class="details-build-info-link" href="@Url.Action("GpuDetails", "Gpu", new { id = Model.GpuId, name=Model.Gpu.Name })">
                     <img class="details-build-info-image" src="@Url.GpusImagesPath(Model.Gpu.Image)" />
                     <div class="details-build-info-name">
                         @Model.Gpu.Name
@@ -90,7 +90,7 @@
                 <div class="details-build-info-text">
                     PŁYTA GŁÓWNA:
                 </div>
-                <a class="details-build-info-link" href="@Url.Action("Details", "Mobo", new { id = Model.MoboId, name=Model.Mobo.Name })">
+                <a class="details-build-info-link" href="@Url.Action("MoboDetails", "Mobo", new { id = Model.MoboId, name=Model.Mobo.Name })">
                     <img class="details-build-info-image" src="@Url.MobosImagesPath(Model.Mobo.Image)" />
                     <div class="details-build-info-name">
                         @Model.Mobo.Name
@@ -102,7 +102,7 @@
                 <div class="details-build-info-text">
                     DYSK TWARDY:
                 </div>
-                <a class="details-build-info-link" href="@Url.Action("Details", "Storage", new { id = Model.StorageId, name=Model.Storage.Name })">
+                <a class="details-build-info-link" href="@Url.Action("StorageDetails", "Storage", new { id = Model.StorageId, name=Model.Storage.Name })">
                     <img class="details-build-info-image" src="@Url.StoragesImagesPath(Model.Storage.Image)" />
                     <div class="details-build-info-name">
                         @Model.Storage.Name
@@ -114,7 +114,7 @@
                 <div class="details-build-info-text">
                     PAMIĘĆ RAM:
                 </div>
-                <a class="details-build-info-link" href="@Url.Action("Details", "Ram", new { id = Model.RamId, name=Model.Ram.Name })">
+                <a class="details-build-info-link" href="@Url.Action("RamDetails", "Ram", new { id = Model.RamId, name=Model.Ram.Name })">
                     <img class="details-build-info-image" src="@Url.RamsImagesPath(Model.Ram.Image)" />
                     <div class="details-build-info-name">
                         @Model.Ram.Name
@@ -126,7 +126,7 @@
                 <div class="details-build-info-text">
                     ZASILACZ:
                 </div>
-                <a class="details-build-info-link" href="@Url.Action("Details", "Psu", new { id = Model.PsuId, name=Model.Psu.Name })">
+                <a class="details-build-info-link" href="@Url.Action("PsuDetails", "Psu", new { id = Model.PsuId, name=Model.Psu.Name })">
                     <img class="details-build-info-image" src="@Url.PsusImagesPath(Model.Psu.Image)" />
                     <div class="details-build-info-name">
                         @Model.Psu.Name
@@ -138,7 +138,7 @@
                 <div class="details-build-info-text">
                     OBUDOWA:
                 </div>
-                <a class="details-build-info-link" href="@Url.Action("Details", "Case", new { id = Model.CaseId, name=Model.Case.Name })">
+                <a class="details-build-info-link" href="@Url.Action("CaseDetails", "Case", new { id = Model.CaseId, name=Model.Case.Name })">
                     <img class="details-build-info-image" src="@Url.CasesImagesPath(Model.Case.Image)" />
                     <div class="details-build-info-name">
                         @Model.Case.Name
@@ -155,7 +155,7 @@
             {
                 <div class="details-build-comments-grade">
                     <div class="details-build-comments-grade-text">
-                        @rate.User.Nickname @rate.Grade
+                        @rate.ApplicationUser.UserName @rate.Grade
                     </div>
 
 

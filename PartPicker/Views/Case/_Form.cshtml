@@ -1,0 +1,104 @@
+﻿@model PartPicker.ViewModels.CaseFormViewModel
+@using PartPicker.Infrastructure
+
+<div class="sidebar">
+    <form action="@Url.Action("CaseList", "Case")" method="post">
+
+        <button type="button" class="dropdown-btn">
+            Producent:
+        </button>
+
+        <div class="dropdown-container" @{ if (Model.CaseFormCheckedViewModel.ManufacturersChecked[0] != "") { @: style="display:block !important"
+             } }>
+
+            @foreach (var manufacturer in Model.Manufacturers)
+            {
+
+                <label name="@manufacturer">
+                    <div class="filter-send">
+                        @if (Model.CaseFormCheckedViewModel.ManufacturersChecked.Contains(manufacturer))
+                        {
+
+                            @manufacturer
+                            <input class="checkbox-invisible" type="checkbox" name="manufacturers" value="@manufacturer" checked />
+
+                        }
+                        else
+                        {
+
+                            @manufacturer
+                            <input class="checkbox-invisible" type="checkbox" name="manufacturers" value="@manufacturer" />
+
+                        }
+                    </div>
+                </label>
+            }
+        </div>
+
+
+        <button type="button" class="dropdown-btn">
+            Format:
+        </button>
+
+        <div class="dropdown-container" @{ if (Model.CaseFormCheckedViewModel.FormFactorChecked[0] != "") { @: style="display:block !important"
+             } }>
+
+            @foreach (var formFactor in Model.FormFactor)
+            {
+
+                <label name="@formFactor">
+                    <div class="filter-send">
+                        @if (Model.CaseFormCheckedViewModel.FormFactorChecked.Contains(formFactor))
+                        {
+
+                            @formFactor
+                            <input class="checkbox-invisible" type="checkbox" name="formFactor" value="@formFactor" checked />
+
+                        }
+                        else
+                        {
+
+                            @formFactor
+                            <input class="checkbox-invisible" type="checkbox" name="formFactor" value="@formFactor" />
+
+                        }
+                    </div>
+                </label>
+            }
+        </div>
+
+        <button type="button" class="dropdown-btn">
+            Minimalna długość:
+        </button>
+        <div class="dropdown-container" @{ if (Model.CaseFormCheckedViewModel.LengthMinChecked != 0) { @: style="display:block !important"
+             } }>
+            <div class="filter-send">
+
+                <div class="filter-send-input-number">
+                    @if (Model.CaseFormCheckedViewModel.LengthMinChecked != 0)
+                    {
+                        <input type="number" name="lenghtMin" value="@Model.CaseFormCheckedViewModel.LengthMinChecked" />@: mm
+                    }
+                    else
+                    {
+                        <input type="number" name="lenghtMin" />@: mm
+                    }
+                </div>
+
+            </div>
+        </div>
+
+        <button class="dropdown-btn">
+            FILTRUJ
+        </button>
+    </form>
+
+    <form action="@Url.Action("CaseList", "Case")" method="post">
+        <button class="dropdown-btn">
+            RESET
+        </button>
+    </form>
+</div>
+
+<script src="@Url.Content("~/Scripts/JavaScriptDropDown.js")"></script>
+

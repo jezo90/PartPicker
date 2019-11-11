@@ -49,21 +49,6 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Glimpse.Ado, Version=1.7.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Glimpse.Ado.1.7.3\lib\net45\Glimpse.Ado.dll</HintPath>
-    </Reference>
-    <Reference Include="Glimpse.AspNet, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Glimpse.AspNet.1.8.0\lib\net45\Glimpse.AspNet.dll</HintPath>
-    </Reference>
-    <Reference Include="Glimpse.Core, Version=1.8.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Glimpse.1.8.6\lib\net45\Glimpse.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Glimpse.EF6, Version=1.6.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Glimpse.EF6.1.6.5\lib\net45\Glimpse.EF6.dll</HintPath>
-    </Reference>
-    <Reference Include="Glimpse.Mvc5, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Glimpse.Mvc5.1.5.3\lib\net45\Glimpse.Mvc5.dll</HintPath>
-    </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.11.16.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.11.16\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
@@ -190,7 +175,7 @@
     <Content Include="Content\Images\Manufacturers\intel.png" />
     <Content Include="Content\Images\Manufacturers\kingston.png" />
     <Content Include="Content\Images\Manufacturers\msi.png" />
-    <Content Include="Content\Images\Manufacturers\nzxt.png" />
+    <Content Include="Content\Images\Manufacturers\nxzt.png" />
     <Content Include="Content\Images\Manufacturers\phanteks.png" />
     <Content Include="Content\Images\Manufacturers\samsung.png" />
     <Content Include="Content\Images\Manufacturers\seagate.png" />
@@ -236,6 +221,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BuildsController.cs" />
+    <Compile Include="Controllers\CaseController.cs" />
     <Compile Include="Controllers\CpuController.cs" />
     <Compile Include="Controllers\GpuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -246,7 +232,6 @@
     <Compile Include="Controllers\StorageController.cs" />
     <Compile Include="DAL\PickerContext.cs" />
     <Compile Include="DAL\PickerInitializer.cs" />
-    <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -260,6 +245,15 @@
     <Compile Include="Infrastructure\SessionManager.cs" />
     <Compile Include="Infrastructure\SessionNames.cs" />
     <Compile Include="Infrastructure\UrlHelpers.cs" />
+    <Compile Include="Migrations\201911031634166_InitialCreate.cs" />
+    <Compile Include="Migrations\201911031634166_InitialCreate.Designer.cs">
+      <DependentUpon>201911031634166_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911111554492_First.cs" />
+    <Compile Include="Migrations\201911111554492_First.Designer.cs">
+      <DependentUpon>201911111554492_First.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Build.cs" />
     <Compile Include="Models\Case.cs" />
     <Compile Include="Models\Cpu.cs" />
@@ -286,6 +280,10 @@
     <Compile Include="ViewModels\BuildFiltersViewModel.cs" />
     <Compile Include="ViewModels\BuildSearchViewModel.cs" />
     <Compile Include="ViewModels\BuildsListViewModel.cs" />
+    <Compile Include="ViewModels\Case\CaseDetailsViewModel.cs" />
+    <Compile Include="ViewModels\Case\CaseFormCheckedViewModel.cs" />
+    <Compile Include="ViewModels\Case\CaseFormViewModel.cs" />
+    <Compile Include="ViewModels\Case\CaseListViewModel.cs" />
     <Compile Include="ViewModels\Cpu\CpuDetailsViewModel.cs" />
     <Compile Include="ViewModels\Cpu\CpuFormCheckedViewModel.cs" />
     <Compile Include="ViewModels\Cpu\CpuFormViewModel.cs" />
@@ -346,6 +344,9 @@
     <Content Include="Views\Psu\_Form.cshtml" />
     <Content Include="Views\Psu\PsuList.cshtml" />
     <Content Include="Views\Psu\PsuDetails.cshtml" />
+    <Content Include="Views\Case\_Form.cshtml" />
+    <Content Include="Views\Case\CaseDetails.cshtml" />
+    <Content Include="Views\Case\CaseList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -358,6 +359,14 @@
     <Folder Include="Content\Images\Psu\" />
     <Folder Include="Content\Images\Ram\" />
     <Folder Include="Content\Images\Storage\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201911031634166_InitialCreate.resx">
+      <DependentUpon>201911031634166_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911111554492_First.resx">
+      <DependentUpon>201911111554492_First.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

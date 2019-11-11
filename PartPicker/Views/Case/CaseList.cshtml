@@ -1,0 +1,142 @@
+﻿@model PartPicker.ViewModels.CaseListViewModel
+@using PartPicker.Infrastructure
+@using PagedList.Mvc
+
+<link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Obudowy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Action("Form", new { checkd = Model.CaseFormCheckedViewModel })
+
+
+<div class="content">
+    <div class="container ">
+        <div class="item-list nazwy">
+            <div class="item-box  item-part-photo">
+                <div class="item-part">
+                    Zdjęcie
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Producent
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Model
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Format
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Maksymalna długość karty graficznej
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
+                    Maksymalna ilość wiatraków
+                </div>
+            </div>
+
+        </div>
+    </div>
+    @foreach (var cas in Model.PagedList)
+    {
+        <div class="container">
+            <a class="item-list-a" href="@Url.Action("CaseDetails", "Case", new { id = cas.CaseId, name = cas.Name })">
+                <div class="item-list">
+                    <div class="item-box item-part-photo">
+                        <div class="item-part">
+                            <img class="item-part-image" src="@Url.CasesImagesPath(cas.Image)" />
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            <img class="part-image" src="@Url.ManufacturersImagesPath(cas.Manufacturer.Image)" />
+
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            @cas.Model
+
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            @cas.FormFactor.Name
+
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            @cas.GpuLenght
+
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part">
+
+                            @cas.Fans
+
+                        </div>
+                    </div>
+
+                </div>
+            </a>
+        </div>
+    }
+    <br />
+    Strona @( Model.PagedList.PageCount < Model.PagedList.PageNumber ? 0 : Model.PagedList.PageNumber) z @Model.PagedList.PageCount
+    <br />
+    @{
+        string manufacturersPage = "";
+        foreach (var manu in Model.CaseFormCheckedViewModel.ManufacturersChecked)
+        {
+            if (manu != "")
+            {
+                manufacturersPage += manu + "_";
+            }
+        }
+
+        string formsPage = "";
+        foreach (var form in Model.CaseFormCheckedViewModel.FormFactorChecked)
+        {
+            if (form != "")
+            {
+                formsPage += form + "_";
+            }
+        }
+    }
+
+    @if (Model.CaseFormCheckedViewModel.LengthMinChecked != 0)
+    {
+        @Html.PagedListPager(Model.PagedList, page => Url.Action("CaseList", new { page,
+        @manufacturersString = manufacturersPage,
+        @formsString = formsPage,
+        @length = Model.CaseFormCheckedViewModel.LengthMinChecked }))
+    }
+    else
+    {
+        @Html.PagedListPager(Model.PagedList, page => Url.Action("CaseList", new { page,
+         @manufacturersString = manufacturersPage,
+         @formsString = formsPage }))
+    }
+
+</div>
+
+
+
+

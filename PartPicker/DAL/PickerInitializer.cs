@@ -4,19 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using PartPicker.Models;
-using static PartPicker.Models.IdentityModels;
+using PartPicker.Migrations;
+using System.Data.Entity.Migrations;
 
 namespace PartPicker.DAL
 {
-    public class PickerInitializer : CreateDatabaseIfNotExists<PickerContext>
+    public class PickerInitializer : MigrateDatabaseToLatestVersion<PickerContext, Configuration>
     {
-        protected override void Seed(PickerContext context)
-        {
-            SeedPickerData(context);
-            base.Seed(context);
-        }
-
-        private void SeedPickerData(PickerContext context)
+        public static void SeedPickerData(PickerContext context)
         {
             var shops = new List<Shop>
             {
@@ -33,7 +28,7 @@ namespace PartPicker.DAL
                             Class = "prices multi" }
             };
 
-            shops.ForEach(s => context.Shop.Add(s));
+            shops.ForEach(s => context.Shop.AddOrUpdate(s));
             context.SaveChanges();
 
             var formFactors = new List<FormFactor>
@@ -57,7 +52,7 @@ namespace PartPicker.DAL
                 new FormFactor() { FormFactorId = 9, Name = "extendedATX", Description = "Opis extendedATX"}
             };
 
-            formFactors.ForEach(s => context.FormFactor.Add(s));
+            formFactors.ForEach(s => context.FormFactor.AddOrUpdate(s));
             context.SaveChanges();
 
             var interfaces = new List<Interface>
@@ -75,7 +70,7 @@ namespace PartPicker.DAL
                 new Interface() { InterfaceId = 6, Name = "SAS", Description = "Opis SAS"}
             };
 
-            interfaces.ForEach(s => context.Interface.Add(s));
+            interfaces.ForEach(s => context.Interface.AddOrUpdate(s));
             context.SaveChanges();
 
             var ramTypes = new List<RamType>
@@ -85,7 +80,7 @@ namespace PartPicker.DAL
                 new RamType() { RamTypeId = 2, Name = "DDR4", Description = "Opis DDR4"}
             };
 
-            ramTypes.ForEach(s => context.RamType.Add(s));
+            ramTypes.ForEach(s => context.RamType.AddOrUpdate(s));
             context.SaveChanges();
 
             var gpuRams = new List<GpuRam>
@@ -97,7 +92,7 @@ namespace PartPicker.DAL
                 new GpuRam () { GpuRamId = 3, Name = "GDDR6", Description = "Opis GDDR6" }
             };
 
-            gpuRams.ForEach(s => context.GpuRam.Add(s));
+            gpuRams.ForEach(s => context.GpuRam.AddOrUpdate(s));
             context.SaveChanges();
 
             var sockets = new List<Socket>
@@ -115,7 +110,7 @@ namespace PartPicker.DAL
                 new Socket () { SocketId = 6, Name = "TR4", Description = "Opis Socketu TR4"}
             };
 
-            sockets.ForEach(s => context.Socket.Add(s));
+            sockets.ForEach(s => context.Socket.AddOrUpdate(s));
             context.SaveChanges();
 
             var manufacturers = new List<Manufacturer>
@@ -159,7 +154,7 @@ namespace PartPicker.DAL
                 new Manufacturer() { ManufacturerId = 19, Name = "be quiet!", Image = "bequiet.png" }
             };
 
-            manufacturers.ForEach(s => context.Manufacturer.Add(s));
+            manufacturers.ForEach(s => context.Manufacturer.AddOrUpdate(s));
             context.SaveChanges();
 
             var series = new List<Series>
@@ -179,7 +174,7 @@ namespace PartPicker.DAL
                 new Series() { SeriesId = 7, Name = "NVIDIA GeForce" }
             };
 
-            series.ForEach(s => context.Series.Add(s));
+            series.ForEach(s => context.Series.AddOrUpdate(s));
             context.SaveChanges();
 
             var products = new List<Product>
@@ -205,7 +200,7 @@ namespace PartPicker.DAL
                 new Product() { ProductId = 10, ManufacturerId = 5, SeriesId = 6, Description = "Opis Radeona"}
             };
 
-            products.ForEach(s => context.Product.Add(s));
+            products.ForEach(s => context.Product.AddOrUpdate(s));
             context.SaveChanges();
 
 
@@ -213,56 +208,56 @@ namespace PartPicker.DAL
             {
                 new Case () { CaseId = 1, Name = "NZXT H500 (Black)", ManufacturerId = 14,
                             Model = "H500", Link = "https://www.morele.net/obudowa-nzxt-h500-okno-bialy-ca-h500b-w1-4596293/",
-                            FormFactorId = 2, MoboType = "ATX, Micro ATX, Mini ITX", GpuLenght = 381,
+                            FormFactorId = 2, Fans = 5, GpuLenght = 381,
                             Image = "nzxt.png", ShopId = 3 },
 
                 new Case () { CaseId = 2, Name = "Phanteks Eclipse P300 Tempered Glass (Black)", ManufacturerId = 15,
                             Model = "Eclipse P300",  Link = "https://www.morele.net/obudowa-phanteks-eclipse-p300-ph-ec300ptg-bk-1603218/",
-                            FormFactorId = 2, MoboType = "ATX, Micro ATX, Mini ITX", GpuLenght = 330,
+                            FormFactorId = 2, Fans = 5, GpuLenght = 330,
                             Image = "phanteks.png", ShopId = 3 },
 
                 new Case () { CaseId = 3, Name = "Cooler Master MasterBox Q300L", ManufacturerId = 16,
                             Model = "MasterBox Q300L", Link = "https://www.morele.net/obudowa-cooler-master-masterbox-q300l-mcb-q300l-kann-s00-1804692/",
-                            FormFactorId = 3, MoboType = "Micro ATX, Mini ITX", GpuLenght = 360,
+                            FormFactorId = 3, Fans = 5, GpuLenght = 360,
                             Image = "masterbox.png", ShopId = 3 },
 
                 new Case () { CaseId = 4, Name = "Cooler Master Silencio 352", ManufacturerId = 16,
                             Model = "Silencio 352", Link = "https://www.morele.net/obudowa-cooler-master-silencio-352-sil-352m-kkn1-604750/",
-                            FormFactorId = 3, MoboType = "Micro ATX, Mini ITX", GpuLenght = 355,
+                            FormFactorId = 3, Fans = 5, GpuLenght = 355,
                             Image = "silencio352.png", ShopId = 3 },
 
                 new Case () { CaseId = 5, Name = "Cooler Master MasterCase H500P Mesh Gunmetal", ManufacturerId = 16,
                             Model = "MasterCase H500P", Link = "https://www.morele.net/obudowa-cooler-master-mastercase-h500p-mesh-gunmetal-mcm-h500p-mgnn-s10-4196809/",
-                            FormFactorId = 2, MoboType = "ATX, Micro ATX, Mini ITX", GpuLenght = 412,
+                            FormFactorId = 2, Fans = 5, GpuLenght = 412,
                             Image = "mastercaseh500p.png", ShopId = 3 },
 
                 new Case () { CaseId = 6, Name = "Cooler Master CM 590 III ", ManufacturerId = 16,
                             Model = "CM 590 III", Link = "https://www.morele.net/obudowa-cooler-master-cm-590-iii-rc-593-kwn2-1254363/",
-                            FormFactorId = 2, MoboType = "ATX, Micro ATX, Mini ITX", GpuLenght = 405,
+                            FormFactorId = 2, Fans = 5, GpuLenght = 405,
                             Image = "cm590.png", ShopId = 3 },
 
                 new Case () { CaseId = 7, Name = "Cooler Master N200", ManufacturerId = 16,
                             Model = "N200", Link = "https://www.morele.net/obudowa-cooler-master-n200-nse-200-kkn1-584078/",
-                            FormFactorId = 3, MoboType = "Micro ATX, Mini ITX", GpuLenght = 355,
+                            FormFactorId = 3, Fans = 5, GpuLenght = 355,
                             Image = "n200.png", ShopId = 3 },
 
                 new Case () { CaseId = 8, Name = "Cooler Master Elite 130 ", ManufacturerId = 16,
                             Model = "Elite 130", Link = "https://www.morele.net/obudowa-cooler-master-elite-130-rc-130-kkn1-608939/",
-                            FormFactorId = 7, MoboType = "Mini ITX", GpuLenght = 343,
+                            FormFactorId = 7, Fans = 5, GpuLenght = 343,
                             Image = "elite130.png", ShopId = 3 },
 
                 new Case () { CaseId = 9, Name = "Nzxt H700 (White)", ManufacturerId = 14,
                             Model = "H700", Link = "https://www.morele.net/obudowa-nzxt-h700-okno-bialy-ca-h700b-w1-4596291/",
-                            FormFactorId = 3, MoboType = "Extended ATX, ATX, Micro ATX, Mini ITX", GpuLenght = 413,
+                            FormFactorId = 3, Fans = 5, GpuLenght = 413,
                             Image = "h700.png", ShopId = 3 },
 
                 new Case () { CaseId = 10, Name = "Nzxt H400i (Black)", ManufacturerId = 14,
                             Model = "H400i", Link = "https://www.morele.net/obudowa-nzxt-h400i-matowa-czarna-ca-h400w-bb-1683598/",
-                            FormFactorId = 7, MoboType = "Micro ATX, Mini ITX", GpuLenght = 411,
+                            FormFactorId = 7, Fans = 5, GpuLenght = 411,
                             Image = "h400i.png", ShopId = 3 }
             };
 
-            cases.ForEach(s => context.Case.Add(s));
+            cases.ForEach(s => context.Case.AddOrUpdate(s));
             context.SaveChanges();
 
             var cpus = new List<Cpu>
@@ -319,7 +314,7 @@ namespace PartPicker.DAL
                             Image = "i59600k.png", ShopId = 4}
             };
 
-            cpus.ForEach(s => context.Cpu.Add(s));
+            cpus.ForEach(s => context.Cpu.AddOrUpdate(s));
             context.SaveChanges();
 
             var gpus = new List<Gpu>
@@ -376,7 +371,7 @@ namespace PartPicker.DAL
 
             };
 
-            gpus.ForEach(s => context.Gpu.Add(s));
+            gpus.ForEach(s => context.Gpu.AddOrUpdate(s));
             context.SaveChanges();
 
             var mobos = new List<Mobo>
@@ -432,7 +427,7 @@ namespace PartPicker.DAL
                             Image = "gigabyteax370gaming3.png", ShopId = 3}
             };
 
-            mobos.ForEach(s => context.Mobo.Add(s));
+            mobos.ForEach(s => context.Mobo.AddOrUpdate(s));
             context.SaveChanges();
 
             var psus = new List<Psu>
@@ -488,7 +483,7 @@ namespace PartPicker.DAL
                             Image = "corsairbuildercx750w.png", ShopId = 3}
             };
 
-            psus.ForEach(s => context.Psu.Add(s));
+            psus.ForEach(s => context.Psu.AddOrUpdate(s));
             context.SaveChanges();
 
             var rams = new List<Ram>
@@ -544,7 +539,7 @@ namespace PartPicker.DAL
                             Image = "gskillripjawsvddr416gb3000mhzcl15.png", ShopId = 3}
             };
 
-            rams.ForEach(s => context.Ram.Add(s));
+            rams.ForEach(s => context.Ram.AddOrUpdate(s));
             context.SaveChanges();
 
             var storages = new List<Storage>
@@ -595,7 +590,7 @@ namespace PartPicker.DAL
                                 Image = "samsungssd500gb.jpg", ShopId = 3}
             };
 
-            storages.ForEach(s => context.Storage.Add(s));
+            storages.ForEach(s => context.Storage.AddOrUpdate(s));
             context.SaveChanges();
 
         }
