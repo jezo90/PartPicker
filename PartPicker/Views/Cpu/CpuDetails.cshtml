@@ -146,8 +146,17 @@
                     </div>
                     @{
                         int bar = 100 * Model.Cpu.Benchmark / Model.BenchmarkMax;
+                        string color = "#ffffff";
+                        if (bar <= 25)
+                        { color = "#661d1d"; }
+                        else if (bar <= 50)
+                        { color = "#cc3a3a"; }
+                        else if (bar <= 75)
+                        { color = "#147f07"; }
+                        else if (bar <= 100)
+                        { color = "#29ff0f"; }
                     }
-                    <div class="benchmark-bar-background" style="width:@bar%;">&nbsp</div>
+                    <div class="benchmark-bar-background" style="width:@bar%; background-color: @color;">&nbsp</div>
                 </div>
                 <br />
             </div>

@@ -1031,7 +1031,6 @@ footer {
 }
 
 .benchmark-bar-background {
-    background-color: red;
     border-radius: 5px;
     z-index:10;
 }

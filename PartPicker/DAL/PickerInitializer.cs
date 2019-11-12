@@ -406,7 +406,7 @@ namespace PartPicker.DAL
                             FormFactorId = 2, SocketId = 4, RamSlots = 4, RamTypeId = 2, MaxRam = 64, SataSlots = 6,
                             Image = "gigabytex470aorusultragaming.png", ShopId = 3},
 
-                new Mobo () { MoboId = 7, Name = "ASRocK X370 Gaming ITX/AC", ManufacturerId = 17,
+                new Mobo () { MoboId = 7, Name = "ASRocK X370 Gaming ITX AC", ManufacturerId = 17,
                             Model = "X370 Gaming ITX/AC", Link = "https://www.mediaexpert.pl/plyty-glowne/plyta-glowna-asrock-x370-gaming-itx-ac,id-960530",
                             FormFactorId = 7, SocketId = 4, RamSlots = 2, RamTypeId = 2, MaxRam = 32, SataSlots = 4,
                             Image = "x370gamingitxac.png", ShopId = 1},
