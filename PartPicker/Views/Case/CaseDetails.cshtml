@@ -110,7 +110,7 @@
                     </div>
                     @if (Request.IsAuthenticated)
                     {
-                        if (Model.NewBuildViewModel.Gpu != null)
+                        if (Model.NewBuildViewModel.Gpu != null && Model.NewBuildViewModel.Mobo == null)
                         {
                             if (Model.NewBuildViewModel.Gpu.Length <= Model.Case.GpuLenght)
                             {
@@ -127,9 +127,27 @@
                                 </div>
                             }
                         }
-                        else if (Model.NewBuildViewModel.Mobo != null)
+                        else if (Model.NewBuildViewModel.Mobo != null && Model.NewBuildViewModel.Gpu == null)
                         {
                             if (Model.NewBuildViewModel.Mobo.FormFactor.Name == Model.Case.FormFactor.Name)
+                            {
+
+                                <a class="details-prices-shop-item" href="@Url.Action("AddCaseToBuild", "NewBuild", new { @id = cas.CaseId })">
+                                    <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" />
+                                </a>
+
+                            }
+                            else
+                            {
+                                <div class="details-prices-shop-item">
+                                    <img class="details-prices-shop-add" src="@Url.ImagesPath("addDisabled.png")" />
+                                </div>
+                            }
+                        }
+                        else if (Model.NewBuildViewModel.Mobo != null && Model.NewBuildViewModel.Gpu != null)
+                        {
+                            if (Model.NewBuildViewModel.Mobo.FormFactor.Name == Model.Case.FormFactor.Name &&
+                                Model.NewBuildViewModel.Gpu.Length <= Model.Case.GpuLenght)
                             {
 
                                 <a class="details-prices-shop-item" href="@Url.Action("AddCaseToBuild", "NewBuild", new { @id = cas.CaseId })">

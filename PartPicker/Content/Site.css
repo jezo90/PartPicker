@@ -1017,21 +1017,22 @@ footer {
         display:flex;
     }
 
-    .benchmark-text{
-        float:left;
-    }
+.benchmark-text {
+    float: left;
+    align-self: center;
+}
 
 .benchmark-bar {
-    
-    border: solid 1px black;
-    background-color: grey;
+    border: solid 3px #0d0d0d;
+    background-color: #3b3b3b;
     border-radius: 5px;
     width: 50%;
-    float:left;
+    float: left;
+    margin-left: 10px;
 }
 
 .benchmark-bar-background {
-    border-radius: 5px;
+    border-radius: 2px;
     z-index:10;
 }
 
