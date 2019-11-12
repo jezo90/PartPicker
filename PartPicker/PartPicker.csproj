@@ -137,6 +137,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\email.png" />
     <Content Include="Content\Images\!.png" />
     <Content Include="Content\Images\add.png" />
     <Content Include="Content\Images\addDisabled.png" />
@@ -162,6 +163,7 @@
     <Content Include="Content\Images\Gpu\msirx580.png" />
     <Content Include="Content\Images\half.png" />
     <Content Include="Content\Images\hot.png" />
+    <Content Include="Content\Images\lock.png" />
     <Content Include="Content\Images\Manufacturers\adata.png" />
     <Content Include="Content\Images\Manufacturers\amd.png" />
     <Content Include="Content\Images\Manufacturers\asrock.png" />
@@ -185,6 +187,7 @@
     <Content Include="Content\Images\Mobo\gigabyteb450m.png" />
     <Content Include="Content\Images\Mobo\tomahawk.png" />
     <Content Include="Content\Images\new.png" />
+    <Content Include="Content\Images\person.png" />
     <Content Include="Content\Images\Shop\mediaexpert.png" />
     <Content Include="Content\Images\Shop\morele.png" />
     <Content Include="Content\Images\Shop\sferis.png" />

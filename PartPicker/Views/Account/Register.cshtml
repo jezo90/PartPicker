@@ -1,4 +1,5 @@
 ﻿@model PartPicker.ViewModels.RegisterViewModel
+@using PartPicker.Infrastructure
 @{
     ViewBag.Title = "Rejestracja";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -14,6 +15,7 @@
         </div>
 
         <div>
+            <img src="@Url.ImagesPath("email.png")" />
             @Html.LabelFor(o => o.Email, "Email:")
             @Html.TextBoxFor(o => o.Email)
             <div>
@@ -22,6 +24,7 @@
         </div>
 
         <div>
+            <img src="@Url.ImagesPath("person.png")" />
             @Html.LabelFor(o => o.UserName, "Pseudonim:")
             @Html.TextBoxFor(o => o.UserName)
             <div>
@@ -30,6 +33,7 @@
         </div>
 
         <div>
+            <img src="@Url.ImagesPath("lock.png")" />
             @Html.LabelFor(o => o.Password, "Hasło:")
             @Html.PasswordFor(o => o.Password)
             <div>
@@ -38,6 +42,7 @@
         </div>
 
         <div>
+            <img src="@Url.ImagesPath("lock.png")" />
             @Html.LabelFor(o => o.ConfirmPassword, "Potwierdź hasło:")
             @Html.PasswordFor(o => o.ConfirmPassword)
             <div>

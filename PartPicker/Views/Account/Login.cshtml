@@ -1,4 +1,5 @@
 ﻿@model PartPicker.ViewModels.LoginViewModel
+@using PartPicker.Infrastructure
 
 @{
     ViewBag.Title = "Logowanie";
@@ -11,6 +12,7 @@
         @Html.AntiForgeryToken()
 
         <div>
+            <img src="@Url.ImagesPath("email.png")" />
             @Html.LabelFor(o => o.Email, "Email:")
             @Html.TextBoxFor(o => o.Email)
             <div>
@@ -19,6 +21,7 @@
         </div>
 
         <div>
+            <img src="@Url.ImagesPath("lock.png")" />
             @Html.LabelFor(o => o.Password)
             @Html.PasswordFor(o => o.Password)
             <div>
