@@ -139,7 +139,19 @@
             <div class="details-info-text">TYP RAM: @Model.Gpu.GpuRam.Name<br /></div>
             <div class="details-info-text">ILOŚĆ RAM: @Model.Gpu.Ram GB<br /></div>
             <div class="details-info-text">DŁUGOŚĆ KARTY: @Model.Gpu.Length mm<br /></div>
-            <div class="details-info-text">BENCHMARK: @Model.Gpu.Benchmark / @Model.BenchmarkMax <br /></div>
+            <div class="details-info-text details-info-text-flex">
+                <div class="benchmark-text">BENCHMARK:</div>
+                <div class="benchmark-bar">
+                    <div class="benchmark-bar-background-text">
+                        @Model.Gpu.Benchmark / @Model.BenchmarkMax
+                    </div>
+                    @{
+                        int bar = 100 * Model.Gpu.Benchmark / Model.BenchmarkMax;
+                    }
+                    <div class="benchmark-bar-background" style="width:@bar%;">&nbsp</div>
+                </div>
+                <br />
+            </div>
         </div>
     </div>
 </div>

@@ -7,6 +7,7 @@
 Procesor:
 @if (@Model.Cpu != null)
 {
+    <img class="" src="@Url.CpusImagesPath(Model.Cpu.Image)" />
     @Model.Cpu.Name
     <a href="@Url.Action("DeleteCpuFromBuild", "NewBuild")">
         <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
@@ -23,6 +24,7 @@ else
 Karta graficzna:
 @if (@Model.Gpu != null)
 {
+    <img class="" src="@Url.GpusImagesPath(Model.Gpu.Image)" />
     @Model.Gpu.Name
     <a href="@Url.Action("DeleteGpuFromBuild", "NewBuild")">
         <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
@@ -39,6 +41,7 @@ else
 Płyta główna:
 @if (@Model.Mobo != null)
 {
+    <img class="" src="@Url.MobosImagesPath(Model.Mobo.Image)" />
     @Model.Mobo.Name
     <a href="@Url.Action("DeleteMoboFromBuild", "NewBuild")">
         <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
@@ -55,6 +58,7 @@ else
 RAM:
 @if (@Model.Ram != null)
 {
+    <img class="" src="@Url.RamsImagesPath(Model.Ram.Image)" />
     @Model.Ram.Name
     <a href="@Url.Action("DeleteRamFromBuild", "NewBuild")">
         <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
@@ -71,6 +75,7 @@ else
         Dysk twardy:
 @if (@Model.Storage != null)
 {
+    <img class="" src="@Url.StoragesImagesPath(Model.Storage.Image)" />
     @Model.Storage.Name
     <a href="@Url.Action("DeleteStorageFromBuild", "NewBuild")">
         <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
@@ -87,6 +92,7 @@ else
         Obudowa:
 @if (@Model.Case != null)
 {
+<img class="" src="@Url.CasesImagesPath(Model.Case.Image)" />
     @Model.Case.Name
     <a href="@Url.Action("DeleteCaseFromBuild", "NewBuild")">
         <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
@@ -103,6 +109,7 @@ else
         Zasilacz:
 @if (@Model.Psu != null)
 {
+    <img class="" src="@Url.PsusImagesPath(Model.Psu.Image)" />
     @Model.Psu.Name
     <a href="@Url.Action("DeletePsuFromBuild", "NewBuild")">
         <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
@@ -114,13 +121,14 @@ else
         <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
     </a>
 }
-
-<form action="@Url.Action("AddBuild", "NewBuild")" method="post">
-    Nazwa <input type="text" name="name" maxlength="45" value="Test nazwa"/>
-    <br />
-    Opis: <input type="text" name="description" maxlength="150" value="Test Opis"/>
-    <br />
-    <input type="submit" value="Dodaj build" />
-</form>
-
+@if (Model.Cpu != null && Model.Gpu != null && Model.Mobo != null && Model.Ram != null && Model.Storage != null && Model.Case != null && Model.Psu != null)
+{
+    <form action="@Url.Action("AddBuild", "NewBuild")" method="post">
+        Nazwa <input type="text" name="name" maxlength="45" value="Test nazwa" />
+        <br />
+        Opis: <input type="text" name="description" maxlength="150" value="Test Opis" />
+        <br />
+        <input type="submit" value="Dodaj build" />
+    </form>
+}
 
