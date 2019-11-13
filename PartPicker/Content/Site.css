@@ -1164,3 +1164,39 @@ footer {
     background-color:#1b1b1b;
     padding: 2%;
 }
+
+
+
+
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! REGISTER FORM !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+.main-form {
+    text-align: -webkit-center;
+}
+.register-row {
+    display: flex;
+    align-items: center;
+    width: 389px;
+    min-height:30px;
+    border: 1.5px solid #303030;
+    padding:10px;
+}
+.register-row-image{
+    width:12px;
+}
+.register-row-image-png{
+    width:80%;
+}
+.register-row-text {
+    width: 200px;
+}
+.register-row-input {
+    width: 174px;
+}
+.register-row-checkbox {
+    width: inherit;
+}
+.form-submit{
+    width:409px;
+    padding:4px;
+}

@@ -6,42 +6,55 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div>
-    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
+    <div class="main-form">
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
 
-        <div>
-            <img src="@Url.ImagesPath("email.png")" />
-            @Html.LabelFor(o => o.Email, "Email:")
-            @Html.TextBoxFor(o => o.Email)
-            <div>
-                @Html.ValidationMessageFor(o => o.Email)
+            <div class="register-row">
+                <div class="register-row-image">
+                    <img class="register-row-image-png" src="@Url.ImagesPath("email.png")" />
+                </div>
+                <div class="register-row-text">
+                    @Html.LabelFor(o => o.Email, "Email:")
+                </div>
+                <div class="register-row-input">
+                    @Html.TextBoxFor(o => o.Email)
+                </div>
+                <div>
+                    @Html.ValidationMessageFor(o => o.Email)
+                </div>
             </div>
-        </div>
-
-        <div>
-            <img src="@Url.ImagesPath("lock.png")" />
-            @Html.LabelFor(o => o.Password)
-            @Html.PasswordFor(o => o.Password)
-            <div>
-                @Html.ValidationMessageFor(o => o.Password)
+            <div class="register-row">
+                <div class="register-row-image">
+                    <img class="register-row-image-png" src="@Url.ImagesPath("lock.png")" />
+                </div>
+                <div class="register-row-text">
+                    @Html.LabelFor(o => o.Password)
+                </div>
+                <div class="register-row-input">
+                    @Html.PasswordFor(o => o.Password)
+                </div>
+                <div>
+                    @Html.ValidationMessageFor(o => o.Password)
+                </div>
             </div>
-        </div>
+            <div class="register-row">
+                <div class="register-row-checkbox">
+                    @Html.CheckBoxFor(m => m.RememberMe, new { @checked = "checked" })
+                    @Html.LabelFor(m => m.RememberMe)
+                </div>
+                
+            </div>
+
+            <input class="form-submit" type="submit" value="Zaloguj" />
+        }
 
         <div>
-            @Html.CheckBoxFor(m => m.RememberMe, new { @checked = "checked" })
-            @Html.LabelFor(m => m.RememberMe)
+            <a href="@Url.Action("Register")">Załóż konto</a>
         </div>
 
-        <input type="submit" value="Zaloguj" />
-    }
-
-    <div>
-        <a href="@Url.Action("Register")">Załóż konto</a>
     </div>
-
-</div>
 
 <script src="@Url.Content("~/Scripts/jquery-1.10.2.js")"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>

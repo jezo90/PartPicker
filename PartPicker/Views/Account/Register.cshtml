@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div>
+<div class="main-form">
     @using (Html.BeginForm("Register", "Account"))
     {
         @Html.AntiForgeryToken()
@@ -14,43 +14,67 @@
             @Html.ValidationSummary()
         </div>
 
-        <div>
-            <img src="@Url.ImagesPath("email.png")" />
-            @Html.LabelFor(o => o.Email, "Email:")
-            @Html.TextBoxFor(o => o.Email)
+        <div class="register-row">
+            <div class="register-row-image">
+                <img class="register-row-image-png" src="@Url.ImagesPath("email.png")" />
+            </div>
+            <div class="register-row-text">
+                @Html.LabelFor(o => o.Email, "Email:")
+            </div>
+            <div class="register-row-input">
+                @Html.TextBoxFor(o => o.Email)
+            </div>
             <div>
                 @Html.ValidationMessageFor(o => o.Email)
             </div>
         </div>
 
-        <div>
-            <img src="@Url.ImagesPath("person.png")" />
-            @Html.LabelFor(o => o.UserName, "Pseudonim:")
-            @Html.TextBoxFor(o => o.UserName)
+        <div class="register-row">
+            <div class="register-row-image">
+                <img class="register-row-image-png" src="@Url.ImagesPath("person.png")" />
+            </div>
+            <div class="register-row-text">
+                @Html.LabelFor(o => o.UserName, "Pseudonim:")
+            </div>
+            <div class="register-row-input">
+                @Html.TextBoxFor(o => o.UserName)
+            </div>
             <div>
                 @Html.ValidationMessageFor(o => o.UserName)
             </div>
         </div>
 
-        <div>
-            <img src="@Url.ImagesPath("lock.png")" />
-            @Html.LabelFor(o => o.Password, "Hasło:")
-            @Html.PasswordFor(o => o.Password)
+        <div class="register-row">
+            <div class="register-row-image">
+                <img class="register-row-image-png" src="@Url.ImagesPath("lock.png")" />
+            </div>
+            <div class="register-row-text">
+                @Html.LabelFor(o => o.Password, "Hasło:")
+            </div>
+            <div class="register-row-input">
+                @Html.PasswordFor(o => o.Password)
+            </div>
             <div>
                 @Html.ValidationMessageFor(o => o.Password)
             </div>
         </div>
 
-        <div>
-            <img src="@Url.ImagesPath("lock.png")" />
-            @Html.LabelFor(o => o.ConfirmPassword, "Potwierdź hasło:")
-            @Html.PasswordFor(o => o.ConfirmPassword)
+        <div class="register-row">
+            <div class="register-row-image">
+                <img class="register-row-image-png" src="@Url.ImagesPath("lock.png")" />
+            </div>
+            <div class="register-row-text">
+                @Html.LabelFor(o => o.ConfirmPassword, "Potwierdź hasło:")
+            </div>
+            <div class="register-row-input">
+                @Html.PasswordFor(o => o.ConfirmPassword)
+            </div>
             <div>
                 @Html.ValidationMessageFor(o => o.ConfirmPassword)
             </div>
         </div>
 
-        <input type="submit" value="Zarejestruj" />
+        <input class="form-submit" type="submit" value="Zarejestruj" />
     }
 </div>
 
