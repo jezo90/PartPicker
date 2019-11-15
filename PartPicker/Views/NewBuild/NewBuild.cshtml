@@ -4,123 +4,242 @@
     ViewBag.Title = "Nowa konfiguracja";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-Procesor:
-@if (@Model.Cpu != null)
-{
-    <img class="" src="@Url.CpusImagesPath(Model.Cpu.Image)" />
-    @Model.Cpu.Name
-    <a href="@Url.Action("DeleteCpuFromBuild", "NewBuild")">
-        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
-    </a>
-}
-else
-{
-    <a href="@Url.Action("AddCpuToBuild", "NewBuild", new { id = 1 })">
-        <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
-    </a>
-}
+<div class="newbuild-row">
+    <div class="newbuild-row-column">
+        <div class="newbuild-row-column-text">
+            Procesor:
+        </div>
+    </div>
+    <div class="newbuild-row-column">
+        @if (@Model.Cpu != null)
+        {
+            <div class="newbuild-row-delete">
+                <div class="newbuild-row-column-picture">
+                    <img class="newbuild-row-column-picture-img" src="@Url.CpusImagesPath(Model.Cpu.Image)" />
+                </div>
+                <div class="newbuild-row-column-text">
+                    @Model.Cpu.Name
+                    <a href="@Url.Action("DeleteCpuFromBuild", "NewBuild")">
+                        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
+                    </a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="newbuild-row-column-text">
+                <a href="@Url.Action("AddCpuToBuild", "NewBuild", new { id = 1 })">
+                    <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
+                </a>
+            </div>
 
-<br />
-Karta graficzna:
-@if (@Model.Gpu != null)
-{
-    <img class="" src="@Url.GpusImagesPath(Model.Gpu.Image)" />
-    @Model.Gpu.Name
-    <a href="@Url.Action("DeleteGpuFromBuild", "NewBuild")">
-        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
-    </a>
-}
-else
-{
-    <a href="@Url.Action("AddGpuToBuild", "NewBuild", new { id = 1 })">
-        <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
-    </a>
-}
+        }
+    </div>
+</div>
 
-<br />
-Płyta główna:
-@if (@Model.Mobo != null)
-{
-    <img class="" src="@Url.MobosImagesPath(Model.Mobo.Image)" />
-    @Model.Mobo.Name
-    <a href="@Url.Action("DeleteMoboFromBuild", "NewBuild")">
-        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
-    </a>
-}
-else
-{
-    <a href="@Url.Action("AddMoboToBuild", "NewBuild", new { id = 1 })">
-        <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
-    </a>
-}
+<div class="newbuild-row">
+    <div class="newbuild-row-column">
+        <div class="newbuild-row-column-text">
+            Karta graficzna:
+        </div>
+    </div>
+    <div class="newbuild-row-column">
+        @if (@Model.Gpu != null)
+        {
+            <div class="newbuild-row-delete">
+                <div class="newbuild-row-column-picture">
+                    <img class="newbuild-row-column-picture-img" src="@Url.GpusImagesPath(Model.Gpu.Image)" />
+                </div>
+                <div class="newbuild-row-column-text">
+                    @Model.Gpu.Name
+                    <a href="@Url.Action("DeleteGpuFromBuild", "NewBuild")">
+                        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
+                    </a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="newbuild-row-column-text">
+                <a href="@Url.Action("AddGpuToBuild", "NewBuild", new { id = 1 })">
+                    <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
+                </a>
+            </div>
 
-<br />
-RAM:
-@if (@Model.Ram != null)
-{
-    <img class="" src="@Url.RamsImagesPath(Model.Ram.Image)" />
-    @Model.Ram.Name
-    <a href="@Url.Action("DeleteRamFromBuild", "NewBuild")">
-        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
-    </a>
-}
-else
-{
-    <a href="@Url.Action("AddRamToBuild", "NewBuild", new { id = 1 })">
-        <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
-    </a>
-}
+        }
+    </div>
+</div>
 
-<br />
-        Dysk twardy:
-@if (@Model.Storage != null)
-{
-    <img class="" src="@Url.StoragesImagesPath(Model.Storage.Image)" />
-    @Model.Storage.Name
-    <a href="@Url.Action("DeleteStorageFromBuild", "NewBuild")">
-        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
-    </a>
-}
-else
-{
-    <a href="@Url.Action("AddStorageToBuild", "NewBuild", new { id = 1 })">
-        <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
-    </a>
-}
+<div class="newbuild-row">
+    <div class="newbuild-row-column">
+        <div class="newbuild-row-column-text">
+            Płyta główna:
+        </div>
+    </div>
+    <div class="newbuild-row-column">
+        @if (@Model.Mobo != null)
+        {
+            <div class="newbuild-row-delete">
+                <div class="newbuild-row-column-picture">
+                    <img class="newbuild-row-column-picture-img" src="@Url.MobosImagesPath(Model.Mobo.Image)" />
+                </div>
+                <div class="newbuild-row-column-text">
+                    @Model.Mobo.Name
+                    <a href="@Url.Action("DeleteMoboFromBuild", "NewBuild")">
+                        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
+                    </a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="newbuild-row-column-text">
+                <a href="@Url.Action("AddMoboToBuild", "NewBuild", new { id = 1 })">
+                    <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
+                </a>
+            </div>
 
-<br />
-        Obudowa:
-@if (@Model.Case != null)
-{
-<img class="" src="@Url.CasesImagesPath(Model.Case.Image)" />
-    @Model.Case.Name
-    <a href="@Url.Action("DeleteCaseFromBuild", "NewBuild")">
-        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
-    </a>
-}
-else
-{
-    <a href="@Url.Action("AddCaseToBuild", "NewBuild", new { id = 1 })">
-        <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
-    </a>
-}
+        }
+    </div>
+</div>
 
-<br />
-        Zasilacz:
-@if (@Model.Psu != null)
-{
-    <img class="" src="@Url.PsusImagesPath(Model.Psu.Image)" />
-    @Model.Psu.Name
-    <a href="@Url.Action("DeletePsuFromBuild", "NewBuild")">
-        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
-    </a>
-}
-else
-{
-    <a href="@Url.Action("AddPsuToBuild", "NewBuild", new { id = 1 })">
-        <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
-    </a>
-}
+
+<div class="newbuild-row">
+    <div class="newbuild-row-column">
+        <div class="newbuild-row-column-text">
+            RAM:
+        </div>
+    </div>
+    <div class="newbuild-row-column">
+        @if (@Model.Ram != null)
+        {
+            <div class="newbuild-row-delete">
+                <div class="newbuild-row-column-picture">
+                    <img class="newbuild-row-column-picture-img" src="@Url.RamsImagesPath(Model.Ram.Image)" />
+                </div>
+                <div class="newbuild-row-column-text">
+                    @Model.Ram.Name
+                    <a href="@Url.Action("DeleteRamFromBuild", "NewBuild")">
+                        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
+                    </a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="newbuild-row-column-text">
+                <a href="@Url.Action("AddRamToBuild", "NewBuild", new { id = 1 })">
+                    <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
+                </a>
+            </div>
+
+        }
+    </div>
+</div>
+
+
+<div class="newbuild-row">
+    <div class="newbuild-row-column">
+        <div class="newbuild-row-column-text">
+            Dysk twardy:
+        </div>
+    </div>
+    <div class="newbuild-row-column">
+        @if (@Model.Storage != null)
+        {
+            <div class="newbuild-row-delete">
+                <div class="newbuild-row-column-picture">
+                    <img class="newbuild-row-column-picture-img" src="@Url.StoragesImagesPath(Model.Storage.Image)" />
+                </div>
+                <div class="newbuild-row-column-text">
+                    @Model.Storage.Name
+                    <a href="@Url.Action("DeleteStorageFromBuild", "NewBuild")">
+                        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
+                    </a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="newbuild-row-column-text">
+                <a href="@Url.Action("AddStorageToBuild", "NewBuild", new { id = 1 })">
+                    <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
+                </a>
+            </div>
+
+        }
+    </div>
+</div>
+
+
+<div class="newbuild-row">
+    <div class="newbuild-row-column">
+        <div class="newbuild-row-column-text">
+            Obudowa:
+        </div>
+    </div>
+    <div class="newbuild-row-column">
+        @if (@Model.Case != null)
+        {
+            <div class="newbuild-row-delete">
+                <div class="newbuild-row-column-picture">
+                    <img class="newbuild-row-column-picture-img" src="@Url.CasesImagesPath(Model.Case.Image)" />
+                </div>
+                <div class="newbuild-row-column-text">
+                    @Model.Case.Name
+                    <a href="@Url.Action("DeleteCaseFromBuild", "NewBuild")">
+                        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
+                    </a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="newbuild-row-column-text">
+                <a href="@Url.Action("AddCaseToBuild", "NewBuild", new { id = 1 })">
+                    <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
+                </a>
+            </div>
+
+        }
+    </div>
+</div>
+
+<div class="newbuild-row">
+    <div class="newbuild-row-column">
+        <div class="newbuild-row-column-text">
+            Zasilacz:
+        </div>
+    </div>
+    <div class="newbuild-row-column">
+        @if (@Model.Psu != null)
+        {
+            <div class="newbuild-row-delete">
+                <div class="newbuild-row-column-picture">
+                    <img class="newbuild-row-column-picture-img" src="@Url.PsusImagesPath(Model.Psu.Image)" />
+                </div>
+                <div class="newbuild-row-column-text">
+                    @Model.Psu.Name
+                    <a href="@Url.Action("DeletePsuFromBuild", "NewBuild")">
+                        <img class="newbuild-add" src="@Url.ImagesPath("delete.png")" />
+                    </a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="newbuild-row-column-text">
+                <a href="@Url.Action("AddPsuToBuild", "NewBuild", new { id = 1 })">
+                    <img class="newbuild-add" src="@Url.ImagesPath("add.png")" />
+                </a>
+            </div>
+
+        }
+    </div>
+</div>
+
+
+
 @if (Model.Cpu != null && Model.Gpu != null && Model.Mobo != null && Model.Ram != null && Model.Storage != null && Model.Case != null && Model.Psu != null)
 {
     <form action="@Url.Action("AddBuild", "NewBuild")" method="post">

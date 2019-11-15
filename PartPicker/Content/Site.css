@@ -1200,3 +1200,32 @@ footer {
     width:409px;
     padding:4px;
 }
+
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! NEW BUILD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+.newbuild-row {
+    display: flex;
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+    margin-left:25%;
+    margin-right:25%;
+}
+.newbuild-row-column {
+    width: 50%;
+    border: 1.5px solid #303030;
+}
+.newbuild-row-column-picture{
+
+}
+.newbuild-row-column-picture-img {
+    width: 50px;
+    vertical-align: middle;
+}
+
+.newbuild-row-column-text {
+    align-self: center;
+}
+.newbuild-row-delete{
+    display:inline-flex;
+}
