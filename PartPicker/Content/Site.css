@@ -1210,6 +1210,7 @@ footer {
     line-height: 60px;
     margin-left:25%;
     margin-right:25%;
+    padding:5px;
 }
 .newbuild-row-column {
     width: 50%;
