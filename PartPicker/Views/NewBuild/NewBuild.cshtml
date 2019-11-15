@@ -239,14 +239,36 @@
 
 
 
-@if (Model.Cpu != null && Model.Gpu != null && Model.Mobo != null && Model.Ram != null && Model.Storage != null && Model.Case != null && Model.Psu != null)
-{
-    <form action="@Url.Action("AddBuild", "NewBuild")" method="post">
-        Nazwa <input type="text" name="name" maxlength="45" value="Test nazwa" />
-        <br />
-        Opis: <input type="text" name="description" maxlength="150" value="Test Opis" />
-        <br />
-        <input type="submit" value="Dodaj build" />
-    </form>
+    @if (Model.Cpu != null && Model.Gpu != null && Model.Mobo != null && Model.Ram != null && Model.Storage != null && Model.Case != null && Model.Psu != null)
+    {
+<form action="@Url.Action("AddBuild", "NewBuild")" method="post">
+    <div class="newbuild-row">
+        <div class="newbuild-row-column newbuild-row-colum-100">
+            <div class="newbuild-row-column-text">
+                Nazwa:
+                <input type="text" name="name" maxlength="45" value="Test nazwa" />
+            </div>
+        </div>
+    </div>
+
+    <div class="newbuild-row">
+        <div class="newbuild-row-column newbuild-row-colum-100">
+            <div class="newbuild-row-column-text">
+                Opis:
+            </div>
+            <textarea class="newbuild-row-column-description" type="text"  maxlength="150" value="Test Opis"></textarea>
+
+
+             <input class="newbuild-row-column-description" type="text" name="description" maxlength="150" value="Test Opis" />
+        </div>
+       
+    </div>
+
+    <div class="newbuild-row">
+        <input class="form-submit-addbuild" type="submit" value="Dodaj build" />
+    </div>
+
+        
+</form>
 }
 

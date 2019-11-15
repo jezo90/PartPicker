@@ -1174,18 +1174,21 @@ footer {
     text-align: -webkit-center;
 }
 .register-row {
+    width: 389px;
+    border: 1.5px solid #303030;
+    padding: 10px;
+}
+.register-row-content {
     display: flex;
     align-items: center;
-    width: 389px;
-    min-height:30px;
-    border: 1.5px solid #303030;
-    padding:10px;
+
+    min-height: 30px;
 }
 .register-row-image{
     width:12px;
 }
 .register-row-image-png{
-    width:80%;
+    height:15PX;
 }
 .register-row-text {
     width: 200px;
@@ -1196,20 +1199,28 @@ footer {
 .register-row-checkbox {
     width: inherit;
 }
-.form-submit{
-    width:409px;
-    padding:4px;
+.form-submit {
+    color: black;
+    width: 411px;
+    padding: 4px;
+    font-family: montserrat-extrabold;
+    background-color: white;
+    border: 0.1px solid black;
+    padding: 10px;
+}
+
+.register-row-validate{
+margin-top:5px;
+color: #cc3a3a;
 }
 
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! NEW BUILD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-
 .newbuild-row {
     display: flex;
     text-align: center;
-    height: 60px;
     line-height: 60px;
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-left: 20%;
+    margin-right: 20%;
     margin-bottom: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -1228,6 +1239,31 @@ footer {
 .newbuild-row-column-text {
     align-self: center;
 }
+
+.newbuild-row-column-description {
+    width: 90%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+}
 .newbuild-row-delete{
     display:inline-flex;
+}
+
+.form-submit-addbuild {
+    color: black;
+    width: 100%;
+    padding: 4px;
+    font-family: montserrat-extrabold;
+    background-color: white;
+    border: 0.1px solid black;
+    padding: 10px;
+}
+
+.newbuild-row-colum-100{
+    width: 100%;
 }

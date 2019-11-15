@@ -11,7 +11,8 @@
         {
             @Html.AntiForgeryToken()
 
-            <div class="register-row">
+        <div class="register-row">
+            <div class="register-row-content">
                 <div class="register-row-image">
                     <img class="register-row-image-png" src="@Url.ImagesPath("email.png")" />
                 </div>
@@ -21,11 +22,14 @@
                 <div class="register-row-input">
                     @Html.TextBoxFor(o => o.Email)
                 </div>
-                <div>
-                    @Html.ValidationMessageFor(o => o.Email)
-                </div>
             </div>
-            <div class="register-row">
+            <div class="register-row-validate">
+                @Html.ValidationMessageFor(o => o.Email)
+            </div>
+        </div>
+         
+        <div class="register-row">
+            <div class="register-row-content">
                 <div class="register-row-image">
                     <img class="register-row-image-png" src="@Url.ImagesPath("lock.png")" />
                 </div>
@@ -35,24 +39,27 @@
                 <div class="register-row-input">
                     @Html.PasswordFor(o => o.Password)
                 </div>
-                <div>
-                    @Html.ValidationMessageFor(o => o.Password)
-                </div>
             </div>
-            <div class="register-row">
-                <div class="register-row-checkbox">
-                    @Html.CheckBoxFor(m => m.RememberMe, new { @checked = "checked" })
-                    @Html.LabelFor(m => m.RememberMe)
-                </div>
-                
+            <div class="register-row-validate">
+                @Html.ValidationMessageFor(o => o.Password)
             </div>
+
+        </div>
+            
+         <div class="register-row">
+             <div class="register-row-checkbox">
+                 @Html.CheckBoxFor(m => m.RememberMe, new { @checked = "checked" })
+                 @Html.LabelFor(m => m.RememberMe)
+             </div>
+         </div>
 
             <input class="form-submit" type="submit" value="Zaloguj" />
         }
 
-        <div>
-            <a href="@Url.Action("Register")">Załóż konto</a>
-        </div>
+    <button class="form-submit" href="@Url.Action("Register")">Załóż konto </button>
+    <div>
+        <a href="@Url.Action("Register")">Załóż konto</a>
+    </div>
 
     </div>
 

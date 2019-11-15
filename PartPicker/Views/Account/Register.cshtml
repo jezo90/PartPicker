@@ -15,61 +15,69 @@
         </div>
 
         <div class="register-row">
-            <div class="register-row-image">
-                <img class="register-row-image-png" src="@Url.ImagesPath("email.png")" />
+            <div class="register-row-content">
+                <div class="register-row-image">
+                    <img class="register-row-image-png" src="@Url.ImagesPath("email.png")" />
+                </div>
+                <div class="register-row-text">
+                    @Html.LabelFor(o => o.Email, "Email:")
+                </div>
+                <div class="register-row-input">
+                    @Html.TextBoxFor(o => o.Email)
+                </div>
             </div>
-            <div class="register-row-text">
-                @Html.LabelFor(o => o.Email, "Email:")
-            </div>
-            <div class="register-row-input">
-                @Html.TextBoxFor(o => o.Email)
-            </div>
-            <div>
+            <div class="register-row-validate">
                 @Html.ValidationMessageFor(o => o.Email)
             </div>
         </div>
 
         <div class="register-row">
-            <div class="register-row-image">
-                <img class="register-row-image-png" src="@Url.ImagesPath("person.png")" />
+            <div class="register-row-content">
+                <div class="register-row-image">
+                    <img class="register-row-image-png" src="@Url.ImagesPath("person.png")" />
+                </div>
+                <div class="register-row-text">
+                    @Html.LabelFor(o => o.UserName, "Pseudonim:")
+                </div>
+                <div class="register-row-input">
+                    @Html.TextBoxFor(o => o.UserName)
+                </div>
             </div>
-            <div class="register-row-text">
-                @Html.LabelFor(o => o.UserName, "Pseudonim:")
-            </div>
-            <div class="register-row-input">
-                @Html.TextBoxFor(o => o.UserName)
-            </div>
-            <div>
+            <div class="register-row-validate">
                 @Html.ValidationMessageFor(o => o.UserName)
             </div>
         </div>
 
         <div class="register-row">
-            <div class="register-row-image">
-                <img class="register-row-image-png" src="@Url.ImagesPath("lock.png")" />
+            <div class="register-row-content">
+                <div class="register-row-image">
+                    <img class="register-row-image-png" src="@Url.ImagesPath("lock.png")" />
+                </div>
+                <div class="register-row-text">
+                    @Html.LabelFor(o => o.Password, "Hasło:")
+                </div>
+                <div class="register-row-input">
+                    @Html.PasswordFor(o => o.Password)
+                </div>
             </div>
-            <div class="register-row-text">
-                @Html.LabelFor(o => o.Password, "Hasło:")
-            </div>
-            <div class="register-row-input">
-                @Html.PasswordFor(o => o.Password)
-            </div>
-            <div>
+            <div class="register-row-validate">
                 @Html.ValidationMessageFor(o => o.Password)
             </div>
         </div>
 
         <div class="register-row">
-            <div class="register-row-image">
-                <img class="register-row-image-png" src="@Url.ImagesPath("lock.png")" />
+            <div class="register-row-content">
+                <div class="register-row-image">
+                    <img class="register-row-image-png" src="@Url.ImagesPath("lock.png")" />
+                </div>
+                <div class="register-row-text">
+                    @Html.LabelFor(o => o.ConfirmPassword, "Potwierdź hasło:")
+                </div>
+                <div class="register-row-input">
+                    @Html.PasswordFor(o => o.ConfirmPassword)
+                </div>
             </div>
-            <div class="register-row-text">
-                @Html.LabelFor(o => o.ConfirmPassword, "Potwierdź hasło:")
-            </div>
-            <div class="register-row-input">
-                @Html.PasswordFor(o => o.ConfirmPassword)
-            </div>
-            <div>
+            <div class="register-row-validate">
                 @Html.ValidationMessageFor(o => o.ConfirmPassword)
             </div>
         </div>
