@@ -70,7 +70,16 @@ namespace PartPicker.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             ApplicationUser signedUser = UserManager.FindByEmail(model.Email);
-            var result = await SignInManager.PasswordSignInAsync(signedUser.UserName, model.Password, model.RememberMe, shouldLockout: false);
+            SignInStatus result;
+            if (signedUser != null)
+            {
+                result = await SignInManager.PasswordSignInAsync(signedUser.UserName, model.Password, model.RememberMe, shouldLockout: false);
+            }
+            else
+            {
+                result = SignInStatus.Failure;
+            }
+
             switch (result)
             {
                 case SignInStatus.Success:
@@ -107,7 +116,7 @@ namespace PartPicker.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, Permission = "user"};
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, Permission = "user" };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
