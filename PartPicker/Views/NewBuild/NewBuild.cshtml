@@ -241,6 +241,7 @@
 
     @if (Model.Cpu != null && Model.Gpu != null && Model.Mobo != null && Model.Ram != null && Model.Storage != null && Model.Case != null && Model.Psu != null)
     {
+
 <form id="newbuild-form" action="@Url.Action("AddBuild", "NewBuild")" method="post">
     <div class="newbuild-row">
         <div class="newbuild-row-column newbuild-row-colum-100">

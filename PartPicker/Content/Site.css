@@ -1140,6 +1140,7 @@ footer {
     height: auto;
     overflow-wrap: break-word;
     word-wrap: break-word;
+    white-space: pre-line;
 }
 
 .details-build-comments {
