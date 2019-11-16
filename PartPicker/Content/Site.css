@@ -12,6 +12,7 @@ body {
     overflow: auto;
     overflow-x: hidden;
     max-width: 1600px;
+    min-height: 503px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -1201,14 +1202,19 @@ footer {
     width: inherit;
 }
 .form-submit {
-    color: black;
+    color: #ef7f29;
     width: 411px;
-    padding: 4px;
     font-family: montserrat-extrabold;
-    background-color: white;
-    border: 0.1px solid black;
+    background-color: #1b1b1b;
+    border: 2px solid #ef7f29;
     padding: 10px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
 }
+    .form-submit:hover {
+        background-color: #ef7f29; /* Green */
+        color: white;
+    }
 
 .register-row-validate{
 margin-top:5px;
@@ -1256,14 +1262,19 @@ color: #cc3a3a;
 }
 
 .form-submit-addbuild {
-    color: black;
+    color: #ef7f29;
     width: 100%;
-    padding: 4px;
     font-family: montserrat-extrabold;
-    background-color: white;
-    border: 0.1px solid black;
+    background-color: #1b1b1b;
+    border: 2px solid #ef7f29;
     padding: 10px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
 }
+    .form-submit-addbuild:hover {
+        background-color: #ef7f29; /* Green */
+        color: white;
+    }
 
 .newbuild-row-colum-100{
     width: 100%;
