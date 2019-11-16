@@ -29,10 +29,11 @@ namespace PartPicker.ViewModels
 
         [Required]
         [StringLength(30, ErrorMessage = "Pseudonim musi mieć co najmniej {2} znaków.", MinimumLength = 3)]
+        [Display(Name = "Pseudonim")]
         public string UserName { get; set; }
 
         [Required]
-        [StringLength(30, ErrorMessage = "{0} musi mieć conajmniej {2} znaków.", MinimumLength = 6)]
+        [StringLength(30, ErrorMessage = "Hasło musi mieć conajmniej {2} znaków.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Hasło")]
         public string Password { get; set; }

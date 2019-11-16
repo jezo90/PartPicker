@@ -9,11 +9,6 @@
     @using (Html.BeginForm("Register", "Account"))
     {
         @Html.AntiForgeryToken()
-        <div>
-            @Html.ValidationMessage("loginerror", "")
-            @Html.ValidationSummary()
-        </div>
-
         <div class="register-row">
             <div class="register-row-content">
                 <div class="register-row-image">
