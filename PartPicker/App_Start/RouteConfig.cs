@@ -96,12 +96,12 @@ namespace PartPicker
             routes.MapRoute(
                 name: "BuildsDetails",
                 url: "buildy/{name}-{id}",
-                defaults: new { controller = "Builds", action = "BuildsDetails", id = UrlParameter.Optional, name = UrlParameter.Optional });
+                defaults: new { controller = "Builds", action = "BuildDetails", id = UrlParameter.Optional, name = UrlParameter.Optional });
 
             routes.MapRoute(
                 name: "Builds",
                 url: "buildy",
-                defaults: new { controller = "Builds", action = "List" });
+                defaults: new { controller = "Builds", action = "BuildList" });
 
 
             routes.MapRoute(

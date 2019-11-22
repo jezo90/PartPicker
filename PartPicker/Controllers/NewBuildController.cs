@@ -60,7 +60,7 @@ namespace PartPicker.Controllers
                     context.SaveChanges();
                     BuildManager.EmptyBuild();
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("BuildList", "Build");
                 }
                 else return RedirectToAction("Login", "Account");
             }

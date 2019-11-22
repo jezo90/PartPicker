@@ -1,5 +1,4 @@
-﻿using PartPicker.Infrastructure;
-using PartPicker.Models;
+﻿using PartPicker.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +6,10 @@ using System.Web;
 
 namespace PartPicker.ViewModels
 {
-    public class BuildsListViewModel
+    public class BuildListViewModel
     {
-        public IEnumerable<Build> Builds { get; set; }
+        public PagedList.IPagedList<Build> PagedList { get; set; }
+        public BuildFormCheckedViewModel BuildFormCheckedViewModel { get; set; }
         public double[] Average { get; set; }
         public double[] Count { get; set; }
     }
