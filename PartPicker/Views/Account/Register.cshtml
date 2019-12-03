@@ -10,6 +10,9 @@
     {
         @Html.AntiForgeryToken()
         <div class="register-row">
+            <div class="register-row-validate">
+                @Html.ValidationMessage("Summary")
+            </div>
             <div class="register-row-content">
                 <div class="register-row-image">
                     <img class="register-row-image-png" src="@Url.ImagesPath("email.png")" />

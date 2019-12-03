@@ -311,7 +311,12 @@ namespace PartPicker.DAL
                 new Cpu () { CpuId = 10, Name = "Intel Core i5-9600K", ProductId = 3,
                             Model = "9600K", Link = "https://www.sferis.pl/procesor-intel-core-i5-9600k-core-i5-9600k-bx80684i59600k-984505-3700-mhz-min-4600-mhz-max-lga-1151-p615821",
                             SocketId = 1, Cores = 6, Frequency = 3.7, Turbo = 4.6, Gpu = "Intel UHD Graphics 630", Benchmark = 3500,
-                            Image = "i59600k.png", ShopId = 4}
+                            Image = "i59600k.png", ShopId = 4 },
+                            
+                new Cpu () { CpuId = 11, Name = "Intel Core i5-9600K", ProductId = 3,
+                            Model = "9600K", Link = "https://www.mediaexpert.pl/procesory/intel-core-i5-9600k-hexa-core-3-70ghz-9mb-lga1151-14nm-box-bx80684i59600k,id-1251566",
+                            SocketId = 1, Cores = 6, Frequency = 3.7, Turbo = 4.6, Gpu = "Intel UHD Graphics 630", Benchmark = 3500,
+                            Image = "i59600k.png", ShopId = 1}
             };
 
             cpus.ForEach(s => context.Cpu.AddOrUpdate(s));
