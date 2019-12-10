@@ -13,12 +13,12 @@ namespace PartPicker.Infrastructure
     {
         public static string GetPrice(Cpu c)
         {
-            using (WebClient webClient = new WebClient())
+            using (WebClient webClient = new WebClient())   // UMOŻLIWIA PRACĘ ZE STRONAMI ZEWNĘTRZNYMI
             {
-                webClient.Encoding = Encoding.UTF8;
-                string html = webClient.DownloadString(c.Link);
+                webClient.Encoding = Encoding.UTF8; // USTAWIENIE KODOWANIA UTF8
+                string html = webClient.DownloadString(c.Link); // POBRANIE STRONY WWW
 
-                HtmlDocument pageDocument = new HtmlDocument();
+                HtmlDocument pageDocument = new HtmlDocument(); 
                 pageDocument.LoadHtml(html);
                 if (c.Shop.Name == "Sferis")
                 {
@@ -28,14 +28,17 @@ namespace PartPicker.Infrastructure
                     }
                     else
                     {
-                        var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']/span");
+                        var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + 
+                                    c.Shop.Class + "']/span");
                         return (prize.InnerHtml.ToString());
                     }
                 }
                 else if (c.Shop.Name == "Media Expert")
                 {
-                    var prize = pageDocument.DocumentNode.SelectSingleNode("//p[@class='" + c.Shop.Class + "']");
-                    var prizeMod = prize.InnerHtml.ToString().Replace("<span>", ",").Replace("</span>", "") + " zł";
+                    var prize = pageDocument.DocumentNode.SelectSingleNode("//p[@class='" + 
+                                c.Shop.Class + "']");
+                    var prizeMod = prize.InnerHtml.ToString().Replace("<span>", ",")
+                                    .Replace("</span>", "") + " zł";
                     return (prizeMod);
                 }
                 else if (c.Shop.Name == "Vobis")
@@ -46,14 +49,16 @@ namespace PartPicker.Infrastructure
                     }
                     else
                     {
-                        var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']/span");
+                        var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + 
+                            c.Shop.Class + "']/span");
                         var prizeMod = prize.InnerHtml.ToString().Replace("PLN", "zł");
                         return (prizeMod);
                     }
                 }
                 else
                 {
-                    var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + c.Shop.Class + "']");
+                    var prize = pageDocument.DocumentNode.SelectSingleNode("//div[@class='" + 
+                                c.Shop.Class + "']");
                     return (prize.InnerHtml.ToString());
                 }
             }

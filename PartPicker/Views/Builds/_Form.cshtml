@@ -1,0 +1,155 @@
+﻿@model PartPicker.ViewModels.BuildFormViewModel
+@using PartPicker.Infrastructure
+
+<div class="sidebar">
+    <form action="@Url.Action("BuildList", "Builds")" method="post">
+
+        <button type="button" class="dropdown-btn">
+            Procesor:
+        </button>
+
+        <div class="dropdown-container" @{ if (Model.BuildFormCheckedViewModel.CpuManufacturersChecked.Count() > 1) { @: style="display:block !important"
+             } }>
+
+            @foreach (var manufacturer in Model.CpuManufacturers)
+            {
+
+                <button type="button" class="dropdown-btn">
+                    @manufacturer
+                </button>
+
+                <div class="dropdown-container" @{ if (Model.BuildFormCheckedViewModel.CpuManufacturersChecked.Contains(manufacturer)) { @: style="display:block !important"
+                     } }>
+                    @foreach (var serie in Model.CpuSeries)
+                    {
+                        foreach (var cpus in Model.Cpus)
+                        {
+                            if (cpus.Product.Manufacturer.Name == manufacturer && cpus.Product.Series.Name == serie)
+                            {
+                                <label name="@serie">
+                                    <div class="filter-send">
+                                        @if (Model.BuildFormCheckedViewModel.CpuSeriesChecked.Contains(serie))
+                                        {
+
+                                            @cpus.Product.Series.Name
+                                            <input class="checkbox-invisible" type="checkbox" name="cpuSeries" value="@cpus.Product.Series.Name" checked />
+
+                                        }
+                                        else
+                                        {
+
+                                            @cpus.Product.Series.Name
+                                            <input class="checkbox-invisible" type="checkbox" name="cpuSeries" value="@cpus.Product.Series.Name" />
+
+                                        }
+                                    </div>
+                                </label>
+                                break;
+                            }
+                        }
+                    }
+                </div>
+            }
+        </div>
+        <button type="button" class="dropdown-btn">
+            Karta graficzna:
+        </button>
+        <div class="dropdown-container" @{ if (Model.BuildFormCheckedViewModel.GpuSeriesChecked[0] != "") { @: style="display:block !important"
+             } }>
+            @foreach (var serie in Model.GpuSeries)
+            {
+                foreach (var gpus in Model.Gpus)
+                {
+                    if (gpus.Product.Series.Name == serie)
+                    {
+                        <label name="@serie">
+                            <div class="filter-send">
+                                @if (Model.BuildFormCheckedViewModel.GpuSeriesChecked.Contains(serie))
+                                {
+
+                                    @gpus.Product.Series.Name
+                                    <input class="checkbox-invisible" type="checkbox" name="gpuSeries" value="@gpus.Product.Series.Name" checked />
+
+                                }
+                                else
+                                {
+
+                                    @gpus.Product.Series.Name
+                                    <input class="checkbox-invisible" type="checkbox" name="gpuSeries" value="@gpus.Product.Series.Name" />
+
+                                }
+                            </div>
+                        </label>
+                        break;
+                    }
+                }
+            }
+        </div>
+
+        <button type="button" class="dropdown-btn">
+            Typ pamięci RAM:
+        </button>
+
+        <div class="dropdown-container" @{ if (Model.BuildFormCheckedViewModel.RamTypeChecked[0] != "") { @: style="display:block !important"
+             } }>
+            @foreach (var type in Model.RamTypes)
+            {
+                <label name="@type">
+                    <div class="filter-send">
+                        @if (Model.BuildFormCheckedViewModel.RamTypeChecked.Contains(type))
+                        {
+
+                            @type <input class="checkbox-invisible" type="checkbox" name="ramType" value="@type" checked />
+
+                        }
+                        else
+                        {
+
+                            @type <input class="checkbox-invisible" type="checkbox" name="ramType" value="@type" />
+
+                        }
+                    </div>
+                </label>
+            }
+        </div>
+
+        <button type="button" class="dropdown-btn">
+            Typ dysku:
+        </button>
+
+        <div class="dropdown-container" @{ if (Model.BuildFormCheckedViewModel.StorageTypeChecked[0] != "") { @: style="display:block !important"
+             } }>
+            @foreach (var type in Model.StorageTypes)
+            {
+                <label name="@type">
+                    <div class="filter-send">
+                        @if (Model.BuildFormCheckedViewModel.StorageTypeChecked.Contains(type))
+                        {
+
+                            @type <input class="checkbox-invisible" type="checkbox" name="storageType" value="@type" checked />
+
+                        }
+                        else
+                        {
+
+                            @type <input class="checkbox-invisible" type="checkbox" name="storageType" value="@type" />
+
+                        }
+                    </div>
+                </label>
+            }
+        </div>
+
+        <button class="dropdown-btn">
+            FILTRUJ
+        </button>
+    </form>
+
+    <form action="@Url.Action("BuildList", "Builds")" method="post">
+        <button class="dropdown-btn">
+            RESET
+        </button>
+    </form>
+</div>
+
+<script src="@Url.Content("~/Scripts/JavaScriptDropDown.js")"></script>

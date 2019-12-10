@@ -1,4 +1,5 @@
-﻿using PartPicker.DAL;
+﻿using PagedList;
+using PartPicker.DAL;
 using PartPicker.Infrastructure;
 using PartPicker.Models;
 using PartPicker.ViewModels;
@@ -19,19 +20,23 @@ namespace PartPicker.Controllers
             return View();
         }
 
-        public ActionResult BuildsDetails(int id, string name)
+        public ActionResult BuildDetails(int id, string name)
         {
             var build = context.Build.Find(id);
             return View(build);
         }
 
-        public ActionResult BuildsList()
+        public ActionResult BuildList(List<string> cpuSeries, List<string> gpuSeries, List<string> ramType, List<string> storageType,
+                                    int? page, string seriesCpuString = "", string seriesGpuString = "",
+                                    string storageTypeString = "", string ramTypeString = "")
         {
-            var buildsAll = context.Build.ToList();
-            /// KONIEC 
+            var builds = context.Build.ToList();
+            List<Build> buildsFound = new List<Build>();
+            List<Build> buildsOut = new List<Build>();
+            int filtred = 0;
 
-
-            int amountOfBuilds = buildsAll.Count() + 1;
+            // OCENY
+            int amountOfBuilds = builds.Count() + 1;
             double[] sum = new double[amountOfBuilds];
             double[] average = new double[amountOfBuilds];
             double[] count = new double[amountOfBuilds];
@@ -42,7 +47,7 @@ namespace PartPicker.Controllers
                 count[i] = 0.0d;
             }
 
-            foreach (Build b in buildsAll)
+            foreach (Build b in builds)
             {
                 foreach (Rate r in b.Rates)
                 {
@@ -56,21 +61,227 @@ namespace PartPicker.Controllers
                 if (count[i] != 0d) average[i] = sum[i] / count[i] * 1.0d;
             }
 
-            var buildsListViewModel = new BuildsListViewModel()
+            // CPU
+            if (cpuSeries != null)
             {
-                Builds = buildsAll,
+                foreach (var serie in cpuSeries)
+                {
+                    buildsOut = builds.Where(a => a.Cpu.Product.Series.Name == serie).ToList();
+                    foreach (var buildsout in buildsOut)
+                    {
+                        buildsFound.Add(buildsout);
+                    }
+                }
+                filtred = 1;
+            }
+            else if (seriesCpuString != "")
+            {
+                string[] cpuSeriesT = seriesCpuString.Split('_');
+                List<string> tempCpuSeries = new List<string>();
+                foreach (var serie in cpuSeriesT)
+                {
+                    buildsOut = builds.Where(a => a.Cpu.Product.Series.Name == serie).ToList();
+                    if (serie != "")
+                    {
+                        tempCpuSeries.Add(serie);
+                    }
+                    foreach (var buildsout in buildsOut)
+                    {
+                        buildsFound.Add(buildsout);
+                    }
+                }
+                cpuSeries = tempCpuSeries;
+                filtred = 1;
+            }
+
+            if (filtred == 1)
+            {
+                builds.Clear();
+                foreach (var add in buildsFound)
+                {
+                    builds.Add(add);
+                }
+                buildsFound.Clear();
+                filtred = 0;
+            }
+
+            // GPU
+            if (builds.Count() > 0)
+            {
+                if (gpuSeries != null)
+                {
+                    foreach (var serie in gpuSeries)
+                    {
+                        buildsOut = builds.Where(a => a.Gpu.Product.Series.Name == serie).ToList();
+                        foreach (var buildsout in buildsOut)
+                        {
+                            buildsFound.Add(buildsout);
+                        }
+                    }
+                    filtred = 1;
+                }
+                else if (seriesGpuString != "")
+                {
+                    string[] gpuSeriesT = seriesGpuString.Split('_');
+                    List<string> tempGpuSeries = new List<string>();
+                    foreach (var serie in gpuSeriesT)
+                    {
+                        buildsOut = builds.Where(a => a.Gpu.Product.Series.Name == serie).ToList();
+                        if (serie != "")
+                        {
+                            tempGpuSeries.Add(serie);
+                        }
+                        foreach (var buildsout in buildsOut)
+                        {
+                            buildsFound.Add(buildsout);
+                        }
+                    }
+                    gpuSeries = tempGpuSeries;
+                    filtred = 1;
+                }
+            }
+
+            if (filtred == 1)
+            {
+                builds.Clear();
+                foreach (var add in buildsFound)
+                {
+                    builds.Add(add);
+                }
+                buildsFound.Clear();
+                filtred = 0;
+            }
+
+            // RAM
+            if (builds.Count() > 0)
+            {
+                if (ramType != null)
+                {
+                    foreach (var ram in ramType)
+                    {
+                        buildsOut = builds.Where(a => a.Ram.RamType.Name == ram).ToList();
+                        foreach (var buildsout in buildsOut)
+                        {
+                            buildsFound.Add(buildsout);
+                        }
+                    }
+                    filtred = 1;
+                }
+                else if (ramTypeString != "")
+                {
+                    string[] ramTypeT = ramTypeString.Split('_');
+                    List<string> tempRamType = new List<string>();
+                    foreach (var ram in ramTypeT)
+                    {
+                        buildsOut = builds.Where(a => a.Ram.RamType.Name == ram).ToList();
+                        if (ram != "")
+                        {
+                            tempRamType.Add(ram);
+                        }
+                        foreach (var buildsout in buildsOut)
+                        {
+                            buildsFound.Add(buildsout);
+                        }
+                    }
+                    ramType = tempRamType;
+                    filtred = 1;
+                }
+            }
+
+            if (filtred == 1)
+            {
+                builds.Clear();
+                foreach (var add in buildsFound)
+                {
+                    builds.Add(add);
+                }
+                buildsFound.Clear();
+                filtred = 0;
+            }
+
+            // STORAGE
+            if (builds.Count() > 0)
+            {
+                if (storageType != null)
+                {
+                    foreach (var type in storageType)
+                    {
+                        buildsOut = builds.Where(a => a.Storage.Type == type).ToList();
+                        foreach (var buildsout in buildsOut)
+                        {
+                            buildsFound.Add(buildsout);
+                        }
+                    }
+                    filtred = 1;
+                }
+                else if (storageTypeString != "")
+                {
+                    string[] storageTypeT = storageTypeString.Split('_');
+                    List<string> tempStorageType = new List<string>();
+                    foreach (var type in storageTypeT)
+                    {
+                        buildsOut = builds.Where(a => a.Storage.Type == type).ToList();
+                        if (type != "")
+                        {
+                            tempStorageType.Add(type);
+                        }
+                        foreach (var buildsout in buildsOut)
+                        {
+                            buildsFound.Add(buildsout);
+                        }
+                    }
+                    storageType = tempStorageType;
+                    filtred = 1;
+                }
+            }
+
+            if (filtred == 1)
+            {
+                builds.Clear();
+                foreach (var add in buildsFound)
+                {
+                    builds.Add(add);
+                }
+                buildsFound.Clear();
+                filtred = 0;
+            }
+
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+            List<string> emptyList = new List<string> { "" };
+            if (cpuSeries == null) cpuSeries = emptyList;
+            if (gpuSeries == null) gpuSeries = emptyList;
+            if (ramType == null) ramType = emptyList;
+            if (storageType == null) storageType = emptyList;
+
+            var buildListViewModel = new BuildListViewModel()
+            {
+                PagedList = builds.ToPagedList(pageNumber, pageSize),
                 Average = average,
-                Count = count
+                Count = count,
+
+                BuildFormCheckedViewModel = new BuildFormCheckedViewModel()
+                {
+                    CpuSeriesChecked = cpuSeries,
+                    GpuSeriesChecked = gpuSeries,
+                    RamTypeChecked = ramType,
+                    StorageTypeChecked = storageType,
+                    CpuManufacturersChecked = emptyList
+                }
             };
 
-            return View(buildsListViewModel);
+            return View(buildListViewModel);
         }
 
         [ChildActionOnly]
-        public ActionResult Filters()
+        public ActionResult Form(BuildFormCheckedViewModel checkd)
         {
 
             var cpus = context.Cpu.ToList();
+
+            var gpus = context.Gpu.ToList();
 
             var cpuManufacturer = context.Cpu.Select(a => a.Product.Manufacturer.Name)
                                 .Distinct()
@@ -92,17 +303,51 @@ namespace PartPicker.Controllers
                         .Distinct()
                         .ToList();
 
-            var buildFiltersViewModel = new BuildFiltersViewModel()
+            List<string> emptyList = new List<string> { "" };
+            List<string> manuList = new List<string> { "" };
+
+            if (checkd.CpuSeriesChecked == null)
+            {
+                checkd.CpuManufacturersChecked = emptyList;
+                checkd.CpuSeriesChecked = emptyList;
+            }
+            else
+            {
+                foreach (var serie in checkd.CpuSeriesChecked)
+                {
+                    if (serie != "")
+                    {
+                        var name = cpus.Where(a => a.Product.Series.Name == serie).ToList();
+                        if (!checkd.CpuManufacturersChecked.Contains(name[0].Product.Manufacturer.Name))
+                        {
+                            manuList.Add(name[0].Product.Manufacturer.Name);
+                        }
+                    }
+                }
+                if(manuList.Count()!=0)
+                {
+                    checkd.CpuManufacturersChecked = manuList;
+                }
+            }
+            if (checkd.GpuSeriesChecked == null) checkd.GpuSeriesChecked = emptyList;
+            if (checkd.RamTypeChecked == null) checkd.RamTypeChecked = emptyList;
+            if (checkd.StorageTypeChecked == null) checkd.StorageTypeChecked = emptyList;
+            if (checkd.CpuManufacturersChecked == null) checkd.CpuManufacturersChecked = emptyList;
+
+
+            var buildFormViewModel = new BuildFormViewModel()
             {
                 Cpus = cpus,
+                Gpus = gpus,
                 CpuSeries = cpuSeries,
                 CpuManufacturers = cpuManufacturer,
                 GpuSeries = gpuSeries,
                 StorageTypes = storageType,
                 RamTypes = ramType,
+                BuildFormCheckedViewModel = checkd
             };
 
-            return PartialView("_Filters", buildFiltersViewModel);
+            return PartialView("_Form", buildFormViewModel);
         }
     }
 }

@@ -48,7 +48,7 @@ namespace PartPicker.Controllers
 
         public async Task<ActionResult> AddBuild(string name, string description)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) // SPRAWDZENIE CZY FORMULARZ ZOSTAŁ POPRAWNIE WYPEŁNIONY
             {
                 if (Request.IsAuthenticated)
                 {
@@ -60,7 +60,7 @@ namespace PartPicker.Controllers
                     context.SaveChanges();
                     BuildManager.EmptyBuild();
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("BuildList", "Build");
                 }
                 else return RedirectToAction("Login", "Account");
             }
@@ -126,7 +126,7 @@ namespace PartPicker.Controllers
         // GPU
         public ActionResult AddGpuToBuild(int id)
         {
-            if (Request.IsAuthenticated)
+            if (Request.IsAuthenticated) // SPRAWDZENIE CZY UŻYTKOWNIK JEST ZALOGOWANY
             {
                 var c = context.Gpu.Where(a => a.GpuId == id).Take(1).ToList();
                 if (BuildManager.GetCase() != null)
@@ -146,7 +146,7 @@ namespace PartPicker.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            else return RedirectToAction("Login", "Account");
+            else return RedirectToAction("Login", "Account"); // PRZEKIEROWANIE
         }
 
         public ActionResult DeleteGpuFromBuild()

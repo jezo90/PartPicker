@@ -1,12 +1,16 @@
-﻿@model PartPicker.ViewModels.BuildsListViewModel
+﻿@model PartPicker.ViewModels.BuildListViewModel
 @using PartPicker.Infrastructure
+@using PagedList.Mvc
+
+<link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" />
 
 @{
     ViewBag.Title = "Buildy";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@Html.Action("Filters")
+@Html.Action("Form", new { checkd = Model.BuildFormCheckedViewModel })
+
 <div class="content">
     <div class="container ">
         <div class="item-list nazwy">
@@ -40,13 +44,13 @@
                     Autor
                 </div>
             </div>
-            
+
         </div>
     </div>
-    @foreach (var build in Model.Builds)
+    @foreach (var build in Model.PagedList)
     {
         <div class="container">
-            <a class="item-list-a" href="@Url.Action("Details", "Builds", new { id = build.BuildId, name = build.Name })">
+            <a class="item-list-a" href="@Url.Action("BuildDetails", "Builds", new { id = build.BuildId, name = build.Name })">
                 <div class="item-list">
                     <div class="item-box item-part-photo">
                         <div class="item-part">
@@ -113,11 +117,60 @@
                             @build.ApplicationUser.UserName
                         </div>
                     </div>
-                    
+
                 </div>
             </a>
         </div>
     }
+
+    <br />
+    Strona @( Model.PagedList.PageCount < Model.PagedList.PageNumber ? 0 : Model.PagedList.PageNumber) z @Model.PagedList.PageCount
+    <br />
+    @{
+        string seriesCpuPage = "";
+        foreach (var serie in Model.BuildFormCheckedViewModel.CpuSeriesChecked)
+        {
+            if (serie != "")
+            {
+                seriesCpuPage += serie + "_";
+            }
+        }
+
+        string seriesGpuPage = "";
+        foreach (var serie in Model.BuildFormCheckedViewModel.GpuSeriesChecked)
+        {
+            if (serie != "")
+            {
+                seriesGpuPage += serie + "_";
+            }
+        }
+
+        string ramTypePage = "";
+        foreach (var type in Model.BuildFormCheckedViewModel.RamTypeChecked)
+        {
+            if (type != "")
+            {
+                ramTypePage += type + "_";
+            }
+        }
+
+        string storageTypePage = "";
+        foreach (var type in Model.BuildFormCheckedViewModel.StorageTypeChecked)
+        {
+            if (type != "")
+            {
+                storageTypePage += type + "_";
+            }
+        }
+    }
+
+    @Html.PagedListPager(Model.PagedList, page => Url.Action("BuildList", new { page,
+    @seriesCpuString = seriesCpuPage,
+    @seriesGpuString = seriesGpuPage,
+    @storageTypeString = storageTypePage,
+    @ramTypeString = ramTypePage }))
+
+
 </div>
 
 

@@ -58,22 +58,21 @@ namespace PartPicker.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost] // USTAWIENIE METODY
+        [ValidateAntiForgeryToken] // DODATKOWE ZABEZPIECZENIE
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid) // SPRAWDZENIE CZY FORMULARZ ZOSTAŁ POPRAWNIE WYPEŁNIONY
             {
-                return View(model);
+                return View(model);  // ZWRÓCENIE FORMULARZA
             }
 
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
             ApplicationUser signedUser = UserManager.FindByEmail(model.Email);
             SignInStatus result;
             if (signedUser != null)
             {
-                result = await SignInManager.PasswordSignInAsync(signedUser.UserName, model.Password, model.RememberMe, shouldLockout: false);
+                result = await SignInManager.PasswordSignInAsync(signedUser.UserName, model.Password,
+                    model.RememberMe, shouldLockout: false);
             }
             else
             {
@@ -83,15 +82,10 @@ namespace PartPicker.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                //case SignInStatus.LockedOut:
-                //    return View("Lockout");
-                //case SignInStatus.RequiresVerification:
-                //    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                //case SignInStatus.Failure:
+                    return RedirectToLocal(returnUrl);  // LOGOWANIE POMYŚLNE 
                 default:
                     ModelState.AddModelError("Summary", "Nieprawidłowy email lub hasło.");
-                    return View(model);
+                    return View(model);                 // LOGOWANIE NIEPOMYŚLNE
             }
         }
 
@@ -109,23 +103,25 @@ namespace PartPicker.Controllers
             return View();
         }
 
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+        [HttpPost] // USTAWIENIE METODY
+        [AllowAnonymous] // DODATKOWE ZABEZPIECZENIE 
+        [ValidateAntiForgeryToken] // DODATKOWE ZABEZPIECZENIE
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) // SPRAWDZENIE CZY FORMULARZ ZOSTAŁ POPRAWNIE WYPEŁNIONY
             {
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, Permission = "user" };
+                var user = new ApplicationUser { UserName = model.UserName,
+                                                Email = model.Email, Permission = "user" };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                     return RedirectToAction("Index", "Home");
                 }
+                ModelState.AddModelError("Summary", "Email lub login jest już w użyciu");
                 AddErrors(result);
             }
-            return View(model);
+            return View(model);     // ZWRÓCENIE FORMULARZA
         }
 
 

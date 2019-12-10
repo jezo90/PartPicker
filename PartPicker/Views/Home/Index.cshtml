@@ -13,7 +13,7 @@
                         @foreach (var news in Model.New)
                         {
                             <div class="slide">
-                                <a href="@Url.Action("BuildsDetails", "Builds", new { id = news.BuildId, name = news.Name})">
+                                <a href="@Url.Action("BuildDetails", "Builds", new { id = news.BuildId, name = news.Name})">
                                     <img src="@Url.BuildsImagesPath(news.Image)" class="slide-background" />
                                     <img src="@Url.ImagesPath("new.png")" class="slide-icon" />
                                     <div class="slide-text">
@@ -48,7 +48,7 @@
                     @foreach (var hotBuild in Model.HotBuild)
                     {
                         <div class="slide">
-                            <a href="@Url.Action("BuildsDetails", "Builds", new { id = hotBuild.BuildId, name = hotBuild.Name })">
+                            <a href="@Url.Action("BuildDetails", "Builds", new { id = hotBuild.BuildId, name = hotBuild.Name })">
                                 <img src="@Url.BuildsImagesPath(hotBuild.Image)" class="slide-background" />
                                 <img src="@Url.ImagesPath("hot.png")" class="slide-icon" />
                                 <div class="slide-text">

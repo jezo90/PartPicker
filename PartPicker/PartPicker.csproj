@@ -280,9 +280,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
-    <Compile Include="ViewModels\BuildFiltersViewModel.cs" />
-    <Compile Include="ViewModels\BuildSearchViewModel.cs" />
-    <Compile Include="ViewModels\BuildsListViewModel.cs" />
+    <Compile Include="ViewModels\Build\BuildFormViewModel.cs" />
+    <Compile Include="ViewModels\Build\BuildFormCheckedViewModel.cs" />
+    <Compile Include="ViewModels\Build\BuildListViewModel.cs" />
     <Compile Include="ViewModels\Case\CaseDetailsViewModel.cs" />
     <Compile Include="ViewModels\Case\CaseFormCheckedViewModel.cs" />
     <Compile Include="ViewModels\Case\CaseFormViewModel.cs" />
@@ -323,10 +323,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Builds\BuildsList.cshtml" />
-    <Content Include="Views\Builds\_Filters.cshtml" />
+    <Content Include="Views\Builds\BuildList.cshtml" />
+    <Content Include="Views\Builds\_Form.cshtml" />
     <Content Include="Views\Cpu\CpuDetails.cshtml" />
-    <Content Include="Views\Builds\BuildsDetails.cshtml" />
+    <Content Include="Views\Builds\BuildDetails.cshtml" />
     <Content Include="Views\NewBuild\NewBuild.cshtml" />
     <Content Include="Views\Cpu\CpuList.cshtml" />
     <Content Include="Views\Cpu\_Form.cshtml" />
