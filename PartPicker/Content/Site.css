@@ -989,9 +989,10 @@ footer {
 }
 
 .details-prices-shop-price {
-    font-size:28px;
-    float:right;
-    margin-right:10%;
+    font-size: 28px;
+    float: right;
+    margin-right: 10%;
+    color: #FFFFFF;
 }
 
 .details-prices-shop-item{
@@ -1085,6 +1086,16 @@ footer {
     -webkit-text-stroke: 0.5px BLACK;
 }
 
+.info-right-link:link {
+    color: #FFFFFF;
+}
+
+.details-build-info-link:link {
+    color: #FFFFFF;
+}
+
+
+
 .info-left img {
     width: 80%;
     height: auto;
@@ -1094,6 +1105,103 @@ footer {
     height: 10px;
     width: 10px;
 }
+
+
+@media screen and (max-width: 1090px) {
+
+    .details-image {
+        width: 25%;
+    }
+
+    .details-prices {
+        width: 70%;
+    }
+
+    .details-prices-shop {
+        border-bottom: solid 2px;
+    }
+
+    .details-name {
+        font-size: 25px;
+        border-bottom: solid 2px;
+    }
+
+    .content-details {
+        width: 95%;
+    }
+
+    .details-prices-shop-add {
+        width: 28px;
+    }
+
+    .add-link {
+        height: 100%;
+        width: auto;
+    }
+
+    .details-prices-shop-delete {
+        width: 60% !important;
+    }
+
+    .details-prices-shop-image {
+        height: 28px;
+        float: left;
+    }
+
+    .details-prices-shop-price {
+        font-size: 23px;
+    }
+
+    .details-prices-shop-item {
+        display: block;
+        width: 34px;
+        height: 34px;
+    }
+
+    .details-prices-shop-item-link {
+        width: 90% !important;
+    }
+
+    .details-info {
+        font-size: 15px;
+    }
+
+    .details-info-text {
+        border-bottom: solid 2px;
+    }
+
+    .info-yellow {
+        border: #661d1d solid 5px;
+    }
+
+    .info-red {
+        border: #661d1d solid 5px;
+    }
+
+    .info-green {
+        border: #147f07 solid 5px;
+    }
+
+    .info-left {
+        width: 8%;
+    }
+
+    .info-right {
+        width: 92%;
+    }
+
+    .info-left img {
+        width: 80%;
+        height: auto;
+    }
+
+    .newbuild-add {
+        height: 10px;
+        width: 10px;
+    }
+
+}
+
 
 
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! DETAILS BUILD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
@@ -1121,7 +1229,7 @@ footer {
     align-self:center;
 }
 .details-build-info-image {
-    width: 6%;
+    width: 50PX;
     height: auto;
     align-self: center;
 }
@@ -1159,16 +1267,68 @@ footer {
     height: auto;
     align-self: center;
 }
+
+
+.details-grade{
+    display:inline-flex;
+}
+
 .details-build-comments-grade-star{
-    width:2%;
+    width:20PX;
 }
 .details-build-comments-text{
     background-color:#1b1b1b;
     padding: 2%;
 }
 
+@media screen and (max-width: 1020px) {
+    .details-build-info-text {
+        width: 18%;
+    }
+    .details-build-info-link {
+        width: 82%;
+    }
+}
 
+@media screen and (max-width: 850px) {
+    .details-build-info-text {
+        width: 22%;
+    }
 
+    .details-build-info-link {
+        width: 78%;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .details-build-info-text {
+        width: 25%;
+    }
+
+    .details-build-info-link {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .details-build-info-text {
+        width: 30%;
+    }
+
+    .details-build-info-link {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .details-build-info-text {
+        width: 35%;
+    }
+
+    .details-build-info-link {
+        width: 65%;
+    }
+}
 
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! REGISTER FORM !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
@@ -1235,9 +1395,7 @@ color: #cc3a3a;
     width: 50%;
     border: 1.5px solid #303030;
 }
-.newbuild-row-column-picture{
 
-}
 .newbuild-row-column-picture-img {
     width: 50px;
     vertical-align: middle;
@@ -1278,4 +1436,49 @@ color: #cc3a3a;
 
 .newbuild-row-colum-100{
     width: 100%;
+}
+
+
+.newbuild-row {
+    display: flex;
+    text-align: center;
+    line-height: 60px;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+@media screen and (max-width: 1090px) {
+    .newbuild-row {
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .newbuild-row {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .newbuild-row {
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .newbuild-row-column-text {
+        font-size:14px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .newbuild-row-column-text {
+        font-size: 10px;
+    }
 }

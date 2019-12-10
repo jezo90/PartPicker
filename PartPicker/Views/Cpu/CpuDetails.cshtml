@@ -35,7 +35,7 @@
                             <br />
                             Odpowiedni Socket do wybranej przez Ciebie płyty głównej to: @Model.NewBuildViewModel.Mobo.Socket.Name
                             <br />
-                            <a href="@Url.Action("CpuList", "Cpu", new { @socketsString = Model.NewBuildViewModel.Mobo.Socket.Name })">
+                            <a class="info-right-link" href="@Url.Action("CpuList", "Cpu", new { @socketsString = Model.NewBuildViewModel.Mobo.Socket.Name })">
                                 Kliknij tutaj by przejść do wyszukiwania kompatybilnych procesorów.
                             </a>
                         </div>
@@ -50,7 +50,7 @@
                         </div>
                         <div class="info-right">
                             W Twojej konfiguracji znajduje się już procesor:
-                            <a href="@Url.Action("CpuDetails", "Cpu", new { id = Model.NewBuildViewModel.Cpu.CpuId })">
+                            <a class="info-right-link" href="@Url.Action("CpuDetails", "Cpu", new { id = Model.NewBuildViewModel.Cpu.CpuId })">
                                 @Model.NewBuildViewModel.Cpu.Name
                             </a>
                         </div>
@@ -66,7 +66,7 @@
                     <div class="info-right">
                         Zaloguj się by stworzyć własną konfigurację.
                         <br />
-                        <a href="@Url.Action("Login", "Account")">Kliknij tutaj by się zalogować.</a>
+                        <a class="info-right-link" href="@Url.Action("Login", "Account")">Kliknij tutaj by się zalogować.</a>
                     </div>
                 </div>
             }
