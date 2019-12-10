@@ -138,13 +138,16 @@
             <div class="details-info-text">CZĘSTOTLIWOŚĆ TAKTOWANIA(GHz): @Model.Cpu.Frequency<br /></div>
             <div class="details-info-text">CZĘSTOTLIWOŚĆ TAKTOWANIA W TRYBIE TURBO(GHz): @Model.Cpu.Turbo<br /></div>
             <div class="details-info-text">WBUDOWANA KARTA GRAFICZNA: @Model.Cpu.Gpu<br /></div>
+            <!-- Główny zbiornik dla informacji o wyniku wydajnościowym -->
             <div class="details-info-text details-info-text-flex">
                 <div class="benchmark-text">BENCHMARK:</div>
-                <div class="benchmark-bar">
+                <div class="benchmark-bar">                   
                     <div class="benchmark-bar-background-text">
+                        <!-- Wartość znajdująca się na pasku postępowym -->
                         @Model.Cpu.Benchmark / @Model.BenchmarkMax
                     </div>
                     @{
+                        /* kod pozwalający na dobranie odpowiedniego koloru paska dla danego wyniku komponentu */
                         int bar = 100 * Model.Cpu.Benchmark / Model.BenchmarkMax;
                         string color = "#ffffff";
                         if (bar <= 25)
@@ -158,7 +161,6 @@
                     }
                     <div class="benchmark-bar-background" style="width:@bar%; background-color: @color;">&nbsp</div>
                 </div>
-                <br />
             </div>
         </div>
     </div>
