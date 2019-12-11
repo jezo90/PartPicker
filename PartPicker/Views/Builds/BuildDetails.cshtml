@@ -15,7 +15,7 @@
         <div class="details-prices">
 
             <div class="details-name">
-                @Model.Name.ToUpper() 
+                @Model.Name.ToUpper()
             </div>
 
             <div class="details-grade">
@@ -47,7 +47,13 @@
                     }
                 }
                 (@Model.Rates.Count())
+
+
             </div>
+
+            <br />
+
+            @Html.Action("RateForm")
 
             <div class="details-build-description">
                 OPIS: <br />

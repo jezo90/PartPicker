@@ -99,6 +99,11 @@ namespace PartPicker
                 defaults: new { controller = "Builds", action = "BuildDetails", id = UrlParameter.Optional, name = UrlParameter.Optional });
 
             routes.MapRoute(
+                name: "BuildsForm",
+                url: "buildy/{action}/{id}",
+                defaults: new { controller = "Builds", action = "BuildsList", id = UrlParameter.Optional });
+
+            routes.MapRoute(
                 name: "Builds",
                 url: "buildy",
                 defaults: new { controller = "Builds", action = "BuildList" });
@@ -178,11 +183,6 @@ namespace PartPicker
                 name: "AddCaseToNewBuild",
                 url: "nowy-build/case-{id}",
                 defaults: new { controller = "NewBuild", action = "AddCaseToBuild", id = UrlParameter.Optional });
-
-            routes.MapRoute(
-                name: "Static",
-                url: "{name}",
-                defaults: new { controller = "Home", action = "Static" });
 
             routes.MapRoute(
                 name: "Default",

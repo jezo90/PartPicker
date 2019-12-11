@@ -276,6 +276,18 @@ namespace PartPicker.Controllers
         }
 
         [ChildActionOnly]
+        public ActionResult RateForm(int id)
+        {
+            var buildRatesViewModel = new BuildRatesViewModel()
+            {
+                BuildId = id
+            };
+
+            return PartialView("_RateForm", buildRatesViewModel);
+        }
+
+
+        [ChildActionOnly]
         public ActionResult Form(BuildFormCheckedViewModel checkd)
         {
 

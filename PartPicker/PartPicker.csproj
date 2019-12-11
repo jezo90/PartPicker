@@ -283,6 +283,7 @@
     <Compile Include="ViewModels\Build\BuildFormViewModel.cs" />
     <Compile Include="ViewModels\Build\BuildFormCheckedViewModel.cs" />
     <Compile Include="ViewModels\Build\BuildListViewModel.cs" />
+    <Compile Include="ViewModels\Build\BuildRatesViewModel.cs" />
     <Compile Include="ViewModels\Case\CaseDetailsViewModel.cs" />
     <Compile Include="ViewModels\Case\CaseFormCheckedViewModel.cs" />
     <Compile Include="ViewModels\Case\CaseFormViewModel.cs" />
@@ -350,6 +351,7 @@
     <Content Include="Views\Case\_Form.cshtml" />
     <Content Include="Views\Case\CaseDetails.cshtml" />
     <Content Include="Views\Case\CaseList.cshtml" />
+    <Content Include="Views\Builds\_RateForm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
