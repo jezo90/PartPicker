@@ -209,7 +209,7 @@ namespace PartPicker.DAL
                 new Case () { CaseId = 1, Name = "NZXT H500 (Black)", ManufacturerId = 14,
                             Model = "H500", Link = "https://www.morele.net/obudowa-nzxt-h500-okno-bialy-ca-h500b-w1-4596293/",
                             FormFactorId = 2, Fans = 5, GpuLenght = 381,
-                            Image = "nzxt.png", ShopId = 3 },
+                            Image = "h500.png", ShopId = 3 },
 
                 new Case () { CaseId = 2, Name = "Phanteks Eclipse P300 Tempered Glass (Black)", ManufacturerId = 15,
                             Model = "Eclipse P300",  Link = "https://www.morele.net/obudowa-phanteks-eclipse-p300-ph-ec300ptg-bk-1603218/",
@@ -552,47 +552,47 @@ namespace PartPicker.DAL
                 new Storage ()  { StorageId = 1, Name = "KINGSTON A400 SSD 240GB",  ManufacturerId = 9,
                                 Model = "A400", Link = "https://www.mediaexpert.pl/dyski-ssd/dysk-kingston-a400-240gb-ssd,id-1021586",
                                 Type = "SSD", Capacity = 240, InterfaceId = 2, Size = 2.5,
-                                Image = "kingstona400.jpg", ShopId = 1},
+                                Image = "kingstona400.png", ShopId = 1},
 
                 new Storage ()  { StorageId = 2, Name = "KINGSTON A400 SSD 240GB", ManufacturerId = 9,
                                 Model = "A400", Link = "https://www.morele.net/dysk-ssd-kingston-a400-240gb-sata3-sa400s37-240g-1235881/",
                                 Type = "SSD", Capacity = 240, InterfaceId = 2, Size = 2.5,
-                                Image = "kingstona400.jpg", ShopId = 3},
+                                Image = "kingstona400.png", ShopId = 3},
 
                 new Storage ()  { StorageId = 3, Name = "Seagate Enterprise Capacity HDD 6TB", ManufacturerId = 10,
                                 Model = "Enterprise Capacity", Link = "https://vobis.pl/komputery/komponenty-serwerowe/dyski-twarde/dysk-seagate-enterprise-capacity-hdd-3-5-6tb-sas-7200rpm-256mb-1",
                                 Type = "HDD", Capacity = 6000, InterfaceId = 6, Size = 3.5,
-                                Image = "seagate6tb.jpg", ShopId = 2},
+                                Image = "seagate6tb.png", ShopId = 2},
 
                 new Storage ()  { StorageId = 4, Name = "WD Blue 500GB SSD WDS500G2B0A", ManufacturerId = 11,
                                 Model = "Blue", Link = "https://www.sferis.pl/dysk-500-gb-wd-blue-wds500g2b0a-25-sata-iii-p517640",
                                 Type = "SSD", Capacity = 500, InterfaceId = 2, Size = 2.5,
-                                Image = "wdblue.jpg", ShopId = 4},
+                                Image = "wdblue.png", ShopId = 4},
 
                 new Storage ()  { StorageId = 5, Name = "ADATA 256GB SU800", ManufacturerId = 12,
                                 Model = "SU800", Link = "https://www.sferis.pl/dysk-256-gb-adata-su800-asu800ss-256gt-c-25-sata-iii-p455459",
                                 Type = "SSD", Capacity = 256, InterfaceId = 2, Size = 2.5,
-                                Image = "adatasu800.jpg", ShopId = 4},
+                                Image = "adatasu800.png", ShopId = 4},
 
                 new Storage ()  { StorageId = 6, Name = "HDD Seagate Barracuda 1 TB", ManufacturerId = 10,
                                 Model = "Barracuda", Link = "https://www.sferis.pl/dysk-hdd-seagate-st1000dm010-barracuda-1-tb-35-sata-iii-7200-obr-min-64-mb-p455378",
                                 Type = "HDD", Capacity = 1000, InterfaceId = 2, Size = 3.5,
-                                Image = "barracuda.jpg", ShopId = 4},
+                                Image = "barracuda.png", ShopId = 4},
 
                 new Storage ()  { StorageId = 7, Name = "Western Digital HDD 1TB WD10EZEX", ManufacturerId = 11,
                                 Model = "Blue", Link = "https://www.morele.net/dysk-western-digital-caviar-blue-3-5-1tb-sata-600-7200rpm-64mb-cache-wd10ezex-479659/",
                                 Type = "HDD", Capacity = 1000, InterfaceId = 2, Size = 3.5,
-                                Image = "wdhdd1tb.jpg", ShopId = 3},
+                                Image = "wdhdd1tb.png", ShopId = 3},
 
                 new Storage ()  { StorageId = 8, Name = "Seagate HDD 2TB ST2000DM006", ManufacturerId = 10,
                                 Model = "Barracuda", Link = "https://www.morele.net/dysk-seagate-barracuda-2tb-sata-600-st2000dm006-958505/",
                                 Type = "HDD", Capacity = 2000, InterfaceId = 2, Size = 3.5,
-                                Image = "seagatehdd2tb.jpg", ShopId = 3},
+                                Image = "seagatehdd2tb.png", ShopId = 3},
 
                 new Storage ()  { StorageId = 9, Name = "Samsung SSD 500GB MZ-76E500B/AM", ManufacturerId = 13,
                                 Model = "860 Evo", Link = "https://www.morele.net/dysk-ssd-samsung-860-evo-500gb-sata3-mz-76e500b-eu-1773653/",
                                 Type = "SSD", Capacity = 500, InterfaceId = 2, Size = 2.5,
-                                Image = "samsungssd500gb.jpg", ShopId = 3}
+                                Image = "samsungssd500gb.png", ShopId = 3}
             };
 
             storages.ForEach(s => context.Storage.AddOrUpdate(s));
