@@ -55,12 +55,12 @@ namespace PartPicker
 
             routes.MapRoute(
                 name: "StorageDetails",
-                url: "dyski-twarde/{name}-{id}",
+                url: "dyski/{name}-{id}",
                 defaults: new { controller = "Storage", action = "StorageDetails", id = UrlParameter.Optional, name = UrlParameter.Optional });
 
             routes.MapRoute(
                 name: "Storages",
-                url: "dyski-twarde",
+                url: "dyski",
                 defaults: new { controller = "Storage", action = "StorageList" });
 
             routes.MapRoute(
