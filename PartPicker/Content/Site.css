@@ -1561,16 +1561,25 @@ color: #cc3a3a;
 }
 
     .stars label::before {
-        content: '★';
-        color: #c0c0c0;
-        font-size: 28px;
-        line-height: 30px;
+        background-image: url('/Content/Images/zero.png');
+        background-size: 30px 30px;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        content: "";
+        display: inline-block;
     }
 
     .stars label:hover::before,
     .stars label:hover ~ label::before,
     .stars input:checked ~ label::before {
-        color: #ef7f29;
+        background-image: url(../Content/Images/star.png);
+        background-size: 30px 30px;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        content: "";
+        display: inline-block;
     }
 
 
