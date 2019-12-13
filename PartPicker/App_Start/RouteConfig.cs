@@ -99,15 +99,14 @@ namespace PartPicker
                 defaults: new { controller = "Builds", action = "BuildDetails", id = UrlParameter.Optional, name = UrlParameter.Optional });
 
             routes.MapRoute(
-                name: "BuildsForm",
-                url: "buildy/{action}/{id}",
-                defaults: new { controller = "Builds", action = "BuildsList", id = UrlParameter.Optional });
-
-            routes.MapRoute(
                 name: "Builds",
                 url: "buildy",
                 defaults: new { controller = "Builds", action = "BuildList" });
 
+            routes.MapRoute(
+                name: "BuildsForm",
+                url: "buildy/{action}/{id}",
+                defaults: new { controller = "Builds", action = "BuildsList", id = UrlParameter.Optional });
 
             routes.MapRoute(
                 name: "NewBuild",
