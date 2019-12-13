@@ -2,13 +2,13 @@
 
 <form id="build-grade" action="@Url.Action("AddRate", "Builds", new { @id = Model.BuildId, @name = Model.BuildName } )" method="post">
 
-    <div class="newbuild-row">
-        <div class="newbuild-row-column">
-            <div class="newbuild-row-column-text">
+    <div class="grades-row">
+        <div class="grades-row-column">
+            <div class="grades-row-column-text">
                 Ocena:
             </div>
         </div>
-        <div class="newbuild-row-column">
+        <div class="grades-row-column">
             <div class="stars">
                 <input type="radio" id="star5" name="rate" value="5" @if (Model.Rate.Grade == 5) { @: checked
                        }>
@@ -30,20 +30,18 @@
     </div>
 
 
-    <div class="newbuild-row">
-        <div class="newbuild-row-column newbuild-row-colum-100">
-            <div class="newbuild-row-column-text">
+    <div class="grades-row">
+        <div class="grades-row-column grades-row-colum-100">
+            <div class="grades-row-column-text">
                 Komentarz:
             </div>
-            <textarea form="build-grade" class="newbuild-row-column-description" type="text" name="comment" maxlength="150">
-            @Model.Rate.Comment 
-            </textarea>
+            <textarea form="build-grade" class="grades-row-column-description" type="text" name="comment" maxlength="150">@Model.Rate.Comment</textarea>
         </div>
 
     </div>
 
-    <div class="newbuild-row">
-        <input class="form-submit-addgrade" type="submit" value="Dodaj ocenę" />
+    <div class="grades-row">
+        <input class="form-submit-addbuild" type="submit" value="Dodaj ocenę" />
     </div>
 
 

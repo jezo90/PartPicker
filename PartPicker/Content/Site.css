@@ -1245,6 +1245,7 @@ footer {
 }
 .details-build-description {
     width: 100%;
+    margin-bottom: 10px;
     display: inline-block;
     height: auto;
     overflow-wrap: break-word;
@@ -1407,7 +1408,7 @@ color: #cc3a3a;
 
 .newbuild-row-column-description {
     width: 90%;
-    height: 150px;
+    height: 100px;
     padding: 12px 20px;
     box-sizing: border-box;
     border: 2px solid #ccc;
@@ -1439,15 +1440,6 @@ color: #cc3a3a;
 }
 
 
-.newbuild-row {
-    display: flex;
-    text-align: center;
-    line-height: 60px;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
 
 
 @media screen and (max-width: 1090px) {
@@ -1489,6 +1481,68 @@ color: #cc3a3a;
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Grades !!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
 
+.grades-row {
+    display: flex;
+    text-align: center;
+    line-height: 40px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.grades-row-column {
+    width: 50%;
+    border: 1.5px solid #303030;
+}
+
+.grades-row-column-picture-img {
+    width: 50px;
+    vertical-align: middle;
+}
+
+.grades-row-column-text {
+    align-self: center;
+}
+
+.grades-row-column-description {
+    width: 90%;
+    height: 100px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+}
+
+.grades-row-delete {
+    display: inline-flex;
+}
+
+.form-submit-addbuild {
+    color: #ef7f29;
+    width: 100%;
+    font-family: montserrat-extrabold;
+    background-color: #1b1b1b;
+    border: 2px solid #ef7f29;
+    padding: 10px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+    .form-submit-addbuild:hover {
+        background-color: #ef7f29; /* Green */
+        color: white;
+    }
+
+.grades-row-colum-100 {
+    width: 100%;
+}
+
+
+
+
+
+
+
 .stars {
     display: flex;
     justify-content: center;
@@ -1511,7 +1565,7 @@ color: #cc3a3a;
     .stars label::before {
         content: '★';
         color: #c0c0c0;
-        font-size: 30px;
+        font-size: 28px;
         line-height: 30px;
     }
 
