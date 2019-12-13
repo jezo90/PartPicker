@@ -1,11 +1,6 @@
-﻿@model PartPicker.ViewModels.NewBuildViewModel
-@using PartPicker.Infrastructure
-@{
-    ViewBag.Title = "Nowa konfiguracja";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    <script src="@Url.Content("~/Scripts/JavaScriptDropDown.js")"></script>
-}
-<form id="build-grade" action="" method="post">
+﻿@model PartPicker.ViewModels.BuildRatesViewModel
+
+<form id="build-grade" action="@Url.Action("AddRate", "Builds", new { @id = Model.BuildId, @name = Model.BuildName } )" method="post">
 
     <div class="newbuild-row">
         <div class="newbuild-row-column">
@@ -15,16 +10,21 @@
         </div>
         <div class="newbuild-row-column">
             <div class="stars">
-                <input type="radio" id="star5" name="star" value="5">
-                <label for="star5"> Five Stars </label>
-                <input type="radio" id="star4" name="star" value="4">
-                <label for="star4"> Four Stars </label>
-                <input type="radio" id="star3" name="star" value="3">
-                <label for="star3"> Three Stars </label>
-                <input type="radio" id="star2" name="star" value="2">
-                <label for="star2"> Two Stars </label>
-                <input type="radio" id="star1" name="star" value="1">
-                <label for="star1"> One Star </label>
+                <input type="radio" id="star5" name="rate" value="5" @if (Model.Rate.Grade == 5) { @: checked
+                       }>
+                <label for="star5"></label>
+                <input type="radio" id="star4" name="rate" value="4" @if (Model.Rate.Grade == 4) { @: checked
+                       }>
+                <label for="star4"></label>
+                <input type="radio" id="star3" name="rate" value="3" @if (Model.Rate.Grade == 3) { @: checked
+                       }>
+                <label for="star3"></label>
+                <input type="radio" id="star2" name="rate" value="2" @if (Model.Rate.Grade == 2) { @: checked
+                       }>
+                <label for="star2"></label>
+                <input type="radio" id="star1" name="rate" value="1" @if (Model.Rate.Grade == 1) { @: checked
+                       }>
+                <label for="star1"></label>
             </div>
         </div>
     </div>
@@ -33,9 +33,11 @@
     <div class="newbuild-row">
         <div class="newbuild-row-column newbuild-row-colum-100">
             <div class="newbuild-row-column-text">
-                Opis:
+                Komentarz:
             </div>
-            <textarea form="build-grade" class="newbuild-row-column-description" type="text" name="description" maxlength="150" value="Test Opis"></textarea>
+            <textarea form="build-grade" class="newbuild-row-column-description" type="text" name="comment" maxlength="150">
+            @Model.Rate.Comment 
+            </textarea>
         </div>
 
     </div>

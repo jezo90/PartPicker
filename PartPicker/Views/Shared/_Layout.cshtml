@@ -14,9 +14,7 @@
 
             @if (Request.IsAuthenticated)
             {
-                <a href="@Url.Action("Index", "Manage")">Witaj @User.Identity.GetUserName()</a>
-
-
+                <a href="@Url.Action("Index", "Home")">Witaj @User.Identity.GetUserName()</a>
 
                 using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { id = "logoutForm" }))
                 {
