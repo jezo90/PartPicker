@@ -52,6 +52,7 @@ namespace PartPicker.Controllers
             {
                 if (Request.IsAuthenticated)
                 {
+                    if (description == "") description = "Brak";
                     var userId = User.Identity.GetUserId();
                     var build = BuildManager.NewBuild();
                     var newBuild = BuildManager.CreateBuild(build, userId, description, name);

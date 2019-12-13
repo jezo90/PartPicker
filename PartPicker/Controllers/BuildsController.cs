@@ -307,6 +307,7 @@ namespace PartPicker.Controllers
             if (rate!=0)
             {
                 var userId = User.Identity.GetUserId();
+                if (comment == "") comment = "Brak";
                 var newRate = new Rate()
                 {
                     BuildId = id,
