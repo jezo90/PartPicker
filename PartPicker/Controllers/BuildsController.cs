@@ -8,6 +8,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using System.Data.Entity.Migrations;
 
 namespace PartPicker.Controllers
 {
@@ -276,14 +279,52 @@ namespace PartPicker.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult RateForm(int id)
+        public ActionResult RateForm(int id, string name)
         {
+            var userId = User.Identity.GetUserId();
+            var rate = context.Rate.Where(a => a.BuildId == id && a.ApplicationUserId == userId).ToList();
+            if (rate.Count == 0)
+            {
+                var empty = new Rate()
+                {
+                    Grade = 3,
+                    Comment = "Dodaj komentarz"
+                };
+                rate.Add(empty);
+            }
             var buildRatesViewModel = new BuildRatesViewModel()
             {
-                BuildId = id
+                BuildId = id,
+                BuildName = name,
+                Rate = rate[0]
             };
 
             return PartialView("_RateForm", buildRatesViewModel);
+        }
+
+        public ActionResult AddRate(int id, string name, string comment, int rate = 0)
+        {
+            if (rate!=0)
+            {
+                var userId = User.Identity.GetUserId();
+                var newRate = new Rate()
+                {
+                    BuildId = id,
+                    ApplicationUserId = userId,
+                    Comment = comment,
+                    Grade = rate,
+                    Added = DateTime.Now
+                };
+                var rates = context.Rate.Where(a => a.BuildId == id && a.ApplicationUserId == userId).ToList();
+                foreach (var r in rates)
+                {
+                    context.Rate.Remove(r);
+                }
+                context.Rate.Add(newRate);
+                context.SaveChanges();
+            }
+
+            return RedirectToAction("BuildDetails", new { id, name });
         }
 
 
@@ -336,7 +377,7 @@ namespace PartPicker.Controllers
                         }
                     }
                 }
-                if(manuList.Count()!=0)
+                if (manuList.Count() != 0)
                 {
                     checkd.CpuManufacturersChecked = manuList;
                 }

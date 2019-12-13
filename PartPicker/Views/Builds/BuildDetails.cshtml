@@ -53,12 +53,16 @@
 
             <br />
 
-            @Html.Action("RateForm", Model.BuildId)
-
             <div class="details-build-description">
                 OPIS: <br />
                 @Model.Description
             </div>
+
+            <br />
+            @if (Request.IsAuthenticated)
+            {
+                @Html.Action("RateForm", new { @buildId = Model.BuildId, @name = Model.Name })
+            }
 
         </div>
 
@@ -161,7 +165,7 @@
             {
                 <div class="details-build-comments-grade">
                     <div class="details-build-comments-grade-text">
-                        @rate.ApplicationUser.UserName @rate.Grade
+                        @rate.ApplicationUser.UserName
                     </div>
 
 
