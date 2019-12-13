@@ -1256,7 +1256,7 @@ footer {
     display: flex;
 }
 .details-build-comments-grade-text {
-    width: 10%;
+    margin-right:20px;
     height: auto;
     align-self: center;
 }
@@ -1264,10 +1264,11 @@ footer {
 
 .details-grade{
     display:inline-flex;
+    align-items:center;
 }
 
 .details-build-comments-grade-star{
-    width:20PX;
+    width:26PX;
 }
 .details-build-comments-text{
     background-color:#1b1b1b;
@@ -1546,6 +1547,8 @@ color: #cc3a3a;
     justify-content: center;
     align-items: center;
     flex-direction: row-reverse;
+    margin-top:5px;
+    margin-bottom:5px;
 }
 
     .stars input {
@@ -1556,7 +1559,6 @@ color: #cc3a3a;
 .stars label {
     width: 30px;
     height: 30px;
-    padding: 5px;
     color: transparent;
 }
 

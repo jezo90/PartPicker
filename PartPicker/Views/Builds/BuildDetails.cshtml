@@ -18,6 +18,10 @@
                 @Model.Name.ToUpper()
             </div>
 
+            <div class="details-build-description">
+                Autor: @Model.ApplicationUser.UserName
+            </div>
+
             <div class="details-grade">
                 @{
                     double sum = 0;
