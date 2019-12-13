@@ -21,6 +21,11 @@
             </div>
             <div class="item-box">
                 <div class="item-part">
+                    Nazwa
+                </div>
+            </div>
+            <div class="item-box">
+                <div class="item-part">
                     Procesor
                 </div>
             </div>
@@ -39,11 +44,7 @@
                     Ocena
                 </div>
             </div>
-            <div class="item-box">
-                <div class="item-part">
-                    Nazwa
-                </div>
-            </div>
+
 
         </div>
     </div>
@@ -55,6 +56,11 @@
                     <div class="item-box item-part-photo">
                         <div class="item-part">
                             <img class="item-part-image" src="@Url.BuildsImagesPath(build.Image)" />
+                        </div>
+                    </div>
+                    <div class="item-box">
+                        <div class="item-part item-list-name">
+                            @build.Name
                         </div>
                     </div>
                     <div class="item-box">
@@ -112,11 +118,7 @@
 
                         </div>
                     </div>
-                    <div class="item-box">
-                        <div class="item-part item-list-name">
-                            @build.Name
-                        </div>
-                    </div>
+
 
                 </div>
             </a>
