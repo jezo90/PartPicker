@@ -104,6 +104,16 @@ namespace PartPicker
                 defaults: new { controller = "Builds", action = "BuildList" });
 
             routes.MapRoute(
+                 name: "BuildsHide",
+                 url: "buildy/{name}-{id}/ukryj",
+                 defaults: new { controller = "Builds", action = "BuildHide", id = UrlParameter.Optional, name = UrlParameter.Optional });
+
+            routes.MapRoute(
+                 name: "BuildCommentDelete",
+                 url: "buildy/{name}-{buildId}/usun-komentarz-{rateId}",
+                 defaults: new { controller = "Builds", action = "BuildCommentDelete", buildId = UrlParameter.Optional, name = UrlParameter.Optional, rateId = UrlParameter.Optional });
+
+            routes.MapRoute(
                 name: "BuildsForm",
                 url: "buildy/{action}/{id}",
                 defaults: new { controller = "Builds", action = "BuildsList", id = UrlParameter.Optional });
