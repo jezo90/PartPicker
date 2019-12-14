@@ -621,12 +621,6 @@ footer {
 }
 
 
-.slide-wrapper {
-    width: 1539px;
-    height: 450px;
-    -webkit-animation: slide 10s ease infinite;
-}
-
 .slide {
     position: relative;
     float: left;
@@ -675,7 +669,13 @@ footer {
         padding: 0;
         list-style-type: none;
     }
-
+/* Zbiornik dla wszystkich slajdów pokazu */
+.slide-wrapper {
+    width: 1539px;
+    height: 450px;
+    -webkit-animation: slide 10s ease infinite;
+}
+/* Kluczowe klatki */
 @-webkit-keyframes slide {
     25% {
         margin-left: 0px;
@@ -776,7 +776,6 @@ footer {
             margin-left: -960px;
         }
     }
-
 
     .slide-text {
         width: 480px;
