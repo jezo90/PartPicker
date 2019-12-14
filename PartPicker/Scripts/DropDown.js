@@ -13,9 +13,7 @@ function dropdownNav() {
             x.className = "image_up";
             var x = document.getElementById("image_down");
             x.className = "image_down";
-        }
-
-       
+        }   
     }
 
     var x = document.getElementById("plus");
@@ -39,25 +37,26 @@ function dropdownNav() {
 
 
 
-
+// funkcja odpowiadająca za rozwijanie oraz zwijanie menu
 function drop() {
+    // chowanie oraz zwijanie menu
     document.getElementById("myDropdown").classList.toggle("show");
 
-
+    // funkcja odpowiadająca za strzałke skierowaną w dół
     var x = document.getElementById("image_down");
     if (x.className === "image_down") {
         x.className += " hide";
     } else {
         x.className = "image_down";
     }
-
+    // funkcja odpowiadająca za strzałke skierowaną w górę
     var x = document.getElementById("image_up");
     if (x.className === "image_up") {
         x.className += " show";
     } else {
         x.className = "image_up";
     }
-
+    // funkcja odpowiadająca za kolor przycisku dropbtn
     var x = document.getElementById("dropbtn");
     if (x.className === "dropbtn") {
         x.className += " orange";
@@ -67,23 +66,29 @@ function drop() {
 
 }
 
-// Close the dropdown if the user clicks outside of it
+// zamknij menu jeżeli użytkownik klinie poza jego obszarem
 window.onclick = function (e) {
 
+    // zwinięcie menu
     if (!e.target.matches('.dropbtn')) {
         var myDropdown = document.getElementById("myDropdown");
         if (myDropdown.classList.contains('show')) {
-            myDropdown.classList.remove('show');
-            
+            myDropdown.classList.remove('show');            
         }
-
+        // zmiana koloru przycisku
         var x = document.getElementById("dropbtn");
-        if (x.className === "dropbtn") {
-           
+        if (x.className === "dropbtn") {          
         } else {
             x.className = "dropbtn";
         }
-
+        // zmiana kierunku strzałki jeżeli menu było rozwinięte
+        var x = document.getElementById("image_up");
+        if (x.className === "image_up") {
+        } else {
+            x.className = "image_up";
+            var x = document.getElementById("image_down");
+            x.className = "image_down";
+        }
 
     }
 
