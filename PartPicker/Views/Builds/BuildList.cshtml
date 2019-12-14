@@ -59,9 +59,18 @@
                         </div>
                     </div>
                     <div class="item-box">
-                        <div class="item-part item-list-name">
-                            @build.Name
-                        </div>
+                        @if (build.Hidden)
+                        {
+                            <div class="item-part item-list-name" style="color: #cc3a3a">
+                                @build.Name
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="item-part item-list-name">
+                                @build.Name
+                            </div>
+                        }
                     </div>
                     <div class="item-box">
                         <div class="item-part">
