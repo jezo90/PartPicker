@@ -295,7 +295,7 @@ namespace PartPicker.DAL
 
                 new Cpu () { CpuId = 7, Name = "Intel Core i3-9100F", ProductId = 4,
                             Model = "9100F", Link = "https://www.morele.net/procesor-intel-core-i3-9100f-3-6ghz-6mb-box-bx80684i39100f-5954267/",
-                            SocketId = 1, Cores = 4, Frequency = 3.6, Turbo = 4.2, Gpu = "Brak", Benchmark = 0,
+                            SocketId = 1, Cores = 4, Frequency = 3.6, Turbo = 4.2, Gpu = "Brak", Benchmark = 1,
                             Image = "i39100f.png", ShopId = 3},
 
                 new Cpu () { CpuId = 8, Name = "Intel Core i7-8700K", ProductId = 5,
