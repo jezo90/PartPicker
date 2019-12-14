@@ -63,6 +63,16 @@ namespace PartPicker.Controllers
             {
                 if (count[i] != 0d) average[i] = sum[i] / count[i] * 1.0d;
             }
+            if (Request.IsAuthenticated)
+            {
+                var userName = User.Identity.GetUserName();
+                if (userName != "admin")
+                    builds = context.Build.Where(a => a.Hidden == false).ToList();
+            }
+            else
+            {
+                builds = context.Build.Where(a => a.Hidden == false).ToList();
+            }
 
             // CPU
             if (cpuSeries != null)
@@ -278,6 +288,38 @@ namespace PartPicker.Controllers
             return View(buildListViewModel);
         }
 
+        public ActionResult BuildHide(int id, string name)
+        {
+            if (Request.IsAuthenticated)
+            {
+                if (User.Identity.GetUserName() == "admin")
+                {
+                    var buildToHide = context.Build.Where(a => a.BuildId == id).ToList();
+                    buildToHide[0].Hidden = !buildToHide[0].Hidden;
+                    context.SaveChanges();
+                }
+            }
+
+            return RedirectToAction("BuildDetails", new { id, name });
+        }
+
+        public ActionResult BuildCommentDelete(int rateId, int buildId, string name)
+        {
+            if (Request.IsAuthenticated)
+            {
+                if (User.Identity.GetUserName() == "admin")
+                {
+                    var commentToDelete = context.Rate.Where(a => a.RateId == rateId).ToList();
+                    context.Rate.Remove(commentToDelete[0]);
+
+                    context.SaveChanges();
+                }
+            }
+
+            return RedirectToAction("BuildDetails", new { id = buildId, name });
+        }
+
+
         [ChildActionOnly]
         public ActionResult RateForm(int id, string name)
         {
@@ -304,7 +346,7 @@ namespace PartPicker.Controllers
 
         public ActionResult AddRate(int id, string name, string comment, int rate = 0)
         {
-            if (rate!=0)
+            if (rate != 0)
             {
                 var userId = User.Identity.GetUserId();
                 if (comment == "") comment = "Brak";
@@ -403,5 +445,7 @@ namespace PartPicker.Controllers
 
             return PartialView("_Form", buildFormViewModel);
         }
+
+
     }
 }
