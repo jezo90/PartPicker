@@ -1,4 +1,5 @@
 ﻿@using PartPicker.Infrastructure
+@using Microsoft.AspNet.Identity
 @model PartPicker.Models.Build
 
 @{
@@ -16,6 +17,10 @@
 
             <div class="details-name">
                 @Model.Name.ToUpper()
+                @if (@User.Identity.GetUserName() == "admin")
+                {
+                <a class="details-delete" style="float:right">Ukryj</a>
+                }
             </div>
 
             <div class="details-build-description">
@@ -167,37 +172,49 @@
         <div class="details-build-comments">
             @foreach (var rate in Model.Rates.OrderByDescending(a => a.Grade))
             {
-                <div class="details-build-comments-grade">
-                    <div class="details-build-comments-grade-text">
-                        @rate.ApplicationUser.UserName
-                    </div>
 
 
-                    @{ double grade = rate.Grade; }
-                    @for (var i = 0; i < 5; i++)
-                    {
-                        if (grade >= 0.75d)
-                        {
-                            <img class="details-build-comments-grade-star" src="@Url.ImagesPath("star.png")" />
-                            grade = grade - 1.0d;
-                        }
-                        else if (grade < 0.75d && grade > 0.25d)
-                        {
-                            <img class="details-build-comments-grade-star" src="@Url.ImagesPath("half.png")" />
-                            grade = grade - 1.0d;
-                        }
-                        else
-                        {
-                            <img class="details-build-comments-grade-star" src="@Url.ImagesPath("zero.png")" />
-                            grade = grade - 1.0d;
-                        }
-                    }
-                    <br />
+            <div class="details-build-comments-grade">
+
+
+                @if (@User.Identity.GetUserName() == "admin")
+                {
+                    <a class="details-delete" style="float:right">Usuń</a>
+                }
+
+                <div class="details-build-comments-grade-text">
+                    @rate.ApplicationUser.UserName
                 </div>
+
+
+                @{ double grade = rate.Grade; }
+                @for (var i = 0; i < 5; i++)
+                {
+                    if (grade >= 0.75d)
+                    {
+                        <img class="details-build-comments-grade-star" src="@Url.ImagesPath("star.png")" />
+                        grade = grade - 1.0d;
+                    }
+                    else if (grade < 0.75d && grade > 0.25d)
+                    {
+                        <img class="details-build-comments-grade-star" src="@Url.ImagesPath("half.png")" />
+                        grade = grade - 1.0d;
+                    }
+                    else
+                    {
+                        <img class="details-build-comments-grade-star" src="@Url.ImagesPath("zero.png")" />
+                        grade = grade - 1.0d;
+                    }
+                }
+
+
+                <br />
+            </div>
                 <div class="details-build-comments-text">
                     @rate.Comment
                 </div>
             }
+
         </div>
     </div>
 </div>

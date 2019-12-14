@@ -9,9 +9,10 @@
     <script src="@Url.Content("~/Scripts/DropDown.js")"></script>
 </head>
 <body>
+    <!-- Górny pasek nawigacyjny -->
     <div class="top-nav" id="top-nav">
         <div>
-
+            <!-- Jeżeli użytkownik jest zalogowany -->
             @if (Request.IsAuthenticated)
             {
                 <a href="@Url.Action("Index", "Home")">Witaj @User.Identity.GetUserName()</a>
@@ -21,7 +22,7 @@
                     @Html.AntiForgeryToken()
                     <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
                 }
-
+                <!-- Rozwijane menu -->
                 <div class="drop">
                     <button id="dropbtn" class="dropbtn" onclick="drop()">
                         Przeglądaj  <img id="image_down" class="image_down" src="@Url.ImagesPath("down.png")" />
@@ -38,7 +39,7 @@
                         <a href="@Url.Action("StorageList", "Storage")">Dyski</a>
                     </div>
                 </div>
-
+                <!-- Jeżeli administrator jest zalogowany -->
                 if (@User.Identity.GetUserName() == "admin")
                 {
                     <a href="">Zarządzanie</a>
@@ -47,32 +48,30 @@
             }
             else
             {
-                <a>Witaj</a>
-
-                <div class="drop">
-                    <button id="dropbtn" class="dropbtn" onclick="drop()">
-                        Przeglądaj  <img id="image_down" class="image_down" src="@Url.ImagesPath("down.png")" />
-                        <img id="image_up" class="image_up" src="@Url.ImagesPath("up.png")" />
-                    </button>
-                    <div class="drop-content" id="myDropdown">
-                        <a href="@Url.Action("BuildList", "Builds")">Buildy</a>
-                        <a href="@Url.Action("CpuList", "Cpu")">Procesory</a>
-                        <a href="@Url.Action("GpuList", "Gpu")">Karty graficzne</a>
-                        <a href="@Url.Action("MoboList", "Mobo")">Płyty główne</a>
-                        <a href="@Url.Action("RamList", "Ram")">Pamięci RAM</a>
-                        <a href="@Url.Action("PsuList", "Psu")">Zasilacze</a>
-                        <a href="@Url.Action("CaseList", "Case")">Obudowy</a>
-                        <a href="@Url.Action("StorageList", "Storage")">Dyski</a>
-                    </div>
+            <a>Witaj</a>
+            <!-- Rozwijane menu -->
+            <div class="drop">
+                <button id="dropbtn" class="dropbtn" onclick="drop()">
+                    Przeglądaj  <img id="image_down" class="image_down" src="@Url.ImagesPath("down.png")" />
+                    <img id="image_up" class="image_up" src="@Url.ImagesPath("up.png")" />
+                </button>
+                <div class="drop-content" id="myDropdown">
+                    <a href="@Url.Action("BuildList", "Builds")">Buildy</a>
+                    <a href="@Url.Action("CpuList", "Cpu")">Procesory</a>
+                    <a href="@Url.Action("GpuList", "Gpu")">Karty graficzne</a>
+                    <a href="@Url.Action("MoboList", "Mobo")">Płyty główne</a>
+                    <a href="@Url.Action("RamList", "Ram")">Pamięci RAM</a>
+                    <a href="@Url.Action("PsuList", "Psu")">Zasilacze</a>
+                    <a href="@Url.Action("CaseList", "Case")">Obudowy</a>
+                    <a href="@Url.Action("StorageList", "Storage")">Dyski</a>
                 </div>
+            </div>
 
-                <a href="@Url.Action("Register","Account")">Zarejestruj się</a>
-                <a href="@Url.Action("Login", "Account")">Zaloguj się</a>
+            <a href="@Url.Action("Register","Account")">Zarejestruj się</a>
+            <a href="@Url.Action("Login", "Account")">Zaloguj się</a>
             }
 
-
-
-
+            <!-- Ikona do rozwijania oraz zwijania paska nawigacyjnego -->
             <a class="icon" id="icon" onclick="dropdownNav()"><div class="plus" id="plus">+</div><div class="minus" id="minus">-</div></a>
 
         </div>

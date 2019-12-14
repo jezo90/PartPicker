@@ -949,10 +949,11 @@ footer {
     border-bottom:solid;
 }
 
-.details-name{
-    font-size:30px;
+.details-name {
+    font-size: 30px;
     border-bottom: solid;
     padding: 1%;
+    overflow-wrap: break-word;
 }
 
 
@@ -1231,9 +1232,28 @@ footer {
     height: auto;
     align-self: center;
 }
+
+.details-delete {
+    color: #ef7f29;
+    font-size:13PX;
+    margin-right:6px;
+    font-family: montserrat-extrabold;
+    background-color: #1b1b1b;
+    border: 2px solid #ef7f29;
+    padding:4px 7px 4px 7px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+    .details-delete:hover {
+        background-color: #ef7f29;
+        color: white;
+    }
+
+
 .details-build-info-link {
-    width:85%;
-    display:flex;
+    width: 85%;
+    display: flex;
 }
 .details-build-description {
     width: 100%;
