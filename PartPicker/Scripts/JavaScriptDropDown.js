@@ -13,9 +13,3 @@
         });
 }
 
-
-
-var countStars = function () {
-    var checkedRadio = document.querySelector('.stars input:checked');
-    console.log(checkedRadio.value);
-};

@@ -9,38 +9,42 @@
 
 <div class="content-details-build">
     <div class="container-details-build">
+        <!--Obrazek konfiguracji-->
         <div class="details-image">
             <img class="details-image-product" src="@Url.BuildsImagesPath(Model.Image)" />
         </div>
 
         <div class="details-prices">
-
+            <!--Nazwa konfiguracji-->
             <div class="details-name">
                 @Model.Name.ToUpper()
                 @if (@User.Identity.GetUserName() == "admin")
                 {
-                    <a href="@Url.Action("BuildHide", "Builds", new { id = Model.BuildId, name = Model.Name } )" class="details-delete" style="float:right">
+                    <a href="@Url.Action("BuildHide", "Builds", new { id = Model.BuildId, name = Model.Name } )" 
+                       class="details-delete" style="float:right">
                         @if (!Model.Hidden)
+                        /*Przycisk ukryj*/
                         {@:Ukryj
                         }
+                        /*Przycisk Pokaż*/
                         else
                         { @: Pokaż
                         }
                     </a>
                 }
             </div>
+            <!--Informacja czy konfiguracja jest ukryta-->
             @if (Model.Hidden)
             {
                 <div class="details-name" style="color: #cc3a3a;">
                     UKRYTY
-
                 </div>
             }
-
+            <!--Autor konfiguracji-->
             <div class="details-build-description">
                 Autor: @Model.ApplicationUser.UserName
             </div>
-
+            <!--Ocena konfiguracji-->
             <div class="details-grade">
                 @{
                     double sum = 0;
@@ -70,18 +74,16 @@
                     }
                 }
                 (@Model.Rates.Count())
-
-
             </div>
-
             <br />
-
+            <!--Opis konfiguracji-->
             <div class="details-build-description">
                 OPIS: <br />
                 @Model.Description
             </div>
 
             <br />
+            <!--Dodawanie oceny konfiguracji-->
             @if (Request.IsAuthenticated)
             {
                 @Html.Action("RateForm", new { @buildId = Model.BuildId, @name = Model.Name })
@@ -94,7 +96,9 @@
     <br />
 
     <div class="container-details-build">
+        <!--Informacje o komponentach wchodzących w skład konfiguracji-->
         <div class="details-build">
+            <!--PROCESOR-->
             <div class="details-build-info">
                 <div class="details-build-info-text">
                     PROCESOR:
@@ -107,6 +111,7 @@
                 </a>
                 <br />
             </div>
+            <!--KARTA GRAFICZNA-->
             <div class="details-build-info">
                 <div class="details-build-info-text">
                     KARTA GRAFICZNA:
@@ -119,6 +124,7 @@
                 </a>
                 <br />
             </div>
+            <!--PŁYTA GŁÓWNA-->
             <div class="details-build-info">
                 <div class="details-build-info-text">
                     PŁYTA GŁÓWNA:
@@ -131,6 +137,7 @@
                 </a>
                 <br />
             </div>
+            <!--DYSK TWARDY-->
             <div class="details-build-info">
                 <div class="details-build-info-text">
                     DYSK TWARDY:
@@ -143,6 +150,7 @@
                 </a>
                 <br />
             </div>
+            <!--PAMIĘĆ RAM-->
             <div class="details-build-info">
                 <div class="details-build-info-text">
                     PAMIĘĆ RAM:
@@ -155,6 +163,7 @@
                 </a>
                 <br />
             </div>
+            <!--ZASILACZ-->
             <div class="details-build-info">
                 <div class="details-build-info-text">
                     ZASILACZ:
@@ -167,6 +176,7 @@
                 </a>
                 <br />
             </div>
+            <!--OBUDOWA-->
             <div class="details-build-info">
                 <div class="details-build-info-text">
                     OBUDOWA:
@@ -180,28 +190,24 @@
                 <br />
             </div>
         </div>
-
         <br />
-
+        <!--Lista komentarzy z ocenami-->
         <div class="details-build-comments">
             @foreach (var rate in Model.Rates.OrderByDescending(a => a.Grade))
             {
-
-
                 <div class="details-build-comments-grade">
-
-
+                    <!--Przycisk do usuwania komentarzy-->
                     @if (@User.Identity.GetUserName() == "admin")
                     {
                         <a href="@Url.Action("BuildCommentDelete", "Builds", new { rateId = rate.RateId, name = Model.Name, buildId = Model.BuildId })"
                            class="details-delete" style="float:right">Usuń</a>
                     }
-
+                    <!--Autor komentarza-->
                     <div class="details-build-comments-grade-text">
                         @rate.ApplicationUser.UserName
                     </div>
 
-
+                    <!--Ocena-->
                     @{ double grade = rate.Grade; }
                     @for (var i = 0; i < 5; i++)
                     {
@@ -221,10 +227,9 @@
                             grade = grade - 1.0d;
                         }
                     }
-
-
                     <br />
                 </div>
+                <!--Komentarz-->
                 <div class="details-build-comments-text">
                     @rate.Comment
                 </div>

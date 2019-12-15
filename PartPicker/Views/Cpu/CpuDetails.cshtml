@@ -24,6 +24,7 @@
             {
                 if (Model.NewBuildViewModel.Mobo != null && Model.NewBuildViewModel.Mobo.Socket.Name != Model.Cpu.Socket.Name)
                 {
+                    <!--czerwony komunikat-->
                     <div class="info-red">
                         <div class="info-left">
                             <img src="@Url.ImagesPath("!.png")" />
@@ -35,7 +36,8 @@
                             <br />
                             Odpowiedni Socket do wybranej przez Ciebie płyty głównej to: @Model.NewBuildViewModel.Mobo.Socket.Name
                             <br />
-                            <a class="info-right-link" href="@Url.Action("CpuList", "Cpu", new { @socketsString = Model.NewBuildViewModel.Mobo.Socket.Name })">
+                            <a class="info-right-link" href="@Url.Action("CpuList", "Cpu", new {
+                                                            @socketsString = Model.NewBuildViewModel.Mobo.Socket.Name })">
                                 Kliknij tutaj by przejść do wyszukiwania kompatybilnych procesorów.
                             </a>
                         </div>
@@ -44,13 +46,15 @@
 
                 if (Model.NewBuildViewModel.Cpu != null)
                 {
+                    <!--zielony komunikat-->
                     <div class="info-green">
                         <div class="info-left">
                             <img src="@Url.ImagesPath("!.png")" />
                         </div>
                         <div class="info-right">
                             W Twojej konfiguracji znajduje się już procesor:
-                            <a class="info-right-link" href="@Url.Action("CpuDetails", "Cpu", new { id = Model.NewBuildViewModel.Cpu.CpuId })">
+                            <a class="info-right-link" href="@Url.Action("CpuDetails", "Cpu", new {
+                                                            id = Model.NewBuildViewModel.Cpu.CpuId })">
                                 @Model.NewBuildViewModel.Cpu.Name
                             </a>
                         </div>
@@ -59,6 +63,7 @@
             }
             else
             {
+                <!--żółty komunikat-->
                 <div class="info-yellow">
                     <div class="info-left">
                         <img src="@Url.ImagesPath("!.png")" />
@@ -74,30 +79,28 @@
             @{ int i = 0; }
             @foreach (var cpu in Model.CpuList)
             {
+                <!--List sklepów-->
                 <div class="details-prices-shop">
                     <div class="details-prices-shop-item details-prices-shop-item-link">
                         <a class="details-prices-shop-link" href=@cpu.Link>
-
+                            <!--Logo sklepu-->
                             <img class="details-prices-shop-image" src="@Url.ShopsImagesPath(cpu.Shop.Logo)" />
-
-
+                            <!--Cena-->
                             <div class="details-prices-shop-price">
                                 @Model.Prices[i]
                             </div>
-
                         </a>
                     </div>
+                    <!--Sprawdzenie kompatybilności z komponentami dodanymi do konfiguracji-->
                     @if (Request.IsAuthenticated)
                     {
                         if (Model.NewBuildViewModel.Mobo != null)
                         {
                             if (Model.NewBuildViewModel.Mobo.Socket.Name == cpu.Socket.Name)
                             {
-
                                 <a class="details-prices-shop-item" href="@Url.Action("AddCpuToBuild", "NewBuild", new { @id = cpu.CpuId })">
                                     <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" />
                                 </a>
-
                             }
                             else
                             {
@@ -108,11 +111,9 @@
                         }
                         else
                         {
-
                             <a class="details-prices-shop-item" href="@Url.Action("AddCpuToBuild", "NewBuild", new { @id = cpu.CpuId })">
                                 <img class="details-prices-shop-add" src="@Url.ImagesPath("add.png")" />
                             </a>
-
                         }
                     }
                     else

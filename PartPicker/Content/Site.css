@@ -238,39 +238,32 @@ body {
 .show {
     display: block !important;
 }
-
 .hide {
     display: none !important;
 }
-
+/* Dla szerokości 1310px lub mniejszej wszystkie przyciski chowają się do plusa*/
 @media screen and (max-width: 1310px) {
     .drop-content {
         width: 100%;
     }
-
     .drop .dropbtn {
         width: 100%;
         PADDING: 14px 8px 14PX 30PX;
     }
-
     .drop-content {
         width: 100%;
         height: auto;
         position: relative;
     }
-
         .drop-content a {
             width: 100%;
         }
-
     .image_up {
         margin-right: 0.6%
     }
-
     .image_down {
         margin-right: 0.6%
     }
-
     .drop:hover .dropbtn {
         transform: none !important;
     }
@@ -315,7 +308,7 @@ body {
     }
 
 
-/* On screens that are less than 980px wide, make the sidebar into a topbar */
+/* Przy szerokości mniejszej ni 980 pikseli przenieś filtry z lewej strony na górę */
 @media screen and (max-width: 980px) {
     .sidebar {
         width: 100%;
@@ -343,20 +336,10 @@ body {
     }
 }
 
-/* On screens that are less than 980px, display the bar vertically, instead of horizontally */
-@media screen and (max-width: 980px) {
-    .sidebar a {
-        text-align: left;
-        float: none;
-    }
-}
-
-
-
 
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! DROPDOWN !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
-/* Style the sidenav links and the dropdown button */
+
 .dropdown-btn {
     padding: 6px 8px 6px 16px;
     font-family: montserrat-extrabold;
@@ -382,7 +365,7 @@ body {
         transition: background-color 0.3s ease-out;
     }
 
-/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+/* zbiornik schowanego menu domyślnie niewidoczny */
 .dropdown-container {
     display: none;
     background: none;
@@ -710,51 +693,40 @@ footer {
         height: 500px;
         width: 50%;
     }
-
     .slideshow-2 {
         height: 500px;
         width: 50%;
     }
-
     .slideshow-1-margin {
         margin-left: 10%;
         margin-top: 45px;
         margin-bottom: 55px;
     }
-
     .slideshow-2-margin {
         margin-right: 10%;
         margin-top: 45px;
         margin-bottom: 55px;
     }
-
     #slideshow {
         height: 400px;
         width: 480px;
     }
-
-
     .slide-wrapper {
         width: 1440px;
         height: 500px;
     }
-
     .slide {
         height: 400px;
         width: 480px;
     }
-
     .slide-background {
         height: 400px;
         width: 480px;
     }
-
     .slide-icon {
         height: 400px;
         width: 480px;
     }
-
-
     @-webkit-keyframes slide {
         25% {
             margin-left: 0px;
@@ -776,7 +748,6 @@ footer {
             margin-left: -960px;
         }
     }
-
     .slide-text {
         width: 480px;
         font-size: 27px;
@@ -1580,7 +1551,7 @@ color: #cc3a3a;
     height: 30px;
     color: transparent;
 }
-
+/*wyświetlenie pustej gwiazdy*/
     .stars label::before {
         background-image: url('/Content/Images/zero.png');
         background-size: 30px 30px;
@@ -1590,7 +1561,7 @@ color: #cc3a3a;
         content: "";
         display: inline-block;
     }
-
+/*wyświetlenie pełnej gwiazdy*/
     .stars label:hover::before,
     .stars label:hover ~ label::before,
     .stars input:checked ~ label::before {

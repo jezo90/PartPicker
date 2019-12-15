@@ -13,6 +13,7 @@
 
 <div class="content">
     <div class="container ">
+        <!-- Nagłówki dla listy -->
         <div class="item-list nazwy">
             <div class="item-box  item-part-photo">
                 <div class="item-part">
@@ -44,21 +45,23 @@
                     Ocena
                 </div>
             </div>
-
-
         </div>
     </div>
+    <!-- Lista konfiguracji -->
     @foreach (var build in Model.PagedList)
     {
         <div class="container">
             <a class="item-list-a" href="@Url.Action("BuildDetails", "Builds", new { id = build.BuildId, name = build.Name })">
                 <div class="item-list">
+                    <!-- Zdjęcie -->
                     <div class="item-box item-part-photo">
                         <div class="item-part">
                             <img class="item-part-image" src="@Url.BuildsImagesPath(build.Image)" />
                         </div>
                     </div>
+                    <!-- Nazwa -->
                     <div class="item-box">
+                        <!-- Jeżeli konfiguracja jest ukryta -->
                         @if (build.Hidden)
                         {
                             <div class="item-part item-list-name" style="color: #cc3a3a">
@@ -72,6 +75,7 @@
                             </div>
                         }
                     </div>
+                    <!-- Zdjęcie i nazwa procesora -->
                     <div class="item-box">
                         <div class="item-part">
 
@@ -80,6 +84,7 @@
                             @build.Cpu.Name
                         </div>
                     </div>
+                    <!-- Zdjęcie i nazwa karty graficznej -->
                     <div class="item-box">
                         <div class="item-part">
 
@@ -89,6 +94,7 @@
 
                         </div>
                     </div>
+                    <!-- Rozmiar pamięci ram -->
                     <div class="item-box">
                         <div class="item-part">
 
@@ -96,23 +102,29 @@
 
                         </div>
                     </div>
+                    <!-- Średnia i ilość ocen konfiguracji -->
                     <div class="item-box">
                         <div class="item-part">
-
-
+                            <!-- Wyświetlenie średniej za pomocą gwiazdek -->
                             @{ double grade = Model.Average[build.BuildId]; }
                             @for (var i = 0; i < 5; i++)
                             {
+                                <!-- Jeżeli reszta po przecinku liczby jest równa 
+                                    lub większa od 0.75 to stawia się pełną gwiazdkę -->
                                 if (grade >= 0.75d)
                                 {
                                     <img class="star" src="@Url.ImagesPath("star.png")" />
                                     grade = grade - 1.0d;
                                 }
+                                /*Jeżeli reszta po przecinku liczby jest pomiędzy 
+                                 0.25 a 0.75 to stawia się pół gwiazdki*/
                                 else if (grade < 0.75d && grade > 0.25d)
                                 {
                                     <img class="star" src="@Url.ImagesPath("half.png")" />
                                     grade = grade - 1.0d;
                                 }
+                                /*Jeżeli reszta po przecinku liczby jest równa 
+                                    lub mniejsza od 0.25 to stawia się pustą gwiazdkę*/
                                 else
                                 {
                                     <img class="star" src="@Url.ImagesPath("zero.png")" />
@@ -120,21 +132,19 @@
                                 }
                             }
                             <br />
+                            <!-- Wyświetlenie średniej liczbowo -->
                             @string.Format("{0:N2}", Model.Average[build.BuildId])
+                            <!-- Wyświetlenie ilości ocen -->
                             (@String.Format("{0:0.##}", Model.Count[build.BuildId]))
-
-
                         </div>
                     </div>
-
-
                 </div>
             </a>
         </div>
     }
 
     <br />
-    Strona @( Model.PagedList.PageCount < Model.PagedList.PageNumber ? 0 : Model.PagedList.PageNumber) z @Model.PagedList.PageCount
+    Strona @(Model.PagedList.PageCount < Model.PagedList.PageNumber ? 0 : Model.PagedList.PageNumber) z @Model.PagedList.PageCount
     <br />
     @{
         string seriesCpuPage = "";
@@ -174,11 +184,14 @@
         }
     }
 
-    @Html.PagedListPager(Model.PagedList, page => Url.Action("BuildList", new { page,
+    @Html.PagedListPager(Model.PagedList, page => Url.Action("BuildList", new
+    {
+        page,
     @seriesCpuString = seriesCpuPage,
     @seriesGpuString = seriesGpuPage,
     @storageTypeString = storageTypePage,
-    @ramTypeString = ramTypePage }))
+    @ramTypeString = ramTypePage
+    }))
 
 
 </div>

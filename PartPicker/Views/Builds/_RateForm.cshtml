@@ -1,49 +1,47 @@
 ﻿@model PartPicker.ViewModels.BuildRatesViewModel
 
-<form id="build-grade" action="@Url.Action("AddRate", "Builds", new { @id = Model.BuildId, @name = Model.BuildName } )" method="post">
+    <form id="build-grade" action="@Url.Action("AddRate", "Builds", new { @id = Model.BuildId, @name = Model.BuildName } )" method="post">
 
-    <div class="grades-row">
-        <div class="grades-row-column">
-            <div class="grades-row-column-text">
-                Ocena:
+        <div class="grades-row">
+            <div class="grades-row-column">
+                <div class="grades-row-column-text">
+                    Ocena:
+                </div>
+            </div>
+            <!--Wybór oceny-->
+            <div class="grades-row-column">
+                <div class="stars">
+                    <input type="radio" id="star5" name="rate" value="5" @if (Model.Rate.Grade == 5) { @: checked
+                           }>
+                    <label for="star5"> </label>
+                    <input type="radio" id="star4" name="rate" value="4" @if (Model.Rate.Grade == 4) { @: checked
+                           }>
+                    <label for="star4"> </label>
+                    <input type="radio" id="star3" name="rate" value="3" @if (Model.Rate.Grade == 3) { @: checked
+                           }>
+                    <label for="star3"> </label>
+                    <input type="radio" id="star2" name="rate" value="2" @if (Model.Rate.Grade == 2) { @: checked
+                           }>
+                    <label for="star2"> </label>
+                    <input type="radio" id="star1" name="rate" value="1" @if (Model.Rate.Grade == 1) { @: checked
+                           }>
+                    <label for="star1"> </label>
+                </div>
             </div>
         </div>
-        <div class="grades-row-column">
-            <div class="stars">
-                <input type="radio" id="star5" name="rate" value="5" @if (Model.Rate.Grade == 5) { @: checked
-                       }>
-                <label for="star5"> </label>
-                <input type="radio" id="star4" name="rate" value="4" @if (Model.Rate.Grade == 4) { @: checked
-                       }>
-                <label for="star4"> </label>
-                <input type="radio" id="star3" name="rate" value="3" @if (Model.Rate.Grade == 3) { @: checked
-                       }>
-                <label for="star3"> </label>
-                <input type="radio" id="star2" name="rate" value="2" @if (Model.Rate.Grade == 2) { @: checked
-                       }>
-                <label for="star2"> </label>
-                <input type="radio" id="star1" name="rate" value="1" @if (Model.Rate.Grade == 1) { @: checked
-                       }>
-                <label for="star1"> </label>
+        <div class="grades-row">
+            <!--Dodanie komentarza-->
+            <div class="grades-row-column grades-row-colum-100">
+                <div class="grades-row-column-text">
+                    Komentarz:
+                </div>
+                <textarea form="build-grade" class="grades-row-column-description" type="text" 
+                          name="comment" maxlength="150">@Model.Rate.Comment</textarea>
             </div>
         </div>
-    </div>
-
-
-    <div class="grades-row">
-        <div class="grades-row-column grades-row-colum-100">
-            <div class="grades-row-column-text">
-                Komentarz:
-            </div>
-            <textarea form="build-grade" class="grades-row-column-description" type="text" name="comment" maxlength="150">@Model.Rate.Comment</textarea>
+        <!--Przycisk zatwierdzający dodanie oceny-->
+        <div class="grades-row">
+            <input class="form-submit-addbuild" type="submit" value="Dodaj ocenę" />
         </div>
-
-    </div>
-
-    <div class="grades-row">
-        <input class="form-submit-addbuild" type="submit" value="Dodaj ocenę" />
-    </div>
-
-
-</form>
+    </form>
 
