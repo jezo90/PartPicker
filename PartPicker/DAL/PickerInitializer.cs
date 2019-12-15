@@ -299,12 +299,12 @@ namespace PartPicker.DAL
                             Image = "i39100f.png", ShopId = 3},
 
                 new Cpu () { CpuId = 8, Name = "Intel Core i7-8700K", ProductId = 5,
-                            Model = "8700K", Link = "https://www.morele.net/procesor-intel-core-i3-9100f-3-6ghz-6mb-box-bx80684i39100f-5954267/",
+                            Model = "8700K", Link = "https://www.morele.net/procesor-intel-core-i7-8700k-3-7ghz-12-mb-box-bx80684i78700k-978219/",
                             SocketId = 1, Cores = 6, Frequency = 3.7, Turbo = 4.7, Gpu = "Intel UHD Graphics 630", Benchmark = 1419,
                             Image = "i78700k.png", ShopId = 3},
 
                 new Cpu () { CpuId = 9, Name = "Intel Core i7-9700K", ProductId = 5,
-                            Model = "9700K", Link = "https://www.morele.net/procesor-intel-core-i3-9100f-3-6ghz-6mb-box-bx80684i39100f-5954267/",
+                            Model = "9700K", Link = "https://www.morele.net/procesor-intel-core-i7-9700k-3-6ghz-12-mb-box-bx80684i79700k-4142642/",
                             SocketId = 1, Cores = 8, Frequency = 3.6, Turbo = 4.9, Gpu = "Intel UHD Graphics 630", Benchmark = 1530,
                             Image = "i79700k.png", ShopId = 3},
 

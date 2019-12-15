@@ -277,6 +277,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MoboController.cs" />
     <Compile Include="Controllers\NewBuildController.cs" />
+    <Compile Include="Controllers\PartsController.cs" />
     <Compile Include="Controllers\PsuController.cs" />
     <Compile Include="Controllers\RamController.cs" />
     <Compile Include="Controllers\StorageController.cs" />
@@ -349,6 +350,7 @@
     <Compile Include="ViewModels\Mobo\MoboFormViewModel.cs" />
     <Compile Include="ViewModels\Mobo\MoboListViewModel.cs" />
     <Compile Include="ViewModels\NewBuildViewModel.cs" />
+    <Compile Include="ViewModels\Parts\AddCpuFormViewModel.cs" />
     <Compile Include="ViewModels\Psu\PsuDetailsViewModel.cs" />
     <Compile Include="ViewModels\Psu\PsuFormCheckedViewModel.cs" />
     <Compile Include="ViewModels\Psu\PsuFormViewModel.cs" />
@@ -399,6 +401,8 @@
     <Content Include="Views\Case\CaseDetails.cshtml" />
     <Content Include="Views\Case\CaseList.cshtml" />
     <Content Include="Views\Builds\_RateForm.cshtml" />
+    <Content Include="Views\Parts\CpuAddForm.cshtml" />
+    <Content Include="Views\Parts\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

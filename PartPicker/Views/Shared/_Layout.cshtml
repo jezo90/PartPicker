@@ -42,7 +42,7 @@
                 <!-- Jeżeli administrator jest zalogowany -->
                 if (@User.Identity.GetUserName() == "admin")
                 {
-                    <a href="">Zarządzanie</a>
+                    <a href="@Url.Action("Index", "Parts")">Zarządzanie</a>
                 }
                 <a href="@Url.Action("Index", "NewBuild")">Utwórz build</a>
             }

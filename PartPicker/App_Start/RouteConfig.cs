@@ -14,6 +14,16 @@ namespace PartPicker
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Manage",
+                url: "zarzadzanie",
+                defaults: new { controller = "Parts", action = "Index" });
+
+            routes.MapRoute(
+                name: "AddCpuToDatabase",
+                url: "zarzadzanie/dodaj-cpu",
+                defaults: new { controller = "Parts", action = "CpuAddForm"});
+
+            routes.MapRoute(
                 name: "Login",
                 url: "zaloguj",
                 defaults: new { controller = "Account", action = "Login" });

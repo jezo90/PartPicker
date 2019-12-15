@@ -1,0 +1,77 @@
+﻿@model PartPicker.ViewModels.AddCpuFormViewModel
+@using PartPicker.Infrastructure
+
+@{
+    ViewBag.Title = "Dodaj procesor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form action="@Url.Action("AddCpu", "Parts")" method="post">
+    Nazwa:
+    <input type="text" name="name" />
+
+    <br />
+    Produkt:
+    <select name="productId">
+        @foreach (var product in Model.Products)
+        {
+            <option value="@product.ProductId">
+                @product.Manufacturer.Name @product.Series.Name
+            </option>
+        }
+    </select>
+
+    <br />
+    Model:
+    <input type="text" name="model" />
+
+    <br />
+    Link:
+    <input type="text" name="link" />
+
+    <br />
+    Socket:
+    <select name="socketId">
+        @foreach (var socket in Model.Sockets)
+        {
+            <option value="@socket.SocketId">@socket.Name</option>
+        }
+    </select>
+
+    <br />
+    Ilość rdzeni:
+    <input type="number" name="cores" />
+
+    <br />
+    Częstotliwość taktowania:
+    <input type="text" name="frequency" />
+
+    <br />
+    Częstotliwość taktowania w trybie turbo:
+    <input type="text" name="turbo" />
+
+    <br />
+    Zintegrowana karta graficzna:
+    <input type="text" name="gpu" />
+
+    <br />
+    Benchmark:
+    <input type="number" name="benchmark" />
+
+    <br />
+    Nazwa pliku obrazka:
+    <input type="text" name="image" />
+
+    <br />
+    Sklep:
+    <select name="shopId">
+        @foreach (var shop in Model.Shops)
+        {
+            <option value="@shop.ShopId">@shop.Name</option>
+        }
+    </select>
+
+    <br />
+    <input type="submit" value="Dodaj procesor" />
+
+</form>
