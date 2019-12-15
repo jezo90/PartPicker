@@ -3,12 +3,44 @@
     ViewBag.Title = "Zarządzanie";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+    <div class="main-form">
+        <div class="register-row">
+            <div class="register-row-content">
+                <a class="form-submit" href="@Url.Action("CpuAddForm", "Parts")">Dodaj procesor</a>
+            </div>
+        </div>
+        <div class="register-row">
+            <div class="register-row-content">
+                <a class="form-submit" href="@Url.Action("GpuAddForm", "Parts")">Dodaj kartę graficzną</a>
+            </div>
+        </div>
+        <div class="register-row">
+            <div class="register-row-content">
+                <a class="form-submit" href="@Url.Action("MoboAddForm", "Parts")">Dodaj płytę główną</a>
+            </div>
+        </div>
+        <div class="register-row">
+            <div class="register-row-content">
+                <a class="form-submit" href="@Url.Action("RamAddForm", "Parts")">Dodaj RAM</a>
+            </div>
+        </div>
+        <div class="register-row">
+            <div class="register-row-content">
+                <a class="form-submit" href="@Url.Action("StorageAddForm", "Parts")">Dodaj dysk</a>
+            </div>
+        </div>
+        <div class="register-row">
+            <div class="register-row-content">
+                <a class="form-submit" href="@Url.Action("CaseAddForm", "Parts")">Dodaj obudowe</a>
+            </div>
+        </div>
+        <div class="register-row">
+            <div class="register-row-content">
+                <a class="form-submit" href="@Url.Action("PsuAddForm", "Parts")">Dodaj zasilacz</a>
+            </div>
+        </div>
 
-<a href="@Url.Action("CpuAddForm", "Parts")">Dodaj procesor</a>
-<a href="@Url.Action("GpuAddForm", "Parts")">Dodaj kartę graficzną</a>
-<a href="@Url.Action("MoboAddForm", "Parts")">Dodaj płytę główną</a>
-<a href="@Url.Action("RamAddForm", "Parts")">Dodaj RAM</a>
-<a href="@Url.Action("StorageAddForm", "Parts")">Dodaj dysk</a>
-<a href="@Url.Action("CaseAddForm", "Parts")">Dodaj obudowe</a>
-<a href="@Url.Action("PsuAddForm", "Parts")">Dodaj zasilacz</a>
 
+        
+        
+    </div>

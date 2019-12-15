@@ -6,72 +6,160 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<form action="@Url.Action("AddCpu", "Parts")" method="post">
-    Nazwa:
-    <input type="text" name="name" />
+    <form action="@Url.Action("AddCpu", "Parts")" method="post">
+        <div class="main-form">
+            <div class="register-row">
+                <div class="register-row-content">
+                    <div class="register-row-text">
+                        Nazwa:
+                    </div>
+                    <div class="register-row-input">
+                        <input type="text" name="name" />
+                    </div>
+                </div>
+            </div>
+       
+            <div class="register-row">
+                <div class="register-row-content">
+                    <div class="register-row-text">
+                        Produkt:
+                    </div>
+                    <div class="register-row-input">
+                        <select class="register-row-input-select" name="productId">
+                            @foreach (var product in Model.Products)
+                            {
+                                <option value="@product.ProductId">
+                                    @product.Manufacturer.Name @product.Series.Name
+                                </option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="register-row">
+                <div class="register-row-content">
+                    <div class="register-row-text">
+                        Model:
+                    </div>
+                    <div class="register-row-input">
+                        <input type="text" name="model" />
+                    </div>
+                </div>
+            </div>
+        
+            <div class="register-row">
+                <div class="register-row-content">
+                    <div class="register-row-text">
+                        Link:
+                    </div>
+                    <div class="register-row-input">
+                        <input type="text" name="link" />
+                    </div>
+                </div>
+            </div>
+        
+            <div class="register-row">
+                <div class="register-row-content">
+                    <div class="register-row-text">
+                        Socket:
+                    </div>
+                    <div class="register-row-input">
+                        <select class="register-row-input-select" name="socketId">
+                            @foreach (var socket in Model.Sockets)
+                            {
+                                <option value="@socket.SocketId">@socket.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="register-row">
+                <div class="register-row-content">
+                    <div class="register-row-text">
+                        Ilość rdzeni:
+                    </div>
+                    <div class="register-row-input">
+                        <input type="number" name="cores" />
+                    </div>
+                </div>
+            </div>
+        
+            <div class="register-row">
+                <div class="register-row-content">
+                    <div class="register-row-text">
+                        Częstotliwość taktowania:
+                    </div>
+                    <div class="register-row-input">
+                        <input type="text" name="frequency" />
+                    </div>
+                </div>
+            </div>
+        
+            <div class="register-row">
+                <div class="register-row-content">
+                    <div class="register-row-text">
+                        Częstotliwość taktowania w trybie turbo:
+                    </div>
+                    <div class="register-row-input">
+                        <input type="text" name="turbo" />
+                    </div>
+                </div>
+            </div>
+        
+            <div class="register-row">
+                <div class="register-row-content">
+                    <div class="register-row-text">
+                        Zintegrowana karta graficzna:
+                    </div>
+                    <div class="register-row-input">
+                        <input type="text" name="gpu" />
+                    </div>
+                </div>
+            </div>
+       
+            <div class="register-row">
+                <div class="register-row-content">
+                    <div class="register-row-text">
+                        Benchmark:
+                    </div>
+                    <div class="register-row-input">
+                        <input type="number" name="benchmark" />
+                    </div>
+                </div>
+            </div>
+        
+            <div class="register-row">
+                <div class="register-row-content">
+                    <div class="register-row-text">
+                        Nazwa pliku obrazka:
+                    </div>
+                    <div class="register-row-input">
+                        <input type="text" name="image" />
+                    </div>
+                </div>
+            </div>
+       
+            <div class="register-row">
+                <div class="register-row-content">
+                    <div class="register-row-text">
+                        Sklep:
+                    </div>
+                    <div class="register-row-input">
+                        <select class="register-row-input-select" name="shopId">
+                            @foreach (var shop in Model.Shops)
+                            {
+                                <option value="@shop.ShopId">@shop.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <input class="form-submit" type="submit" value="Dodaj procesor" />
+        </div>
 
-    <br />
-    Produkt:
-    <select name="productId">
-        @foreach (var product in Model.Products)
-        {
-            <option value="@product.ProductId">
-                @product.Manufacturer.Name @product.Series.Name
-            </option>
-        }
-    </select>
 
-    <br />
-    Model:
-    <input type="text" name="model" />
+        
 
-    <br />
-    Link:
-    <input type="text" name="link" />
-
-    <br />
-    Socket:
-    <select name="socketId">
-        @foreach (var socket in Model.Sockets)
-        {
-            <option value="@socket.SocketId">@socket.Name</option>
-        }
-    </select>
-
-    <br />
-    Ilość rdzeni:
-    <input type="number" name="cores" />
-
-    <br />
-    Częstotliwość taktowania:
-    <input type="text" name="frequency" />
-
-    <br />
-    Częstotliwość taktowania w trybie turbo:
-    <input type="text" name="turbo" />
-
-    <br />
-    Zintegrowana karta graficzna:
-    <input type="text" name="gpu" />
-
-    <br />
-    Benchmark:
-    <input type="number" name="benchmark" />
-
-    <br />
-    Nazwa pliku obrazka:
-    <input type="text" name="image" />
-
-    <br />
-    Sklep:
-    <select name="shopId">
-        @foreach (var shop in Model.Shops)
-        {
-            <option value="@shop.ShopId">@shop.Name</option>
-        }
-    </select>
-
-    <br />
-    <input type="submit" value="Dodaj procesor" />
-
-</form>
+    </form>
