@@ -517,6 +517,7 @@ footer {
     background-color: #0D0D0D;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
+    margin-top:50px;
 }
 
 .footer-list {
@@ -1587,6 +1588,9 @@ color: #cc3a3a;
         max-width: 78px;
     }
 }
+
+
+/*Szerokość pola select*/
 .register-row-input-select{
     width: 158px;
 }
