@@ -1,0 +1,143 @@
+﻿@model PartPicker.ViewModels.AddStorageFormViewModel
+@using PartPicker.Infrastructure
+
+@{
+    ViewBag.Title = "Dodaj dysk";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form action="@Url.Action("AddStorage", "Parts")" method="post">
+    <div class="main-form">
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Nazwa:
+                </div>
+                <div class="register-row-input">
+                    <input type="text" name="name" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Producent:
+                </div>
+                <div class="register-row-input">
+                    <select class="register-row-input-select" name="manufacturerId">
+                        @foreach (var manu in Model.Manufacturers)
+                        {
+                            <option value="@manu.ManufacturerId">
+                                @manu.Name
+                            </option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Model:
+                </div>
+                <div class="register-row-input">
+                    <input type="text" name="model" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Link:
+                </div>
+                <div class="register-row-input">
+                    <input type="text" name="link" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Interface:
+                </div>
+                <div class="register-row-input">
+                    <select class="register-row-input-select" name="interfaceId">
+                        @foreach (var inter in Model.Interfaces)
+                        {
+                            <option value="@inter.InterfaceId">@inter.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Typ:
+                </div>
+                <div class="register-row-input">
+                    <input type="text" name="type" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Pojemność:
+                </div>
+                <div class="register-row-input">
+                    <input type="number" name="capacity" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Rozmiar:
+                </div>
+                <div class="register-row-input">
+                    <input type="text" name="size" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Nazwa pliku obrazka:
+                </div>
+                <div class="register-row-input">
+                    <input type="text" name="image" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Sklep:
+                </div>
+                <div class="register-row-input">
+                    <select class="register-row-input-select" name="shopId">
+                        @foreach (var shop in Model.Shops)
+                        {
+                            <option value="@shop.ShopId">@shop.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        <input class="form-submit" type="submit" value="Dodaj dysk" />
+    </div>
+
+
+
+
+</form>

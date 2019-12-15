@@ -1,0 +1,175 @@
+﻿@model PartPicker.ViewModels.AddMoboFormViewModel
+@using PartPicker.Infrastructure
+
+@{
+    ViewBag.Title = "Dodaj płyte główną";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form action="@Url.Action("AddMobo", "Parts")" method="post">
+    <div class="main-form">
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Nazwa:
+                </div>
+                <div class="register-row-input">
+                    <input type="text" name="name" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Producent:
+                </div>
+                <div class="register-row-input">
+                    <select class="register-row-input-select" name="manufacturerId">
+                        @foreach (var manu in Model.Manufacturers)
+                        {
+                            <option value="@manu.ManufacturerId">
+                                @manu.Name
+                            </option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Model:
+                </div>
+                <div class="register-row-input">
+                    <input type="text" name="model" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Link:
+                </div>
+                <div class="register-row-input">
+                    <input type="text" name="link" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Standard konstrukcji:
+                </div>
+                <div class="register-row-input">
+                    <select class="register-row-input-select" name="formFactorId">
+                        @foreach (var form in Model.FormFactors)
+                        {
+                            <option value="@form.FormFactorId">@form.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Socket:
+                </div>
+                <div class="register-row-input">
+                    <select class="register-row-input-select" name="socketId">
+                        @foreach (var socket in Model.Sockets)
+                        {
+                            <option value="@socket.SocketId">@socket.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Ilość slotów pamięci RAM:
+                </div>
+                <div class="register-row-input">
+                    <input type="number" name="ramSlots" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Typ RAM:
+                </div>
+                <div class="register-row-input">
+                    <select class="register-row-input-select" name="ramTypeId">
+                        @foreach (var ram in Model.RamTypes)
+                        {
+                            <option value="@ram.RamTypeId">@ram.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Maksymalna ilość pamięci RAM:
+                </div>
+                <div class="register-row-input">
+                    <input type="number" name="maxRam" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Ilość portów SATA:
+                </div>
+                <div class="register-row-input">
+                    <input type="number" name="sataSlots" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Nazwa pliku obrazka:
+                </div>
+                <div class="register-row-input">
+                    <input type="text" name="image" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Sklep:
+                </div>
+                <div class="register-row-input">
+                    <select class="register-row-input-select" name="shopId">
+                        @foreach (var shop in Model.Shops)
+                        {
+                            <option value="@shop.ShopId">@shop.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        <input class="form-submit" type="submit" value="Dodaj płytę główną" />
+    </div>
+
+
+
+
+</form>

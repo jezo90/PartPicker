@@ -350,7 +350,13 @@
     <Compile Include="ViewModels\Mobo\MoboFormViewModel.cs" />
     <Compile Include="ViewModels\Mobo\MoboListViewModel.cs" />
     <Compile Include="ViewModels\NewBuildViewModel.cs" />
+    <Compile Include="ViewModels\Parts\AddCaseFormViewModel.cs" />
     <Compile Include="ViewModels\Parts\AddCpuFormViewModel.cs" />
+    <Compile Include="ViewModels\Parts\AddGpuFormViewModel.cs" />
+    <Compile Include="ViewModels\Parts\AddMoboFormViewModel.cs" />
+    <Compile Include="ViewModels\Parts\AddPsuFormViewModel.cs" />
+    <Compile Include="ViewModels\Parts\AddRamFormViewModel.cs" />
+    <Compile Include="ViewModels\Parts\AddStorageFormViewModel.cs" />
     <Compile Include="ViewModels\Psu\PsuDetailsViewModel.cs" />
     <Compile Include="ViewModels\Psu\PsuFormCheckedViewModel.cs" />
     <Compile Include="ViewModels\Psu\PsuFormViewModel.cs" />
@@ -403,6 +409,12 @@
     <Content Include="Views\Builds\_RateForm.cshtml" />
     <Content Include="Views\Parts\CpuAddForm.cshtml" />
     <Content Include="Views\Parts\Index.cshtml" />
+    <Content Include="Views\Parts\GpuAddForm.cshtml" />
+    <Content Include="Views\Parts\MoboAddForm.cshtml" />
+    <Content Include="Views\Parts\RamAddForm.cshtml" />
+    <Content Include="Views\Parts\CaseAddForm.cshtml" />
+    <Content Include="Views\Parts\StorageAddForm.cshtml" />
+    <Content Include="Views\Parts\PsuAddForm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

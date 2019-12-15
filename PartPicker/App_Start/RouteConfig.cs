@@ -14,13 +14,43 @@ namespace PartPicker
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "AddPsuToDatabase",
+                url: "zarzadzanie/dodaj-zasilacz",
+                defaults: new { controller = "Parts", action = "PsuAddForm" });
+
+            routes.MapRoute(
+                name: "AddRamToDatabase",
+                url: "zarzadzanie/dodaj-ram",
+                defaults: new { controller = "Parts", action = "RamAddForm" });
+
+            routes.MapRoute(
+                name: "AddStorageToDatabase",
+                url: "zarzadzanie/dodaj-dysk",
+                defaults: new { controller = "Parts", action = "StorageAddForm" });
+
+            routes.MapRoute(
+                name: "AddCaseToDatabase",
+                url: "zarzadzanie/dodaj-obudowe",
+                defaults: new { controller = "Parts", action = "CaseAddForm" });
+
+            routes.MapRoute(
+                name: "AddMoboToDatabase",
+                url: "zarzadzanie/dodaj-plyte-glowna",
+                defaults: new { controller = "Parts", action = "MoboAddForm" });
+
+            routes.MapRoute(
+                name: "AddGpuToDatabase",
+                url: "zarzadzanie/dodaj-karte-graficzna",
+                defaults: new { controller = "Parts", action = "GpuAddForm" });
+
+            routes.MapRoute(
                 name: "Manage",
                 url: "zarzadzanie",
                 defaults: new { controller = "Parts", action = "Index" });
 
             routes.MapRoute(
                 name: "AddCpuToDatabase",
-                url: "zarzadzanie/dodaj-cpu",
+                url: "zarzadzanie/dodaj-procesor",
                 defaults: new { controller = "Parts", action = "CpuAddForm"});
 
             routes.MapRoute(
@@ -105,102 +135,102 @@ namespace PartPicker
 
             routes.MapRoute(
                 name: "BuildsDetails",
-                url: "buildy/{name}-{id}",
+                url: "konfiguracje/{name}-{id}",
                 defaults: new { controller = "Builds", action = "BuildDetails", id = UrlParameter.Optional, name = UrlParameter.Optional });
 
             routes.MapRoute(
                 name: "Builds",
-                url: "buildy",
+                url: "konfiguracje",
                 defaults: new { controller = "Builds", action = "BuildList" });
 
             routes.MapRoute(
                  name: "BuildsHide",
-                 url: "buildy/{name}-{id}/ukryj",
+                 url: "konfiguracje/{name}-{id}/ukryj",
                  defaults: new { controller = "Builds", action = "BuildHide", id = UrlParameter.Optional, name = UrlParameter.Optional });
 
             routes.MapRoute(
                  name: "BuildCommentDelete",
-                 url: "buildy/{name}-{buildId}/usun-komentarz-{rateId}",
+                 url: "konfiguracje/{name}-{buildId}/usun-komentarz-{rateId}",
                  defaults: new { controller = "Builds", action = "BuildCommentDelete", buildId = UrlParameter.Optional, name = UrlParameter.Optional, rateId = UrlParameter.Optional });
 
             routes.MapRoute(
                 name: "BuildsForm",
-                url: "buildy/{action}/{id}",
+                url: "konfiguracje/{action}/{id}",
                 defaults: new { controller = "Builds", action = "BuildsList", id = UrlParameter.Optional });
 
             routes.MapRoute(
                 name: "NewBuild",
-                url: "nowy-build",
+                url: "nowa-konfiguracja",
                 defaults: new { controller = "NewBuild", action = "Index" });
             // CPU
             routes.MapRoute(
                 name: "DeleteCpuFromNewBuild",
-                url: "nowy-build/delete-cpu",
+                url: "nowa-konfiguracja/delete-cpu",
                 defaults: new { controller = "NewBuild", action = "DeleteCpuFromBuild" });
 
             routes.MapRoute(
                 name: "AddCpuToNewBuild",
-                url: "nowy-build/cpu-{id}",
+                url: "nowa-konfiguracja/cpu-{id}",
                 defaults: new { controller = "NewBuild", action = "AddCpuToBuild", id = UrlParameter.Optional });
             // GPU
             routes.MapRoute(
                 name: "DeleteGpuFromNewBuild",
-                url: "nowy-build/delete-gpu",
+                url: "nowa-konfiguracja/delete-gpu",
                 defaults: new { controller = "NewBuild", action = "DeleteGpuFromBuild" });
 
             routes.MapRoute(
                 name: "AddGpuToNewBuild",
-                url: "nowy-build/gpu-{id}",
+                url: "nowa-konfiguracja/gpu-{id}",
                 defaults: new { controller = "NewBuild", action = "AddGpuToBuild", id = UrlParameter.Optional });
             // MOBO
             routes.MapRoute(
                 name: "DeleteMoboFromNewBuild",
-                url: "nowy-build/delete-mobo",
+                url: "nowa-konfiguracja/delete-mobo",
                 defaults: new { controller = "NewBuild", action = "DeleteMoboFromBuild" });
 
             routes.MapRoute(
                 name: "AddMoboToNewBuild",
-                url: "nowy-build/mobo-{id}",
+                url: "nowa-konfiguracja/mobo-{id}",
                 defaults: new { controller = "NewBuild", action = "AddMoboToBuild", id = UrlParameter.Optional });
             // RAM
             routes.MapRoute(
                 name: "DeleteRamFromNewBuild",
-                url: "nowy-build/delete-ram",
+                url: "nowa-konfiguracja/delete-ram",
                 defaults: new { controller = "NewBuild", action = "DeleteRamFromBuild" });
 
             routes.MapRoute(
                 name: "AddRamToNewBuild",
-                url: "nowy-build/ram-{id}",
+                url: "nowa-konfiguracja/ram-{id}",
                 defaults: new { controller = "NewBuild", action = "AddRamToBuild", id = UrlParameter.Optional });
             // PSU
             routes.MapRoute(
                 name: "DeletePsuFromNewBuild",
-                url: "nowy-build/delete-psu",
+                url: "nowa-konfiguracja/delete-psu",
                 defaults: new { controller = "NewBuild", action = "DeletePsuFromBuild" });
 
             routes.MapRoute(
                 name: "AddPsuToNewBuild",
-                url: "nowy-build/psu-{id}",
+                url: "nowa-konfiguracja/psu-{id}",
                 defaults: new { controller = "NewBuild", action = "AddPsuToBuild", id = UrlParameter.Optional });
             // STORAGE
             routes.MapRoute(
                 name: "DeleteStorageFromNewBuild",
-                url: "nowy-build/delete-storage",
+                url: "nowa-konfiguracja/delete-storage",
                 defaults: new { controller = "NewBuild", action = "DeleteStorageFromBuild" });
 
             routes.MapRoute(
                 name: "AddStorageToNewBuild",
-                url: "nowy-build/storage-{id}",
+                url: "nowa-konfiguracja/storage-{id}",
                 defaults: new { controller = "NewBuild", action = "AddStorageToBuild", id = UrlParameter.Optional });
             // CASE
             routes.MapRoute(
                 name: "DeleteCaseFromNewBuild",
-                url: "nowy-build/delete-case",
+                url: "nowa-konfiguracja/delete-case",
                 defaults: new { controller = "NewBuild", action = "DeleteCaseFromBuild" });
 
             routes.MapRoute(
                 name: "AddCaseToNewBuild",
-                url: "nowy-build/case-{id}",
+                url: "nowa-konfiguracja/case-{id}",
                 defaults: new { controller = "NewBuild", action = "AddCaseToBuild", id = UrlParameter.Optional });
 
             routes.MapRoute(

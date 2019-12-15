@@ -1,0 +1,165 @@
+﻿@model PartPicker.ViewModels.AddGpuFormViewModel
+@using PartPicker.Infrastructure
+
+@{
+    ViewBag.Title = "Dodaj karte graficzna";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form action="@Url.Action("AddGpu", "Parts")" method="post">
+    <div class="main-form">
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Nazwa:
+                </div>
+                <div class="register-row-input">
+                    <input type="text" name="name" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Produkt:
+                </div>
+                <div class="register-row-input">
+                    <select class="register-row-input-select" name="productId">
+                        @foreach (var product in Model.Products)
+                        {
+                            <option value="@product.ProductId">
+                                @product.Manufacturer.Name @product.Series.Name
+                            </option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Model:
+                </div>
+                <div class="register-row-input">
+                    <input type="text" name="model" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Link:
+                </div>
+                <div class="register-row-input">
+                    <input type="text" name="link" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Typ RAM:
+                </div>
+                <div class="register-row-input">
+                    <select class="register-row-input-select" name="gpuRamId">
+                        @foreach (var gpuRam in Model.GpuRams)
+                        {
+                            <option value="@gpuRam.GpuRamId">@gpuRam.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Ilość pamięci RAM:
+                </div>
+                <div class="register-row-input">
+                    <input type="number" name="ram" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Częstotliwość taktowania:
+                </div>
+                <div class="register-row-input">
+                    <input type="text" name="frequency" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Częstotliwość taktowania w trybie boost:
+                </div>
+                <div class="register-row-input">
+                    <input type="text" name="frequencyBoost" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Długość:
+                </div>
+                <div class="register-row-input">
+                    <input type="number" name="length" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Benchmark:
+                </div>
+                <div class="register-row-input">
+                    <input type="number" name="benchmark" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Nazwa pliku obrazka:
+                </div>
+                <div class="register-row-input">
+                    <input type="text" name="image" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Sklep:
+                </div>
+                <div class="register-row-input">
+                    <select class="register-row-input-select" name="shopId">
+                        @foreach (var shop in Model.Shops)
+                        {
+                            <option value="@shop.ShopId">@shop.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        <input class="form-submit" type="submit" value="Dodaj kartę graficzną" />
+    </div>
+
+
+
+
+</form>

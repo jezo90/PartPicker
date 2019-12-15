@@ -1,0 +1,154 @@
+﻿@model PartPicker.ViewModels.AddRamFormViewModel
+@using PartPicker.Infrastructure
+
+@{
+    ViewBag.Title = "Dodaj RAM";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form action="@Url.Action("AddRam", "Parts")" method="post">
+    <div class="main-form">
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Nazwa:
+                </div>
+                <div class="register-row-input">
+                    <input type="text" name="name" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Producent:
+                </div>
+                <div class="register-row-input">
+                    <select class="register-row-input-select" name="manufacturerId">
+                        @foreach (var manu in Model.Manufacturers)
+                        {
+                            <option value="@manu.ManufacturerId">
+                                @manu.Name
+                            </option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Model:
+                </div>
+                <div class="register-row-input">
+                    <input type="text" name="model" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Link:
+                </div>
+                <div class="register-row-input">
+                    <input type="text" name="link" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Typ RAM:
+                </div>
+                <div class="register-row-input">
+                    <select class="register-row-input-select" name="ramTypeId">
+                        @foreach (var ramType in Model.RamTypes)
+                        {
+                            <option value="@ramType.RamTypeId">@ramType.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Ilość kości RAM:
+                </div>
+                <div class="register-row-input">
+                    <input type="number" name="amount" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Ilość pamięci RAM:
+                </div>
+                <div class="register-row-input">
+                    <input type="text" name="size" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Częstotliwość taktowania:
+                </div>
+                <div class="register-row-input">
+                    <input type="number" name="frequency" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Cl:
+                </div>
+                <div class="register-row-input">
+                    <input type="number" name="cl" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Nazwa pliku obrazka:
+                </div>
+                <div class="register-row-input">
+                    <input type="text" name="image" />
+                </div>
+            </div>
+        </div>
+
+        <div class="register-row">
+            <div class="register-row-content">
+                <div class="register-row-text">
+                    Sklep:
+                </div>
+                <div class="register-row-input">
+                    <select class="register-row-input-select" name="shopId">
+                        @foreach (var shop in Model.Shops)
+                        {
+                            <option value="@shop.ShopId">@shop.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        <input class="form-submit" type="submit" value="Dodaj RAM" />
+    </div>
+
+
+
+
+</form>
